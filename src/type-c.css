@@ -1,0 +1,7 @@
+/* Option C · Clean Authority
+   Plus Jakarta Sans in sentence case, tightly tracked: a bold statement (700) answered by a light key phrase (300) in gold,
+   the reverse of Option A's contrast. The lead is set light (300) and a touch larger for a calm, corporate feel. */
+.hero h1{font-family:"Plus Jakarta Sans",var(--sans);font-stretch:100%;text-transform:none;font-weight:700;letter-spacing:-.035em;line-height:1.04;font-size:clamp(46px,5.8vw,96px);max-width:13em}
+.hero h1 span{font-weight:300;letter-spacing:-.03em}
+.hero .lead{font-family:"Plus Jakarta Sans",var(--sans);font-weight:300;font-size:clamp(19px,1.6vw,22px);color:#D6E2E6}
+@media (max-width:640px){.hero h1{font-size:clamp(38px,10.5vw,52px)}}

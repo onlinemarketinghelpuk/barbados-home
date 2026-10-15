@@ -1,0 +1,192 @@
+// Paste into the DevTools console (F12 > Console) on https://barbadosmaritime.com/
+// once the homepage has fully loaded. It downloads one file: bmsr-images.json
+(async () => {
+  const list = [
+[
+"00000phoenix-logo-final.jpg",
+"/wp-content/uploads/2022/08/00000phoenix-logo-final.jpg"
+],
+[
+"1-3.png",
+"/wp-content/uploads/2022/05/1-3.png"
+],
+[
+"1-840x620-840x620.png",
+"/wp-content/uploads/2025/09/1-840x620-840x620.png"
+],
+[
+"1-min.png",
+"/wp-content/uploads/2022/05/1-min.png"
+],
+[
+"1.jpg",
+"/wp-content/uploads/slider/cache/d337b5bfd97c83237ea410eaf13183bd/1.jpg"
+],
+[
+"11.png",
+"/wp-content/uploads/2025/09/11.png"
+],
+[
+"2-4.png",
+"/wp-content/uploads/2022/05/2-4.png"
+],
+[
+"2-min.png",
+"/wp-content/uploads/2022/05/2-min.png"
+],
+[
+"3-3.png",
+"/wp-content/uploads/2022/05/3-3.png"
+],
+[
+"3-min.png",
+"/wp-content/uploads/2022/05/3-min.png"
+],
+[
+"3.jpg",
+"/wp-content/uploads/slider/cache/9cbe69362ca13930c2ac0848bb802d58/3.jpg"
+],
+[
+"4-3.png",
+"/wp-content/uploads/2022/05/4-3.png"
+],
+[
+"5-3.png",
+"/wp-content/uploads/2022/05/5-3.png"
+],
+[
+"6-3.png",
+"/wp-content/uploads/2022/05/6-3.png"
+],
+[
+"Areopagus-Vessel-Photo-min-scaled.jpg",
+"/wp-content/uploads/slider/cache/c2246a47a311afdc330c159eea2fbc19/Areopagus-Vessel-Photo-min-scaled.jpg"
+],
+[
+"BMSR-1.jpg",
+"/wp-content/uploads/slider/cache/ecbe8b443c093f4d8b26d0eac3b1078c/BMSR-1.jpg"
+],
+[
+"BMSR-2.jpg",
+"/wp-content/uploads/slider/cache/f3553f6a91bee35aea0a4f8d250b4893/BMSR-2.jpg"
+],
+[
+"BMSR-3.jpg",
+"/wp-content/uploads/slider/cache/edcefd4f88c5607692147f120a5e84da/BMSR-3.jpg"
+],
+[
+"BMSR-4.jpg",
+"/wp-content/uploads/slider/cache/c757a1a6ef16daf5f387153deff96e90/BMSR-4.jpg"
+],
+[
+"BMSR-5.jpg",
+"/wp-content/uploads/slider/cache/0ce4eda7dce1e44337f38c0a437039a1/BMSR-5.jpg"
+],
+[
+"Barbados-Maritime-Home-Page-.jpg",
+"/wp-content/uploads/slider/cache/283ba7b4235fbbd48ed7b1d3e53654e2/Barbados-Maritime-Home-Page-.jpg"
+],
+[
+"Barbados-Maritime-Images-1920-×-550px-min.png",
+"/wp-content/uploads/2022/05/Barbados-Maritime-Images-1920-%C3%97-550px-min.png"
+],
+[
+"Charlotte-1-year-work-anniversary-post-08.01.26-840x620-840x620.png",
+"/wp-content/uploads/2026/01/Charlotte-1-year-work-anniversary-post-08.01.26-840x620-840x620.png"
+],
+[
+"Dromon_New_Logo_High_Resolution-150x108-1.png",
+"/wp-content/uploads/2022/05/Dromon_New_Logo_High_Resolution-150x108-1.png"
+],
+[
+"INSB-Class-Logo-150x150-1.jpeg",
+"/wp-content/uploads/2022/05/INSB-Class-Logo-150x150-1.jpeg"
+],
+[
+"INTLREG-Final-Logo48-150x120-1.png",
+"/wp-content/uploads/2022/05/INTLREG-Final-Logo48-150x120-1.png"
+],
+[
+"IR-logo-150x150-1.png",
+"/wp-content/uploads/2022/05/IR-logo-150x150-1.png"
+],
+[
+"Korean-Register-2.gif",
+"/wp-content/uploads/2022/05/Korean-Register-2.gif"
+],
+[
+"LHR-Logo-Colour-vert-small-50-1.png",
+"/wp-content/uploads/2022/05/LHR-Logo-Colour-vert-small-50-1.png"
+],
+[
+"LOGO-High-Res-Teams.png",
+"/wp-content/uploads/2023/03/LOGO-High-Res-Teams.png"
+],
+[
+"Linkedin-Barbados-Maritime.png",
+"/wp-content/uploads/2022/05/Linkedin-Barbados-Maritime.png"
+],
+[
+"Lloyds-Register-Group-150x150-1.png",
+"/wp-content/uploads/2022/05/Lloyds-Register-Group-150x150-1.png"
+],
+[
+"Logo-Turk-Loydu-e1657302000745.jpg",
+"/wp-content/uploads/2022/07/Logo-Turk-Loydu-e1657302000745.jpg"
+],
+[
+"OMCS-CLASS-150x150-1.png",
+"/wp-content/uploads/2022/05/OMCS-CLASS-150x150-1.png"
+],
+[
+"Polish-Register-of-Shipping.png",
+"/wp-content/uploads/2022/05/Polish-Register-of-Shipping.png"
+],
+[
+"Posidonia-BMSR-840x400-840x620.png",
+"/wp-content/uploads/2026/05/Posidonia-BMSR-840x400-840x620.png"
+],
+[
+"Rina-1.png",
+"/wp-content/uploads/2022/05/Rina-1.png"
+],
+[
+"Rodopi-Vessel-Photo-min-scaled.jpg",
+"/wp-content/uploads/slider/cache/f9cb9e604914466406afee5c63133d0c/Rodopi-Vessel-Photo-min-scaled.jpg"
+],
+[
+"Russian-Maritime-Register-of-Shipping-1.png",
+"/wp-content/uploads/2022/05/Russian-Maritime-Register-of-Shipping-1.png"
+],
+[
+"URACOS--e1658233013516.png",
+"/wp-content/uploads/2022/07/URACOS--e1658233013516.png"
+],
+[
+"Untitled-design-24-e1653062271561.png",
+"/wp-content/uploads/2022/05/Untitled-design-24-e1653062271561.png"
+],
+[
+"barbados-flag-3.png",
+"/wp-content/uploads/2022/05/barbados-flag-3.png"
+],
+[
+"logo1-pqcg8np4v71z2ftx3vlj3o7ra95qv7f322p2il0u8o.png",
+"/wp-content/uploads/elementor/thumbs/logo1-pqcg8np4v71z2ftx3vlj3o7ra95qv7f322p2il0u8o.png"
+]
+];
+  const out = {};
+  for (const [name, path] of list) {
+    const r = await fetch(path);
+    const type = r.headers.get('content-type') || '';
+    if (!r.ok || !type.startsWith('image')) { console.warn('Skipped', name, r.status, type); continue; }
+    const b = await r.blob();
+    out[name] = await new Promise(res => { const f = new FileReader(); f.onload = () => res(f.result); f.readAsDataURL(b); });
+    console.log('Got', name);
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(out)], { type: 'application/json' }));
+  a.download = 'bmsr-images.json';
+  a.click();
+  console.log('Done:', Object.keys(out).length, 'of', list.length, 'images');
+})();

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Page Options</title>
+<meta name="description" content="Barbados Maritime Ship Registry: three revised home pages for review.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/barbados-flag-3.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Nunito:wght@800;900&family=Plus+Jakarta+Sans:wght@300;700&display=swap" rel="stylesheet">
+<style>
+/* review page: the three home page options side by side. Dark, in the site's own palette. */
+:root{
+  color-scheme:dark;
+  --abyss:#03141F; --deep:#051D2C; --hull:#072638; --gold:#FEC725; --ink:#03141F;
+  --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14);
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --gut:clamp(16px,5vw,96px); --ease:cubic-bezier(.2,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--abyss);color:var(--text);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:calc(1760px + var(--gut) * 2);margin-inline:auto;padding-inline:var(--gut)}
+.tag{display:block;font:500 12.5px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.hull{font-stretch:62%;font-weight:800;text-transform:uppercase;line-height:.9}
+.ar{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease)}
+
+/* top */
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:88px;padding-block:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:52px;width:auto}
+.brand svg{height:52px;width:auto;aspect-ratio:3/2;border-radius:2px}
+
+/* intro */
+.intro{padding-block:clamp(56px,7vw,104px) clamp(40px,5vw,64px)}
+.intro h1{margin:18px 0 22px;font-size:clamp(46px,6.4vw,104px)}
+.intro h1 span{color:var(--gold)}
+.intro .lead{max-width:44em;font-size:clamp(18px,1.5vw,20px);color:#C9D7DC}
+
+/* options */
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.6vw,28px);padding-bottom:clamp(64px,7vw,104px)}
+.opt{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:4px;background:var(--deep);overflow:hidden}
+.shots{position:relative;display:block;aspect-ratio:16/10;background:var(--hull);overflow:hidden}
+.shots .d{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1s var(--ease)}
+.opt:hover .shots .d{transform:scale(1.03)}
+.body{display:flex;flex-direction:column;gap:18px;flex:1;padding:28px clamp(20px,2vw,32px) 32px}
+.name{display:flex;align-items:baseline;gap:14px}
+.name b{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:2px;background:var(--gold);color:var(--ink);font:800 26px/1 var(--sans);font-stretch:75%}
+.name h2{font-size:clamp(30px,2.6vw,40px)}
+/* each option's headline set in its own typography */
+.sample{padding:18px 0;border-block:1px solid var(--line);font-size:clamp(28px,2.3vw,38px);color:var(--text)}
+.sample span{color:var(--gold)}
+.sa{font-stretch:80%;font-weight:300;text-transform:uppercase;line-height:.95}.sa span{display:block;font-weight:900}
+.sb{font-family:"Nunito",var(--sans);font-weight:800;letter-spacing:-.02em;line-height:1.05}.sb span{font-weight:900}
+.sc{font-family:"Plus Jakarta Sans",var(--sans);font-weight:700;letter-spacing:-.035em;line-height:1.08}.sc span{font-weight:300}
+dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0;font-size:15.5px}
+dt{font:500 12px/1.9 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+dd{margin:0}
+.note{font-size:15.5px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
+/* Option D: full-width card under the three typography options */
+.opt.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.opt.wide .shots{aspect-ratio:auto;min-height:320px}
+.opt.wide .shots .d{position:absolute;inset:0;object-position:left top}
+.adds{display:grid;gap:10px;font-size:15.5px;color:#C9D7DC}
+.adds li{position:relative;padding-left:18px}
+.adds li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--gold)}
+.adds b{color:var(--text);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:0 22px;border:1px solid transparent;border-radius:2px;font:700 15px/1 var(--sans);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .25s,border-color .25s}
+.btn:hover .ar{transform:translateX(4px)}
+.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#F3D57F}
+.btn-line{border-color:rgba(233,241,243,.35)}.btn-line:hover{border-color:var(--text);background:rgba(233,241,243,.06)}
+
+/* shared changes */
+.shared{padding-block:clamp(64px,7vw,104px);background:var(--deep);border-top:1px solid var(--line)}
+.shared h2{margin:16px 0 40px;font-size:clamp(38px,4.4vw,64px)}
+.shared h2 span{color:var(--gold)}
+.list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.list li{padding:26px 24px 30px 0;border-bottom:1px solid var(--line)}
+.list li+li{padding-left:24px;border-left:1px solid var(--line)}
+.list li:nth-child(4n+1){padding-left:0;border-left:0}
+.list b{display:block;margin-bottom:8px;font-size:17px;font-weight:700}
+.list p{font-size:15.5px;color:var(--muted)}
+.asks{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px 64px;margin-top:clamp(56px,6vw,88px)}
+.asks h3{font-size:clamp(30px,3vw,44px)}
+.asks h3 span{color:var(--gold)}
+.asks ol{margin:0;padding-left:1.4em;color:#C9D7DC}
+.asks li{padding:6px 0 6px 6px}
+.asks li::marker{font:500 13px var(--mono);color:var(--gold)}
+footer{padding-block:28px;border-top:1px solid var(--line);font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+
+@media (max-width:1100px){
+  .opts{grid-template-columns:1fr;max-width:760px}
+  .opt.wide{grid-template-columns:1fr}.opt.wide .shots{aspect-ratio:16/10}
+  .list{grid-template-columns:1fr 1fr}
+  .list li:nth-child(4n+1){padding-left:24px;border-left:1px solid var(--line)}
+  .list li:nth-child(odd){padding-left:0;border-left:0}
+  .asks{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .brand img,.brand svg{height:40px}
+  .list{grid-template-columns:1fr}
+  .list li{padding-left:0!important;border-left:0!important}
+  .links .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="flag" viewBox="0 0 24000 16000"><path fill="#00267F" d="M0 0h24000v16000H0z"/><path fill="#FFC726" d="M8000 0h8000v16000H8000z"/><path id="trident" d="M12000 4124c-260 709-525 1447-1092 2012 176-58 484-110 682-105v2982l-842 125c-30-3-40-50-40-114-81-926-300-1704-552-2509-18-110-337-530-91-456 30 4 359 138 307 74-448-464-1103-798-1739-897-56-14-89 14-39 79 844 1299 1550 2832 1544 4651 328 0 1123-194 1452-194v2104h415l95-5876z"/><use href="#trident" transform="matrix(-1 0 0 1 24000 0)"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brand"><img src="assets/img/bmsr-logo-white.png" alt="Barbados Maritime Ship Registry" width="757" height="289"><svg viewBox="0 0 24000 16000" aria-hidden="true"><use href="#flag"/></svg></span>
+    <span class="tag">Home page review · 19 October 2026</span>
+  </div>
+</header>
+
+<main>
+  <section class="intro wrap">
+    <p class="tag">Four revised home pages</p>
+    <h1 class="hull">Choose a <span>headline style</span></h1>
+    <p class="lead">Every page includes all the changes from your brief: the clearer logo and matching flag, the full-width layout, the scrolling announcement bar, light and dark mode, opening hours, emergency contacts and recognised organisations. Options A, B and C differ only in the typography of the banner headline, so you can compare like for like. Option D keeps Option A's headline and goes further, with redesigned sections below it.</p>
+  </section>
+
+  <section class="opts wrap" aria-label="Options">
+    <article class="opt">
+      <a class="shots" href="option-a/index.html" aria-label="View Option A"><img class="d" src="review/option-a-desktop.jpg" alt="Option A home page on desktop" width="1440" height="900"></a>
+      <div class="body">
+        <div class="name"><b>A</b><h2 class="hull">Refined Hull</h2></div>
+        <p class="sample sa">A quality-driven service <span>second to none.</span></p>
+        <dl><dt>Font</dt><dd>Archivo (current), opened up from condensed</dd><dt>Weights</dt><dd>Light 300 lead-in, heavy 900 key phrase</dd><dt>Case</dt><dd>Capitals</dd></dl>
+        <p class="note">Closest to the version you liked. The weight contrast makes the key phrase stand out, and the wider letters are easier to read.</p>
+        <div class="links"><a class="btn btn-gold" href="option-a/index.html">View option A <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-a/index.html?theme=light">Light mode</a></div>
+      </div>
+    </article>
+    <article class="opt">
+      <a class="shots" href="option-b/index.html" aria-label="View Option B"><img class="d" src="review/option-b-desktop.jpg" alt="Option B home page on desktop" width="1440" height="900"></a>
+      <div class="body">
+        <div class="name"><b>B</b><h2 class="hull">Soft Modern</h2></div>
+        <p class="sample sb">A quality-driven service <span>second to none.</span></p>
+        <dl><dt>Font</dt><dd>Nunito, a rounded sans</dd><dt>Weights</dt><dd>Heavy 800, key phrase 900</dd><dt>Case</dt><dd>Sentence case</dd></dl>
+        <p class="note">The rounded style you asked to try: softer and more modern, while the heavy weight keeps it confident and professional.</p>
+        <div class="links"><a class="btn btn-gold" href="option-b/index.html">View option B <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-b/index.html?theme=light">Light mode</a></div>
+      </div>
+    </article>
+    <article class="opt">
+      <a class="shots" href="option-c/index.html" aria-label="View Option C"><img class="d" src="review/option-c-desktop.jpg" alt="Option C home page on desktop" width="1440" height="900"></a>
+      <div class="body">
+        <div class="name"><b>C</b><h2 class="hull">Clean Authority</h2></div>
+        <p class="sample sc">A quality-driven service <span>second to none.</span></p>
+        <dl><dt>Font</dt><dd>Plus Jakarta Sans</dd><dt>Weights</dt><dd>Bold 700 statement, light 300 key phrase</dd><dt>Case</dt><dd>Sentence case</dd></dl>
+        <p class="note">Calm and corporate. The reverse of Option A's contrast: a bold statement answered by an elegant light phrase in gold.</p>
+        <div class="links"><a class="btn btn-gold" href="option-c/index.html">View option C <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-c/index.html?theme=light">Light mode</a></div>
+      </div>
+    </article>
+    <article class="opt wide">
+      <a class="shots" href="option-d/index.html#ros" aria-label="View Option D"><img class="d" src="review/option-d-ros.jpg" alt="Option D's redesigned Recognised Organisations section" width="1440" height="640" loading="lazy"></a>
+      <div class="body">
+        <div class="name"><b>D</b><h2 class="hull">Refined Plus</h2></div>
+        <p class="note">Option A's headline, with the sections below it taken further. Everything else matches A, so you can see exactly what the extra work adds.</p>
+        <ul class="adds">
+          <li><b>Recognised Organisations</b> redesigned: each logo cleaned up and sized evenly, named, marked as an IACS member where it applies, and filterable. The first two rows show, then "Show all", so the section stays the same size at 21 logos or 50.</li>
+          <li><b>"Contact"</b> added to the main menu on desktop.</li>
+          <li><b>Privacy wording</b> under the newsletter sign-up.</li>
+          <li><b>Registry figures</b> in place of the island facts. Two figures are waiting on you.</li>
+          <li><b>"Ready to register?"</b> in place of the repeated 24/7 band at the bottom.</li>
+          <li><b>A faster page:</b> 5 distinct banner slides (was 12) and much lighter images.</li>
+        </ul>
+        <div class="links"><a class="btn btn-gold" href="option-d/index.html">View option D <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-d/index.html?theme=light">Light mode</a><a class="btn btn-line" href="option-d/index.html?logos=colour#ros">Logos in colour</a></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="shared" aria-labelledby="shared-h">
+    <div class="wrap">
+      <p class="tag">In all four options</p>
+      <h2 class="hull" id="shared-h">What's changed <span>from your brief</span></h2>
+      <ul class="list">
+        <li><b>Clearer, larger logo</b><p>Up to 64px tall (was 46px), and it stays prominent as the header shrinks on scroll.</p></li>
+        <li><b>Flag matches the logo</b><p>Same height as the logo, now a sharp vector with a transparent background. The old image had a white edge.</p></li>
+        <li><b>Full-width layout</b><p>Content now uses up to 1760px of the screen (was 1240px), with readable line lengths kept.</p></li>
+        <li><b>Announcement bar</b><p>Scrolling updates at the top of every page, with a pause button and the 24/7 emergency number.</p></li>
+        <li><b>Light and dark mode</b><p>The sun/moon button in the header switches theme, and the site remembers each visitor's choice.</p></li>
+        <li><b>Opening hours</b><p>Directly under the banner, with a live "Open now / Closed" badge in UK time.</p></li>
+        <li><b>Emergency contacts</b><p>The 24/7 line is in the hours band, the announcement bar, the mobile contact bar and the footer.</p></li>
+        <li><b>Recognised &amp; accredited</b><p>ISO 9001, Paris MoU, QUALSHIP 21 and IMO, above all 21 Recognised Organisation logos.</p></li>
+      </ul>
+      <div class="asks">
+        <h3 class="hull">What we need <span>from you</span></h3>
+        <ol>
+          <li>Your preferred option: A, B, C or D.</li>
+          <li>The logo as a vector file (SVG, AI or EPS), to make it sharper still.</li>
+          <li>Confirmation of the office opening hours, and any other emergency contacts to show.</li>
+          <li>The announcements you'd like in the scrolling bar (3 to 5 to start).</li>
+          <li>The full list of accreditations and affiliations, with their official logos.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Barbados Maritime Ship Registry · home page review</span><span>Use the A / B / C / D switcher in the top bar of each page to compare</span></div></footer>
+</body>
+</html>

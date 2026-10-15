@@ -1,0 +1,57 @@
+<section class="sec ros" id="ros" aria-labelledby="ro-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag">Accreditations, affiliations &amp; recognised organisations</p><h2 class="hull h2" id="ro-h">Recognised <span>&amp; accredited</span></h2></div><a class="go" href="https://barbadosmaritime.com/barbados-recognised-organisations/">Find out more <svg class="ar"><use href="#ar"/></svg></a></div>
+    <h3 class="tag grp">Accreditations &amp; affiliations</h3>
+    <!-- TODO(client): confirm this list, and send the official logos to replace these text marks -->
+    <ul class="accr rv">
+      <li><b class="hull">ISO 9001</b><span>Accredited quality management system</span></li>
+      <li><b class="hull">Paris MoU</b><span>White-listed flag State</span></li>
+      <li><b class="hull">QUALSHIP 21</b><span>Approved for the US Coast Guard programme</span></li>
+      <li><b class="hull">IMO</b><span>Member State since 1971</span></li>
+    </ul>
+    <div class="ro-bar">
+      <h3 class="tag grp" id="ro-list">Recognised Organisations <span>{{ro-count}}</span></h3>
+      <!-- filters: shown only with JavaScript; without it every logo is listed -->
+      <div class="ro-filter" role="group" aria-label="Filter recognised organisations">
+        <button type="button" data-f="all" aria-pressed="true">All <i>{{ro-count}}</i></button>
+        <button type="button" data-f="iacs" aria-pressed="false">IACS members <i>{{ro-iacs}}</i></button>
+        <button type="button" data-f="other" aria-pressed="false">Other ROs <i>{{ro-other}}</i></button>
+      </div>
+    </div>
+    <!-- tiles are generated from src/option-d/ros.json by tools/build-options.mjs (one line per organisation) -->
+    <ul class="ro-grid rv" id="ro-grid" aria-labelledby="ro-list">
+{{ro-tiles}}
+    </ul>
+    <div class="ro-more"><button type="button" class="btn btn-line" aria-expanded="false" aria-controls="ro-grid">Show all</button></div>
+  </div>
+  <script>
+  // RO grid: filter by group, and show the first 2 rows (3 on phones) until "Show all" is pressed. Rows follow the live column count,
+  // so the section keeps the same height at 21 logos or 50. ?logos=colour shows the logos in colour at rest (review).
+  (() => {
+    const sec = document.currentScript.closest('.ros'), grid = sec.querySelector('.ro-grid'), items = [...grid.children];
+    const more = sec.querySelector('.ro-more .btn'), btns = [...sec.querySelectorAll('.ro-filter button')];
+    let filter = 'all', open = false;
+    if (/[?&]logos=colou?r/.test(location.search)) sec.classList.add('colour');
+    const layout = () => {
+      const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length, cap = cols * (cols <= 2 ? 3 : 2); // 2 rows, 3 on phones
+      const match = items.filter(li => filter === 'all' || li.dataset.group === filter);
+      items.forEach(li => { li.hidden = !match.includes(li) || (!open && match.indexOf(li) >= cap); });
+      more.hidden = match.length <= cap;
+      more.textContent = open ? 'Show fewer' : `Show all ${match.length}`;
+      more.setAttribute('aria-expanded', open);
+    };
+    btns.forEach(b => b.addEventListener('click', () => {
+      filter = b.dataset.f; open = false;
+      btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+      layout();
+    }));
+    more.addEventListener('click', () => {
+      open = !open; layout();
+      if (!open) grid.scrollIntoView({ block: 'nearest' });
+    });
+    let cols0 = 0;
+    const onResize = () => { const c = getComputedStyle(grid).gridTemplateColumns.split(" ").length; if (c !== cols0) { cols0 = c; layout(); } };
+    addEventListener("resize", onResize); onResize();
+  })();
+  </script>
+</section>

@@ -1,0 +1,170 @@
+[
+  {
+    "name": "ABS",
+    "url": "https://ww2.eagle.org/en.html",
+    "iacs": true,
+    "logo": "abs.webp",
+    "w": 283,
+    "h": 134
+  },
+  {
+    "name": "BKR",
+    "url": "http://www.bkrclass.org/",
+    "iacs": false,
+    "logo": "bkr.webp",
+    "w": 180,
+    "h": 185
+  },
+  {
+    "name": "Bureau Veritas",
+    "url": "http://www.bureauveritas.com/",
+    "iacs": true,
+    "logo": "bureau-veritas.webp",
+    "w": 150,
+    "h": 188
+  },
+  {
+    "name": "China Classification Society",
+    "url": "http://www.ccs.org.cn/ccswzen/",
+    "iacs": true,
+    "logo": "china-classification-society.webp",
+    "w": 375,
+    "h": 53
+  },
+  {
+    "name": "ClassNK",
+    "url": "http://www.classnk.or.jp/",
+    "iacs": true,
+    "logo": "classnk.webp",
+    "w": 293,
+    "h": 74
+  },
+  {
+    "name": "DNV",
+    "url": "http://dnvgl.com/",
+    "iacs": true,
+    "logo": "dnv.webp",
+    "w": 379,
+    "h": 111
+  },
+  {
+    "name": "Dromon",
+    "url": "https://www.dromon.com/",
+    "iacs": false,
+    "logo": "dromon.webp",
+    "w": 150,
+    "h": 106
+  },
+  {
+    "name": "Hellenic Register of Shipping",
+    "url": "https://hellenicregister.org/",
+    "iacs": false,
+    "logo": "hellenic-register-of-shipping.webp",
+    "w": 76,
+    "h": 121
+  },
+  {
+    "name": "Indian Register of Shipping",
+    "url": "https://www.irclass.org/",
+    "iacs": true,
+    "logo": "indian-register-of-shipping.webp",
+    "w": 150,
+    "h": 35
+  },
+  {
+    "name": "INSB Class",
+    "url": "https://insb.gr/",
+    "iacs": false,
+    "logo": "insb-class.webp",
+    "w": 150,
+    "h": 150
+  },
+  {
+    "name": "International Register of Shipping",
+    "url": "http://intlreg.org/",
+    "iacs": false,
+    "logo": "international-register-of-shipping.webp",
+    "w": 146,
+    "h": 88
+  },
+  {
+    "name": "Korean Register",
+    "url": "http://www.krs.co.kr/",
+    "iacs": true,
+    "logo": "korean-register.webp",
+    "w": 113,
+    "h": 59
+  },
+  {
+    "name": "Lloyd’s Register",
+    "url": "http://www.lr.org/",
+    "iacs": true,
+    "logo": "lloyds-register.webp",
+    "w": 150,
+    "h": 78
+  },
+  {
+    "name": "NASHA",
+    "url": "http://www.nashapanama.com/",
+    "iacs": false,
+    "logo": "nasha.webp",
+    "w": 480,
+    "h": 151
+  },
+  {
+    "name": "OMCS Class",
+    "url": "http://www.omcsclass.org/",
+    "iacs": false,
+    "logo": "omcs-class.webp",
+    "w": 150,
+    "h": 38
+  },
+  {
+    "name": "Phoenix Register of Shipping",
+    "url": "http://www.phrs.gr",
+    "iacs": false,
+    "logo": "phoenix-register-of-shipping.webp",
+    "w": 480,
+    "h": 129
+  },
+  {
+    "name": "Polish Register of Shipping",
+    "url": "http://prs.pl/",
+    "iacs": true,
+    "logo": "polish-register-of-shipping.webp",
+    "w": 101,
+    "h": 131
+  },
+  {
+    "name": "RINA",
+    "url": "http://www.rina.org",
+    "iacs": true,
+    "logo": "rina.webp",
+    "w": 99,
+    "h": 102
+  },
+  {
+    "name": "Russian Maritime Register of Shipping",
+    "url": "http://www.rs-class.org/",
+    "iacs": false,
+    "logo": "russian-maritime-register-of-shipping.webp",
+    "w": 91,
+    "h": 90
+  },
+  {
+    "name": "Türk Loydu",
+    "url": "http://www.turkloydu.org",
+    "iacs": true,
+    "logo": "turk-loydu.webp",
+    "w": 480,
+    "h": 114
+  },
+  {
+    "name": "URACOS",
+    "url": "http://www.uracos.org",
+    "iacs": false,
+    "logo": "uracos.webp",
+    "w": 188,
+    "h": 193
+  }
+]

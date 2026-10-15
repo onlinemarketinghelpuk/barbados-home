@@ -1,0 +1,11 @@
+.claude
+.env*
+.git
+.gitignore
+requirements.txt
+docs
+assets/img/get-images.js
+assets/img/unpack.py
+assets/img/FILES.txt
+src
+tools

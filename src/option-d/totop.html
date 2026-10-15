@@ -1,0 +1,22 @@
+<!-- floating Back to top: appears after 100px of scrolling; the ring fills with scroll progress -->
+<a class="fab" href="#main" aria-label="Back to top">
+  <svg class="ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><circle class="p" cx="26" cy="26" r="24"/></svg>
+  <svg class="ar" aria-hidden="true"><use href="#ar"/></svg>
+</a>
+<script>
+// shown once the page has scrolled 100px; hidden (and out of the tab order) at the top and while the mobile menu is open
+(() => {
+  const fab = document.querySelector('.fab'), ring = fab.querySelector('.p'), len = 2 * Math.PI * 24;
+  ring.style.strokeDasharray = len;
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    fab.classList.toggle('show', scrollY > 100 && !document.body.classList.contains('lock'));
+    ring.style.strokeDashoffset = len * (1 - (max > 0 ? Math.min(scrollY / max, 1) : 0));
+  };
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update); update();
+  new MutationObserver(update).observe(document.body, { attributes: true, attributeFilter: ['class'] }); // menu open/close (body.lock)
+})();
+</script>

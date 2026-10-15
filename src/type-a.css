@@ -1,0 +1,6 @@
+/* Option A · Refined Hull
+   The current Archivo caps, opened up from 62% to 80% width so the letters breathe,
+   with weight contrast: a light lead-in (300) and a heavy key phrase (900) on its own line. */
+.hero h1{font-stretch:80%;font-weight:300;letter-spacing:.005em;line-height:.92;font-size:clamp(54px,7vw,118px);max-width:12em}
+.hero h1 span{display:block;font-weight:900}
+@media (max-width:640px){.hero h1{font-size:clamp(42px,12.5vw,64px)}}
