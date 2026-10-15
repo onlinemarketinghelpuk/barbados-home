@@ -409,12 +409,44 @@ button,input{font:inherit}
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..1000&display=swap" rel="stylesheet">
 <style>
 /* Option B · Soft Modern
-   Nunito, a rounded sans, in sentence case for a softer, friendlier headline.
-   Heavy throughout (800, key phrase 900) so the rounded shapes still read as confident; the lead follows in Nunito 500. */
+   Nunito, a rounded sans, throughout the page: headline, headings, body text, buttons and labels.
+   Headings and big numbers switch from condensed capitals to sentence case, sized down to keep their line breaks
+   (Nunito has no condensed width). Labels keep their capitals and tracking, so they still read as labels. */
+:root{--sans:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif}
+
+/* banner headline: heavy throughout (800, key phrase 900) so the rounded shapes still read as confident */
 .hero h1{font-family:"Nunito",var(--sans);font-stretch:100%;text-transform:none;font-weight:800;letter-spacing:-.02em;line-height:1.02;font-size:clamp(48px,6vw,100px);max-width:13em}
 .hero h1 span{font-weight:900}
 .hero .lead{font-family:"Nunito",var(--sans);font-weight:500;font-size:clamp(19px,1.6vw,22px)}
-@media (max-width:640px){.hero h1{font-size:clamp(38px,11vw,54px)}}
+
+/* headings and big numbers: sentence case Nunito 800 in place of condensed caps */
+.hull{font-stretch:100%;text-transform:none;letter-spacing:-.02em;line-height:1}
+.h2{font-size:clamp(34px,4.2vw,60px)}
+.cell .big{font-size:clamp(24px,1.9vw,30px);line-height:1.05}
+.badge b{font-size:28px}
+.marks b{font-size:clamp(42px,4.4vw,66px)}
+.svc h3{font-size:26px}
+.isle b{font-size:clamp(48px,5.6vw,86px)}
+.accr b{font-size:clamp(24px,2vw,32px)}
+.cta .line{font-size:clamp(36px,5.4vw,80px)}
+.ftr .news-l h2{font-size:clamp(30px,3.2vw,44px)}
+.mnav a{font-size:28px}
+
+/* buttons: were condensed caps; Nunito capitals are wider, so slightly smaller with less tracking */
+.btn{font-stretch:100%;font-weight:800;font-size:14px;letter-spacing:.04em}
+
+/* labels (were IBM Plex Mono 500): Nunito is lighter at small sizes, so bolder and a touch more tracking */
+.tag,.go,.abar,.portal,.count,.status,.badge small,.sheet dt,.ntm .ref,.ftr label,.ftr .bottom,.draught,.mbar .call{font-weight:700;letter-spacing:.07em}
+.abar,.ftr .bottom{letter-spacing:.03em}
+.draught{font-weight:600}
+
+@media (max-width:640px){
+  .hero h1{font-size:clamp(38px,11vw,54px)}
+  .marks b{font-size:44px}
+  .isle b{font-size:50px}
+  .accr b{font-size:24px}
+  .cta .line{font-size:clamp(32px,9vw,44px)}
+}
 </style>
 </head>
 <body>

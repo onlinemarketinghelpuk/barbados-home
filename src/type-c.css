@@ -1,7 +1,39 @@
 /* Option C · Clean Authority
-   Plus Jakarta Sans in sentence case, tightly tracked: a bold statement (700) answered by a light key phrase (300) in gold,
-   the reverse of Option A's contrast. The lead is set light (300) and a touch larger for a calm, corporate feel. */
+   Plus Jakarta Sans throughout the page, in sentence case and tightly tracked. Its signature, set by the banner, is a bold
+   statement (700) answered by a light key phrase (300) in gold; every section heading repeats it. The font has no condensed
+   width, so headings and big numbers are sized down to keep their line breaks. Labels keep capitals and wide tracking. */
+:root{--sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+
+/* banner headline */
 .hero h1{font-family:"Plus Jakarta Sans",var(--sans);font-stretch:100%;text-transform:none;font-weight:700;letter-spacing:-.035em;line-height:1.04;font-size:clamp(46px,5.8vw,96px);max-width:13em}
 .hero h1 span{font-weight:300;letter-spacing:-.03em}
 .hero .lead{font-family:"Plus Jakarta Sans",var(--sans);font-weight:300;font-size:clamp(19px,1.6vw,22px);color:#D6E2E6}
-@media (max-width:640px){.hero h1{font-size:clamp(38px,10.5vw,52px)}}
+
+/* headings and big numbers: sentence case, bold 700, tight tracking; the gold key phrase goes light, echoing the banner */
+.hull{font-stretch:100%;text-transform:none;font-weight:700;letter-spacing:-.03em;line-height:1.02}
+.h2 span,.ftr .news-l h2 span{font-weight:300;letter-spacing:-.025em}
+.h2{font-size:clamp(34px,4.2vw,60px)}
+.cell .big{font-size:clamp(23px,1.85vw,29px);line-height:1.06}
+.badge b{font-size:27px}
+.marks b{font-size:clamp(42px,4.4vw,66px)}
+.svc h3{font-size:25px}
+.isle b{font-size:clamp(46px,5.4vw,84px)}
+.accr b{font-size:clamp(24px,2vw,31px)}
+.cta .line{font-size:clamp(34px,5.2vw,78px)}
+.ftr .news-l h2{font-size:clamp(30px,3.2vw,44px)}
+.mnav a{font-size:27px}
+
+/* buttons: were condensed caps; this font is wider, so slightly smaller */
+.btn{font-stretch:100%;font-weight:700;font-size:14px;letter-spacing:.05em}
+
+/* labels (were IBM Plex Mono 500): bolder with wider tracking so they still read as labels */
+.tag,.go,.abar,.portal,.count,.status,.badge small,.sheet dt,.ntm .ref,.ftr label,.ftr .bottom,.draught,.mbar .call{font-weight:600;letter-spacing:.08em}
+.abar,.ftr .bottom{letter-spacing:.03em}
+
+@media (max-width:640px){
+  .hero h1{font-size:clamp(38px,10.5vw,52px)}
+  .marks b{font-size:44px}
+  .isle b{font-size:48px}
+  .accr b{font-size:24px}
+  .cta .line{font-size:clamp(30px,8.6vw,42px)}
+}

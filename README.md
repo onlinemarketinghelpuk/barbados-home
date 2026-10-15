@@ -7,11 +7,11 @@ There are four options, plus a review page that compares them:
 | Option | Name | What's different |
 |---|---|---|
 | **A** | Refined Hull | Headline in Archivo capitals: light 300 lead-in, heavy 900 key phrase. Closest to v6. |
-| **B** | Soft Modern | Headline in Nunito (rounded), sentence case, weights 800/900. |
-| **C** | Clean Authority | Headline in Plus Jakarta Sans, sentence case: bold 700 statement, light 300 key phrase. |
+| **B** | Soft Modern | Nunito (rounded) **throughout the page**: headline, headings, body text, buttons and labels. Sentence case, weights 800/900. |
+| **C** | Clean Authority | Plus Jakarta Sans **throughout the page**, sentence case. Every heading pairs a bold 700 statement with a light 300 gold key phrase. |
 | **D** | Refined Plus | Option A's headline, plus redesigned sections (see [Option D](#option-d)). |
 
-Options A–C are identical apart from the banner headline, so the client can compare typography like for like.
+Option A changes only the banner headline. Options B and C each carry their own font through the whole page.
 
 ## Quick start
 
@@ -39,7 +39,7 @@ review/                    Screenshots used on the review page
 option-a/ … option-d/      GENERATED pages. Never edit these by hand
 src/
   home.html                The single source for the home page, shared by every option
-  type-a.css … type-c.css  Each option's headline typography (D uses type-a.css)
+  type-a.css … type-c.css  Each option's typography: A the headline only, B and C the whole page (D uses type-a.css)
   option-d/                Option D only (see below)
 tools/
   build-options.mjs        Builds option-a … option-d from src/
