@@ -19,7 +19,7 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 /src/home.html          THE home page source. Edit here, never in option-*/
 /src/type-{a,b,c}.css   each option's hero typography (the only thing that differs)
 /tools/build-options.mjs  writes option-{a,b,c}/index.html: inserts the type CSS and fonts,
-                        the A/B/C review switcher (in the announcement bar), and rewrites asset paths to ../assets/
+                        and rewrites asset paths to ../assets/ (no review switcher: removed 15 Oct; the review page opens each option in a new tab)
 /option-{a,b,c}/        GENERATED, but committed (Vercel serves them)
 /index.html             review page comparing the three (hand-written)
 /src/option-d/           Option D only: replacement blocks (nav, slides, isle, ros, cta, newsletter .html), d.css,
@@ -31,7 +31,7 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 - After any change to `src/`: run `node tools/build-options.mjs`, then commit the source and the generated files together.
 - `src/` and `tools/` are in `.vercelignore`.
 - Option D must never change A–C: after editing `src/home.html` markers or the build, diff A–C's output against the last commit.
-- Before go-live: build one final page from the chosen option without the review switcher (the `@option-review` marker), and replace the review `index.html`.
+- Before go-live: build one final page from the chosen option and replace the review `index.html`.
 
 ## Design rules
 - Define every colour as a variable on `:root`. Support both themes with `[data-theme="light"|"dark"]`, defaulting to dark (the client-approved look; see the decisions log in `docs/spec.md`). Store the user's choice in `localStorage` (wrapped in try/catch) and apply it from a script in `<head>` so there's no flash of the wrong theme.

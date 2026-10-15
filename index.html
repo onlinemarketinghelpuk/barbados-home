@@ -66,14 +66,15 @@ dd{margin:0}
 .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
 /* Option D: full-width card under the three typography options */
 .opt.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
-.opt.wide .shots{aspect-ratio:auto;min-height:320px}
-.opt.wide .shots .d{position:absolute;inset:0;object-position:left top}
+.opt.wide .shots{display:flex;align-items:center;aspect-ratio:auto;background:#051D2C} /* same colour as the screenshot, so spare space blends in */
+.opt.wide .shots .d{height:auto;object-fit:contain}
 .adds{display:grid;gap:10px;font-size:15.5px;color:#C9D7DC}
 .adds li{position:relative;padding-left:18px}
 .adds li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--gold)}
 .adds b{color:var(--text);font-weight:600}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:0 22px;border:1px solid transparent;border-radius:2px;font:700 15px/1 var(--sans);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .25s,border-color .25s}
 .btn:hover .ar{transform:translateX(4px)}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#F3D57F}
 .btn-line{border-color:rgba(233,241,243,.35)}.btn-line:hover{border-color:var(--text);background:rgba(233,241,243,.06)}
 
@@ -98,7 +99,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 
 @media (max-width:1100px){
   .opts{grid-template-columns:1fr;max-width:760px}
-  .opt.wide{grid-template-columns:1fr}.opt.wide .shots{aspect-ratio:16/10}
+  .opt.wide{grid-template-columns:1fr}
   .list{grid-template-columns:1fr 1fr}
   .list li:nth-child(4n+1){padding-left:24px;border-left:1px solid var(--line)}
   .list li:nth-child(odd){padding-left:0;border-left:0}
@@ -135,37 +136,37 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 
   <section class="opts wrap" aria-label="Options">
     <article class="opt">
-      <a class="shots" href="option-a/index.html" aria-label="View Option A"><img class="d" src="review/option-a-desktop.jpg" alt="Option A home page on desktop" width="1440" height="900"></a>
+      <a class="shots" href="option-a/index.html" target="_blank" rel="noopener" aria-label="View Option A (opens in a new tab)"><img class="d" src="review/option-a-desktop.jpg" alt="Option A home page on desktop" width="1440" height="900"></a>
       <div class="body">
         <div class="name"><b>A</b><h2 class="hull">Refined Hull</h2></div>
         <p class="sample sa">A quality-driven service <span>second to none.</span></p>
         <dl><dt>Font</dt><dd>Archivo (current), opened up from condensed</dd><dt>Weights</dt><dd>Light 300 lead-in, heavy 900 key phrase</dd><dt>Case</dt><dd>Capitals</dd></dl>
         <p class="note">Closest to the version you liked. The weight contrast makes the key phrase stand out, and the wider letters are easier to read.</p>
-        <div class="links"><a class="btn btn-gold" href="option-a/index.html">View option A <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-a/index.html?theme=light">Light mode</a></div>
+        <div class="links"><a class="btn btn-gold" href="option-a/index.html" target="_blank" rel="noopener">View option A <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-a/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a></div>
       </div>
     </article>
     <article class="opt">
-      <a class="shots" href="option-b/index.html" aria-label="View Option B"><img class="d" src="review/option-b-desktop.jpg" alt="Option B home page on desktop" width="1440" height="900"></a>
+      <a class="shots" href="option-b/index.html" target="_blank" rel="noopener" aria-label="View Option B (opens in a new tab)"><img class="d" src="review/option-b-desktop.jpg" alt="Option B home page on desktop" width="1440" height="900"></a>
       <div class="body">
         <div class="name"><b>B</b><h2 class="hull">Soft Modern</h2></div>
         <p class="sample sb">A quality-driven service <span>second to none.</span></p>
         <dl><dt>Font</dt><dd>Nunito, a rounded sans</dd><dt>Weights</dt><dd>Heavy 800, key phrase 900</dd><dt>Case</dt><dd>Sentence case</dd></dl>
         <p class="note">The rounded style you asked to try: softer and more modern, while the heavy weight keeps it confident and professional.</p>
-        <div class="links"><a class="btn btn-gold" href="option-b/index.html">View option B <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-b/index.html?theme=light">Light mode</a></div>
+        <div class="links"><a class="btn btn-gold" href="option-b/index.html" target="_blank" rel="noopener">View option B <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-b/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a></div>
       </div>
     </article>
     <article class="opt">
-      <a class="shots" href="option-c/index.html" aria-label="View Option C"><img class="d" src="review/option-c-desktop.jpg" alt="Option C home page on desktop" width="1440" height="900"></a>
+      <a class="shots" href="option-c/index.html" target="_blank" rel="noopener" aria-label="View Option C (opens in a new tab)"><img class="d" src="review/option-c-desktop.jpg" alt="Option C home page on desktop" width="1440" height="900"></a>
       <div class="body">
         <div class="name"><b>C</b><h2 class="hull">Clean Authority</h2></div>
         <p class="sample sc">A quality-driven service <span>second to none.</span></p>
         <dl><dt>Font</dt><dd>Plus Jakarta Sans</dd><dt>Weights</dt><dd>Bold 700 statement, light 300 key phrase</dd><dt>Case</dt><dd>Sentence case</dd></dl>
         <p class="note">Calm and corporate. The reverse of Option A's contrast: a bold statement answered by an elegant light phrase in gold.</p>
-        <div class="links"><a class="btn btn-gold" href="option-c/index.html">View option C <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-c/index.html?theme=light">Light mode</a></div>
+        <div class="links"><a class="btn btn-gold" href="option-c/index.html" target="_blank" rel="noopener">View option C <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-c/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a></div>
       </div>
     </article>
     <article class="opt wide">
-      <a class="shots" href="option-d/index.html#ros" aria-label="View Option D"><img class="d" src="review/option-d-ros.jpg" alt="Option D's redesigned Recognised Organisations section" width="1440" height="640" loading="lazy"></a>
+      <a class="shots" href="option-d/index.html#ros" target="_blank" rel="noopener" aria-label="View Option D (opens in a new tab)"><img class="d" src="review/option-d-ros.jpg" alt="Option D's redesigned Recognised Organisations section" width="1440" height="560" loading="lazy"></a>
       <div class="body">
         <div class="name"><b>D</b><h2 class="hull">Refined Plus</h2></div>
         <p class="note">Option A's headline, with the sections below it taken further. Everything else matches A, so you can see exactly what the extra work adds.</p>
@@ -177,7 +178,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <li><b>"Ready to register?"</b> in place of the repeated 24/7 band at the bottom.</li>
           <li><b>A faster page:</b> 5 distinct banner slides (was 12) and much lighter images.</li>
         </ul>
-        <div class="links"><a class="btn btn-gold" href="option-d/index.html">View option D <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="option-d/index.html?theme=light">Light mode</a><a class="btn btn-line" href="option-d/index.html?logos=colour#ros">Logos in colour</a></div>
+        <div class="links"><a class="btn btn-gold" href="option-d/index.html" target="_blank" rel="noopener">View option D <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-d/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-d/index.html?logos=colour#ros" target="_blank" rel="noopener">Logos in colour<span class="sr"> (opens in a new tab)</span></a></div>
       </div>
     </article>
   </section>
@@ -210,6 +211,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
   </section>
 </main>
 
-<footer><div class="wrap"><span>Barbados Maritime Ship Registry · home page review</span><span>Use the A / B / C / D switcher in the top bar of each page to compare</span></div></footer>
+<footer><div class="wrap"><span>Barbados Maritime Ship Registry · home page review</span><span>Each option opens in a new tab, so you can compare them side by side</span></div></footer>
 </body>
 </html>
