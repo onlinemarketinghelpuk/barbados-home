@@ -1,0 +1,17 @@
+
+/* ================= Option D · Inspections, in the home page's style ================= */
+.d-it .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.d-it .wrap>*{min-width:0}
+.d-it .side{position:sticky;top:calc(var(--bar-h) + 80px + 24px)}
+.d-it .side .lead{margin:18px 0 24px}
+.d-it .b4n{margin-top:16px;color:var(--muted);font-size:15px}
+.d-it .sheet dl{grid-template-columns:1fr}
+.d-it .sheet dl div{grid-template-columns:190px minmax(0,1fr)}
+.d-it .sheet dd b{color:var(--teal);font-weight:600}
+.ires ul{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+.ires a{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:baseline;gap:6px 24px;padding:20px 56px 20px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.ires a:hover{transform:none;background:color-mix(in srgb,var(--gold) 5%,transparent)}
+.ires a .d{grid-column:2}
+.ires .ar{top:50%;margin-top:-9px}
+@media (max-width:1100px){.d-it .wrap{grid-template-columns:1fr}.d-it .side{position:static}}
+@media (max-width:760px){.d-it .sheet dl div{grid-template-columns:1fr;gap:4px}.ires a{grid-template-columns:1fr}.ires a .d{grid-column:1}}

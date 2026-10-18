@@ -16,14 +16,40 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 
 ## Structure: one source page, three generated options
 ```
-/src/home.html          THE home page source. Edit here, never in option-*/
+/src/home.html          the home page source. Edit here, never in option-*/
+/src/contact.html       the contact page source (built as option-*/contact/index.html)
+/src/about.html, /src/team.html   About and Team page sources (built as option-*/about/, option-*/team/)
+/src/data/team.json     the 14 team members and team intros; team cards are generated from it
+/src/registrars.html, /src/data/registrars.json   Regional Registrars page (built as option-*/registrars/) and its 42 entries (transcribed: client to verify)
+/src/ros.html           Recognised Organisations page (option-*/ros/); the RO list is src/option-d/ros.json (23, names as on the live RO page)
+/src/quality.html       Quality Assurance page (option-*/quality/); certificate expires 15 Nov 2026
+/src/links.html, /src/data/useful-links.json   Useful Links page (option-*/links/): 3 organisations, 7 services
+/src/bmsr.html          The BMSR hub (option-*/the-bmsr/): 9 link cards in 3 groups; the menu item "The BMSR" opens it
+/src/why.html           Why register in Barbados (option-*/why-barbados/): BMSR wording of Invest Barbados facts; tax points for client to check; IMO year 1970 vs 1971 to confirm
+/src/holidays.html, /src/data/holidays.json   Public Holidays (option-*/holidays/); update the dates each year
+/src/registration.html  Registration hub (option-*/registration/): steps, 4 types, mortgages, bareboat, fees/forms/alterations
+/src/seafarers.html     Seafarers hub (option-*/seafarers/): 2 tasks, crewing sheet, STCW team via {{team-of:stcw}}
+/src/inspections.html   Inspections (option-*/inspections/): facts, arranging, 5-type timeline, B004, resources
+/src/investigations.html Investigations (option-*/investigations/): report within 4h/24h, duty sheet, 3 sections
+/src/events.html, /src/data/events.json   Events (option-*/events/): one card per event, newest first
+/src/documents.html     Documents hub (option-*/documents/): 7 types in 3 groups + latest notices
+/src/forms.html, /src/data/forms.json   Forms (option-*/forms/): search + categories; only Registration (19) known
+/src/bulletins.html, /src/data/bulletins.json   Bulletins (option-*/bulletins/): search + topics + sort, subscription; 028–031 and PDFs to confirm
+/src/conventions.html, /src/data/conventions.json   Conventions (option-*/conventions/): 26 in 5 groups, search; 3 titles tidied (see "check")
+/src/shipboard.html, /src/data/shipboard.json   Shipboard Documents (option-*/shipboard/): 9 record books, order online/offline; also in the Documents menu and hub
+- Header dropdowns on The BMSR, Registration, Seafarers, Inspections, Investigations, Documents (src/partials/top.html + src/option-d/nav.html); keep both navs in step. Our team is a flyout under About us; Why register is not in the menu
+/src/partials/page-css.html, script-base.html   inner-page styles (page hero, team cards) and shared page script
+/src/partials/          head, top (header, announcement bar), bottom (footer): shared by both pages via <!-- @include name -->
 /src/type-{a,b,c}.css   each option's hero typography (the only thing that differs)
 /tools/build-options.mjs  writes option-{a,b,c}/index.html: inserts the type CSS and fonts,
                         and rewrites asset paths to ../assets/ (no review switcher: removed 15 Oct; the review page opens each option in a new tab)
 /option-{a,b,c}/        GENERATED, but committed (Vercel serves them)
 /index.html             review page comparing the three (hand-written)
 /src/option-d/           Option D only: replacement blocks (nav, slides, isle, ros, cta, newsletter .html), d.css,
-                        ros.json (RO list: one line per organisation), assets.json (image swaps), text.json (copy swaps)
+                        ros.json (RO list: one line per organisation), assets.json (image swaps), text.json (copy swaps);
+                        contact page: cmain.html (layout), cfbui.html (message/feedback switch + topic chips), contact.css;
+                        about/team: acred.html (particulars sheet), tclose.html (closing band), inner.css
+- Every new page: build it for all 4 options, and give Option D its own layout in D's home-page style (particulars sheet, gold chips, gold-top cards, paths band)
 /assets/img/ro/, /assets/img/d/   Option D's cleaned logos and optimised images (A–C still use the originals)
 /review/                thumbnails for the review page
 /assets/                shared

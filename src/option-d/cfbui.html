@@ -1,0 +1,50 @@
+// Option D: message and feedback live in one card, switched by the gold chips (an ARIA tab pattern: click, or arrow keys)
+const fbForm = document.getElementById('fb-form'), fbPrompt = document.getElementById('fb-prompt');
+const fbSum = document.getElementById('fb-sum'), fbThanks = document.getElementById('fb-thanks');
+try { document.getElementById('fb-date').valueAsDate = new Date(); } catch (e) {}
+const tabs = [...document.querySelectorAll('.tabs [role="tab"]')];
+const showTab = (tab, focus) => {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute('aria-selected', on); t.setAttribute('aria-pressed', on); t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+  });
+  if (focus) tab.focus();
+};
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => showTab(t));
+  t.addEventListener('keydown', e => {
+    const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (d) { e.preventDefault(); showTab(tabs[(i + d + tabs.length) % tabs.length], true); }
+  });
+});
+// "Give feedback" links elsewhere on the page open the feedback tab
+document.querySelectorAll('a[data-tab="fb"]').forEach(a => a.addEventListener('click', () => showTab(document.getElementById('t-fb'))));
+if (location.hash === '#feedback') { showTab(document.getElementById('t-fb')); document.getElementById('message').scrollIntoView(); }
+
+// topic chips: highlight the team that handles it, and set up the message form for that team
+const pickLive = document.getElementById('pick-live');
+document.querySelectorAll('.chips [data-topic]').forEach(chip => chip.addEventListener('click', () => {
+  const topic = chip.dataset.topic, row = document.querySelector(`.teams dl [data-topic="${topic}"]`);
+  document.querySelectorAll('.chips [data-topic]').forEach(c => c.setAttribute('aria-pressed', c === chip));
+  document.querySelectorAll('.teams dl > div').forEach(d => d.classList.toggle('hl', d === row));
+  typeSel.value = topic; typeSel.dispatchEvent(new Event('change'));
+  const team = row.querySelector('dt').textContent, mail = row.querySelector('.mail').textContent;
+  pickLive.innerHTML = `${team}: <a href="mailto:${mail}">${mail}</a>, or <a href="#message">send a message</a> and we'll pass it on.`;
+  if (matchMedia('(max-width: 900px)').matches) row.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+}));
+
+fbForm.addEventListener('change', e => {
+  if (e.target.type !== 'radio') return;
+  e.target.closest('.q').classList.remove('bad');
+  const low = [...fbForm.querySelectorAll('.fb-group')].some(g => { const lows = g.dataset.low.split(',').map(Number); return [...g.querySelectorAll('input:checked')].some(i => lows.includes(+i.value)); });
+  fbPrompt.classList.toggle('show', low);
+});
+fbForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const missing = [...fbForm.querySelectorAll('.q[aria-required="true"]')].filter(q => !q.querySelector('input:checked'));
+  missing.forEach(q => q.classList.add('bad'));
+  if (missing.length) { fbSum.textContent = 'Please answer the question marked with * before sending.'; fbSum.classList.add('show'); missing[0].querySelector('input').focus(); return; }
+  fbSum.classList.remove('show');
+  fbForm.hidden = true; fbThanks.classList.add('show'); fbThanks.focus();
+});

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conventions - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= conventions: the ratified conventions in five groups, with short names and years; jump chips and a search ================= */
+.cvs{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.cvs .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.cvs .grid>*{min-width:0}
+.cv-intro{max-width:62ch;font-size:clamp(19px,1.5vw,22px);line-height:1.5}
+.cv-tools{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;display:grid;gap:12px;margin-top:28px;padding:14px 0;background:var(--abyss);border-bottom:1px solid var(--line)}
+.cv-tools .search{position:relative}
+.cv-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.cv-tools input{width:100%;min-height:48px;padding:10px 14px 10px 44px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.cv-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text)}
+.jump a i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.jump a:hover{border-color:var(--teal)}
+.cvg{margin-top:36px;scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 150px)}
+.cvg h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--gold);font-size:clamp(24px,2vw,30px)}
+.cvg h2 i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
+.cvg .gd{margin-top:10px;color:var(--muted);font-size:15px}
+.cvg ul{margin:6px 0 0;padding:0;list-style:none}
+.cv{display:grid;grid-template-columns:150px minmax(0,1fr) auto;align-items:baseline;gap:4px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cv .ab{font:600 13px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.cv .tt{font-weight:600;line-height:1.45}
+.cv .yr{padding:4px 9px;border:1px solid var(--line);border-radius:99px;font:600 11.5px/1.2 var(--mono);letter-spacing:.05em;color:var(--muted);white-space:nowrap}
+.js .cv.off,.js .cvg.off{display:none}
+.cv-empty{display:none;margin-top:24px;padding:24px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.cv-empty.show{display:block}
+.cv-aside{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);display:grid;gap:14px}
+.cv-stat{padding:22px 24px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.cv-stat .n{display:block;font-size:clamp(46px,4.4vw,68px);line-height:1}
+.cv-stat p{margin-top:10px;color:var(--muted);font-size:15px}
+.help{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.help b{display:block;margin:8px 0 12px;font-size:clamp(22px,1.9vw,28px)}
+.help p{color:var(--muted);font-size:15px}
+.help ul{display:grid;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.help a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.help a:hover{border-color:var(--teal)}
+.help a .ar{flex:none;color:var(--teal)}
+@media (max-width:1100px){.cvs .grid{grid-template-columns:1fr}.cv-aside{position:static;grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.cv-aside{grid-template-columns:1fr}.cv-tools{position:static}.jump{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.jump::-webkit-scrollbar{display:none}.jump a{flex:none}}
+@media (max-width:640px){.cv{grid-template-columns:minmax(0,1fr) auto}.cv .ab{grid-column:1 / -1}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="c-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/3.jpg" style="object-position:50% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li aria-current="page">Conventions</li></ol></nav>
+    <p class="tag port">{{cv-count}} conventions · {{cv-groups}} areas</p>
+    <h1 class="hull" id="c-h1">Conventions</h1>
+    <div class="foot">
+      <p class="lead">The international conventions that Barbados has ratified, and that every Barbadian ship works to.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#list">See the conventions <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/documents/barbados-legislation/">Barbados legislation</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE LIST (generated from src/data/conventions.json) ================= -->
+<!-- TODO(client): approve the groups and short names; check the three tidied titles (MARPOL, BWM, STCW: see "check" in the data) -->
+<section class="cvs" id="list" aria-label="Ratified conventions">
+  <div class="wrap grid">
+    <div>
+      <p class="cv-intro">{{cv-intro}}</p>
+      <div class="cv-tools" role="search" aria-label="Find a convention">
+        <label class="search"><span class="sr">Search conventions</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="cv-q" placeholder="Search by name or year, e.g. MARPOL or 2004" autocomplete="off"></label>
+        <nav class="jump" aria-label="Jump to an area">
+{{cv-jump}}
+        </nav>
+      </div>
+{{cv-groups-html}}
+      <p class="cv-empty" id="cv-empty">No conventions match. Try another word or year.</p>
+    </div>
+    <aside class="cv-aside" aria-label="About the list">
+      <div class="cv-stat"><p class="tag t">Ratified by Barbados</p><b class="n hull">{{cv-count}}</b><p>major international conventions, and the list isn't limited to these.</p></div>
+      <div class="help"><p class="tag t">Read more</p><b class="hull">Full texts</b><p>The conventions themselves are published by the organisations that adopted them.</p>
+        <ul>
+          <li><a href="https://www.imo.org/en/About/Conventions/Pages/ListOfConventions.aspx" target="_blank" rel="noopener">IMO conventions <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://www.ilo.org/international-labour-standards/maritime-labour-convention-2006" target="_blank" rel="noopener">ILO: Maritime Labour Convention <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/barbados-legislation/">Barbados legislation <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/bulletins/">Our bulletins <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// search by name, short name or year; a group with no matches is hidden
+const cq = document.getElementById('cv-q'), groups = [...document.querySelectorAll('.cvg')], cempty = document.getElementById('cv-empty');
+const cnorm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+cq.addEventListener('input', () => {
+  const w = cnorm(cq.value.trim()).split(/\s+/).filter(Boolean); let total = 0;
+  groups.forEach(g => { let n = 0;
+    g.querySelectorAll('.cv').forEach(r => { const ok = w.every(x => r.dataset.s.includes(x)); r.classList.toggle('off', !ok); if (ok) n++; });
+    g.classList.toggle('off', !n); total += n; });
+  cempty.classList.toggle('show', !total);
+});
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 [
   {
-    "name": "ABS",
+    "name": "American Bureau of Shipping",
     "url": "https://ww2.eagle.org/en.html",
     "iacs": true,
     "logo": "abs.webp",
@@ -8,7 +8,7 @@
     "h": 134
   },
   {
-    "name": "BKR",
+    "name": "Bulgarian Register of Shipping",
     "url": "http://www.bkrclass.org/",
     "iacs": false,
     "logo": "bkr.webp",
@@ -40,7 +40,7 @@
     "h": 74
   },
   {
-    "name": "DNV",
+    "name": "DNV AS",
     "url": "http://dnvgl.com/",
     "iacs": true,
     "logo": "dnv.webp",
@@ -48,7 +48,7 @@
     "h": 111
   },
   {
-    "name": "Dromon",
+    "name": "Dromon Bureau of Shipping",
     "url": "https://www.dromon.com/",
     "iacs": false,
     "logo": "dromon.webp",
@@ -56,7 +56,7 @@
     "h": 106
   },
   {
-    "name": "Hellenic Register of Shipping",
+    "name": "Libero Hellenic Register",
     "url": "https://hellenicregister.org/",
     "iacs": false,
     "logo": "hellenic-register-of-shipping.webp",
@@ -72,7 +72,7 @@
     "h": 35
   },
   {
-    "name": "INSB Class",
+    "name": "International Naval Surveys Bureau",
     "url": "https://insb.gr/",
     "iacs": false,
     "logo": "insb-class.webp",
@@ -88,7 +88,7 @@
     "h": 88
   },
   {
-    "name": "Korean Register",
+    "name": "Korean Register of Shipping",
     "url": "http://www.krs.co.kr/",
     "iacs": true,
     "logo": "korean-register.webp",
@@ -96,7 +96,7 @@
     "h": 59
   },
   {
-    "name": "Lloyd’s Register",
+    "name": "Lloyd’s Register Group",
     "url": "http://www.lr.org/",
     "iacs": true,
     "logo": "lloyds-register.webp",
@@ -104,7 +104,7 @@
     "h": 78
   },
   {
-    "name": "NASHA",
+    "name": "National Shipping Adjusters",
     "url": "http://www.nashapanama.com/",
     "iacs": false,
     "logo": "nasha.webp",
@@ -112,7 +112,7 @@
     "h": 151
   },
   {
-    "name": "OMCS Class",
+    "name": "Overseas Marine Certification Services",
     "url": "http://www.omcsclass.org/",
     "iacs": false,
     "logo": "omcs-class.webp",
@@ -136,7 +136,7 @@
     "h": 131
   },
   {
-    "name": "RINA",
+    "name": "Registro Italiano Navale",
     "url": "http://www.rina.org",
     "iacs": true,
     "logo": "rina.webp",
@@ -160,11 +160,28 @@
     "h": 114
   },
   {
-    "name": "URACOS",
+    "name": "United Registration and Classification of Services",
     "url": "http://www.uracos.org",
     "iacs": false,
     "logo": "uracos.webp",
     "w": 188,
     "h": 193
+  },
+  {
+    "name": "Croatian Register of Shipping",
+    "url": "https://www.crs.hr/",
+    "iacs": true,
+    "logo": null,
+    "mark": "CRS",
+    "check": "logo needed; website address to confirm"
+  },
+  {
+    "name": "Normline Bureau of Shipping",
+    "url": null,
+    "iacs": false,
+    "logo": "normline-bureau-of-shipping.webp",
+    "w": 136,
+    "h": 140,
+    "check": "website address needed; logo cropped from a screenshot"
   }
 ]

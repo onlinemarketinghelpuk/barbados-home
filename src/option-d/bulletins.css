@@ -1,0 +1,23 @@
+
+/* ================= Option D · Bulletins, in the home page's style =================
+   The particulars sheet: a sticky side column on the left (downloads and subscription, gold rule on top),
+   and the register itself on the right as ruled rows (large mono number | subject + topic | revision chip | actions). */
+.fm .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.fm .grid>aside{order:-1}
+.aside-h{gap:0}
+.help{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.help+.help{margin-top:24px}
+.fm-tools{padding:0 0 16px;border-bottom:2px solid var(--gold)}
+.fm-tools input,.chips button,.bl-sort select,.sub input{border-radius:0}
+.chips button{background:none}
+#bl-rows{border-top:1px solid var(--line)}
+#bl-rows .frow{grid-template-columns:116px minmax(0,1fr) auto auto;gap:6px 22px;padding:18px 0}
+#bl-rows .frow:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+#bl-rows .frow .code{font:600 22px/1 var(--mono);letter-spacing:0;color:var(--text)}
+#bl-rows .frow .t{font-size:17px}
+#bl-rows .frow .rev{border-radius:0;border-color:color-mix(in srgb,var(--gold) 55%,transparent)}
+#bl-rows .frow a.view,#bl-rows .frow a.dl{border-radius:0}
+.fcat{margin-top:8px}
+@media (max-width:1100px){.fm .grid{grid-template-columns:1fr}.fm .grid>aside{order:0}.aside-h{grid-template-columns:1fr 1fr;gap:0 32px}.help+.help{margin-top:0}}
+@media (max-width:760px){.aside-h{grid-template-columns:1fr}.help+.help{margin-top:24px}}
+@media (max-width:640px){#bl-rows .frow{grid-template-columns:minmax(0,1fr) auto}#bl-rows .frow .code{font-size:18px}}

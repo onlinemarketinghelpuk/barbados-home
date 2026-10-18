@@ -1,0 +1,16 @@
+{
+  "_note": "From a screenshot of barbadosmaritime.com/public-holidays/ (docs/public-holidays.png). One row was hidden behind the site header; it is assumed to be the Early May Bank Holiday (check: true). The live page gives 30 November as a Wednesday; in 2026 it is a Monday (check).",
+  "year": 2026,
+  "office": "London office",
+  "days": [
+    { "date": "2026-01-01", "name": "New Year's Day" },
+    { "date": "2026-04-03", "name": "Good Friday" },
+    { "date": "2026-04-06", "name": "Easter Monday" },
+    { "date": "2026-05-04", "name": "Early May Bank Holiday", "check": "hidden in the screenshot; confirm" },
+    { "date": "2026-05-25", "name": "Spring Bank Holiday" },
+    { "date": "2026-08-31", "name": "Summer Bank Holiday" },
+    { "date": "2026-11-30", "name": "Barbados Independence Day", "check": "live page says \"Wednesday 30th November\" and \"in lieu\"; in 2026 30 November is a Monday" },
+    { "date": "2026-12-25", "name": "Christmas Day" },
+    { "date": "2026-12-28", "name": "Boxing Day (substitute day)" }
+  ]
+}

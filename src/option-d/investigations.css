@@ -1,0 +1,10 @@
+
+/* ================= Option D · Investigations, in the home page's style ================= */
+.who .side{position:sticky;top:calc(var(--bar-h) + 80px + 24px)}
+.isec ul{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+.isec a{display:grid;grid-template-columns:220px minmax(0,1fr);border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.isec a:hover{transform:none;background:color-mix(in srgb,var(--gold) 5%,transparent)}
+.isec figure{aspect-ratio:auto;height:100%;min-height:150px}
+.isec .b{padding:22px 28px}
+@media (max-width:1100px){.who .side{position:static}}
+@media (max-width:640px){.isec a{grid-template-columns:1fr}.isec figure{min-height:0;aspect-ratio:16/9}}

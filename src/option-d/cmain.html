@@ -1,0 +1,209 @@
+<main id="main">
+
+<!-- ================= HERO (the home page hero, shorter, with one photo) ================= -->
+<section class="hero c-hero" aria-labelledby="c-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Barbados-Maritime-Home-Page-.jpg" style="object-position:66% 36%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Contact us</li></ol></nav>
+    <p class="tag port">London office · 51°31′N 0°08′W</p>
+    <h1 class="hull" id="c-h1">Contact <span>us</span></h1>
+    <div class="foot">
+      <p class="lead">Registration, technical, seafarer and general enquiries are handled by our London office. For emergencies, we're here 24 hours a day, 365 days a year.</p>
+      <div class="ctas"><a class="btn btn-teal" href="tel:+442076365739">Call the office <svg class="ar"><use href="#phone"/></svg></a><a class="btn btn-line" href="#message">Send a message</a></div>
+      <!-- TODO(client): confirm office hours. data-hours drives the live open/closed badges, in UK time. -->
+      <p class="status" data-hours="09:00-17:00"><i></i><span>Office hours</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUICK BAND (the home page's hours & emergency band) ================= -->
+<section class="info" aria-label="Opening hours and contact">
+  <div class="wrap">
+    <div class="cell">
+      <p class="tag">Office hours · UK time</p>
+      <p class="big hull">Mon – Fri<br>9:00 – 17:00</p>
+      <p class="status" data-hours="09:00-17:00"><i></i><span>Office hours</span></p>
+      <a class="go" href="https://barbadosmaritime.com/public-holidays/">Public holidays <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <div class="cell em">
+      <p class="tag">24/7 emergency line · 365 days a year</p>
+      <a class="big hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+      <p>For emergencies only. Urgent dispensations and exemptions are dealt with outside office hours, and the Principal Registrar can be contacted directly.</p>
+    </div>
+    <div class="cell">
+      <p class="tag">General enquiries</p>
+      <a class="big hull" href="tel:+442076365739">+44 (0)207 636 5739</a>
+      <p><a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a><br>Barbados High Commission, 1 Great Russell Street, London WC1B 3ND</p>
+    </div>
+    <nav class="cell" aria-label="On this page">
+      <p class="tag">On this page</p>
+      <ul class="ql">
+        <li><a href="#teams">Contact the right team <svg class="ar"><use href="#ar"/></svg></a></li>
+        <li><a href="#message">Send a message <svg class="ar"><use href="#ar"/></svg></a></li>
+        <li><a href="#message" data-tab="fb">Give feedback <svg class="ar"><use href="#ar"/></svg></a></li>
+        <li><a href="#visit">Visit the office <svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= TEAMS (set out like the home page's registry particulars sheet) ================= -->
+<section class="sec part teams" id="teams" aria-labelledby="teams-h">
+  <div class="wrap grid">
+    <div class="side rv">
+      <p class="tag t">Who do you need?</p>
+      <h2 class="hull h2" id="teams-h" style="margin-top:16px">Contact the <span>right team</span></h2>
+      <p class="lead">Choose a topic to see who handles it. We'll set up the message form for you too.</p>
+      <div class="ro-filter chips" role="group" aria-label="Choose a topic">
+        <button type="button" data-topic="registration" aria-pressed="false">Registration</button>
+        <button type="button" data-topic="technical" aria-pressed="false">Technical</button>
+        <button type="button" data-topic="seafarer" aria-pressed="false">Seafarers</button>
+        <button type="button" data-topic="accident" aria-pressed="false">Accidents</button>
+        <button type="button" data-topic="general" aria-pressed="false">Something else</button>
+      </div>
+      <p class="pick" id="pick-live" aria-live="polite"></p>
+    </div>
+    <div class="sheet rv">
+      <div class="cap"><span class="tag t">London office</span><span class="tag">Replies by email</span></div>
+      <!-- TODO(client): approve the one-line descriptions of what each team handles -->
+      <dl>
+        <div data-topic="registration"><dt>Registration</dt><dd><span class="what">Ship, yacht, bareboat and mortgage registration.</span><span class="addr"><a class="mail" href="mailto:registry@barbadosmaritime.com">registry@barbadosmaritime.com</a><button class="copy" type="button" data-copy="registry@barbadosmaritime.com" aria-label="Copy the registration email address"><svg class="c-ico"><use href="#i-copy"/></svg><span>Copy</span></button></span></dd></div>
+        <div data-topic="technical"><dt>Technical &amp; operations</dt><dd><span class="what">Surveys, inspections, statutory certificates and technical questions.</span><span class="addr"><a class="mail" href="mailto:ops@barbadosmaritime.com">ops@barbadosmaritime.com</a><button class="copy" type="button" data-copy="ops@barbadosmaritime.com" aria-label="Copy the technical and operational support email address"><svg class="c-ico"><use href="#i-copy"/></svg><span>Copy</span></button></span></dd></div>
+        <div data-topic="seafarer"><dt>Seafarer endorsements</dt><dd><span class="what">Endorsements and crew certification under the STCW Convention.</span><span class="addr"><a class="mail" href="mailto:stcw@barbadosmaritime.com">stcw@barbadosmaritime.com</a><button class="copy" type="button" data-copy="stcw@barbadosmaritime.com" aria-label="Copy the seafarer endorsements email address"><svg class="c-ico"><use href="#i-copy"/></svg><span>Copy</span></button></span></dd></div>
+        <div data-topic="accident"><dt>Accidents</dt><dd><span class="what">Reporting a marine casualty or incident. <b>In an emergency, call the 24/7 line first.</b></span><span class="addr"><a class="mail" href="mailto:accidents@barbadosmaritime.com">accidents@barbadosmaritime.com</a><button class="copy" type="button" data-copy="accidents@barbadosmaritime.com" aria-label="Copy the accidents email address"><svg class="c-ico"><use href="#i-copy"/></svg><span>Copy</span></button></span></dd></div>
+        <div data-topic="general"><dt>General enquiries</dt><dd><span class="what">Anything else, or if you're not sure who to ask.</span><span class="addr"><a class="mail" href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a><button class="copy" type="button" data-copy="office@barbadosmaritime.com" aria-label="Copy the general enquiries email address"><svg class="c-ico"><use href="#i-copy"/></svg><span>Copy</span></button></span></dd></div>
+        <div><dt>Office phone</dt><dd><span class="what">Monday to Friday, 9:00 to 17:00 UK time.</span><span class="addr"><a class="mail" href="tel:+442076365739">+44 (0)207 636 5739</a><button class="copy" type="button" data-copy="+44 (0)207 636 5739" aria-label="Copy the office phone number"><svg class="c-ico"><use href="#i-copy"/></svg><span>Copy</span></button></span></dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="sr" aria-live="polite" id="copy-live"></p>
+</section>
+
+<!-- ================= WRITE TO US: message and feedback in one card, switched with the gold chips ================= -->
+<section class="sec c-write" id="message" aria-labelledby="msg-h">
+  <div class="wrap grid">
+    <div class="side rv">
+      <p class="tag t">Write to us</p>
+      <h2 class="hull h2" id="msg-h" style="margin-top:16px">Message <span>or feedback</span></h2>
+      <p class="lead">Send us a question, or tell us how we did. Your feedback is part of the BMSR Quality Management System.</p>
+      <ul class="aside">
+        <li><svg class="c-ico"><use href="#phone"/></svg><span>Urgent? Call the 24/7 emergency line on <a href="tel:+447494116754">+44 (0)7494 116754</a>.</span></li>
+        <li><svg class="c-ico"><use href="#i-mail"/></svg><span>Prefer email? Write to <a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a>.</span></li>
+      </ul>
+    </div>
+    <div class="panel rv">
+      <div class="ro-filter tabs" role="tablist" aria-label="Choose a form">
+        <button type="button" role="tab" id="t-msg" aria-controls="p-msg" aria-selected="true" aria-pressed="true">Send a message</button>
+        <button type="button" role="tab" id="t-fb" aria-controls="p-fb" aria-selected="false" aria-pressed="false" tabindex="-1">Give feedback</button>
+      </div>
+
+      <div role="tabpanel" id="p-msg" aria-labelledby="t-msg">
+        <!-- TODO(dev): wire to Contact Form 7 + reCAPTCHA in WordPress; the enquiry type can route to the matching team inbox -->
+        <form class="form" id="c-form" action="#" method="post" novalidate>
+          <p class="err-sum span2" id="c-sum" role="alert" tabindex="-1"></p>
+          <div class="f"><label for="c-name">Your name</label><input id="c-name" name="name" autocomplete="name" required aria-describedby="c-name-e"><span class="err" id="c-name-e">Please enter your name.</span></div>
+          <div class="f"><label for="c-email">Your email</label><input id="c-email" name="email" type="email" autocomplete="email" required aria-describedby="c-email-e"><span class="err" id="c-email-e">Please enter a valid email address, like name@example.com.</span></div>
+          <div class="f"><label for="c-phone">Phone <small>(optional)</small></label><input id="c-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="f"><label for="c-type">Type of enquiry</label>
+            <select id="c-type" name="type" required aria-describedby="c-type-e">
+              <option value="">Choose one…</option>
+              <option value="general">General enquiry</option>
+              <option value="registration">Registration</option>
+              <option value="technical">Technical &amp; operational support</option>
+              <option value="seafarer">Seafarer endorsements</option>
+              <option value="accident">Accident or incident</option>
+            </select><span class="err" id="c-type-e">Please choose the type of enquiry.</span></div>
+          <div class="note-box span2" id="c-accident" role="note"><svg class="c-ico"><use href="#i-alert"/></svg><span>If this is an emergency, please call the 24/7 line on <a href="tel:+447494116754">+44 (0)7494 116754</a> now, then send your report.</span></div>
+          <div class="f full"><label for="c-vessel">Vessel name or IMO number <small>(optional)</small></label><input id="c-vessel" name="vessel"></div>
+          <div class="f full"><label for="c-subject">Subject</label><input id="c-subject" name="subject" required aria-describedby="c-subject-e"><span class="err" id="c-subject-e">Please add a subject.</span></div>
+          <div class="f full"><label for="c-msg">Message</label><textarea id="c-msg" name="message" required aria-describedby="c-msg-e"></textarea><span class="err" id="c-msg-e">Please write your message.</span></div>
+          <div class="hp" aria-hidden="true"><label for="c-web">Leave this empty</label><input id="c-web" name="website" tabindex="-1" autocomplete="off"></div>
+          <p class="consent span2">We'll only use your details to reply to your enquiry. Read our <a href="https://barbadosmaritime.com/privacy-policy/">privacy policy</a>.</p>
+          <div class="actions span2"><button class="btn btn-gold" type="submit">Send message <svg class="ar"><use href="#ar"/></svg></button><span class="demo-note">Preview: messages aren't sent yet</span></div>
+        </form>
+        <div class="thanks" id="c-thanks" tabindex="-1">
+          <span class="tick" aria-hidden="true"><svg class="c-ico"><use href="#i-check"/></svg></span>
+          <h3 class="hull">Thank you, your message is on its way</h3>
+          <p>We'll reply by email as soon as we can. If it's urgent, please call the 24/7 line on <a href="tel:+447494116754">+44 (0)7494 116754</a>.</p>
+          <button class="btn btn-line" type="button" id="c-again">Send another message</button>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="p-fb" aria-labelledby="t-fb" hidden>
+        <p class="fb-lead">As part of the BMSR Quality Management System, we'd value your feedback on the service you've received. It takes about two minutes, and it's anonymous unless you choose to add your details.</p>
+        <!-- TODO(dev): wire to the existing feedback form handler in WordPress. Questions and scales match the current form. -->
+        <form id="fb-form" action="#" method="post" novalidate>
+          <div class="fb-card">
+            <div class="fb-details">
+              <div class="f"><label for="fb-subject">Subject</label><input id="fb-subject" name="subject"></div>
+              <div class="f"><label for="fb-date">Date</label><input id="fb-date" name="date" type="date"></div>
+              <div class="f"><label for="fb-name">Name <small>(optional)</small></label><input id="fb-name" name="name" autocomplete="name"></div>
+              <div class="f"><label for="fb-email">Email <small>(optional)</small></label><input id="fb-email" name="email" type="email" autocomplete="email"></div>
+            </div>
+            <div id="fb-groups"></div>
+            <div class="note-box" id="fb-prompt" role="status"><svg class="c-ico"><use href="#i-chat"/></svg><span>You've given us a low score. Please tell us what went wrong in the comments, so we can put it right.</span></div>
+            <div class="f"><label for="fb-comments">Comments <small>(optional)</small></label><textarea id="fb-comments" name="comments" aria-describedby="fb-comments-h"></textarea><span class="demo-note" id="fb-comments-h">Any further feedback or a complaint? Add it here. For a complaint, please include your email so we can follow up.</span></div>
+            <p class="err-sum" id="fb-sum" role="alert" tabindex="-1"></p>
+            <div class="actions"><button class="btn btn-gold" type="submit">Send feedback <svg class="ar"><use href="#ar"/></svg></button><span class="demo-note">Preview: feedback isn't sent yet</span></div>
+          </div>
+        </form>
+        <div class="thanks" id="fb-thanks" tabindex="-1">
+          <span class="tick" aria-hidden="true"><svg class="c-ico"><use href="#i-check"/></svg></span>
+          <h3 class="hull">Thank you for your feedback</h3>
+          <p>Every response helps us provide an efficient service and keep improving.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIT: a full-width map band with the address card floating over it ================= -->
+<section class="c-visit" id="visit" aria-labelledby="visit-h">
+  <div class="map">
+    <!-- OpenStreetMap: no cookies or tracking; loads only when scrolled near (loading="lazy") -->
+    <iframe title="Map showing the Barbados High Commission, 1 Great Russell Street, London" loading="lazy" referrerpolicy="no-referrer"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=-0.14255%2C51.51424%2C-0.12455%2C51.51984&amp;layer=mapnik&amp;marker=51.51704%2C-0.13055"></iframe>
+    <a class="btn btn-line bigger" href="https://www.openstreetmap.org/?mlat=51.51704&amp;mlon=-0.13055#map=17/51.51704/-0.13055" target="_blank" rel="noopener">View larger map<span class="sr"> (opens in a new tab)</span></a>
+  </div>
+  <div class="wrap">
+    <div class="vcard rv">
+      <div>
+        <p class="tag t">Visit us</p>
+        <h2 class="hull h2" id="visit-h" style="margin:14px 0 18px">Our London <span>office</span></h2>
+        <address><b>Barbados Maritime Ship Registry</b>Barbados High Commission<br>1 Great Russell Street<br>London, WC1B 3ND</address>
+      </div>
+      <table class="hours">
+        <caption class="sr">Office opening hours, UK time</caption>
+        <tbody>
+          <tr data-day="1"><th scope="row">Monday</th><td>9:00 – 17:00</td></tr>
+          <tr data-day="2"><th scope="row">Tuesday</th><td>9:00 – 17:00</td></tr>
+          <tr data-day="3"><th scope="row">Wednesday</th><td>9:00 – 17:00</td></tr>
+          <tr data-day="4"><th scope="row">Thursday</th><td>9:00 – 17:00</td></tr>
+          <tr data-day="5"><th scope="row">Friday</th><td>9:00 – 17:00</td></tr>
+          <tr data-day="6"><th scope="row">Saturday</th><td>Closed</td></tr>
+          <tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr>
+        </tbody>
+      </table>
+      <div class="ctas"><a class="btn btn-gold" href="https://www.google.com/maps/search/?api=1&amp;query=Barbados+High+Commission,+1+Great+Russell+Street,+London+WC1B+3ND" target="_blank" rel="noopener">Get directions <svg class="ar"><use href="#ext"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="go" href="https://barbadosmaritime.com/public-holidays/">Public holidays <svg class="ar"><use href="#ar"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MORE HELP (the home page's "Ready to register?" band) ================= -->
+<section class="cta reg" aria-labelledby="help-h">
+  <div class="wrap">
+    <div class="rv">
+      <p class="tag t">More help</p>
+      <h2 class="hull h2" id="help-h">Find what <span>you need</span></h2>
+      <p class="lead">Registrars, recognised organisations and nautical inspectors around the world, acting for the Barbados flag.</p>
+    </div>
+    <ul class="paths">
+      <!-- TODO(client): confirm the Regional Registrars page address -->
+      <li class="rv"><a href="https://barbadosmaritime.com/regional-registrars/"><span class="tag">Worldwide</span><b class="hull">Regional Registrars</b><span class="txt">Registrars around the world who can help with Barbados registration.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/barbados-recognised-organisations/"><span class="tag">Class societies</span><b class="hull">Recognised Organisations</b><span class="txt">Classification societies authorised to act on behalf of Barbados.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/"><span class="tag">Inspections</span><b class="hull">Nautical Inspectors</b><span class="txt">Appointed inspectors for annual safety inspections and support.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+</main>

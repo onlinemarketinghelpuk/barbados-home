@@ -1,0 +1,32 @@
+{
+  "_note": "From a screenshot of barbadosmaritime.com/documents/forms/ (docs/forms.png). Only the Registration Forms tab was open; the other six categories need their lists from the client. The PDF addresses weren't visible, so every form links to the live forms page until \"file\" is filled in. PPR01-F03 is missing from the live list (check).",
+  "categories": [
+    { "id": "registration", "name": "Registration forms", "forms": [
+      { "code": "PPR01-F01", "title": "Application for Registration" },
+      { "code": "PPR01-F02", "title": "Application for SSL" },
+      { "code": "PPR01-F04", "title": "Security Communication Statement" },
+      { "code": "PPR01-F05", "title": "Bill of Sale – Body Corporate" },
+      { "code": "PPR01-F06", "title": "Bill of Sale – Individuals or Joint Owners" },
+      { "code": "PPR01-F07", "title": "Registering EPIRB" },
+      { "code": "PPR01-F08", "title": "Protocol of Delivery and Acceptance" },
+      { "code": "PPR01-F09", "title": "Declaration of Ownership on behalf of a body corporate" },
+      { "code": "PPR01-F10", "title": "Declaration of Ownership by individual" },
+      { "code": "PPR01-F11", "title": "Declaration of Ownership by a joint owner or transferee" },
+      { "code": "PPR01-F12", "title": "Declaration of Pleasure Use of a yacht" },
+      { "code": "PPR01-F13", "title": "Memorandum as to the Registration of Managing Owners" },
+      { "code": "PPR01-F14", "title": "Appointment of Authorised Officer" },
+      { "code": "PPR01-F15", "title": "Bareboat Chartering Owners Declaration" },
+      { "code": "PPR01-F16", "title": "Confirmation of vessel status following temporary transfer out" },
+      { "code": "PPR01-F17", "title": "ISM Declaration of company" },
+      { "code": "PPR01-F18", "title": "Certificate of Survey" },
+      { "code": "PPR01-F19", "title": "Bareboat Charter letter of Authority" },
+      { "code": "PPR01-F20", "title": "CSR Application Form" }
+    ] },
+    { "id": "mortgage", "name": "Mortgage forms", "forms": [] },
+    { "id": "operation", "name": "Operation forms", "forms": [] },
+    { "id": "stcw", "name": "STCW", "forms": [] },
+    { "id": "investigation", "name": "Investigation", "forms": [] },
+    { "id": "checklists", "name": "Checklists", "forms": [] },
+    { "id": "samples", "name": "Sample forms", "forms": [] }
+  ]
+}

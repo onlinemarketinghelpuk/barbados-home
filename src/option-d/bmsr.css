@@ -1,0 +1,15 @@
+
+/* ================= Option D · The BMSR hub, in the home page's style =================
+   Each group reads like the particulars sheet: a sticky side column (title, intro), and ruled link rows (number | title + description | arrow). */
+.hgroup{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.hgroup>*{min-width:0}
+.hgroup .gh{position:sticky;top:calc(var(--bar-h) + 80px + 24px);display:block;margin:0;padding:20px 0 0;border:0;border-top:2px solid var(--gold)}
+.hgroup .gh p{margin-top:14px}
+.hcards{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+.hc{display:grid;grid-template-columns:48px minmax(0,1fr);gap:6px 18px;padding:22px 56px 22px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.hc:hover,.hc:focus-visible{transform:none;background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.hc .tag{grid-row:1 / span 3;padding-top:8px}
+.hc b,.hc span.d,.hc .new{grid-column:2}
+.hc .new{justify-self:start}
+.hc .ar{top:50%;margin-top:-9px}
+@media (max-width:1100px){.hgroup{grid-template-columns:1fr}.hgroup .gh{position:static}}

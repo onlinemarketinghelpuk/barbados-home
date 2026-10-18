@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registration - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= registration: how it works (4 steps), choose a registration type, mortgages, bareboat, quick actions ================= */
+.steps-s{padding-block:clamp(56px,7vw,104px)}
+.steps{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--gold);counter-reset:s}
+.step{position:relative;padding:26px 24px 28px 0}
+.step+.step{padding-left:24px;border-left:1px solid var(--line)}
+.step .n{display:inline-grid;place-items:center;width:44px;height:44px;margin-bottom:16px;border-radius:50%;background:var(--gold);font:800 20px/1 var(--sans);color:var(--ink)}
+.step h3{margin-bottom:10px;font-size:clamp(22px,1.8vw,28px)}
+.step p{color:var(--muted);font-size:15.5px}
+.step .when{display:block;margin-top:12px;font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.types{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.tgrid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.rt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);overflow:hidden;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.rt figure{margin:0;min-height:100%;background:var(--hull)}
+.rt figure img{width:100%;height:100%;object-fit:cover}
+.rt figure.mark{display:grid;place-items:center;background:linear-gradient(140deg,var(--hull),var(--deep))}
+.rt figure.mark b{font-size:clamp(46px,4.4vw,72px);color:var(--teal);line-height:1}
+.rt .body{display:flex;flex-direction:column;gap:12px;padding:clamp(22px,2.5vw,32px)}
+.rt .tag{color:var(--teal)}
+.rt h3{font-size:clamp(26px,2.2vw,34px)}
+.rt p{color:var(--muted);font-size:15.5px}
+.rt .go{margin-top:auto;padding-top:8px}
+.mort{padding-block:clamp(56px,7vw,104px)}
+.mort .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.mort .grid>*{min-width:0}
+.mort .lead{margin-top:18px}
+.mort .body p{color:var(--muted)}
+.mort .body p+p{margin-top:14px}
+.prio{display:flex;flex-wrap:wrap;gap:6px;margin:22px 0 10px}
+.prio span{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:2px;font:800 18px/1 var(--sans);color:var(--muted)}
+.prio span:first-child{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.prio span.gap{width:auto;padding:0 6px;border:0}
+.prio-k{font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.facts{display:grid;gap:0;margin-top:24px;border-top:1px solid var(--line)}
+.facts li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.facts b.k{font-size:28px;line-height:1;color:var(--teal)}
+.facts p{color:var(--text);font-size:15.5px}
+.bare{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:clamp(24px,3vw,36px)}
+.fl{padding:clamp(22px,2.5vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.fl .tag{color:var(--teal)}
+.fl h3{margin:8px 0 18px;font-size:clamp(24px,2vw,30px)}
+.route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px}
+.route .flag{padding:14px;border:1px solid var(--line);border-radius:2px;text-align:center}
+.route .flag b{display:block;font-size:17px}
+.route .flag small{display:block;margin-top:4px;font:500 11.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.route .flag.bb{border-color:var(--gold)}
+.route .arrow{font:800 22px/1 var(--sans);color:var(--teal)}
+.fl p{margin-top:16px;color:var(--muted);font-size:15px}
+.acts3{padding-block:clamp(56px,7vw,104px)}
+.acts3 ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.acts3 a{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.acts3 a:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.acts3 .tag{color:var(--teal)}
+.acts3 b{font-size:clamp(24px,2vw,30px)}
+.acts3 span.d{color:var(--muted);font-size:15.5px}
+.acts3 .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
+@media (max-width:1100px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(3){padding-left:0;border-left:0}.step:nth-child(n+3){border-top:1px solid var(--line)}.tgrid2,.mort .grid,.flow{grid-template-columns:1fr}.acts3 ul{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.steps,.acts3 ul{grid-template-columns:1fr}.step{padding-left:0!important;border-left:0!important}.step+.step{border-top:1px solid var(--line)}.rt{grid-template-columns:1fr}.rt figure{height:180px}.route{grid-template-columns:1fr;text-align:center}.route .arrow{transform:rotate(90deg);justify-self:center}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="r-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Areopagus-Vessel-Photo-min-scaled.jpg" style="object-position:66% 40%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Registration</li></ol></nav>
+    <p class="tag port">Ships · yachts · mortgages · bareboat charters</p>
+    <h1 class="hull" id="r-h1">Register under <span>the Barbados flag</span></h1>
+    <div class="foot">
+      <p class="lead">Provided all the necessary documents have been submitted, our team can issue registration for a vessel in a matter of hours, with every document issued digitally.</p>
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/contact-us/">Request a quotation <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<!-- @d:rsteps (Option D swaps this block; see src/option-d/) -->
+<section class="steps-s" aria-labelledby="st-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">How registration works</p><h2 class="hull h2" id="st-h">From quotation to <span>permanent registry</span></h2></div></div>
+    <ol class="steps rv">
+      <li class="step"><span class="n" aria-hidden="true">1</span><h3 class="hull">Request a quotation</h3><p>Quotations for initial (provisional) registration come from the Principal Registrar, or from any of our Regional Registrars.</p><a class="go" href="https://barbadosmaritime.com/regional-registrars/" style="margin-top:12px">Find a registrar <svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="step"><span class="n" aria-hidden="true">2</span><h3 class="hull">Provisional registration</h3><p>The London registry registers the vessel provisionally. All registration documents are issued digitally.</p><span class="when">Within hours, once all documents are in</span></li>
+      <li class="step"><span class="n" aria-hidden="true">3</span><h3 class="hull">Initial inspection</h3><p>Once provisionally registered, the ship has an initial inspection to make sure international standards are met.</p><span class="when">Then annually</span></li>
+      <li class="step"><span class="n" aria-hidden="true">4</span><h3 class="hull">Permanent registration</h3><p>Provisional registration allows six months for all the requirements of permanent registration to be met, and the permanent certificate of registry to be issued.</p><span class="when">Within six months</span></li>
+    </ol>
+  </div>
+</section>
+<!-- /@d:rsteps -->
+
+<!-- ================= CHOOSE A REGISTRATION ================= -->
+<!-- TODO(client): confirm the "more information" page addresses for mortgages and bareboat charters -->
+<section class="types" id="types" aria-labelledby="ty-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">What are you registering?</p><h2 class="hull h2" id="ty-h">Choose a <span>registration</span></h2></div></div>
+    <ul class="tgrid2">
+      <li class="rv"><article class="rt"><figure><img src="assets/img/BMSR-1.jpg" alt="" loading="lazy"></figure><div class="body"><p class="tag">Ships</p><h3 class="hull">Ship registration</h3><p>Provisional registration from the London registry within hours, then six months to complete permanent registration.</p><a class="go" href="https://barbadosmaritime.com/registration/ship-registration/">More information <svg class="ar"><use href="#ar"/></svg></a></div></article></li>
+      <li class="rv"><article class="rt"><figure><img src="assets/img/11.png" alt="" loading="lazy" style="object-position:50% 60%"></figure><div class="body"><p class="tag">Yachts</p><h3 class="hull">Yacht registration</h3><p>Requirements depend on the yacht's category. Many ship regulations also apply to charter yachts, and there's a checklist for each category we accept.</p><a class="go" href="https://barbadosmaritime.com/registration/yacht-registration/">More information <svg class="ar"><use href="#ar"/></svg></a></div></article></li>
+      <li class="rv"><article class="rt"><figure class="mark" aria-hidden="true"><b class="hull">A–Z</b></figure><div class="body"><p class="tag">Finance</p><h3 class="hull">Ship mortgages</h3><p>Record a mortgage over a provisionally registered ship or its shares. Priority is set by letter, with "A" as the first-priority mortgage.</p><a class="go" href="#mortgages">How mortgages work <svg class="ar"><use href="#ar"/></svg></a></div></article></li>
+      <li class="rv"><article class="rt"><figure class="mark" aria-hidden="true"><b class="hull">⇄</b></figure><div class="body"><p class="tag">Dual registration</p><h3 class="hull">Bareboat charters</h3><p>Dual registration with another flag under a bareboat charter, in or out, under the Barbados Merchant Shipping Act (CAP 296).</p><a class="go" href="#bareboat">How bareboat works <svg class="ar"><use href="#ar"/></svg></a></div></article></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= MORTGAGES ================= -->
+<section class="mort" id="mortgages" aria-labelledby="mo-h">
+  <div class="wrap grid">
+    <div class="rv">
+      <p class="tag t">Registration of a ship's mortgage</p>
+      <h2 class="hull h2" id="mo-h" style="margin-top:14px">Ship <span>mortgages</span></h2>
+      <p class="lead">A provisionally registered ship has all the privileges and entitlements of a Barbados permanently registered ship, so a loan or other valuable consideration can be recorded as a mortgage over the ship or its shares.</p>
+      <div class="prio" aria-hidden="true"><span>A</span><span>B</span><span>C</span><span class="gap">…</span><span>Z</span></div>
+      <p class="prio-k">Mortgage priority: "A" is the first-priority mortgage</p>
+      <a class="btn btn-gold" href="https://barbadosmaritime.com/registration/mortgages/" style="margin-top:24px">More about mortgages <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <div class="rv">
+      <ul class="facts">
+        <li><b class="k hull">01</b><p>The original mortgage document is forwarded to the London Registrar or the Principal Registrar.</p></li>
+        <li><b class="k hull">02</b><p>The Registrar records the mortgage, noting on each document the date and time it was recorded.</p></li>
+        <li><b class="k hull">03</b><p>Each mortgage is annotated with a letter from A to Z. "A" denotes a first-priority mortgage, and the priority of later mortgages follows the letter the Registrar assigns.</p></li>
+        <li><b class="k hull">04</b><p>If, within 30 days of the provisional certificate expiring, the ship has not fully complied with the requirements of registration, the mortgagee has the absolute right of sale of the ship or share, even if the mortgagor complied fully with the other requirements of the mortgage instrument.</p></li>
+      </ul>
+      <p class="note-f" style="margin-top:18px;color:var(--muted);font-size:15px">For help completing the registration forms, see the samples of completed forms and the checklists in the <a href="https://barbadosmaritime.com/documents/forms/" style="color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px">Forms</a> section.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BAREBOAT ================= -->
+<section class="bare" id="bareboat" aria-labelledby="ba-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Barbados Merchant Shipping Act (CAP 296)</p><h2 class="hull h2" id="ba-h">Bareboat charter <span>registration</span></h2><p class="lead" style="margin-top:16px;max-width:44em">Dual registration lets a vessel fly a second flag under a bareboat charter, while keeping its registration with the first.</p></div><a class="go" href="https://barbadosmaritime.com/registration/bareboat-charters-registration/">More information <svg class="ar"><use href="#ar"/></svg></a></div>
+    <div class="flow">
+      <article class="fl rv">
+        <p class="tag">Bareboat charter out</p>
+        <h3 class="hull">From Barbados to another flag</h3>
+        <div class="route"><span class="flag bb"><b>Barbados</b><small>Primary registry</small></span><span class="arrow" aria-hidden="true">→</span><span class="flag"><b>Another flag</b><small>Secondary registry</small></span></div>
+        <p>A vessel registered in Barbados can be dual registered with a secondary registry under a bareboat charter out agreement, while keeping its Barbadian registration.</p>
+      </article>
+      <article class="fl rv">
+        <p class="tag">Bareboat charter in</p>
+        <h3 class="hull">From another flag to Barbados</h3>
+        <div class="route"><span class="flag"><b>Another flag</b><small>Primary registry</small></span><span class="arrow" aria-hidden="true">→</span><span class="flag bb"><b>Barbados</b><small>Secondary registry</small></span></div>
+        <p>A vessel on another primary registry can be dual registered under the Barbados flag under a bareboat charter in agreement, while keeping its registration with the primary registry.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUICK ACTIONS ================= -->
+<!-- TODO(client): confirm the address of the registry alterations checklists -->
+<section class="acts3" aria-labelledby="ac-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Already registered?</p><h2 class="hull h2" id="ac-h">Fees, forms <span>&amp; changes</span></h2></div></div>
+    <ul>
+      <li class="rv"><a href="https://barbadosmaritime.com/registration/registration-fees/"><span class="tag">Costs</span><b class="hull">Registration fees</b><span class="d">Our rate card sets out the registry fees, or contact the team for a detailed quote for your vessel.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/registration/registry-alterations/"><span class="tag">Changes</span><b class="hull">Registry alterations</b><span class="d">The checklists of documents to submit to change the registered details of a Barbadian vessel.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/documents/forms/"><span class="tag">Paperwork</span><b class="hull">Forms &amp; checklists</b><span class="d">Registration forms, samples of completed forms, and checklists of the requirements.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

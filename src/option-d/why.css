@@ -1,0 +1,15 @@
+
+/* ================= Option D · Why register in Barbados, in the home page's style ================= */
+.d-ent .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.d-ent .wrap>*{min-width:0}
+.d-ent .side{position:sticky;top:calc(var(--bar-h) + 80px + 24px)}
+.d-ent .side .lead{margin:18px 0 0}
+.d-ent .sheets{display:grid;gap:clamp(28px,3vw,40px)}
+.d-ent .sheet dl{grid-template-columns:1fr}
+.d-ent .sheet dl div{grid-template-columns:150px minmax(0,1fr)}
+.fleet ul{grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.fleet li{padding:22px 22px 22px 0;border:0;border-right:1px solid var(--line);border-radius:0;background:none}
+.fleet li+li{padding-left:22px}
+.fleet li:last-child{border-right:0}
+@media (max-width:1100px){.d-ent .wrap{grid-template-columns:1fr}.d-ent .side{position:static}.fleet ul{grid-template-columns:1fr 1fr}.fleet li{border-right:0;border-bottom:1px solid var(--line);padding-left:0!important}}
+@media (max-width:640px){.d-ent .sheet dl div{grid-template-columns:1fr;gap:4px}.fleet ul{grid-template-columns:1fr}}

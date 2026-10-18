@@ -1,0 +1,37 @@
+{
+  "_note": "Transcribed 18 Oct 2026 from a screenshot of barbadosmaritime.com/useful-links/ (docs/useful-links.png). Links marked \"confirm\" were hidden behind link text on the live page (\"Email\", \"Registration\") and point to the organisation's website until the exact address is known.",
+  "groups": [
+    {
+      "id": "barbados", "filter": "barbados", "name": "Barbados", "flag": true,
+      "desc": "Government services in Barbados, including the registration of small boats.",
+      "items": [
+        { "name": "Government of Barbados", "desc": "The official website of the Barbados Government (Barbados Integrated Government).",
+          "links": [ { "type": "web", "href": "https://www.gov.bb", "label": "www.gov.bb" }, { "type": "tel", "label": "(246) 535-1201", "tel": "+12465351201" } ] },
+        { "name": "Ministry of Tourism and International Transport", "desc": "For the registration of small boats, sailboats and similar craft. Contact: Ms Sharon Yarde, Shipping Superintendent (Ag).",
+          "links": [ { "type": "web", "href": "https://www.tourism.gov.bb", "label": "www.tourism.gov.bb" }, { "type": "tel", "label": "+1 (246) 535-2016", "tel": "+12465352016" }, { "type": "email", "label": "sharon.yarde@barbados.gov.bb" } ] }
+      ]
+    },
+    {
+      "id": "imo", "filter": "maritime", "name": "International Maritime Organization", "short": "IMO", "logo": "imo.webp", "w": 648, "h": 150,
+      "desc": "The United Nations specialised agency responsible for the safety and security of shipping, and for preventing marine and atmospheric pollution by ships. IMO's work supports the UN Sustainable Development Goals.",
+      "items": [
+        { "name": "Offices of the Secretariat", "desc": "General enquiries to the IMO.",
+          "links": [ { "type": "web", "href": "https://www.imo.org/en", "label": "www.imo.org/en" }, { "type": "email", "label": "info@imo.org" } ] },
+        { "name": "IMO Publishing", "desc": "Over 200 titles in English, French, Spanish, Arabic, Chinese and Russian. The publications catalogue lists all titles in printed and electronic format, and book code lists are available for easy reference. Prices are subject to change without notice.",
+          "links": [ { "type": "web", "href": "https://www.imo.org/en", "label": "www.imo.org/en" }, { "type": "email", "label": "sales@imo.org" }, { "type": "tel", "label": "+44 (0)20 7735 7611" } ] },
+        { "name": "IMO web account registration", "desc": "Public registration for an IMO web account.",
+          "links": [ { "type": "web", "href": "https://www.imo.org/en", "label": "Register", "confirm": true }, { "type": "tel", "label": "+44 (0)20 7735 7611" } ] }
+      ]
+    },
+    {
+      "id": "ilo", "filter": "labour", "name": "International Labour Organization", "short": "ILO", "logo": "ilo.webp", "w": 696, "h": 270,
+      "desc": "The only tripartite UN agency. Since 1919, the ILO has brought together governments, employers and workers of 187 member States to set labour standards, develop policies and devise programmes promoting decent work for all women and men.",
+      "items": [
+        { "name": "International Labour Organization", "desc": "Labour standards, policies and programmes for decent work.",
+          "links": [ { "type": "web", "href": "https://www.ilo.org", "label": "www.ilo.org" }, { "type": "web", "href": "https://www.ilo.org", "label": "Email", "confirm": true }, { "type": "tel", "label": "+41 (0) 22 799 6111" } ] },
+        { "name": "Maritime Labour Convention, 2006", "desc": "The ILO convention setting seafarers' rights to decent working and living conditions.",
+          "links": [ { "type": "web", "href": "https://www.ilo.org", "label": "www.ilo.org" }, { "type": "web", "href": "https://www.ilo.org", "label": "Email", "confirm": true }, { "type": "tel", "label": "+41 (0) 22 799 6111" } ] }
+      ]
+    }
+  ]
+}

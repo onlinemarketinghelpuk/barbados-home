@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The BMSR - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= The BMSR: a hub. Hero with the coat of arms, the hours band, then three groups of three link cards ================= */
+.hub-h .wrap{position:relative}
+.arms{position:absolute;right:var(--gut);bottom:calc(100% - 100%);top:auto;display:none}
+@media (min-width:1101px){.hub-h .arms{display:block;position:absolute;right:0;top:50%;width:clamp(180px,16vw,260px);transform:translateY(-55%);right:var(--gut);padding:18px;border-radius:2px;background:#fff;box-shadow:0 24px 60px rgba(3,20,31,.35)}.hub-h .arms img{width:100%;height:auto}.hub-h h1{max-width:9em}}
+.hubdir{padding-block:clamp(56px,7vw,104px)}
+.hgroup+.hgroup{margin-top:clamp(40px,5vw,64px)}
+.hfeat{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px 32px;margin-bottom:clamp(40px,5vw,64px);padding:clamp(26px,3vw,40px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-radius:2px;background:linear-gradient(115deg,color-mix(in srgb,var(--gold) 16%,var(--deep)),var(--deep) 70%);transition:border-color .25s}
+.hfeat:hover{border-color:var(--gold)}
+.hfeat .tag{grid-column:1;color:var(--teal)}
+.hfeat b{grid-column:1;font-size:clamp(34px,3.6vw,56px)}
+.hfeat b span{color:var(--mint)}
+.hfeat .d{grid-column:1;max-width:52em;color:var(--muted)}
+.hfeat .go{grid-column:2;grid-row:1 / span 3;align-self:center}
+.hfeat:hover .go .ar{transform:translateX(4px)}
+@media (max-width:760px){.hfeat{grid-template-columns:1fr}.hfeat .go{grid-column:1;grid-row:auto}}
+.hgroup .gh{display:flex;align-items:baseline;justify-content:space-between;gap:12px 32px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.hgroup .gh h2{font-size:clamp(28px,2.6vw,40px)}
+.hgroup .gh h2 span{color:var(--mint)}
+.hgroup .gh p{max-width:46em;color:var(--muted);font-size:15.5px}
+.hcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.hc{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.hc:hover,.hc:focus-visible{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.hc .tag{color:var(--teal)}
+.hc b{font-size:clamp(24px,2vw,30px)}
+.hc span.d{color:var(--muted);font-size:15.5px;line-height:1.55}
+.hc .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
+.hc:hover .ar{transform:translateX(4px)}
+.hc .new{align-self:flex-start;padding:3px 8px;border-radius:99px;background:var(--gold);font:600 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+@media (max-width:1100px){.hcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.hcards{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO (with the coat of arms) ================= -->
+<section class="hero ph hub-h" aria-labelledby="b-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Areopagus-Vessel-Photo-min-scaled.jpg" style="object-position:66% 40%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <!-- TODO(client): send the official coat of arms artwork (this one is cropped from a screenshot) -->
+    <figure class="arms" aria-hidden="true"><img src="assets/img/coat-of-arms.webp" alt="" width="696" height="652"></figure>
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">The BMSR</li></ol></nav>
+    <p class="tag port">Executive Agents for the Government of Barbados</p>
+    <h1 class="hull" id="b-h1">The <span>BMSR</span></h1>
+    <div class="foot">
+      <p class="lead">Find all BMSR information right here: who we are, the registry's worldwide network, and the resources owners, managers and seafarers use most.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#directory">Browse the BMSR <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/contact-us/">Contact us</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUICK BAND (the home page's hours & emergency band) ================= -->
+<section class="info" aria-label="Opening hours and contact">
+  <div class="wrap">
+    <div class="cell" data-hours="09:00-17:00">
+      <p class="tag">Office hours · UK time</p>
+      <p class="big hull">Mon – Fri<br>9:00 – 17:00</p>
+      <p class="status"><i></i><span>Office hours</span></p>
+      <a class="go" href="https://barbadosmaritime.com/public-holidays/">Public holidays <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <div class="cell em">
+      <p class="tag">24/7 emergency line · 365 days a year</p>
+      <a class="big hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+      <p>For emergencies only. Urgent dispensations and exemptions are dealt with outside office hours.</p>
+    </div>
+    <div class="cell">
+      <p class="tag">General enquiries</p>
+      <a class="big hull" href="tel:+442076365739">+44 (0)207 636 5739</a>
+      <p><a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a><br>Barbados High Commission, 1 Great Russell Street, London WC1B 3ND</p>
+    </div>
+    <nav class="cell" aria-label="Most used">
+      <p class="tag">Most used</p>
+      <ul class="ql">
+        <li><a href="https://barbadosmaritime.com/registration/">Register a vessel <svg class="ar"><use href="#ar"/></svg></a></li>
+        <li><a href="https://barbadosmaritime.com/regional-registrars/">Find a registrar <svg class="ar"><use href="#ar"/></svg></a></li>
+        <li><a href="https://barbadosmaritime.com/documents/">Forms &amp; bulletins <svg class="ar"><use href="#ar"/></svg></a></li>
+        <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= DIRECTORY: three groups of three ================= -->
+<!-- TODO(client): approve the one-line descriptions -->
+<section class="hubdir" id="directory" aria-label="BMSR information">
+  <div class="wrap">
+    <!-- TODO(client): new page; confirm its address on the live site (planned: /why-register-in-barbados/) -->
+    <a class="hfeat rv" href="https://barbadosmaritime.com/why-register-in-barbados/"><span class="tag">Featured</span><b class="hull">Why register <span>in Barbados</span></b><span class="d">A respected flag, 24/7 support, and tax advantages for owning and operating ships through a Barbados entity.</span><span class="go">Read more <svg class="ar"><use href="#ar"/></svg></span></a>
+    <section class="hgroup" aria-labelledby="g1-h">
+      <div class="gh rv"><h2 class="hull" id="g1-h">About the <span>registry</span></h2><p>Who we are, the people behind the flag, and how to reach us.</p></div>
+      <ul class="hcards">
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/about-us/"><span class="tag">01</span><b class="hull">About us</b><span class="d">Who we are, our credentials and how we work for ship owners and managers.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/our-team/"><span class="tag">02</span><b class="hull">Our team</b><span class="d">Meet the fourteen people across leadership, operations, registry, STCW and the office.</span><span class="new">New</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/contact-us/"><span class="tag">03</span><b class="hull">Contact us</b><span class="d">Team inboxes, office hours, the 24/7 emergency line and how to find us in London.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </section>
+    <section class="hgroup" aria-labelledby="g2-h">
+      <div class="gh rv"><h2 class="hull" id="g2-h">Registry <span>network</span></h2><p>The people and organisations who act for Barbados around the world, and our quality standard.</p></div>
+      <ul class="hcards">
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/regional-registrars/"><span class="tag">04</span><b class="hull">Regional Registrars</b><span class="d">Registrars in 29 countries who can help with Barbados registration.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/barbados-recognised-organisations/"><span class="tag">05</span><b class="hull">Recognised Organisations</b><span class="d">The 23 classification societies authorised to certify on behalf of Barbados.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/quality-assurance/"><span class="tag">06</span><b class="hull">Quality Assurance</b><span class="d">Our ISO 9001:2015 certification and quality policy.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </section>
+    <section class="hgroup" aria-labelledby="g3-h">
+      <div class="gh rv"><h2 class="hull" id="g3-h">Useful <span>resources</span></h2><p>News, related organisations and the dates our London office is closed.</p></div>
+      <ul class="hcards">
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/category/news/"><span class="tag">07</span><b class="hull">News</b><span class="d">The latest news, press statements and events from Barbados Maritime.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/useful-links/"><span class="tag">08</span><b class="hull">Useful links</b><span class="d">The Barbados Government, IMO and ILO, with direct contact details.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/public-holidays/"><span class="tag">09</span><b class="hull">Public holidays</b><span class="d">Days the London office is closed. The 24/7 emergency line stays open.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </section>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// office hours: live open/closed badge in UK time
+const hrs = document.querySelector('[data-hours]');
+const mins = t => { const [h, m] = t.split(':'); return h * 60 + +m; };
+const hhmm = m => String(m / 60 | 0).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+const [opens, closes] = hrs.dataset.hours.split('-').map(mins);
+const ukNow = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+const setStatus = () => {
+  const t = Object.fromEntries(ukNow.formatToParts(new Date()).map(x => [x.type, x.value]));
+  const day = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(t.weekday), now = +t.hour * 60 + +t.minute;
+  const open = day < 5 && now >= opens && now < closes, next = day < 5 && now < opens ? 'today' : day < 4 ? 'tomorrow' : 'Monday';
+  const st = hrs.querySelector('.status'); st.classList.toggle('open', open);
+  st.querySelector('span').textContent = open ? 'Open now · until ' + hhmm(closes) : 'Closed · opens ' + next + ' ' + hhmm(opens);
+};
+setStatus(); setInterval(setStatus, 60000);
+</script>
+</body>
+</html>

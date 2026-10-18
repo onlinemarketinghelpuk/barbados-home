@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Public Holidays - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= public holidays: next closure, the year's list (past dimmed), add to calendar, emergency reassurance ================= */
+.hol{padding-block:clamp(56px,7vw,104px)}
+.hol .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.hol .grid>*{min-width:0}
+.next{display:flex;flex-direction:column;gap:14px;padding:clamp(24px,3vw,34px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.next .tag{color:var(--teal)}
+.next .when{font-size:clamp(34px,3.4vw,52px);line-height:1}
+.next .what{font-size:18px;font-weight:700}
+.next .in{font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.next .sos{padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+.next .sos a{color:var(--text);font-weight:700}
+.next .btn{align-self:flex-start;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px;cursor:pointer}
+.hlist{border-top:2px solid var(--gold)}
+.hlist ol{margin:0;padding:0;list-style:none}
+.hlist .cap{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.hrow{display:grid;grid-template-columns:76px minmax(0,1fr) auto;align-items:center;gap:6px 22px;padding:16px 0;border-bottom:1px solid var(--line);transition:opacity .2s}
+.cal{display:grid;place-items:center;width:64px;height:64px;border:1px solid var(--line);border-radius:2px;background:var(--card);text-align:center}
+.cal b{display:block;font-size:26px;line-height:1}
+.cal small{display:block;margin-top:4px;font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.hrow .nm{font-size:17px;font-weight:700}
+.hrow .day{color:var(--muted);font-size:15px}
+.closed{padding:5px 10px;border:1px solid var(--line);border-radius:99px;font:600 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.hrow.past{opacity:.48}
+.hrow.past .closed::after{content:" · passed"}
+.hrow.is-next{margin-inline:-14px;padding-inline:14px;background:color-mix(in srgb,var(--gold) 9%,transparent);box-shadow:inset 3px 0 0 var(--gold)}
+.hrow.is-next .cal{border-color:var(--gold);background:var(--gold)}
+.hrow.is-next .cal b,.hrow.is-next .cal small{color:var(--ink)}
+.hrow.is-next .closed{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.hrow.is-next .closed::before{content:"Next · "}
+.hrow.is-today .closed::before{content:"Today · "}
+.hol .foot-note{margin-top:20px;color:var(--muted);font-size:15px}
+@media (max-width:1100px){.hol .grid{grid-template-columns:1fr}}
+@media (max-width:520px){.hrow{grid-template-columns:64px minmax(0,1fr)}.hrow .closed{grid-column:2;justify-self:start}.cal{width:56px;height:56px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="h-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/3.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">Public Holidays</li></ol></nav>
+    <p class="tag port">{{hol-office}} · {{hol-count}} closures in {{hol-year}}</p>
+    <h1 class="hull" id="h-h1">Public <span>Holidays {{hol-year}}</span></h1>
+    <div class="foot">
+      <p class="lead">The days our London office is closed in {{hol-year}}. The 24/7 emergency line stays open on every one of them.</p>
+      <div class="ctas"><a class="btn btn-teal" href="tel:+447494116754">24/7 emergency line <svg class="ar"><use href="#phone"/></svg></a><a class="btn btn-line" href="#list">See the dates</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NEXT CLOSURE + THE LIST (rows generated from src/data/holidays.json) ================= -->
+<!-- TODO(client): confirm the Early May Bank Holiday (hidden in the screenshot) and the 30 November entry (the live page says Wednesday; in 2026 it is a Monday) -->
+<section class="hol" id="list" aria-labelledby="hl-h">
+  <div class="wrap grid">
+    <aside class="next rv" aria-labelledby="nx-h">
+      <p class="tag" id="nx-h">Next office closure</p>
+      <p class="when hull" id="nx-when">{{hol-first-when}}</p>
+      <p class="what" id="nx-what">{{hol-first-name}}</p>
+      <p class="in" id="nx-in"></p>
+      <button class="btn btn-gold" type="button" id="ics">Add all to my calendar <svg class="ar"><use href="#dl"/></svg></button>
+      <p class="sos">Emergency? The 24/7 line is open on every holiday: <a href="tel:+447494116754">+44 (0)7494 116754</a></p>
+    </aside>
+    <div class="rv">
+      <div class="hlist">
+        <div class="cap"><h2 class="tag t" id="hl-h">{{hol-office}} · closed</h2><span class="tag">{{hol-year}}</span></div>
+        <ol>
+{{hol-rows}}
+        </ol>
+      </div>
+      <p class="foot-note">On all other weekdays, the office is open Monday to Friday, 9:00 to 17:00 UK time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// mark past days, highlight the next (or today's) closure, and fill the "Next office closure" card. Dates are compared in UK time.
+const ukToday = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/London' }).format(new Date()); // YYYY-MM-DD
+const rows = [...document.querySelectorAll('.hrow')];
+const next = rows.find(r => r.dataset.date >= ukToday);
+rows.forEach(r => { r.classList.toggle('past', r.dataset.date < ukToday); r.classList.toggle('is-next', r === next); r.classList.toggle('is-today', r === next && r.dataset.date === ukToday); });
+const nx = document.querySelector('.next');
+if (next) {
+  document.getElementById('nx-when').textContent = next.dataset.when;
+  document.getElementById('nx-what').textContent = next.dataset.name;
+  const days = Math.round((Date.parse(next.dataset.date) - Date.parse(ukToday)) / 864e5);
+  document.getElementById('nx-in').textContent = days === 0 ? 'Today: the office is closed' : days === 1 ? 'Tomorrow' : `In ${days} days`;
+} else {
+  document.getElementById('nx-h').textContent = 'No more closures this year';
+  document.getElementById('nx-when').textContent = 'Open as usual';
+  document.getElementById('nx-what').textContent = 'Monday to Friday, 9:00 to 17:00';
+}
+// "Add all to my calendar": an .ics file with an all-day event per closure
+document.getElementById('ics').addEventListener('click', () => {
+  const d = s => s.replace(/-/g, ''), plus1 = s => { const t = new Date(s + 'T12:00:00Z'); t.setUTCDate(t.getUTCDate() + 1); return t.toISOString().slice(0, 10).replace(/-/g, ''); };
+  const ev = rows.map(r => ['BEGIN:VEVENT', `UID:bmsr-${r.dataset.date}@barbadosmaritime.com`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`,
+    `DTSTART;VALUE=DATE:${d(r.dataset.date)}`, `DTEND;VALUE=DATE:${plus1(r.dataset.date)}`, `SUMMARY:BMSR office closed: ${r.dataset.name}`,
+    'DESCRIPTION:The 24/7 emergency line stays open: +44 (0)7494 116754', 'TRANSP:TRANSPARENT', 'END:VEVENT'].join('\r\n'));
+  const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//BMSR//Public holidays//EN', 'CALSCALE:GREGORIAN', ...ev, 'END:VCALENDAR'].join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+  a.download = 'bmsr-office-closures.ics'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+</script>
+</body>
+</html>

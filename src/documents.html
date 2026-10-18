@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documents - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= The BMSR: a hub. Hero with the coat of arms, the hours band, then three groups of three link cards ================= */
+.hubdir{padding-block:clamp(56px,7vw,104px)}
+.hgroup+.hgroup{margin-top:clamp(40px,5vw,64px)}
+.hgroup .gh{display:flex;align-items:baseline;justify-content:space-between;gap:12px 32px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.hgroup .gh h2{font-size:clamp(28px,2.6vw,40px)}
+.hgroup .gh h2 span{color:var(--mint)}
+.hgroup .gh p{max-width:46em;color:var(--muted);font-size:15.5px}
+.hcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.hc{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.hc:hover,.hc:focus-visible{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.hc .tag{color:var(--teal)}
+.hc b{font-size:clamp(24px,2vw,30px)}
+.hc span.d{color:var(--muted);font-size:15.5px;line-height:1.55}
+.hc .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
+.hc:hover .ar{transform:translateX(4px)}
+.hc .new{align-self:flex-start;padding:3px 8px;border-radius:99px;background:var(--gold);font:600 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+@media (max-width:1100px){.hcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.hcards{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="d-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-2.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Documents</li></ol></nav>
+    <p class="tag port">Forms · bulletins · circulars · legislation</p>
+    <h1 class="hull" id="d-h1">Documents <span>&amp; forms</span></h1>
+    <div class="foot">
+      <p class="lead">All the documents you need, in one place: the forms for registration and operation, our bulletins and alerts, and the conventions and Barbados shipping legislation.</p>
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/documents/forms/">Forms <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/documents/bulletins/">Bulletins</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIRECTORY: the eight document types in three groups ================= -->
+<!-- TODO(client): confirm the addresses of Guides, Marine Circulars, Barbados Legislation and Barbados Publications; approve the descriptions -->
+<section class="hubdir" id="directory" aria-label="Document types">
+  <div class="wrap">
+    <section class="hgroup" aria-labelledby="g1-h">
+      <div class="gh rv"><h2 class="hull" id="g1-h">Forms <span>&amp; guides</span></h2><p>Forms provide information to the BMSR during registration, and throughout the normal operation of the vessel.</p></div>
+      <ul class="hcards">
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/forms/"><span class="tag">01</span><b class="hull">Forms</b><span class="d">Registration and operational forms, with samples of completed forms and checklists of requirements.</span><span class="new">Most used</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/shipboard-documents/"><span class="tag">02</span><b class="hull">Shipboard Documents</b><span class="d">Official record books and logbooks for Barbadian ships, to order online or by email.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/guides/"><span class="tag">03</span><b class="hull">Guides</b><span class="d">Guidance on working with the Barbados flag and its requirements.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </section>
+    <section class="hgroup" aria-labelledby="g2-h">
+      <div class="gh rv"><h2 class="hull" id="g2-h">Updates <span>&amp; guidance</span></h2><p>We use bulletins and alerts to keep customers and vessels informed of our procedures, and of any changes to our requirements.</p></div>
+      <ul class="hcards">
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/bulletins/"><span class="tag">04</span><b class="hull">Bulletins</b><span class="d">Our numbered bulletins on procedures and requirements for Barbadian ships.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/marine-circulars/"><span class="tag">05</span><b class="hull">Marine Circulars</b><span class="d">Circulars announcing new requirements and changes, such as MC 102026.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </section>
+    <section class="hgroup" aria-labelledby="g3-h">
+      <div class="gh rv"><h2 class="hull" id="g3-h">Law <span>&amp; conventions</span></h2><p>The international conventions ratified by Barbados, and Barbados shipping legislation.</p></div>
+      <ul class="hcards">
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/conventions/"><span class="tag">06</span><b class="hull">Conventions</b><span class="d">The international conventions Barbados has ratified as an IMO Member State.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/barbados-legislation/"><span class="tag">07</span><b class="hull">Barbados Legislation</b><span class="d">Barbados shipping legislation, including the Shipping Act.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+        <li class="rv"><a class="hc" href="https://barbadosmaritime.com/documents/barbados-publications/"><span class="tag">08</span><b class="hull">Barbados Publications</b><span class="d">Official Barbados maritime publications.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      </ul>
+    </section>
+  </div>
+</section>
+
+<!-- ================= LATEST (the home page notices) ================= -->
+<section class="sec notes" aria-labelledby="notes-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Latest</p><h2 class="hull h2" id="notes-h">Notices &amp; <span>bulletins</span></h2></div><a class="btn btn-line" href="https://barbadosmaritime.com/documents/bulletins/">All bulletins <svg class="ar"><use href="#ar"/></svg></a></div>
+    <div class="ntm rv">
+      <a href="https://barbadosmaritime.com/wp-content/uploads/2026/05/BMSR_Statement_re_Iran-seized_Oil_Tanker.pdf"><span class="ref">Press statement<small>May 2026</small></span><span class="t">Reported seizure by Iranian forces of vessel JIN LI (ex-OCEAN KOI), IMO 9255933</span><span class="go"><span>PDF</span> <svg class="ar"><use href="#dl"/></svg></span></a>
+      <a href="https://barbadosmaritime.com/wp-content/uploads/2026/03/BMSR-War-Guidance-Update-03.03.pdf"><span class="ref">Guidance<small>March 2026</small></span><span class="t">Navigational guidance for Barbadian-flagged vessels operating in the Strait of Hormuz</span><span class="go"><span>PDF</span> <svg class="ar"><use href="#dl"/></svg></span></a>
+      <a href="https://barbadosmaritime.com/bulletin-030-isps-code/"><span class="ref">Bulletin 030<small>Rev 1.0</small></span><span class="t">ISPS Code</span><span class="go"><span>Read</span> <svg class="ar"><use href="#ar"/></svg></span></a>
+      <a href="https://barbadosmaritime.com/bulletin-035-piracy-and-armed-robbery-bmsr/"><span class="ref">Bulletin 035<small>Rev 2.0</small></span><span class="t">Piracy and Armed Robbery</span><span class="go"><span>Read</span> <svg class="ar"><use href="#ar"/></svg></span></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

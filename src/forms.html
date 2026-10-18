@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forms - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= forms: a searchable, filterable list of every form, with help alongside ================= */
+.fm{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.fm .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.fm .grid>*{min-width:0}
+.fm-tools{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;display:grid;gap:12px;padding:14px 0;background:var(--abyss);border-bottom:1px solid var(--line)}
+.fm-tools .search{position:relative}
+.fm-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.fm-tools input{width:100%;min-height:48px;padding:10px 14px 10px 44px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.fm-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer}
+.chips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.chips button:hover{border-color:var(--teal)}
+.chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.chips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.fm-count{margin:16px 0 4px;font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.fm-count b{color:var(--text)}
+.fcat{margin-top:24px}
+.fcat h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--gold);font-size:clamp(24px,2vw,30px)}
+.fcat h2 i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
+.frow{display:grid;grid-template-columns:120px minmax(0,1fr) auto;align-items:center;gap:8px 20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.frow .code{font:600 13px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.frow .t{font-weight:600}
+.frow a.dl{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:border-color .2s,color .2s}
+.frow a.dl:hover{border-color:var(--teal);color:var(--teal)}
+.frow a.dl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fsoon{padding:16px 18px;border:1px dashed var(--line);border-top:0;color:var(--muted);font-size:15px}
+.fsoon a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.js .fcat.off,.js .frow.off{display:none}
+.fm-empty{display:none;margin-top:24px;padding:24px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.fm-empty.show{display:block}
+.aside-h{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);display:grid;gap:14px}
+.note-c{padding:22px 24px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-left:3px solid var(--gold);border-radius:2px;background:color-mix(in srgb,var(--gold) 10%,var(--card))}
+.note-c .tag{color:var(--teal)}
+.note-c b{display:block;margin:8px 0;font-size:18px}
+.note-c p{color:var(--muted);font-size:15px}
+.help{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.help b{display:block;margin:8px 0 12px;font-size:clamp(22px,1.9vw,28px)}
+.help p{color:var(--muted);font-size:15px}
+.help ul{display:grid;gap:8px;margin-top:16px}
+.help a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.help a:hover{border-color:var(--teal)}
+.help a .ar{color:var(--teal)}
+@media (max-width:1100px){.fm .grid{grid-template-columns:1fr}.aside-h{position:static;grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.aside-h{grid-template-columns:1fr}.fm-tools{position:static}.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}.chips button{flex:none}}
+@media (max-width:520px){.frow{grid-template-columns:minmax(0,1fr) auto}.frow .code{grid-column:1 / -1}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="f-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-1.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li aria-current="page">Forms</li></ol></nav>
+    <p class="tag port">{{fm-count}} forms · {{fm-cats}} categories</p>
+    <h1 class="hull" id="f-h1">Forms</h1>
+    <div class="foot">
+      <p class="lead">All our forms are listed below. If you need guidance on completing a form correctly, see the sample forms or contact us, and we'll be happy to help.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#forms">Find a form <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/contact-us/">Ask for help</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE LIST (generated from src/data/forms.json) ================= -->
+<!-- TODO(client): send the six closed categories' lists and every form's PDF address; PPR01-F03 is missing from the live list -->
+<section class="fm" id="forms" aria-label="Forms">
+  <div class="wrap grid">
+    <div>
+      <div class="fm-tools" role="search" aria-label="Find a form">
+        <label class="search"><span class="sr">Search forms</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="fm-q" placeholder="Search by name or number, e.g. bill of sale or F05" autocomplete="off"></label>
+        <div class="chips" role="group" aria-label="Filter by category">
+{{fm-chips}}
+        </div>
+      </div>
+      <p class="fm-count" id="fm-count" aria-live="polite">Showing <b>{{fm-count}}</b> forms</p>
+{{fm-list}}
+      <p class="fm-empty" id="fm-empty">No forms match. Try another word or form number, or <a href="https://barbadosmaritime.com/contact-us/">contact us</a>.</p>
+    </div>
+    <aside class="aside-h" aria-label="Help with forms">
+      <div class="note-c"><p class="tag">Please note</p><b>Don't modify the documents</b><p>To ensure accuracy and compliance, please don't modify the documents after downloading them. If you need any changes, get in touch and we'll be happy to help.</p></div>
+      <div class="help"><p class="tag t">Need help?</p><b class="hull">Completing a form</b><p>See the samples of completed forms, or check the requirements in the checklists.</p>
+        <ul>
+          <li><a href="#cat-samples" data-cat="samples">Sample forms <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="#cat-checklists" data-cat="checklists">Checklists <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact the registry <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// search by name or number and filter by category together; empty categories hide; the count is announced
+const fq = document.getElementById('fm-q'), fchips = [...document.querySelectorAll('.chips button')], cats = [...document.querySelectorAll('.fcat')];
+const fcount = document.getElementById('fm-count'), fempty = document.getElementById('fm-empty');
+let fcat = 'all';
+const fnorm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const fapply = () => {
+  const w = fnorm(fq.value.trim()).split(/\s+/).filter(Boolean); let n = 0, shownCats = 0;
+  cats.forEach(c => {
+    const inCat = fcat === 'all' || c.dataset.cat === fcat; let k = 0;
+    const rows = [...c.querySelectorAll('.frow')];
+    rows.forEach(r => { const ok = inCat && w.every(x => r.dataset.s.includes(x)); r.classList.toggle('off', !ok); if (ok) k++; });
+    const show = inCat && (k > 0 || (!rows.length && !w.length));
+    c.classList.toggle('off', !show); n += k; if (show) shownCats++;
+  });
+  fempty.classList.toggle('show', !shownCats);
+  fcount.innerHTML = !shownCats ? 'No matches' : n ? `Showing <b>${n}</b> form${n === 1 ? '' : 's'}` : 'This list is coming soon';
+};
+fq.addEventListener('input', fapply);
+const pick = id => { fcat = id; fchips.forEach(x => x.setAttribute('aria-pressed', x.dataset.cat === id)); fapply(); };
+fchips.forEach(b => b.addEventListener('click', () => pick(b.dataset.cat)));
+document.querySelectorAll('.help a[data-cat]').forEach(a => a.addEventListener('click', () => { fq.value = ''; pick(a.dataset.cat); }));
+const fromHash = () => { const h = location.hash.match(/^#cat-(\w+)/); if (h) { fq.value = ''; pick(h[1]); } };
+addEventListener('hashchange', fromHash); fromHash();
+</script>
+</body>
+</html>

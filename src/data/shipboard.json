@@ -1,0 +1,16 @@
+{
+  "_note": "From a screenshot of barbadosmaritime.com/documents/shipboard-documents/ (docs/shipboard-documents.png). The covers were read from the page's image; part of it was hidden behind the site header, so there may be more (one yellow form-style cover could not be read). Colours match the covers. Order form addresses weren't visible.",
+  "orderOnline": "https://barbadosmaritime.com/documents/shipboard-documents/#live",
+  "orderOffline": "https://barbadosmaritime.com/documents/shipboard-documents/#live",
+  "books": [
+    { "title": "GMDSS Radio Logbook", "sub": "Radio communications", "colour": "#BFE3F8" },
+    { "title": "Oil Record Book", "sub": "Part I: machinery space operations", "colour": "#BC9A80", "check": "subtitle hidden in the screenshot; Part I is assumed" },
+    { "title": "Oil Record Book", "sub": "Part II: cargo / ballast operations", "colour": "#B7B7B7" },
+    { "title": "Cargo Record Book", "sub": "For ships carrying noxious liquid substances in bulk", "colour": "#98C47E" },
+    { "title": "Ballast Water Record Book", "sub": "Ballast water management", "colour": "#3F88C9" },
+    { "title": "Garbage Record Book", "sub": "Garbage management", "colour": "#F2A36B" },
+    { "title": "Compass Observation Book", "sub": "Navigation", "colour": "#AACB9C" },
+    { "title": "Biofouling Record Book", "sub": "Biofouling management", "colour": "#B07DC6" },
+    { "title": "Ozone-Depleting Substances Record Book", "sub": "Air pollution", "colour": "#F7CBA4" }
+  ]
+}

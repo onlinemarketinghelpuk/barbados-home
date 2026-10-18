@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMSR Events - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= events: intro, a feature (latest), the timeline of past events, meet us ================= */
+.ev-intro{padding-block:clamp(56px,7vw,104px) clamp(24px,3vw,40px)}
+.ev-intro .statement{max-width:30em;margin-top:16px;font-size:clamp(24px,2.3vw,34px);line-height:1.3}
+.ev-intro .statement span{color:var(--mint)}
+.ev-list{display:grid;gap:clamp(20px,2.4vw,32px);padding-bottom:clamp(64px,8vw,112px)}
+.ev{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);overflow:hidden;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ev:nth-child(even){grid-template-columns:minmax(0,6fr) minmax(0,6fr)}
+.ev:nth-child(even) .media{order:2}
+.ev>*{min-width:0}
+.ev .media{position:relative;min-height:320px;margin:0;background:var(--hull)}
+.ev .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ev .media.none{display:grid;place-items:center;background:linear-gradient(140deg,var(--hull),var(--deep))}
+.ev .media.none b{font-size:clamp(40px,4vw,64px);color:var(--teal);text-align:center;line-height:1}
+.ev .media.none small{display:block;margin-top:12px;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ev .b{display:flex;flex-direction:column;gap:14px;padding:clamp(24px,3vw,40px)}
+.ev .meta{display:flex;flex-wrap:wrap;gap:8px}
+.ev .chip{padding:5px 10px;border:1px solid var(--line);border-radius:99px;font:600 11.5px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.ev .chip.when{border-color:var(--gold);color:var(--teal)}
+.ev h2{font-size:clamp(28px,2.6vw,42px)}
+.ev p{color:var(--muted)}
+.ev .go{margin-top:auto;padding-top:6px}
+.ev.latest{border-color:color-mix(in srgb,var(--gold) 50%,transparent)}
+.ev.latest .meta::before{content:"Latest";padding:5px 10px;border-radius:99px;background:var(--gold);font:600 11.5px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.meet{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-top:1px solid var(--line)}
+.meet .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
+.meet .lead{max-width:40em;margin-top:14px}
+@media (max-width:900px){.ev,.ev:nth-child(even){grid-template-columns:1fr}.ev:nth-child(even) .media{order:0}.ev .media{min-height:0;width:100%;aspect-ratio:16/9}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="e-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Barbados-Maritime-Home-Page-.jpg" style="object-position:66% 36%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Events</li></ol></nav>
+    <p class="tag port">Conferences · exhibitions · shipowner gatherings</p>
+    <h1 class="hull" id="e-h1">BMSR <span>Events</span></h1>
+    <div class="foot">
+      <p class="lead">We engage with the global maritime community through industry events, conferences and exclusive gatherings around the world.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#events">See our events <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/contact-us/">Meet the team</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="ev-intro" aria-labelledby="ei-h">
+  <div class="wrap rv">
+    <h2 class="tag t" id="ei-h">Out and about</h2>
+    <p class="statement">Building connections, sharing knowledge and promoting <span>the advantages of sailing under the Barbados flag</span>.</p>
+  </div>
+</section>
+
+<!-- ================= EVENTS (generated from src/data/events.json; newest first) ================= -->
+<!-- TODO(client): add photos and videos for each event (they didn't load on the live page); confirm the Dubai date and the Athens year -->
+<section aria-label="Events">
+  <div class="wrap ev-list" id="events">
+{{ev-items}}
+  </div>
+</section>
+
+<!-- ================= MEET US ================= -->
+<section class="meet" aria-labelledby="mt-h">
+  <div class="wrap">
+    <div class="rv"><p class="tag t">Meet us</p><h2 class="hull h2" id="mt-h">See you at <span>the next one</span></h2><p class="lead">Would you like to meet the BMSR team at an upcoming event? Get in touch and we'll arrange a time.</p></div>
+    <div class="ctas rv"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://www.linkedin.com/company/barbados-maritime-ship-registry">Follow on LinkedIn <svg class="ar"><use href="#ext"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

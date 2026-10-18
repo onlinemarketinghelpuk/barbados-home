@@ -1,0 +1,42 @@
+{
+  "_note": "From a screenshot of barbadosmaritime.com/documents/conventions/ (docs/conventions.png): 26 entries. Grouped and given their usual short names by us (client to approve). Titles are tidied to the conventions' official names; each \"check\" says what differs from the live page.",
+  "intro": "The Barbados Government has ratified, and the BMSR adheres to, all major international conventions to date, including but not limited to the following.",
+  "groups": [
+    { "id": "safety", "name": "Safety & navigation", "d": "Safe ships, safe navigation and maritime security.", "items": [
+      { "ab": "SOLAS", "title": "International Convention for the Safety of Life at Sea", "year": "1974" },
+      { "ab": "SOLAS PROT", "title": "1978 and 1988 Protocols to the 1974 Convention on Safety of Life at Sea", "year": "1978 · 1988" },
+      { "ab": "LL", "title": "International Convention on Load Lines, and its Protocol of 1988", "year": "1966" },
+      { "ab": "COLREG", "title": "International Regulations for Preventing Collisions at Sea", "year": "1972" },
+      { "ab": "CSC", "title": "International Convention for Safe Containers", "year": "1972" },
+      { "ab": "SAR", "title": "International Convention on Maritime Search and Rescue", "year": "1979" },
+      { "ab": "SUA", "title": "Convention for the Suppression of Unlawful Acts against the Safety of Maritime Navigation, and its 1988 Protocol", "year": "1988" }
+    ] },
+    { "id": "environment", "name": "Pollution & environment", "d": "Preventing pollution from ships, and responding to it.", "items": [
+      { "ab": "MARPOL", "title": "International Convention for the Prevention of Pollution from Ships, 1973, as modified by the Protocol of 1978, as amended: Annexes I, II, III, IV, V and VI", "year": "1973 · 1978", "check": "the live page lists the 1978 Protocol with Annexes I, II, III and V, and separately \"MARPOL I, II, III, IV, V & VI\"; merged here" },
+      { "ab": "INTERVENTION", "title": "International Convention relating to Intervention on the High Seas in Cases of Oil Pollution Casualties", "year": "1969" },
+      { "ab": "INTERVENTION PROT", "title": "Protocol relating to Intervention on the High Seas in Cases of Pollution by Substances other than Oil", "year": "1973" },
+      { "ab": "LC", "title": "Convention on the Prevention of Marine Pollution by Dumping of Wastes and Other Matter", "year": "1972" },
+      { "ab": "AFS", "title": "International Convention on the Control of Harmful Anti-fouling Systems on Ships", "year": "2001" },
+      { "ab": "BWM", "title": "International Convention for the Control and Management of Ships' Ballast Water and Sediments", "year": "2004", "check": "the live page says \"Sediment Water\"" }
+    ] },
+    { "id": "liability", "name": "Liability & compensation", "d": "Who pays, and how much, when things go wrong.", "items": [
+      { "ab": "LLMC", "title": "Convention on Limitation of Liability for Maritime Claims", "year": "1976" },
+      { "ab": "PAL", "title": "Convention relating to the Carriage of Passengers and their Luggage by Sea, and its 1976 Protocol", "year": "1974" },
+      { "ab": "CLC PROT", "title": "1976 and 1992 Protocols to the International Convention on Civil Liability for Oil Pollution Damage", "year": "1976 · 1992" },
+      { "ab": "FUND PROT", "title": "1976 and 1992 Protocols to the International Convention on the Establishment of an International Fund for Compensation for Oil Pollution Damage", "year": "1976 · 1992" },
+      { "ab": "BUNKERS", "title": "International Convention on Civil Liability for Bunker Oil Pollution Damage", "year": "2001" }
+    ] },
+    { "id": "crew", "name": "Seafarers", "d": "Training, working conditions and welfare at sea.", "items": [
+      { "ab": "STCW", "title": "International Convention on Standards of Training, Certification and Watchkeeping for Seafarers, as amended", "year": "1978", "check": "the live page says \"as amended 1974\"" },
+      { "ab": "ILO 147", "title": "ILO Merchant Shipping (Minimum Standards) Convention, No. 147", "year": "1976" },
+      { "ab": "MLC", "title": "Maritime Labour Convention", "year": "2006" }
+    ] },
+    { "id": "general", "name": "IMO, trade & communications", "d": "The organisation itself, port formalities, tonnage, radio and health.", "items": [
+      { "ab": "IMO", "title": "Convention on the International Maritime Organization, and its amendments of 1991 and 1993", "year": "1948" },
+      { "ab": "FAL", "title": "Convention on Facilitation of International Maritime Traffic", "year": "1965" },
+      { "ab": "TONNAGE", "title": "International Convention on Tonnage Measurement of Ships", "year": "1969" },
+      { "ab": "ITU", "title": "Constitution and Convention of the International Telecommunication Union (Nice, 1989), and the Radio Regulations, 1990", "year": "1989" },
+      { "ab": "IHR", "title": "International Health Regulations (Geneva)", "year": "1969" }
+    ] }
+  ]
+}

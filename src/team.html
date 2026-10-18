@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our team - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* team page */
+.t-intro{padding-block:clamp(56px,7vw,96px) clamp(24px,3vw,40px)}
+.t-intro .lead{max-width:46em}
+/* team chips: filter the sections (gold when chosen, like the Recognised Organisations filter) */
+.tchips{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;margin-top:clamp(28px,3vw,40px);padding-block:12px;background:var(--abyss);border-block:1px solid var(--line)}
+.tchips .wrap{display:flex;gap:8px;flex-wrap:wrap}
+.tchips button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.tchips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.tchips button:hover{border-color:var(--teal)}
+.tchips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.tchips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.tsec{padding-block:clamp(48px,6vw,80px);border-top:1px solid var(--line)}
+.tsec:nth-of-type(even){background:var(--deep)}
+.tsec .head{margin-bottom:clamp(28px,3vw,40px)}
+.tsec .head .lead{max-width:46em;margin-top:16px}
+.tsec .count{font:500 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.crew{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center}
+.crew figure{margin:0;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;overflow:hidden}
+.crew figure img{width:100%;height:auto}
+.crew .txt p+p{margin-top:14px}
+.crew .txt p{color:var(--muted)}
+.crew .txt p:first-of-type{font-size:clamp(20px,1.7vw,24px);color:var(--text)}
+.crew .ctas{margin-top:28px}
+.js .tsec.off{display:none}
+@media (min-width:1241px){.tchips{top:calc(var(--bar-h) + 80px)} /* the header shrinks to 80px once scrolled on desktop */}
+@media (max-width:900px){.crew{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .tchips .wrap{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tchips .wrap::-webkit-scrollbar{display:none}
+  .tchips button{flex:none}
+}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="t-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/video/flag-poster.jpg" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/about-us/">About us</a></li><li aria-current="page">Our team</li></ol></nav>
+    <p class="tag port">{{team-count}} people · {{team-teams}} teams · one crew</p>
+    <h1 class="hull" id="t-h1">Our <span>team</span></h1>
+    <div class="foot">
+      <p class="lead">{{team-intro}}</p>
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#crew">The whole crew</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAM CHIPS (filter the sections below; without JavaScript every section shows) ================= -->
+<nav class="tchips" aria-label="Show a team">
+  <div class="wrap" role="group" aria-label="Show a team">
+{{team-chips}}
+  </div>
+</nav>
+
+<!-- ================= ONE SECTION PER TEAM (generated from src/data/team.json) ================= -->
+{{team-sections}}
+
+<!-- ================= THE WHOLE CREW ================= -->
+<section class="sec" id="crew" aria-labelledby="crew-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Everyone together</p><h2 class="hull h2" id="crew-h">The whole <span>crew</span></h2></div></div>
+    <div class="crew">
+      <figure class="rv"><img src="assets/img/team/whole-crew.webp" alt="The BMSR team: all fourteen members photographed in front of the Barbados flag, with their names and roles" width="1023" height="683" loading="lazy"></figure>
+      <div class="txt rv">
+{{team-crew}}
+        <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Get in touch <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/about-us/">About the BMSR</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- @d:tclose (Option D adds a closing band here; see src/option-d/) -->
+<!-- /@d:tclose -->
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// team chips: show one team, or all; the choice is kept in the address (#registry etc.) so it can be shared
+const chips = [...document.querySelectorAll('.tchips button')], secs = [...document.querySelectorAll('.tsec')];
+const showTeam = id => {
+  const t = secs.some(s => s.dataset.team === id) ? id : 'all';
+  chips.forEach(c => c.setAttribute('aria-pressed', c.dataset.team === t));
+  secs.forEach(s => s.classList.toggle('off', t !== 'all' && s.dataset.team !== t));
+  secs.forEach(s => s.querySelectorAll('.rv').forEach(el => el.classList.add('in')));
+  return t;
+};
+chips.forEach(c => c.addEventListener('click', () => {
+  const t = showTeam(c.dataset.team);
+  history.replaceState(null, '', t === 'all' ? location.pathname + location.search : '#' + t);
+  const first = secs.find(s => !s.classList.contains('off'));
+  if (first && first.getBoundingClientRect().top < 0) first.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+}));
+showTeam(location.hash.slice(1));
+</script>
+</body>
+</html>

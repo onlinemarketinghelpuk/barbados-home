@@ -1,0 +1,26 @@
+<!-- ================= DIRECTORY, Option D: a sticky side column (heading, search, filters, count) beside the tiles, like the particulars sheet ================= -->
+<section class="ro-dir d-dir" id="directory" aria-labelledby="dir-h">
+  <div class="wrap">
+    <div class="side">
+      <p class="tag t">The list</p>
+      <h2 class="hull h2" id="dir-h">All <span>{{ro-count}} organisations</span></h2>
+      <p class="lead">Every Recognised Organisation authorised by Barbados. Gold badges mark IACS members.</p>
+      <div class="ro-tools">
+        <label class="search"><span class="sr">Search organisations</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="ro-q" placeholder="Search by name" autocomplete="off"></label>
+        <div class="ro-filter" role="group" aria-label="Filter recognised organisations">
+          <button type="button" data-f="all" aria-pressed="true">All <i>{{ro-count}}</i></button>
+          <button type="button" data-f="iacs" aria-pressed="false">IACS members <i>{{ro-iacs}}</i></button>
+          <button type="button" data-f="other" aria-pressed="false">Other ROs <i>{{ro-other}}</i></button>
+        </div>
+      </div>
+      <p class="ro-count" id="ro-count" aria-live="polite">Showing <b>{{ro-count}}</b> organisations</p>
+    </div>
+    <div class="tiles">
+      <!-- TODO(client): confirm the list and IACS membership; the Croatian Register logo and the Normline website are needed -->
+      <ul class="ro-grid">
+{{ro-tiles}}
+      </ul>
+      <p class="ro-empty" id="ro-empty">No organisations match. Try another name, or <a href="mailto:ops@barbadosmaritime.com">ask the registry</a>.</p>
+    </div>
+  </div>
+</section>

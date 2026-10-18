@@ -1,0 +1,20 @@
+
+/* ================= Option D · Shipboard Documents, in the home page's style =================
+   The particulars sheet: the two ways to order become a sticky side column on the left (gold rules, no boxes),
+   and the record books a ruled register on the right (numbered rows, with a square swatch of the cover's colour). */
+.sbd .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.sbd .grid>aside{order:-1}
+.order{gap:0}
+.way,.way.on{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.way+.way{margin-top:24px}
+.books{display:block;margin-top:0;border-top:0;counter-reset:bk}
+.book{display:grid;grid-template-columns:48px 28px minmax(0,1fr);align-items:center;gap:4px 18px;min-height:0;padding:18px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;overflow:visible;counter-increment:bk}
+.book:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.book::before{content:counter(bk,decimal-leading-zero);position:static;width:auto;grid-row:1 / span 2;background:none;font:600 13px/1 var(--mono);letter-spacing:.06em;color:var(--teal)}
+.book::after{content:"";position:static;grid-row:1 / span 2;grid-column:2;width:28px;height:36px;border:1px solid color-mix(in srgb,#000 22%,transparent);background:var(--c)}
+.book .bk{display:none}
+.book b{grid-column:3;margin:0;padding:0;font-size:18px}
+.book span.s{grid-column:3;margin:0}
+@media (max-width:1100px){.sbd .grid{grid-template-columns:1fr}.sbd .grid>aside{order:0}.order{grid-template-columns:1fr 1fr;gap:0 32px}.way+.way{margin-top:0}}
+@media (max-width:760px){.order{grid-template-columns:1fr}.way+.way{margin-top:24px}}
+@media (max-width:520px){.book{grid-template-columns:28px minmax(0,1fr)}.book::before{display:none}.book::after{grid-column:1}.book b,.book span.s{grid-column:2}}

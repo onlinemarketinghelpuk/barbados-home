@@ -1,0 +1,13 @@
+
+/* ================= Option D · Useful Links, in the home page's style =================
+   Each organisation reads like the particulars sheet: a sticky side column (logo, name, description) and ruled service rows. */
+.ul-list{gap:clamp(40px,5vw,72px)}
+.ul-g{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start;border:0;border-radius:0;background:none;overflow:visible}
+.ul-g>*{min-width:0}
+.ul-side{position:sticky;top:calc(var(--bar-h) + 80px + 24px);display:block;padding:22px 0 0;border:0;border-top:2px solid var(--gold)}
+.ul-logo{width:180px;height:88px;margin-bottom:20px}
+.ul-side h2{margin-bottom:12px}
+.ul-rows{border-top:1px solid var(--line)}
+.ul-rows li{grid-template-columns:1fr;gap:12px;padding:20px 0;border-top:0;border-bottom:1px solid var(--line)}
+.lks{justify-content:flex-start}
+@media (max-width:1100px){.ul-g{grid-template-columns:1fr}.ul-side{position:static}}

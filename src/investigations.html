@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investigations - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= investigations: report an accident now (deadlines), what & who must report, the three sections, purpose ================= */
+.report{padding-block:clamp(48px,6vw,88px)}
+.rnow{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,64px);align-items:start;padding:clamp(24px,3vw,44px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(115deg,color-mix(in srgb,var(--gold) 14%,var(--deep)),var(--deep) 70%)}
+.rnow>*{min-width:0}
+.rnow .tag{color:var(--teal)}
+.rnow h2{margin:10px 0 14px;font-size:clamp(32px,3.2vw,50px)}
+.rnow h2 span{color:var(--mint)}
+.rnow .lead{margin-bottom:22px}
+.how{display:grid;gap:10px}
+.how a{display:flex;align-items:center;gap:14px;min-height:56px;padding:0 18px;border:1px solid var(--line);border-radius:2px;background:var(--card);font-weight:700;transition:border-color .2s}
+.how a:hover{border-color:var(--teal)}
+.how a.primary{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.how svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.how a:not(.primary) svg{color:var(--teal)}
+.how small{margin-left:auto;font:600 11.5px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;opacity:.75;text-align:right}
+.dl{position:relative;display:grid;gap:0;margin:0;padding:0;list-style:none}
+.dl li{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.dl li:first-child{padding-top:0}
+.dl .t{display:grid;place-items:center;align-self:start;height:64px;border:1px solid var(--line);border-radius:2px;background:var(--card);text-align:center}
+.dl .t b{display:block;font-size:30px;line-height:1}
+.dl .t small{display:block;font:600 10.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.dl li.urgent .t{border-color:var(--gold);background:var(--gold)}
+.dl li.urgent .t b,.dl li.urgent .t small{color:var(--ink)}
+.dl h3{margin-bottom:6px;font-size:clamp(20px,1.7vw,24px)}
+.dl p{color:var(--muted);font-size:15.5px}
+.who{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.who .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.who .grid>*{min-width:0}
+.who .side .lead{margin-top:18px}
+.who .sheet dl{grid-template-columns:1fr}
+.who .sheet dl div{grid-template-columns:170px minmax(0,1fr)}
+.isec{padding-block:clamp(56px,7vw,104px)}
+.isec ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.isec a{display:flex;flex-direction:column;height:100%;overflow:hidden;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.isec a:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.isec figure{position:relative;margin:0;aspect-ratio:16/9;background:var(--hull)}
+.isec figure img{width:100%;height:100%;object-fit:cover}
+.isec figure b{position:absolute;inset:0;display:grid;place-items:center;font-size:clamp(46px,4.4vw,68px);color:var(--teal)}
+.isec .b{display:flex;flex-direction:column;gap:10px;flex:1;padding:24px 26px 26px}
+.isec .tag{color:var(--teal)}
+.isec h3{font-size:clamp(22px,1.9vw,28px)}
+.isec p{flex:1;color:var(--muted);font-size:15.5px}
+.purpose{padding-block:0 clamp(64px,8vw,112px)}
+.purpose blockquote{margin:0;padding:clamp(24px,3vw,40px);border-left:3px solid var(--gold);background:var(--card);font-size:clamp(20px,1.9vw,28px);line-height:1.45}
+.purpose blockquote span{color:var(--mint)}
+@media (max-width:1100px){.rnow,.who .grid{grid-template-columns:1fr}.isec ul{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.isec ul{grid-template-columns:1fr}.who .sheet dl div{grid-template-columns:1fr;gap:4px}}
+@media (max-width:520px){.dl li{grid-template-columns:72px minmax(0,1fr);gap:12px}.how a{gap:10px;padding:0 14px;font-size:14.5px}.how small{display:none}}
+@media (max-width:420px){.ph .ctas .btn{white-space:normal;text-align:center;line-height:1.25;padding-block:10px}.rnow{padding-inline:16px}.how a{gap:8px;padding:0 10px;font-size:13px;letter-spacing:-.01em}.how svg{width:16px;height:16px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="v-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Rodopi-Vessel-Photo-min-scaled.jpg" style="object-position:59% 43%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Investigations</li></ol></nav>
+    <p class="tag port">Barbados Shipping Act · IMO Casualty Investigation Code</p>
+    <h1 class="hull" id="v-h1">Marine accidents <span>&amp; investigations</span></h1>
+    <div class="foot">
+      <p class="lead">How to report a marine accident or incident to the BMSR, and our marine safety investigation reports.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#report">Report an accident <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#sections">Investigation reports</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REPORT AN ACCIDENT (deadlines and how to report) ================= -->
+<!-- TODO(client): link the online report form and Form 45 -->
+<section class="report" id="report" aria-labelledby="rp-h">
+  <div class="wrap">
+    <div class="rnow rv">
+      <div>
+        <p class="tag">Report an accident</p>
+        <h2 class="hull" id="rp-h">Report within <span>4 hours</span></h2>
+        <p class="lead">Send an initial report to the BMSR within 4 hours of the occurrence, by telephone, email or the online form.</p>
+        <div class="how">
+          <a class="primary" href="tel:+447494116754"><svg aria-hidden="true"><use href="#phone"/></svg>+44 (0)7494 116754<small>24/7 line</small></a>
+          <a href="mailto:accidents@barbadosmaritime.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>accidents@barbadosmaritime.com<small>Email</small></a>
+          <a href="https://barbadosmaritime.com/investigations/marine-accident-reporting/"><svg aria-hidden="true"><use href="#i-form"/></svg>Online report form<small>Online</small></a>
+        </div>
+      </div>
+      <ol class="dl" aria-label="Reporting deadlines">
+        <li><span class="t"><span><b class="hull">0</b><small>The event</small></span></span><div><h3 class="hull">The accident happens</h3><p>Any accident causing loss of life or serious injury, or material damage to the vessel that may affect its seaworthiness.</p></div></li>
+        <li class="urgent"><span class="t"><span><b class="hull">4h</b><small>Deadline</small></span></span><div><h3 class="hull">Initial report</h3><p>The owner, operator or master sends an initial report to the BMSR by telephone, email or the online form.</p></div></li>
+        <li class="urgent"><span class="t"><span><b class="hull">24h</b><small>Deadline</small></span></span><div><h3 class="hull">Form 45</h3><p>Further details are provided on Form 45 within 24 hours of the occurrence.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO MUST REPORT WHAT ================= -->
+<section class="who" aria-labelledby="wh-h">
+  <div class="wrap grid">
+    <div class="side rv">
+      <p class="tag t">The reporting duty</p>
+      <h2 class="hull h2" id="wh-h" style="margin-top:14px">Who must <span>report</span></h2>
+      <p class="lead">Under the Barbados Shipping Act and the IMO Casualty Investigation Code.</p>
+    </div>
+    <div class="sheet rv">
+      <div class="cap"><span class="tag t">Accident reporting</span><span class="tag">Barbadian vessels</span></div>
+      <dl>
+        <div><dt>Who reports</dt><dd>The owner or operator, or the master of the vessel</dd></div>
+        <div><dt>Loss of life</dt><dd>Any accident resulting in loss of life</dd></div>
+        <div><dt>Serious injury</dt><dd>Any accident resulting in serious injury to any person</dd></div>
+        <div><dt>Material damage</dt><dd>Any material damage to the vessel that may affect its seaworthiness</dd></div>
+        <div><dt>Initial report</dt><dd>Within 4 hours, by telephone, email or the online form</dd></div>
+        <div><dt>Full details</dt><dd>On Form 45, within 24 hours</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE THREE SECTIONS ================= -->
+<!-- TODO(client): confirm the addresses of the three investigation pages -->
+<section class="isec" id="sections" aria-labelledby="se-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Investigations</p><h2 class="hull h2" id="se-h">Reporting <span>&amp; reports</span></h2></div></div>
+    <ul>
+      <li class="rv"><a href="https://barbadosmaritime.com/investigations/marine-accident-reporting/"><figure><img src="assets/img/3.jpg" alt="" loading="lazy"></figure><span class="b"><span class="tag">Report</span><h3 class="hull">Marine accident reporting</h3><p>How and when to report an accident or incident, and the forms to use.</p><span class="go">Report an accident <svg class="ar"><use href="#ar"/></svg></span></span></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/investigations/marine-safety-investigation-reports/"><figure><img src="assets/img/BMSR-5.jpg" alt="" loading="lazy"></figure><span class="b"><span class="tag">Published</span><h3 class="hull">Marine safety investigation reports</h3><p>Our completed investigation reports, sharing the lessons learnt.</p><span class="go">Read the reports <svg class="ar"><use href="#ar"/></svg></span></span></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/investigations/ongoing-msi/"><figure><img src="assets/img/1.jpg" alt="" loading="lazy"></figure><span class="b"><span class="tag">In progress</span><h3 class="hull">Ongoing investigations</h3><p>Marine safety investigations (MSI) that are currently under way.</p><span class="go">See ongoing MSI <svg class="ar"><use href="#ar"/></svg></span></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= PURPOSE ================= -->
+<section class="purpose" aria-label="Why we investigate">
+  <div class="wrap">
+    <blockquote class="rv">The purpose of our accident and incident investigation reports is to <span>enhance safety at sea</span> by sharing the lessons learnt, and making recommendations to prevent a recurrence.</blockquote>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seafarers - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= seafarers: the two main tasks, why crew under Barbados, the STCW team, related links ================= */
+.tasks{padding-block:clamp(56px,7vw,104px)}
+.tasks .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.task{position:relative;display:flex;flex-direction:column;gap:14px;height:100%;padding:clamp(26px,3vw,40px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.task:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.task .ico{display:grid;place-items:center;width:58px;height:58px;border-radius:2px;background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--teal)}
+.task .ico svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.task .tag{color:var(--teal)}
+.task h2{font-size:clamp(28px,2.6vw,40px)}
+.task p{color:var(--muted)}
+.task ul{display:grid;gap:8px;margin-top:4px}
+.task li{position:relative;padding-left:26px;font-size:15.5px}
+.task li::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2303141F' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4L18 8'/%3E%3C/svg%3E") center/10px no-repeat}
+.task .btn{align-self:flex-start;margin-top:auto}
+.why{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.why .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.why .grid>*{min-width:0}
+.why .side .lead{margin-top:18px}
+.why .sheet dl{grid-template-columns:1fr}
+.why .sheet dl div{grid-template-columns:170px minmax(0,1fr)}
+.crew-t{padding-block:clamp(56px,7vw,104px)}
+.crew-t .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:center}
+.crew-t .grid>*{min-width:0}
+.crew-t .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.reach{display:grid;gap:10px;margin-top:24px}
+.reach a{display:flex;align-items:center;gap:12px;min-height:52px;padding:0 18px;border:1px solid var(--line);border-radius:2px;background:var(--card);font-weight:700;transition:border-color .2s}
+.reach a:hover{border-color:var(--teal)}
+.reach svg{width:18px;height:18px;color:var(--teal);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.reach small{margin-left:auto;font:500 11.5px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rel{padding-block:0 clamp(64px,8vw,112px)}
+.rel ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rel a{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.rel a:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.rel .tag{color:var(--teal)}
+.rel b{font-size:clamp(22px,1.9vw,28px)}
+.rel span.d{color:var(--muted);font-size:15.5px}
+.rel .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
+@media (max-width:1100px){.why .grid,.crew-t .grid{grid-template-columns:1fr}.rel ul{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.reach a{flex-wrap:wrap;gap:4px 12px;padding-block:10px;overflow-wrap:anywhere}.reach small{margin-left:30px;width:100%}}
+@media (max-width:420px){.ph .ctas .btn{white-space:normal;text-align:center;line-height:1.25;padding-block:10px}}
+@media (max-width:760px){.tasks .grid,.rel ul{grid-template-columns:1fr}.why .sheet dl div{grid-template-columns:1fr;gap:4px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5V5.5M8 7h8M8 11h6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.2 7.5 9.5 4.4-1.3 7.5-4.9 7.5-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="s-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-3.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Seafarers</li></ol></nav>
+    <p class="tag port">STCW endorsements · discharge books · document checks</p>
+    <h1 class="hull" id="s-h1">Seafarers <span>&amp; manning</span></h1>
+    <div class="foot">
+      <p class="lead">Find all seafarers' information right here: how to apply for endorsements and discharge books, and how to check the validity of documents issued to seafarers by the BMSR.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#apply">Apply for an endorsement <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#check">Check a document</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE TWO MAIN TASKS ================= -->
+<!-- TODO(client): confirm the addresses of the endorsement application and the document validity check pages -->
+<section class="tasks" aria-label="Seafarer services">
+  <div class="wrap grid">
+    <a class="task rv" id="apply" href="https://barbadosmaritime.com/seafarers-manning/endorsement-and-discharge-book/">
+      <span class="ico" aria-hidden="true"><svg><use href="#i-book"/></svg></span>
+      <span class="tag">For seafarers &amp; employers</span>
+      <h2 class="hull">Endorsements &amp; discharge books</h2>
+      <p>Apply for a Barbados endorsement of a seafarer's certificate, and for a seafarer's discharge book for service on Barbadian vessels.</p>
+      <ul><li>Endorsements under the STCW Convention</li><li>Discharge books for seafarers employed on Barbadian vessels</li><li>Handled by our STCW team</li></ul>
+      <span class="btn btn-gold">How to apply <svg class="ar"><use href="#ar"/></svg></span>
+    </a>
+    <a class="task rv" id="check" href="https://barbadosmaritime.com/seafarers-manning/document-validity-check/">
+      <span class="ico" aria-hidden="true"><svg><use href="#i-shield"/></svg></span>
+      <span class="tag">For port State control, owners &amp; employers</span>
+      <h2 class="hull">Document validity check</h2>
+      <p>Check that a document issued to a seafarer by the BMSR is genuine and valid.</p>
+      <ul><li>Verify endorsements and discharge books</li><li>For port State control officers, ship owners and employers</li><li>Questions? Email the STCW team</li></ul>
+      <span class="btn btn-gold">Check a document <svg class="ar"><use href="#ar"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= WHY CREW UNDER BARBADOS ================= -->
+<section class="why" aria-labelledby="wy-h">
+  <div class="wrap grid">
+    <div class="side rv">
+      <p class="tag t">Manning Barbadian ships</p>
+      <h2 class="hull h2" id="wy-h" style="margin-top:14px">Flexible <span>crewing</span></h2>
+      <p class="lead">Owners and managers can crew Barbadian ships with the seafarers they need, whenever they need them.</p>
+    </div>
+    <div class="sheet rv">
+      <div class="cap"><span class="tag t">Flag: Barbados</span><span class="tag">Seafarers</span></div>
+      <dl>
+        <div><dt>Crew nationality</dt><dd>No limitation on crew nationality</dd></div>
+        <div><dt>Signing on</dt><dd>Immediate CRA: sign on any seafarer, any time and day</dd></div>
+        <div><dt>Certification</dt><dd>Seafarer endorsements under the STCW Convention</dd></div>
+        <div><dt>Discharge books</dt><dd>Issued for seafarers employed on Barbadian vessels</dd></div>
+        <div><dt>Labour standards</dt><dd>Barbados applies the Maritime Labour Convention, 2006 (MLC)</dd></div>
+        <div><dt>Support</dt><dd>A 24/7 emergency service, 365 days a year</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE STCW TEAM (cards from src/data/team.json) ================= -->
+<section class="crew-t" aria-labelledby="ct-h">
+  <div class="wrap grid">
+    <div class="rv">
+      <p class="tag t">Your STCW team</p>
+      <h2 class="hull h2" id="ct-h" style="margin-top:14px">Talk to <span>the experts</span></h2>
+      <p class="lead" style="margin-top:18px">Meet Elvis and Jay, our training and certification pros. They're the go-to people for all things STCW, making sure seafarers are qualified, confident and ready to sail.</p>
+      <div class="reach">
+        <a href="mailto:stcw@barbadosmaritime.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>stcw@barbadosmaritime.com<small>Endorsements</small></a>
+        <a href="tel:+442076365739"><svg aria-hidden="true"><use href="#phone"/></svg>+44 (0)207 636 5739<small>Office · Mon–Fri</small></a>
+      </div>
+    </div>
+    <ul class="tgrid">
+{{team-of:stcw}}
+    </ul>
+  </div>
+</section>
+
+<!-- ================= RELATED ================= -->
+<section class="rel" aria-labelledby="rl-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Related</p><h2 class="hull h2" id="rl-h">More for <span>seafarers</span></h2></div></div>
+    <ul>
+      <li class="rv"><a href="https://barbadosmaritime.com/useful-links/"><span class="tag">ILO</span><b class="hull">Maritime Labour Convention</b><span class="d">Seafarers' rights to decent working and living conditions, and ILO contacts.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/documents/forms/"><span class="tag">Paperwork</span><b class="hull">Forms &amp; checklists</b><span class="d">Application forms, samples of completed forms and checklists.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/documents/bulletins/"><span class="tag">Guidance</span><b class="hull">Bulletins</b><span class="d">Notices and guidance for Barbadian ships and their crews.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

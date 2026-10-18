@@ -1,0 +1,11 @@
+
+/* ================= Option D · Public Holidays, in the home page's style: the next-closure card becomes a sticky side column ================= */
+.hol .next{position:sticky;top:calc(var(--bar-h) + 80px + 24px);padding:22px 0 0;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.hol .next .sos{border-top-color:var(--line)}
+.hrow{grid-template-columns:150px minmax(0,1fr) auto}
+.hrow .cal{width:auto;height:auto;place-items:start;padding:0;border:0;background:none;text-align:left}
+.hrow .cal b{font-size:32px}
+.hrow.is-next .cal{background:none}
+.hrow.is-next .cal b,.hrow.is-next .cal small{color:var(--teal)}
+@media (max-width:1100px){.hol .next{position:static}}
+@media (max-width:520px){.hrow{grid-template-columns:80px minmax(0,1fr)}}

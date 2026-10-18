@@ -1,0 +1,16 @@
+
+/* ================= Option D · Quality Assurance, in the home page's style =================
+   The policy's "On this page" becomes a sticky side column (like the particulars sheet); commitments become ruled rows. */
+.pol .layout{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.pol .layout>*{min-width:0}
+.toc{position:sticky;top:calc(var(--bar-h) + 80px + 24px);flex-direction:column;align-items:stretch;gap:0;padding-top:20px;border-top:2px solid var(--gold)}
+.toc p{margin:0 0 12px}
+.toc a{justify-content:space-between;min-height:48px;padding:0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.toc a::after{content:"→";color:var(--teal)}
+.part-q:first-child{padding-top:0;border-top:0}
+.cards4{grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+.cards4 li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:18px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.cards4 b{margin:0;font:500 12.5px/1.6 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.ticks{grid-template-columns:1fr}
+@media (max-width:1100px){.pol .layout{grid-template-columns:1fr}.toc{position:static}}
+@media (max-width:640px){.cards4 li{grid-template-columns:1fr;gap:6px}}

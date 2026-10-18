@@ -1,0 +1,52 @@
+{
+  "_note": "From a screenshot of barbadosmaritime.com/bmsr-events/ (docs/bmsr-events.png). The live page's videos and galleries didn't load in the screenshot; add each event's photos to \"photos\" and a video file to \"video\". Newest first.",
+  "events": [
+    {
+      "id": "posidonia-2026",
+      "title": "Posidonia 2026",
+      "kind": "Exhibition",
+      "place": "Athens, Greece",
+      "date": "2026-06",
+      "dateText": "June 2026",
+      "photos": [
+        "Posidonia-BMSR-840x400-840x620.png"
+      ],
+      "photoDir": "img",
+      "body": [
+        "What an incredible week at Posidonia 2026. We had an amazing time meeting friends, clients, partners and maritime professionals from around the world.",
+        "Events like Posidonia remind us of the strength of our industry and the value of personal connections. Thank you to everyone who met with the Barbados Maritime Ship Registry team. We truly enjoyed the conversations, and look forward to working together in the future."
+      ],
+      "link": "https://barbadosmaritime.com/bmsr-posidonia-2026-thank-you-to-everyone-we-met/"
+    },
+    {
+      "id": "dubai",
+      "title": "Dubai Shipowners' Event",
+      "kind": "Presentation",
+      "place": "Dubai, UAE",
+      "date": "",
+      "dateText": "",
+      "photos": [],
+      "check": "date needed; photos and video didn't load in the screenshot. Team page lists the Technical Manager as \"Makis Kypriotis\"; this page says \"Gerasimos Kypriotis\" (confirm the preferred name).",
+      "body": [
+        "We're excited to share a glimpse of our recent gathering in Dubai, where our CEO & Principal Registrar Giovanni Ciniglio and Technical Manager Gerasimos Kypriotis introduced the Barbados Maritime Ship Registry (BMSR) to an audience of esteemed shipowners and maritime professionals."
+      ]
+    },
+    {
+      "id": "athens-gathering",
+      "title": "Athens Shipowners Gathering",
+      "kind": "Evening reception",
+      "place": "Piraeus Marine Club, Greece",
+      "date": "2025-05-15",
+      "dateText": "Thursday 15 May 2025",
+      "photos": [
+        "athens.webp"
+      ],
+      "photoDir": "img/events",
+      "check": "year inferred: 15 May was a Thursday in 2025; confirm",
+      "body": [
+        "Highlights from our recent Athens Shipowners Gathering evening on Thursday 15 May.",
+        "We're delighted to share a glimpse into our recent event at the iconic Piraeus Marine Club, where we had the privilege of hosting distinguished shipowners and maritime professionals from across the region."
+      ]
+    }
+  ]
+}

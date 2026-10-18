@@ -1,0 +1,31 @@
+{
+  "intro": "At BMSR, we believe in smooth sailing, both at sea and in service. Behind every successful voyage is a passionate, hard-working crew, and we're proud to introduce the people who keep our ship steady and our standards high.",
+  "teams": [
+    { "id": "leadership", "name": "Leadership", "intro": "The leadership team are Chairman The Honourable George Nelson McDonald Fergusson, OR, Director Simon, Director Kent and Company Secretary Amanda, with day-to-day operations led by Chief Executive Officer and Principal Registrar Giovanni Ciniglio, with a clear vision dedicated to steering Barbados Maritime towards continued growth and excellence, supported by the BMSR team with integrity and dedication." },
+    { "id": "operations", "name": "Operations", "intro": "Say hello to Makis and Captain Jithesh, our operations dream team. Whether it's managing logistics or navigating the seas, they keep everything shipshape with precision and a smile." },
+    { "id": "registry", "name": "Registry", "intro": "Vidhi, Andrea, Charlotte and Marion are the friendly faces behind our Registry team. Organised, dedicated and always ready to help, you can count on them to keep things running seamlessly." },
+    { "id": "stcw", "name": "STCW", "intro": "Meet Elvis and Jay, our training and certification pros. They're the go-to people for all things STCW, making sure seafarers are qualified, confident and ready to sail." },
+    { "id": "office", "name": "Office", "intro": "The heart of our headquarters beats strong with our Office Manager Gedd, who brings a sense of calm, order and humour to the daily flow of office life." }
+  ],
+  "people": [
+    { "team": "leadership", "role": "Chairman", "name": "The Honourable George Nelson McDonald Fergusson, OR", "photo": "george-fergusson.webp" },
+    { "team": "leadership", "role": "Director", "name": "Simon Fergusson", "photo": "simon-fergusson.webp" },
+    { "team": "leadership", "role": "Director", "name": "Kent Fergusson", "photo": "kent-fergusson.webp" },
+    { "team": "leadership", "role": "Company Secretary", "name": "Amanda Fergusson", "photo": "amanda-fergusson.webp" },
+    { "team": "leadership", "role": "CEO / Principal Registrar", "name": "Giovanni Ciniglio, CEng MRINA", "photo": "giovanni-ciniglio.webp" },
+    { "team": "operations", "role": "Technical Manager", "name": "Makis Kypriotis", "photo": "makis-kypriotis.webp" },
+    { "team": "operations", "role": "Lead Technical Officer", "name": "Captain Jithesh Cyriac", "photo": "jithesh-cyriac.webp" },
+    { "team": "registry", "role": "Registrar", "name": "Vidhi Shah", "photo": "vidhi-shah.webp" },
+    { "team": "registry", "role": "Registrar", "name": "Andrea Blake", "photo": "andrea-blake.webp" },
+    { "team": "registry", "role": "Registrar", "name": "Charlotte Kurner", "photo": "charlotte-kurner.webp" },
+    { "team": "registry", "role": "Registrar (Consultant)", "name": "Marion Charlesworth", "photo": "marion-charlesworth.webp" },
+    { "team": "stcw", "role": "Crewing Officer", "name": "Elvis Holder", "photo": "elvis-holder.webp" },
+    { "team": "stcw", "role": "Crewing Officer Assistant", "name": "Jay Shah", "photo": "jay-shah.webp" },
+    { "team": "office", "role": "Marketing & Office Manager", "name": "Gedd Bostock", "photo": "gedd-bostock.webp" }
+  ],
+  "crew": [
+    "And of course, behind every great team is… the whole team!",
+    "From Chairman The Honourable George Nelson McDonald Fergusson, OR, Kent, Simon and Amanda to Giovanni, Makis, Captain Jithesh, Vidhi, Andrea, Charlotte, Marion, Elvis, Jay and Gedd, each one plays a vital role in making Barbados Maritime what it is today: trusted, professional and always ready to go the extra nautical mile.",
+    "Along with our BMSR Regional Registrars, ANI inspectors, Barbadian shipowners, managers, seafarers, suppliers and supporters."
+  ]
+}

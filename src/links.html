@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Useful Links - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= useful links: one card per organisation, a row per service with website / email / phone actions ================= */
+.ul-wrap{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.ul-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:clamp(24px,3vw,36px)}
+.ul-chips button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer}
+.ul-chips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.ul-chips button:hover{border-color:var(--teal)}
+.ul-chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.ul-chips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.ul-list{display:grid;gap:18px}
+.ul-g{border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);overflow:hidden}
+.js .ul-g.off{display:none}
+.ul-side{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 24px;align-items:center;padding:26px 28px;border-bottom:1px solid var(--line)}
+.ul-logo{grid-row:1 / span 2;display:grid;place-items:center;width:170px;height:84px;padding:12px;border-radius:2px;background:#fff}
+.ul-logo img{max-width:100%;max-height:60px;width:auto;height:auto}
+.ul-logo svg{height:52px;width:auto;aspect-ratio:3/2;border-radius:2px}
+.ul-side h2{font-size:clamp(26px,2.2vw,34px)}
+.ul-side p{max-width:78ch;color:var(--muted);font-size:15.5px}
+.ul-rows li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:14px 32px;align-items:center;padding:20px 28px;border-top:1px solid var(--line)}
+.ul-rows li:first-child{border-top:0}
+.ul-rows b{display:block;margin-bottom:4px;font-size:17px;font-weight:700}
+.ul-rows p{max-width:70ch;color:var(--muted);font-size:15px}
+.lks{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.lk{display:inline-flex;align-items:center;gap:9px;min-height:42px;padding:0 14px;border:1px solid color-mix(in srgb,var(--text) 22%,transparent);border-radius:2px;font-weight:600;font-size:14.5px;white-space:nowrap;transition:border-color .2s,color .2s}
+.lk svg{width:16px;height:16px;flex:none;color:var(--teal);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lk:hover{border-color:var(--teal);color:var(--teal)}
+.lk-mail{display:inline-flex;gap:4px}
+.copy{display:inline-grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:2px;background:none;color:var(--muted);cursor:pointer}
+.copy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+.copy:hover{color:var(--text);border-color:var(--teal)}
+.copy.done{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+@media (max-width:900px){.ul-rows li{grid-template-columns:1fr}.lks{justify-content:flex-start}}
+@media (max-width:640px){.ul-side{grid-template-columns:1fr;padding:22px 20px}.ul-logo{grid-row:auto;width:150px;height:72px}.ul-rows li{padding:18px 20px}.lk{white-space:normal;overflow-wrap:anywhere}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="ul-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-2.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">Useful Links</li></ol></nav>
+    <p class="tag port">{{ul-orgs}} organisations · {{ul-count}} services</p>
+    <h1 class="hull" id="ul-h1">Useful <span>Links</span></h1>
+    <div class="foot">
+      <p class="lead">Organisations and authorities that ship owners, managers and seafarers often need, with direct website, email and phone links.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#links">See the links <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/contact-us/">Contact the BMSR</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LINKS (generated from src/data/useful-links.json) ================= -->
+<!-- TODO(client): confirm the links marked data-confirm (the ILO "Email" links and the IMO web account registration link) -->
+<!-- @d:ullist (Option D swaps this block; see src/option-d/) -->
+<section class="ul-wrap" id="links" aria-label="Useful links">
+  <div class="wrap">
+    <div class="ul-chips" role="group" aria-label="Filter by organisation">
+{{ul-chips}}
+    </div>
+    <div class="ul-list">
+{{ul-groups}}
+    </div>
+  </div>
+  <p class="sr" aria-live="polite" id="copy-live"></p>
+</section>
+<!-- /@d:ullist -->
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// filter by organisation group
+const chips = [...document.querySelectorAll('.ul-chips button')], groups = [...document.querySelectorAll('.ul-g')];
+chips.forEach(c => c.addEventListener('click', () => {
+  chips.forEach(x => x.setAttribute('aria-pressed', x === c));
+  groups.forEach(g => { g.classList.toggle('off', c.dataset.f !== 'all' && g.dataset.filter !== c.dataset.f); g.classList.add('in'); });
+}));
+// copy buttons
+const live = document.getElementById('copy-live');
+document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+  const text = b.dataset.copy;
+  try { await navigator.clipboard.writeText(text); } catch (e) {}
+  b.classList.add('done'); b.querySelector('use').setAttribute('href', '#i-check'); live.textContent = text + ' copied';
+  clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('done'); b.querySelector('use').setAttribute('href', '#i-copy'); }, 2000);
+}));
+</script>
+</body>
+</html>

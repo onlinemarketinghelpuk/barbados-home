@@ -75,6 +75,11 @@ dd{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:50px;padding:0 22px;border:1px solid transparent;border-radius:2px;font:700 15px/1 var(--sans);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;transition:background .25s,border-color .25s}
 .btn:hover .ar{transform:translateX(4px)}
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.pages{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:-4px;font:500 12.5px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.pages span:first-child{color:var(--muted)}
+.pages a{color:var(--gold);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--gold) 40%,transparent);text-underline-offset:4px}
+.pages a:hover{text-decoration-color:var(--gold)}
+.pages-all{margin-top:-6px;color:var(--muted);font-size:14px}
 .btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#F3D57F}
 .btn-line{border-color:rgba(233,241,243,.35)}.btn-line:hover{border-color:var(--text);background:rgba(233,241,243,.06)}
 
@@ -82,10 +87,10 @@ dd{margin:0}
 .shared{padding-block:clamp(64px,7vw,104px);background:var(--deep);border-top:1px solid var(--line)}
 .shared h2{margin:16px 0 40px;font-size:clamp(38px,4.4vw,64px)}
 .shared h2 span{color:var(--gold)}
-.list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
 .list li{padding:26px 24px 30px 0;border-bottom:1px solid var(--line)}
 .list li+li{padding-left:24px;border-left:1px solid var(--line)}
-.list li:nth-child(4n+1){padding-left:0;border-left:0}
+.list li:nth-child(3n+1){padding-left:0;border-left:0}
 .list b{display:block;margin-bottom:8px;font-size:17px;font-weight:700}
 .list p{font-size:15.5px;color:var(--muted)}
 .asks{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px 64px;margin-top:clamp(56px,6vw,88px)}
@@ -101,7 +106,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
   .opts{grid-template-columns:1fr;max-width:760px}
   .opt.wide{grid-template-columns:1fr}
   .list{grid-template-columns:1fr 1fr}
-  .list li:nth-child(4n+1){padding-left:24px;border-left:1px solid var(--line)}
+  .list li:nth-child(3n+1){padding-left:24px;border-left:1px solid var(--line)}
   .list li:nth-child(odd){padding-left:0;border-left:0}
   .asks{grid-template-columns:1fr}
 }
@@ -143,6 +148,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <dl><dt>Font</dt><dd>Archivo (current), opened up from condensed</dd><dt>Weights</dt><dd>Light 300 lead-in, heavy 900 key phrase</dd><dt>Case</dt><dd>Capitals</dd></dl>
         <p class="note">Closest to the version you liked. The weight contrast makes the key phrase stand out, and the wider letters are easier to read.</p>
         <div class="links"><a class="btn btn-gold" href="option-a/index.html" target="_blank" rel="noopener">View option A <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-a/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a></div>
+        <p class="pages"><span>Also see</span><a href="option-a/the-bmsr/index.html" target="_blank" rel="noopener">The BMSR<span class="sr"> (opens in a new tab)</span></a><a href="option-a/registration/index.html" target="_blank" rel="noopener">Registration<span class="sr"> (opens in a new tab)</span></a><a href="option-a/seafarers/index.html" target="_blank" rel="noopener">Seafarers<span class="sr"> (opens in a new tab)</span></a><a href="option-a/documents/index.html" target="_blank" rel="noopener">Documents<span class="sr"> (opens in a new tab)</span></a><a href="option-a/contact/index.html" target="_blank" rel="noopener">Contact<span class="sr"> (opens in a new tab)</span></a></p>
+        <p class="pages-all">All 20 inner pages are in this option's menu.</p>
       </div>
     </article>
     <article class="opt">
@@ -153,6 +160,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <dl><dt>Font</dt><dd>Nunito, a rounded sans, used throughout the page</dd><dt>Weights</dt><dd>Heavy 800, key phrase 900</dd><dt>Case</dt><dd>Sentence case, headings included</dd></dl>
         <p class="note">The rounded style you asked to try, carried through every heading, button and label for a softer, more modern feel. The heavy weight keeps it confident and professional.</p>
         <div class="links"><a class="btn btn-gold" href="option-b/index.html" target="_blank" rel="noopener">View option B <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-b/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a></div>
+        <p class="pages"><span>Also see</span><a href="option-b/the-bmsr/index.html" target="_blank" rel="noopener">The BMSR<span class="sr"> (opens in a new tab)</span></a><a href="option-b/registration/index.html" target="_blank" rel="noopener">Registration<span class="sr"> (opens in a new tab)</span></a><a href="option-b/seafarers/index.html" target="_blank" rel="noopener">Seafarers<span class="sr"> (opens in a new tab)</span></a><a href="option-b/documents/index.html" target="_blank" rel="noopener">Documents<span class="sr"> (opens in a new tab)</span></a><a href="option-b/contact/index.html" target="_blank" rel="noopener">Contact<span class="sr"> (opens in a new tab)</span></a></p>
+        <p class="pages-all">All 20 inner pages are in this option's menu.</p>
       </div>
     </article>
     <article class="opt">
@@ -163,6 +172,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <dl><dt>Font</dt><dd>Plus Jakarta Sans, used throughout the page</dd><dt>Weights</dt><dd>Bold 700 statement, light 300 key phrase, in every heading</dd><dt>Case</dt><dd>Sentence case, headings included</dd></dl>
         <p class="note">Calm and corporate, across the whole page. Every heading pairs a bold statement with an elegant light phrase in gold, the reverse of Option A's contrast.</p>
         <div class="links"><a class="btn btn-gold" href="option-c/index.html" target="_blank" rel="noopener">View option C <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-c/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a></div>
+        <p class="pages"><span>Also see</span><a href="option-c/the-bmsr/index.html" target="_blank" rel="noopener">The BMSR<span class="sr"> (opens in a new tab)</span></a><a href="option-c/registration/index.html" target="_blank" rel="noopener">Registration<span class="sr"> (opens in a new tab)</span></a><a href="option-c/seafarers/index.html" target="_blank" rel="noopener">Seafarers<span class="sr"> (opens in a new tab)</span></a><a href="option-c/documents/index.html" target="_blank" rel="noopener">Documents<span class="sr"> (opens in a new tab)</span></a><a href="option-c/contact/index.html" target="_blank" rel="noopener">Contact<span class="sr"> (opens in a new tab)</span></a></p>
+        <p class="pages-all">All 20 inner pages are in this option's menu.</p>
       </div>
     </article>
     <article class="opt wide">
@@ -179,6 +190,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <li><b>A faster page:</b> 5 distinct banner slides (was 12) and much lighter images.</li>
         </ul>
         <div class="links"><a class="btn btn-gold" href="option-d/index.html" target="_blank" rel="noopener">View option D <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-d/index.html?theme=light" target="_blank" rel="noopener">Light mode<span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="option-d/index.html?logos=colour#ros" target="_blank" rel="noopener">Logos in colour<span class="sr"> (opens in a new tab)</span></a></div>
+        <p class="pages"><span>Also see</span><a href="option-d/the-bmsr/index.html" target="_blank" rel="noopener">The BMSR<span class="sr"> (opens in a new tab)</span></a><a href="option-d/registration/index.html" target="_blank" rel="noopener">Registration<span class="sr"> (opens in a new tab)</span></a><a href="option-d/seafarers/index.html" target="_blank" rel="noopener">Seafarers<span class="sr"> (opens in a new tab)</span></a><a href="option-d/documents/index.html" target="_blank" rel="noopener">Documents<span class="sr"> (opens in a new tab)</span></a><a href="option-d/contact/index.html" target="_blank" rel="noopener">Contact<span class="sr"> (opens in a new tab)</span></a></p>
+        <p class="pages-all">All 20 inner pages are in this option's menu.</p>
       </div>
     </article>
   </section>
@@ -196,6 +209,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <li><b>Opening hours</b><p>Directly under the banner, with a live "Open now / Closed" badge in UK time.</p></li>
         <li><b>Emergency contacts</b><p>The 24/7 line is in the hours band, the announcement bar, the mobile contact bar and the footer.</p></li>
         <li><b>Recognised &amp; accredited</b><p>ISO 9001, Paris MoU, QUALSHIP 21 and IMO, above all 21 Recognised Organisation logos.</p></li>
+        <li><b>New inner pages</b><p>Each option also has a redesigned About page, a Team page with all 14 people, and a Contact page with a map, a message form and an easier feedback form.</p></li>
       </ul>
       <div class="asks">
         <h3 class="hull">What we need <span>from you</span></h3>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quality Assurance - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= quality assurance: certificate + facts, advantages, the quality policy split into readable parts ================= */
+.qa-cert{padding-block:clamp(56px,7vw,104px)}
+.qa-cert .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.certimg{position:relative;margin:0;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:#fff;box-shadow:0 24px 60px rgba(3,20,31,.22)}
+.certimg img{width:100%;height:auto}
+.certimg a{display:block}
+.certimg figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #E1E8EB;font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#475E6B;background:#F6F8F9}
+.certimg figcaption a{color:#1B3A93;font-weight:600}
+.qa-cert .statement{margin:16px 0 22px;font-size:clamp(24px,2.3vw,34px);line-height:1.3}
+.qa-cert .statement span{color:var(--mint)}
+.qa-cert .body p{max-width:62ch;color:var(--muted)}
+.qa-cert .body p+p{margin-top:14px}
+.qa-cert .sheet{margin-top:32px}
+.qa-cert .sheet dl{grid-template-columns:1fr}
+.qa-cert .sheet dl div{grid-template-columns:160px minmax(0,1fr)}
+.exp{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:99px;background:var(--gold);font:600 10.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);vertical-align:1px}
+/* advantages */
+.adv{padding-block:clamp(48px,6vw,88px);background:var(--deep);border-block:1px solid var(--line)}
+.adv ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.adv li{padding:28px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.adv b{display:block;font-size:clamp(46px,4.6vw,72px);color:var(--teal)}
+.adv span{display:block;margin-top:12px;color:var(--muted)}
+/* policy: an "On this page" row (a sticky side column in Option D), then the parts */
+.pol{padding-block:clamp(56px,7vw,104px)}
+.pol .layout{display:grid;gap:clamp(28px,3vw,44px)}
+.toc{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.toc p{margin-right:6px}
+.toc a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font-weight:600;font-size:14.5px;transition:border-color .2s,color .2s}
+.toc a:hover{border-color:var(--teal);color:var(--teal)}
+.part-q{scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line)}
+.part-q h3{margin:10px 0 18px;font-size:clamp(28px,2.6vw,40px)}
+.part-q h3 span{color:var(--mint)}
+.part-q>p{max-width:72ch;color:var(--muted)}
+.part-q>p+p{margin-top:14px}
+.cards4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cards4 li{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.cards4 b{display:block;margin-bottom:8px;font-size:17px;font-weight:700}
+.cards4 p{color:var(--muted);font-size:15.5px}
+.ticks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--line)}
+.ticks li{position:relative;padding:14px 0 14px 34px;border-bottom:1px solid var(--line);font-size:15.5px}
+.ticks li::before{content:"";position:absolute;left:2px;top:17px;width:18px;height:18px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2303141F' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4L18 8'/%3E%3C/svg%3E") center/12px no-repeat}
+.quote{margin:0;padding:clamp(24px,3vw,36px);border-left:3px solid var(--gold);background:var(--card);font-size:clamp(19px,1.6vw,23px);line-height:1.55}
+@media (max-width:1100px){.qa-cert .grid{grid-template-columns:1fr}.certimg{max-width:520px}}
+@media (max-width:420px){.ph .ctas .btn{white-space:normal;text-align:center;line-height:1.25;padding-block:10px}}
+@media (max-width:760px){.adv ul,.cards4,.ticks{grid-template-columns:1fr}.qa-cert .sheet dl div{grid-template-columns:1fr;gap:4px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="q-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-1.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">Quality Assurance</li></ol></nav>
+    <p class="tag port">ISO 9001:2015 · LRQA certified · QA certified since 1996</p>
+    <h1 class="hull" id="q-h1">Quality <span>Assurance</span></h1>
+    <div class="foot">
+      <p class="lead">Our quality management system is certified to ISO 9001:2015, and has been continually improved since we first achieved certification in 1996.</p>
+      <!-- TODO(client): link to the certificate PDF (and replace it when the renewed certificate is issued) -->
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/quality-assurance/" target="_blank" rel="noopener">View the certificate (PDF) <svg class="ar"><use href="#ext"/></svg><span class="sr"> (opens in a new tab)</span></a><a class="btn btn-line" href="#policy">Read the quality policy</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATE + FACTS ================= -->
+<section class="qa-cert" aria-labelledby="cert-h">
+  <div class="wrap grid">
+    <figure class="certimg rv">
+      <img src="assets/img/iso-certificate.webp" alt="LRQA Certificate of Approval: Barbados Registries Secretariat Limited, trading as Barbados Maritime Ship Registry, approved to ISO 9001:2015" width="984" height="1536" loading="lazy">
+      <figcaption><span>Certificate of Approval</span><a href="https://barbadosmaritime.com/quality-assurance/" target="_blank" rel="noopener">PDF<span class="sr"> (opens in a new tab)</span></a></figcaption>
+    </figure>
+    <div class="rv">
+      <h2 class="tag t" id="cert-h">Certified quality</h2>
+      <p class="statement">The BMSR retains <span>ISO 9001:2015 LRQA certification</span>, having first achieved QA certification in 1996, and maintained it ever since.</p>
+      <div class="body">
+        <p>This certification proves the BMSR's ability to meet shipowners' and managers' needs, and underlines our commitment to the continual improvement of our performance.</p>
+        <p>The BMSR is a premium quality flag State, offering comprehensive services for ship registration, mortgage registration and discharge transactions, ships' statutory compliance with Barbados national regulations and IMO Conventions, and seafarer endorsements.</p>
+        <p>Our in-depth experience, technical knowledge and quality system are the key to resolving any issues in a timely and appropriate manner, and to delivering on our promises.</p>
+      </div>
+      <div class="sheet">
+        <div class="cap"><span class="tag t">Certificate of Approval</span><span class="tag">Issued by LRQA</span></div>
+        <!-- TODO(client): the certificate expires on 15 November 2026; update these details when it is renewed -->
+        <dl>
+          <div><dt>Standard</dt><dd>ISO 9001:2015</dd></div>
+          <div><dt>Approval number</dt><dd>ISO 9001 – 00011281</dd></div>
+          <div><dt>Certified</dt><dd>Barbados Registries Secretariat Limited, trading as Barbados Maritime Ship Registry</dd></div>
+          <div><dt>Scope</dt><dd>Registration of ships and ships' mortgages, ships' statutory compliance with national and international conventions, and seafarer endorsements</dd></div>
+          <div><dt>Current issue</dt><dd>16 November 2023</dd></div>
+          <div><dt>Valid until</dt><dd>15 November 2026 <span class="exp">Renewal due</span></dd></div>
+          <div><dt>Since</dt><dd>QA certified since 1996</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADVANTAGES ================= -->
+<section class="adv" aria-labelledby="adv-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">BMSR advantages</p><h2 class="hull h2" id="adv-h">Fast, responsive, <span>always on</span></h2></div></div>
+    <ul>
+      <li class="rv"><b class="hull">&lt; 2 hrs</b><span>Ship registration in less than two hours</span></li>
+      <li class="rv"><b class="hull">24/7</b><span>A 24/7 service, 365 days a year</span></li>
+      <li class="rv"><b class="hull">Prompt</b><span>Permits (dispensations) issued and technical support provided promptly</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= QUALITY POLICY (the live wording, typos corrected: see the note below; split into parts) ================= -->
+<!-- Corrections to the live text, for client approval: "BSMR" → "BMSR"; "barbarian vessels" → "Barbadian vessels"; "Flag Stater reporting" → "Flag State reporting";
+     "dedicated on creating" → "dedicated to creating"; "frame work" → "framework"; "The issue temporary permits" → "The issue of temporary permits";
+     "recognised organisation" → "Recognised Organisations"; "committed to provide" → "committed to providing". -->
+<section class="pol" id="policy" aria-labelledby="pol-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Quality Management System</p><h2 class="hull h2" id="pol-h">Quality <span>policy</span></h2></div></div>
+    <div class="layout">
+      <nav class="toc" aria-label="Quality policy contents">
+        <p class="tag">On this page</p>
+        <a href="#q-commit">Our commitments</a><a href="#q-customers">Customers first</a><a href="#q-compliance">Supporting compliance</a><a href="#q-people">People &amp; culture</a><a href="#q-improve">Continual improvement</a>
+      </nav>
+      <div class="parts">
+        <section class="part-q" id="q-commit" aria-labelledby="q-commit-h">
+          <p class="tag t">01</p><h3 class="hull" id="q-commit-h">Our <span>commitments</span></h3>
+          <ul class="cards4">
+            <li class="rv"><b>Sustainability</b><p>BMSR is committed to sustainability management and to considering climate change risks in the delivery of its services. This includes supporting measures that reduce environmental impact, promote responsible resource use, and contribute to the long-term protection of the marine environment.</p></li>
+            <li class="rv"><b>Quality service</b><p>BMSR is committed to providing quality services with an operating philosophy based on open communication, integrity in serving the customers, fairness and concern for the employees, and responsibility to the communities within which BMSR operates.</p></li>
+            <li class="rv"><b>Compliance</b><p>BMSR is committed to vessels complying with national and international regulations, to achieve continuous compliance with the maritime regulations as well as the ISO Standard under which the BMSR quality management system operates.</p></li>
+            <li class="rv"><b>Our vision</b><p>To exceed customer expectations for compliance, quality, safety, sustainability, cost, delivery and value, while supporting responsible environmental and climate-conscious practices within BMSR operations.</p></li>
+          </ul>
+        </section>
+        <section class="part-q" id="q-customers" aria-labelledby="q-customers-h">
+          <p class="tag t">02</p><h3 class="hull" id="q-customers-h">Customers <span>first</span></h3>
+          <p>We are dedicated to creating a profitable business culture based on the following principles. Customer needs are of paramount importance: BMSR's obligation is to be proactive in seeking out and defining customer needs, whilst addressing all requests expeditiously and within the legal framework of national and international requirements.</p>
+          <p>Commencing with a clear understanding and definition of customers' expectations, we work hard to be consistent in meeting or exceeding those expectations.</p>
+        </section>
+        <section class="part-q" id="q-compliance" aria-labelledby="q-compliance-h">
+          <p class="tag t">03</p><h3 class="hull" id="q-compliance-h">Supporting <span>compliance</span></h3>
+          <p>BMSR provides timely professional advice to its customers, to allow them to continue to operate their vessels in compliance with national and international requirements, by:</p>
+          <ul class="ticks" style="margin-top:20px">
+            <li>The provision of flag certificates issued by the BMSR, and statutory certificates issued by Recognised Organisations on behalf of Barbados</li>
+            <li>The recording of ownership by the legal adding, amending or removing of entries from the Official Register of Ships, including the entering and deletion of mortgages</li>
+            <li>The issue of temporary permits and permanent equivalences and exemptions, where the Conventions give such discretion to the flag Administration</li>
+            <li>Carrying out the above services on behalf of the Government of Barbados, which has authorised the Principal Registrar to act in these matters</li>
+            <li>Issuing seafarer endorsements and discharge books for seafarers employed on Barbadian vessels</li>
+            <li>Carrying out flag State inspections as per the Barbados Shipping Act</li>
+            <li>Assessing any marine accident, and carrying out marine safety investigations when required to do so</li>
+            <li>Flag State reporting to the IMO, as required by the Conventions</li>
+          </ul>
+        </section>
+        <section class="part-q" id="q-people" aria-labelledby="q-people-h">
+          <p class="tag t">04</p><h3 class="hull" id="q-people-h">People <span>&amp; culture</span></h3>
+          <p>BMSR is committed to:</p>
+          <ul class="ticks" style="margin-top:20px">
+            <li>Creating and nurturing a successful business culture based on honesty and integrity</li>
+            <li>Empowering training and communication</li>
+            <li>Employees' growth, and equal opportunities and rewards</li>
+            <li>Embracing cultural, religious and gender diversity</li>
+            <li>Placing employee welfare and interests foremost</li>
+            <li>Providing a safe and secure work environment</li>
+          </ul>
+        </section>
+        <section class="part-q" id="q-improve" aria-labelledby="q-improve-h">
+          <p class="tag t">05</p><h3 class="hull" id="q-improve-h">Continual <span>improvement</span></h3>
+          <blockquote class="quote">BMSR continually improves the effectiveness of its quality management system, including considerations for sustainability, environmental responsibility and climate-related risks, through the effective application of quality policies, objectives, auditing, data analysis, corrective and preventative actions, and management reviews.</blockquote>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

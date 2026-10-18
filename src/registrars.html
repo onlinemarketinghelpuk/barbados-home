@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regional Registrars - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= regional registrars: a finder (search, regions, jump to country) over country groups of registrar cards ================= */
+.rr-layout{padding-bottom:clamp(64px,8vw,112px)}
+/* finder: sticks under the header while the visitor scrolls the results */
+.finder{overflow-x:clip;position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;margin-bottom:clamp(28px,3vw,40px);padding-block:14px;background:var(--abyss);border-bottom:1px solid var(--line)}
+.finder .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.finder .search{position:relative;flex:1 1 320px;max-width:520px}
+.finder .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.finder input,.finder select{width:100%;min-height:46px;padding:10px 14px 10px 42px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.finder select{width:auto;min-width:200px;padding-left:14px;padding-right:40px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239DB3BC' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.finder input:focus,.finder select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.chips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.chips button:hover{border-color:var(--teal)}
+.chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.chips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.finder .count{margin-top:10px;font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.finder .count b{color:var(--text);font-weight:600}
+/* results */
+.rr-c{padding-block:clamp(22px,2.5vw,32px);border-top:1px solid var(--line);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 150px)}
+.rr-h{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:clamp(26px,2.2vw,34px)}
+.cc{display:inline-grid;place-items:center;min-width:44px;height:30px;padding:0 6px;border:1px solid var(--gold);border-radius:2px;font:600 12.5px/1 var(--mono);letter-spacing:.08em;color:var(--teal)}
+.rr-h i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
+.rr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rr{display:flex;flex-direction:column;gap:12px;height:100%;padding:22px 22px 18px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.rr .nm{font-size:18px;font-weight:700;line-height:1.3}
+.rr .co{font-weight:600;color:var(--teal)}
+.rr address{font-style:normal;font-size:15px;line-height:1.55;color:var(--muted)}
+.rr .ct{display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line)}
+.rr .ph{display:inline-flex;align-items:center;gap:10px;min-height:36px;font-weight:600;color:var(--text)}
+.rr .ph svg{width:16px;height:16px;flex:none;color:var(--teal);fill:none;stroke:currentColor;stroke-width:1.8}
+.rr .ph small{font:500 11.5px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.rr .ph:hover{color:var(--teal)}
+.rr .em{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:36px}
+.rr .em a{min-width:0;font-weight:600;overflow-wrap:anywhere;color:var(--text)}
+.rr .em a:hover{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.copy{display:inline-flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:2px;background:none;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.copy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+.copy:hover{color:var(--text);border-color:var(--teal)}
+.copy.done{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.js .rr-c.off,.js .rr-li.off{display:none}
+.empty{display:none;padding:32px;border:1px dashed var(--line);border-radius:2px;text-align:center;color:var(--muted)}
+.empty.show{display:block}
+.empty a{color:var(--teal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.rr-close{padding-block:clamp(56px,7vw,96px);background:var(--deep);border-top:1px solid var(--line)}
+.rr-close .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
+.rr-close .lead{max-width:40em;margin-top:14px}
+@media (max-width:1100px){.rr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .rr-grid{grid-template-columns:1fr}
+  .finder{position:static}
+  .finder select{width:100%}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut)}
+  .chips::-webkit-scrollbar{display:none}
+  .chips button{flex:none}
+}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="r-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-3.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">Regional Registrars</li></ol></nav>
+    <p class="tag port">{{rr-count}} registrars · {{rr-countries}} countries</p>
+    <h1 class="hull" id="r-h1">Regional <span>Registrars</span></h1>
+    <div class="foot">
+      <p class="lead">Registrars around the world who can help you register a vessel under the Barbados flag. Search by country, person, company or city.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#finder">Find a registrar <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/contact-us/">Contact London</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINDER + RESULTS (generated from src/data/registrars.json) ================= -->
+<!-- TODO(client): every entry was transcribed from the live page; please check all contact details before go-live -->
+<div class="rr-layout" id="finder">
+  <div class="finder" role="search" aria-label="Find a registrar">
+    <div class="wrap">
+      <div class="row">
+        <label class="search"><span class="sr">Search registrars</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="rr-q" placeholder="Country, name, company or city" autocomplete="off"></label>
+        <label><span class="sr">Jump to a country</span><select id="rr-jump"><option value="">Jump to a country…</option>
+{{rr-options}}
+        </select></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <div class="chips" role="group" aria-label="Filter by region">
+{{rr-chips}}
+        </div>
+      </div>
+      <p class="count" id="rr-count" aria-live="polite">Showing <b>{{rr-count}}</b> registrars in <b>{{rr-countries}}</b> countries</p>
+    </div>
+  </div>
+  <div class="wrap rr-results">
+{{rr-groups}}
+    <p class="empty" id="rr-empty">No registrars match your search. Try another country or city, or <a href="https://barbadosmaritime.com/contact-us/">contact the London office</a> and we'll help.</p>
+  </div>
+  <p class="sr" aria-live="polite" id="copy-live"></p>
+</div>
+
+<!-- ================= CLOSING BAND (Option D swaps in its own) ================= -->
+<!-- @d:rrclose (Option D swaps this block; see src/option-d/) -->
+<section class="rr-close" aria-labelledby="rrc-h">
+  <div class="wrap">
+    <div><p class="tag t">Can't find one near you?</p><h2 class="hull h2" id="rrc-h">Talk to <span>London</span></h2><p class="lead">Our London office handles registrations worldwide, and the 24/7 emergency line is always open.</p></div>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="tel:+447494116754">24/7 emergency line</a></div>
+  </div>
+</section>
+<!-- /@d:rrclose -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// finder: search text and region together decide which registrars show; empty countries hide; the count is announced
+const q = document.getElementById('rr-q'), jump = document.getElementById('rr-jump'), countEl = document.getElementById('rr-count'), empty = document.getElementById('rr-empty');
+const chips = [...document.querySelectorAll('.chips button')], groups = [...document.querySelectorAll('.rr-c')];
+let region = 'all';
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const apply = () => {
+  const words = norm(q.value.trim()).split(/\s+/).filter(Boolean);
+  let people = 0, places = 0;
+  groups.forEach(g => {
+    const inRegion = region === 'all' || g.dataset.region === region;
+    let shown = 0;
+    g.querySelectorAll('.rr-li').forEach(li => { const ok = inRegion && words.every(w => li.dataset.s.includes(w)); li.classList.toggle('off', !ok); if (ok) shown++; });
+    g.classList.toggle('off', !shown); people += shown; if (shown) places++;
+  });
+  empty.classList.toggle('show', !people);
+  countEl.innerHTML = people ? `Showing <b>${people}</b> registrar${people === 1 ? '' : 's'} in <b>${places}</b> countr${places === 1 ? 'y' : 'ies'}` : 'No matches';
+};
+q.addEventListener('input', apply);
+chips.forEach(c => c.addEventListener('click', () => { region = c.dataset.region; chips.forEach(x => x.setAttribute('aria-pressed', x === c)); apply(); }));
+jump.addEventListener('change', () => {
+  if (!jump.value) return;
+  q.value = ''; region = 'all'; chips.forEach(x => x.setAttribute('aria-pressed', x.dataset.region === 'all')); apply();
+  const g = document.getElementById(jump.value); g.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); g.querySelector('h2').focus({ preventScroll: true });
+  jump.value = '';
+});
+// copy buttons
+const live = document.getElementById('copy-live');
+document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+  const text = b.dataset.copy;
+  try { await navigator.clipboard.writeText(text); }
+  catch (e) { const t = document.createElement('textarea'); t.value = text; document.body.append(t); t.select(); try { document.execCommand('copy'); } catch (e2) {} t.remove(); }
+  b.classList.add('done'); b.querySelector('use').setAttribute('href', '#i-check'); live.textContent = text + ' copied';
+  clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('done'); b.querySelector('use').setAttribute('href', '#i-copy'); }, 2000);
+}));
+</script>
+</body>
+</html>

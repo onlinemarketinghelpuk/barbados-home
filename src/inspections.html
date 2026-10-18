@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspections - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= inspections: key facts, how to arrange one, the five inspection types as a timeline, B004, resources ================= */
+.ifacts{background:var(--deep);border-block:1px solid var(--line)}
+.ifacts .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.ifacts .cell{display:flex;flex-direction:column;gap:12px;padding:30px 28px 32px;border-left:1px solid var(--line)}
+.ifacts .cell:last-child{border-right:1px solid var(--line)}
+.ifacts .big{font-size:clamp(28px,2.4vw,38px);line-height:1}
+.ifacts p:not(.tag):not(.big){color:var(--muted);font-size:15.5px}
+.arrange{padding-block:clamp(56px,7vw,104px)}
+.arrange .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
+.arrange .grid>*{min-width:0}
+.arrange .statement{margin:16px 0 26px;font-size:clamp(24px,2.3vw,34px);line-height:1.3}
+.arrange .statement span{color:var(--mint)}
+.rules{display:grid;margin:0;padding:0;list-style:none;border-top:2px solid var(--gold)}
+.rules li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.rules b.k{font-size:28px;line-height:1;color:var(--teal)}
+.rules h3{margin-bottom:6px;font-size:18px;font-weight:700}
+.rules p{color:var(--muted);font-size:15.5px}
+.types-i{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.tl{position:relative;display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.tl::before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:color-mix(in srgb,var(--gold) 45%,transparent)}
+.ti{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:20px}
+.ti .dot{position:relative;z-index:1;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--gold);font:800 18px/1 var(--sans);color:var(--ink)}
+.ti .card{padding:clamp(20px,2.4vw,28px);border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.ti .top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px}
+.ti h3{font-size:clamp(22px,1.9vw,28px)}
+.ti .when{padding:5px 10px;border:1px solid var(--line);border-radius:99px;font:600 11.5px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+.ti p{margin-top:10px;max-width:74ch;color:var(--muted);font-size:15.5px}
+.ti details{margin-top:14px}
+.ti summary{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-weight:700;color:var(--teal);cursor:pointer;list-style:none}
+.ti summary::-webkit-details-marker{display:none}
+.ti summary::after{content:"+";font:600 18px/1 var(--mono)}
+.ti details[open] summary::after{content:"−"}
+.ti details ul{display:grid;margin-top:8px;border-top:1px solid var(--line)}
+.ti details li{padding:10px 0 10px 22px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+.ti details li::before{content:"→";position:absolute;left:0;color:var(--teal)}
+.b004{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px 32px;margin-top:clamp(28px,3vw,40px);padding:clamp(22px,2.5vw,32px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-left:3px solid var(--gold);border-radius:2px;background:color-mix(in srgb,var(--gold) 10%,var(--card))}
+.b004 .tag{color:var(--teal)}
+.b004 b{display:block;margin:6px 0;font-size:clamp(22px,1.9vw,28px)}
+.b004 p{color:var(--muted)}
+.ires{padding-block:clamp(56px,7vw,104px)}
+.ires ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ires a{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.ires a:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.ires .tag{color:var(--teal)}
+.ires b{font-size:clamp(22px,1.9vw,28px)}
+.ires span.d{color:var(--muted);font-size:15.5px}
+.ires .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
+@media (max-width:1100px){.arrange .grid{grid-template-columns:1fr}.ires ul{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.ifacts .wrap{grid-template-columns:1fr;padding-inline:0}.ifacts .cell{border-left:0!important;border-right:0!important;border-bottom:1px solid var(--line);padding-inline:var(--gut)}.ires ul{grid-template-columns:1fr}.b004{grid-template-columns:1fr}}
+@media (max-width:520px){.ti{grid-template-columns:36px minmax(0,1fr);gap:12px}.ti .dot{width:36px;height:36px;font-size:15px}.tl::before{left:17px}}
+@media (max-width:640px){main .btn{max-width:100%;white-space:normal;text-align:center;line-height:1.25;padding-block:10px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="i-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-4.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">Inspections</li></ol></nav>
+    <p class="tag port">Shipping Act 1994 · sections 202 to 208</p>
+    <h1 class="hull" id="i-h1">Flag State <span>inspections</span></h1>
+    <div class="foot">
+      <p class="lead">All Barbadian vessels must be inspected annually. Inspections are carried out by our worldwide network of Appointed Nautical Inspectors.</p>
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">Find an inspector <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#types">Types of inspection</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KEY FACTS ================= -->
+<section class="ifacts" aria-label="Key facts">
+  <div class="wrap">
+    <div class="cell"><p class="tag">Required by law</p><p class="big hull">Every year</p><p>All Barbadian vessels must be inspected annually, under sections 202 to 208 of the Shipping Act 1994.</p></div>
+    <div class="cell"><p class="tag">Appointed Nautical Inspectors</p><p class="big hull">Worldwide</p><p>Our ANIs are not restricted to a region, so they can inspect a vessel in any location.</p></div>
+    <div class="cell"><p class="tag">After the inspection</p><p class="big hull">On display</p><p>A Certificate of Inspection is issued, and must be displayed in a prominent place on board, typically in the accommodation or on the bridge.</p></div>
+  </div>
+</section>
+
+<!-- ================= HOW TO ARRANGE ================= -->
+<section class="arrange" aria-labelledby="ar-h">
+  <div class="wrap grid">
+    <div class="rv">
+      <h2 class="tag t" id="ar-h">Arranging an inspection</h2>
+      <p class="statement">Vessel owners or managers arrange the annual inspection <span>directly with one of our ANIs</span>.</p>
+      <a class="btn btn-gold" href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">List of Appointed Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <ol class="rules rv">
+      <li><b class="k hull">01</b><div><h3>Choose an ANI</h3><p>Pick any inspector from the list of Appointed Nautical Inspectors. They can inspect your vessel wherever it is.</p></div></li>
+      <li><b class="k hull">02</b><div><h3>Agree the costs</h3><p>All costs for a flag State inspection are agreed between the shipowners or managers and the ANI, and paid directly to the ANI.</p></div></li>
+      <li><b class="k hull">03</b><div><h3>Only ANIs can inspect</h3><p>All inspections can only be carried out by our Appointed Nautical Inspectors.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= INSPECTION TYPES (a timeline through a ship's life on the register) ================= -->
+<!-- @d:itypes (Option D swaps this block; see src/option-d/) -->
+<section class="types-i" id="types" aria-labelledby="ty-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Types of inspection</p><h2 class="hull h2" id="ty-h">Five inspections, <span>one standard</span></h2><p class="lead" style="margin-top:16px;max-width:44em">The BMSR and our ANIs carry out several types of inspection over a ship's time on the register.</p></div></div>
+    <ol class="tl">
+      <li class="ti rv"><span class="dot" aria-hidden="true">1</span><div class="card"><div class="top"><h3 class="hull">Pre-registration inspection</h3><span class="when">Ships over 12 years old</span></div><p>Required for all ships over 12 years of age proposed for registration, to assess their technical suitability for provisional registration. This requirement may be waived at the Principal Registrar's discretion.</p></div></li>
+      <li class="ti rv"><span class="dot" aria-hidden="true">2</span><div class="card"><div class="top"><h3 class="hull">Initial inspection</h3><span class="when">Within provisional registration</span></div><p>Carried out within the period of provisional registration (normally six months). A vessel cannot be permanently registered before the initial inspection has been carried out.</p></div></li>
+      <li class="ti rv"><span class="dot" aria-hidden="true">3</span><div class="card"><div class="top"><h3 class="hull">Annual Flag Safety Inspection (AFSI)</h3><span class="when">± 3 months of the anniversary date</span></div><p>Confirms that the ship maintains the registration, operational safety and pollution prevention standards required by the BMSR, and remains technically suitable for continued registration. Conducted within three months either side of the vessel's anniversary date, as shown on the Certificate of Registry.</p></div></li>
+      <li class="ti rv"><span class="dot" aria-hidden="true">4</span><div class="card"><div class="top"><h3 class="hull">Follow-up inspection</h3><span class="when">After a port State control inspection</span></div><p>May be carried out where the vessel incurs more than three deficiencies, or is detained, during a Port State Control Inspection (PSCI). It verifies that all deficiencies have been properly rectified, and that measures are in place to prevent them recurring.</p></div></li>
+      <li class="ti rv"><span class="dot" aria-hidden="true">5</span><div class="card"><div class="top"><h3 class="hull">Additional inspection</h3><span class="when">One-off, requested by the BMSR</span></div><p>A one-off inspection that may be requested by the BMSR.</p>
+        <details><summary>Possible reasons</summary><ul>
+          <li>Persistent failure to rectify deficiencies by the due dates, or recurrence of deficiencies</li>
+          <li>Port State control inspections (PSCIs) and AFSIs</li>
+          <li>Class and statutory surveys</li>
+          <li>International Safety Management (ISM) Code audits</li>
+          <li>IACS Procedural Requirement PR17: reporting on deficiencies possibly affecting the implementation of the ISM Code on board</li>
+          <li>Information on serious defects or substandard conditions received from BMSR inspectors, Recognised Organisation surveyors and auditors, other Administrations, etc.</li>
+          <li>Information received from BMSR ANIs, port State control officers, RO surveyors, crew members, etc., of serious breaches of the Maritime Labour Convention, 2006</li>
+        </ul></details></div></li>
+    </ol>
+    <!-- TODO(client): confirm the Bulletin B004 address -->
+    <aside class="b004 rv"><div><p class="tag">Bulletin B004</p><b class="hull">Deficiencies &amp; the Special Inspection Program</b><p>For more on flag State inspections, including how deficiencies are dealt with and the Special Inspection Program (SIP), see Bulletin B004.</p></div><a class="btn btn-gold" href="https://barbadosmaritime.com/documents/bulletins/">Read Bulletin B004 <svg class="ar"><use href="#ar"/></svg></a></aside>
+  </div>
+</section>
+<!-- /@d:itypes -->
+
+<!-- ================= RESOURCES ================= -->
+<!-- TODO(client): confirm the addresses of the inspection templates and the notices to nautical inspectors -->
+<section class="ires" aria-labelledby="rs-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">For inspectors &amp; operators</p><h2 class="hull h2" id="rs-h">Inspection <span>resources</span></h2></div></div>
+    <ul>
+      <li class="rv"><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/"><span class="tag">Worldwide</span><b class="hull">Appointed Nautical Inspectors</b><span class="d">Our inspectors across the world, and how to contact them.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/inspections/inspection-templates/"><span class="tag">For ANIs</span><b class="hull">Inspection templates</b><span class="d">The report templates used for BMSR flag State inspections.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+      <li class="rv"><a href="https://barbadosmaritime.com/inspections/notices-to-nautical-inspectors/"><span class="tag">For ANIs</span><b class="hull">Notices to Nautical Inspectors</b><span class="d">Instructions and updates for our Appointed Nautical Inspectors.</span><svg class="ar"><use href="#ar"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

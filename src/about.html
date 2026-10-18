@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About us - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* about page */
+.lead-team .head{align-items:flex-end}
+.lead-team .head .lead{max-width:40em;margin-top:18px}
+.how .grid{border-top:1px solid var(--line)}
+/* film: text beside the player on desktop; the player is capped to the screen height so the whole video and its controls fit in one view */
+.film .fgrid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:center}
+.film .side .lead{margin-top:20px}
+.film .player{width:100%;max-width:calc((100svh - var(--bar-h) - var(--hdr-h) - 96px) * 3 / 2);justify-self:end;margin:0;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:#000;overflow:hidden}
+.film video{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:#000}
+@media (max-width:900px){.film .fgrid{grid-template-columns:1fr}.film .player{justify-self:stretch;max-width:none}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="a-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Rodopi-Vessel-Photo-min-scaled.jpg" style="object-position:59% 43%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li aria-current="page">About us</li></ol></nav>
+    <p class="tag port">Executive Agents for the Government of Barbados</p>
+    <h1 class="hull" id="a-h1">About <span>the BMSR</span></h1>
+    <div class="foot">
+      <p class="lead">A first-class, personal service in every aspect of ship registration, from a registry that's white-listed, accredited and on call 24 hours a day.</p>
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/registration/">Register a vessel <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/contact-us/">Contact us</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO WE ARE (the home page block, with the full copy) ================= -->
+<section class="sec about" aria-labelledby="who-h">
+  <div class="wrap">
+    <div class="grid">
+      <div class="rv">
+        <h2 class="tag t" id="who-h">Who we are &amp; what we do</h2>
+        <p class="statement">Barbados Maritime Ship Registry offers the discerning ship operator a <span>first-class personal service</span> in all aspects of ship registration.</p>
+        <div class="body">
+          <p>We act as Executive Agents for and on behalf of the Barbados Government. White-listed in the Paris MOU, approved for the USCG QUALSHIP21 programme, and accredited to ISO9001, the BMSR provides a quality-driven service second to none.</p>
+          <p>We provide a 24/7 emergency service, 365 days a year; urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance. The whole team at BMSR is dedicated, friendly and helpful.</p>
+        </div>
+        <a class="go" href="#leadership" style="margin-top:28px">Meet the team <svg class="ar"><use href="#ar"/></svg></a>
+      </div>
+      <figure class="rv"><img src="assets/img/11.png" alt="A motor yacht at sea" loading="lazy"><div class="badge"><b class="hull">ISO 9001</b><small>Accredited company</small></div></figure>
+    </div>
+    <div class="marks">
+      <div class="rv"><b class="hull">1971</b><small class="tag">Member of IMO since</small></div>
+      <div class="rv"><b class="hull">24/7</b><small class="tag">Emergency service</small></div>
+      <div class="rv"><b class="hull">10</b><small class="tag">IACS classification societies</small></div>
+      <div class="rv"><b class="hull">365</b><small class="tag">Days a year</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREDENTIALS (the home page's accreditation cards) ================= -->
+<!-- @d:acred (Option D swaps this block; see src/option-d/) -->
+<section class="sec ros" aria-labelledby="cred-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag">Accreditations &amp; affiliations</p><h2 class="hull h2" id="cred-h">A flag <span>you can trust</span></h2></div><a class="go" href="https://barbadosmaritime.com/barbados-recognised-organisations/">Recognised Organisations <svg class="ar"><use href="#ar"/></svg></a></div>
+    <!-- TODO(client): confirm this list, and send the official logos to replace these text marks -->
+    <ul class="accr rv">
+      <li><b class="hull">ISO 9001</b><span>Accredited quality management system</span></li>
+      <li><b class="hull">Paris MoU</b><span>White-listed flag State</span></li>
+      <li><b class="hull">QUALSHIP 21</b><span>Approved for the US Coast Guard programme</span></li>
+      <li><b class="hull">IMO</b><span>Member State since 1971</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= HOW WE WORK (the home page's services columns) ================= -->
+<section class="sec serv how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">How we work</p><h2 class="hull h2" id="how-h">Personal, responsive, <span>quality driven</span></h2></div></div>
+    <div class="grid">
+      <div class="svc rv"><h3 class="hull">A personal service</h3><p>A first-class, personal service in all aspects of ship registration, from a team that's dedicated, friendly and helpful.</p><a class="go" href="https://barbadosmaritime.com/registration/">Registration <svg class="ar"><use href="#ar"/></svg></a></div>
+      <div class="svc rv"><h3 class="hull">Direct access</h3><p>Senior management and the Principal Registrar can be contacted directly for help, advice and guidance.</p><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></div>
+      <div class="svc rv"><h3 class="hull">Always on call</h3><p>A 24/7 emergency service, 365 days a year. Urgent dispensations and exemptions are dealt with outside office hours.</p><a class="go" href="tel:+447494116754">+44 (0)7494 116754 <svg class="ar"><use href="#phone"/></svg></a></div>
+      <div class="svc rv"><h3 class="hull">Quality driven</h3><p>Accredited to ISO 9001, white-listed in the Paris MoU and approved for the USCG QUALSHIP 21 programme.</p><a class="go" href="https://barbadosmaritime.com/documents/">Documents <svg class="ar"><use href="#ar"/></svg></a></div>
+    </div>
+  </div>
+</section>
+<!-- /@d:acred -->
+
+<!-- ================= BARBADOS (the island facts, over the beach video) ================= -->
+<section class="isle" aria-labelledby="isle-h">
+  <video muted loop playsinline preload="none" poster="assets/video/band-poster.jpg"><source src="assets/video/band.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag" style="color:var(--mint)">Barbados · 13°06′N 59°37′W</p><h2 class="hull h2" id="isle-h">The island <span>behind the flag</span></h2></div></div>
+    <ul>
+      <li class="rv"><b class="hull"><span data-to="293">293</span><i>k</i></b><small class="tag">People live in Barbados</small></li>
+      <li class="rv"><b class="hull"><span data-to="50">50</span></b><small class="tag">Beaches around the island</small></li>
+      <li class="rv"><b class="hull"><span data-to="8">8</span><i>+</i></b><small class="tag">Hours of sunshine</small></li>
+      <li class="rv"><b class="hull"><span data-to="493">493</span><i>km²</i></b><small class="tag">Size of Barbados</small></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= FILM (the Barbados Maritime video from the current About page) ================= -->
+<!-- local copy first (assets/video/about-barbados.mp4, 28MB: preload=none keeps the poster visible and downloads nothing until play); the live-site copy is the fallback -->
+<section class="sec film" aria-labelledby="film-h">
+  <div class="wrap fgrid">
+    <div class="side rv">
+      <p class="tag t">Watch · 0:14</p>
+      <h2 class="hull h2" id="film-h">Zoom in on <span>Barbados</span></h2>
+      <p class="lead">From space to the island behind the flag, in fourteen seconds.</p>
+    </div>
+    <figure class="player rv">
+      <video controls playsinline preload="none" poster="assets/img/about-video-poster.webp" width="1920" height="1282" aria-label="Film: zooming in from space to the island of Barbados">
+        <source src="assets/video/about-barbados.mp4#t=1" type="video/mp4">
+        <source src="https://barbadosmaritime.com/wp-content/uploads/2022/05/Barbados-Maritime-Home-Page-.mp4#t=1" type="video/mp4">
+      </video>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= LEADERSHIP (cards generated from src/data/team.json) ================= -->
+<section class="sec lead-team" id="leadership" aria-labelledby="lt-h">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="tag t">Our people</p><h2 class="hull h2" id="lt-h">Meet the <span>leadership</span></h2><p class="lead">{{team-leadership-intro}}</p></div>
+      <a class="btn btn-line" href="https://barbadosmaritime.com/our-team/">Meet the whole team ({{team-count}}) <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <ul class="tgrid">
+{{team-leaders}}
+    </ul>
+  </div>
+</section>
+
+<!-- ================= NEWS (the home page's news grid) ================= -->
+<section class="sec news" aria-labelledby="news-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">News</p><h2 class="hull h2" id="news-h">From <span>Barbados Maritime</span></h2></div><a class="btn btn-line" href="https://barbadosmaritime.com/category/news/">All news <svg class="ar"><use href="#ar"/></svg></a></div>
+    <div class="grid">
+      <a class="post rv" href="https://barbadosmaritime.com/bmsr-posidonia-2026-thank-you-to-everyone-we-met/"><figure><img src="assets/img/Posidonia-BMSR-840x400-840x620.png" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">News</span><time class="tag" datetime="2026-06-15">15.06.2026</time></span><h3>BMSR Posidonia 2026 – Thank you to everyone we met</h3></a>
+      <a class="post rv" href="https://barbadosmaritime.com/bmsr-press-statement-reported-seizure-by-iranian-forces-of-vessel-jin-li-ex-ocean-koi-imo-9255933/"><figure><img src="assets/img/1-840x620-840x620.png" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">Press statement</span><time class="tag" datetime="2026-05-20">20.05.2026</time></span><h3>Reported seizure by Iranian forces of vessel JIN LI (ex-OCEAN KOI), IMO 9255933</h3></a>
+      <a class="post rv" href="https://barbadosmaritime.com/bmsr-posidonia-2026/"><figure><img src="assets/img/Posidonia-BMSR-840x400-840x620.png" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">News</span><time class="tag" datetime="2026-05-15">15.05.2026</time></span><h3>BMSR Posidonia 2026</h3></a>
+      <a class="post rv" href="https://barbadosmaritime.com/celebrating-one-year-of-charlotte-kurner-at-bmsr/"><figure><img src="assets/img/Charlotte-1-year-work-anniversary-post-08.01.26-840x620-840x620.webp" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">Team</span><time class="tag" datetime="2026-01-09">09.01.2026</time></span><h3>Celebrating one year of Charlotte Kurner at BMSR</h3></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?", as on its home page) ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// beach video plays only while visible
+const vio = new IntersectionObserver(es => es.forEach(e => { if (!reduce) e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); }), { threshold: .15 });
+document.querySelectorAll('.isle video').forEach(v => vio.observe(v));
+// counters in the island band
+const cio = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting || reduce) return;
+  cio.unobserve(e.target);
+  const el = e.target, to = +el.dataset.to, t0 = performance.now();
+  const tick = t => { const p = Math.min((t - t0) / 1600, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 4))); if (p < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}), { threshold: .5 });
+document.querySelectorAll('[data-to]').forEach(el => cio.observe(el));
+</script>
+</body>
+</html>

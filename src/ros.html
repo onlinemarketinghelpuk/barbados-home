@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recognised Organisations - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= recognised organisations: intro + authority box, a searchable directory of named logo tiles, bulletins ================= */
+.ro-intro{padding-block:clamp(56px,7vw,96px) clamp(32px,4vw,56px)}
+.ro-intro .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:start}
+.ro-intro .body p{max-width:62ch;color:var(--muted)}
+.ro-intro .body p+p{margin-top:14px}
+.ro-intro .statement{margin:18px 0 22px;font-size:clamp(24px,2.3vw,34px);line-height:1.3}
+.ro-intro .statement span{color:var(--mint)}
+.ask{display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.5vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ask h2{font-size:clamp(24px,2vw,30px)}
+.ask p{color:var(--muted);font-size:15.5px}
+.ask .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-top:14px;border-top:1px solid var(--line)}
+.ask .row a{font-weight:700;color:var(--text)}
+.ask .row a:hover{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.copy{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 13px;border:1px solid var(--line);border-radius:2px;background:none;color:var(--muted);font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.copy:hover{color:var(--text);border-color:var(--teal)}
+.copy.done{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+/* directory toolbar */
+.ro-dir{padding-bottom:clamp(64px,8vw,112px)}
+.ro-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-bottom:20px}
+.ro-tools .search{position:relative;flex:1 1 300px;max-width:440px}
+.ro-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.ro-tools input{width:100%;min-height:46px;padding:10px 14px 10px 42px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.ro-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.ro-filter{display:flex;gap:6px;flex-wrap:wrap}
+.ro-filter button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer}
+.ro-filter button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.ro-filter button:hover{border-color:var(--teal)}
+.ro-filter button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.ro-filter button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.ro-count{margin-bottom:16px;font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.ro-count b{color:var(--text)}
+/* tiles: dark card, gold top border, logo on an inset white panel (dark logos stay readable in both themes), full name, IACS badge */
+.ro-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.ro-grid li{min-width:0}
+.ro{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:12px 12px 16px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+a.ro:hover,a.ro:focus-visible{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
+.ro .lg{display:grid;place-items:center;height:110px;padding:14px;border-radius:2px;background:#fff}
+.ro img{width:min(100%,calc(70px * sqrt(var(--r))));height:auto;max-height:82px;object-fit:contain}
+.ro .nm{font-size:14.5px;font-weight:600;line-height:1.35;color:var(--text)}
+.ro .ia{position:absolute;top:6px;right:6px;display:inline-flex;align-items:center;gap:4px;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(3,20,31,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.ro .ia svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.js .ro-grid li.off{display:none}
+.ro-empty{display:none;padding:28px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.ro-empty.show{display:block}
+.ro-empty a{color:var(--teal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+/* bulletins: the home page's news cards; a circular has no picture, so its card shows the reference instead */
+.bul .post figure.ref{display:grid;place-items:center;background:linear-gradient(140deg,var(--hull),var(--deep))}
+.bul .post figure.ref b{font-size:clamp(30px,2.6vw,42px);color:var(--teal)}
+@media (max-width:1240px){.ro-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:900px){.ro-intro .grid{grid-template-columns:1fr}}
+@media (max-width:640px){.ro-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ro .lg{height:84px;padding:10px}.ro img{max-height:62px;width:min(100%,calc(54px * sqrt(var(--r))))}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="ro-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-4.jpg" style="object-position:80% 60%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">Recognised Organisations</li></ol></nav>
+    <p class="tag port">{{ro-count}} organisations · {{ro-iacs}} IACS members</p>
+    <h1 class="hull" id="ro-h1">Recognised <span>Organisations</span></h1>
+    <div class="foot">
+      <p class="lead">The classification societies authorised to carry out statutory certification and services on behalf of Barbados.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#directory">See the list <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:ops@barbadosmaritime.com">Email ops</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTRO + AUTHORITY QUESTIONS ================= -->
+<section class="ro-intro" aria-labelledby="ri-h">
+  <div class="wrap grid">
+    <div class="rv">
+      <h2 class="tag t" id="ri-h">Authorised to act for Barbados</h2>
+      <p class="statement">Barbados has authorised Recognised Organisations to carry out <span>statutory certification and services</span> for ships registered in Barbados.</p>
+      <div class="body">
+        <p>These services are also provided for companies operating Barbadian ships.</p>
+        <p>The current list of Recognised Organisations is shown below. Select an organisation to visit its website.</p>
+      </div>
+    </div>
+    <aside class="ask rv" aria-labelledby="ask-h">
+      <p class="tag t">Questions about authority</p>
+      <h2 class="hull" id="ask-h">Ask the registry directly</h2>
+      <p>Any request for clarification about the scope or extent of a Recognised Organisation's authority to represent or act on behalf of Barbados should be made directly to the Barbados Maritime Ship Registry.</p>
+      <div class="row"><a href="mailto:ops@barbadosmaritime.com">ops@barbadosmaritime.com</a><button class="copy" type="button" data-copy="ops@barbadosmaritime.com" aria-label="Copy the ops email address">Copy</button></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= DIRECTORY (tiles generated from src/option-d/ros.json) ================= -->
+<!-- @d:rodir (Option D swaps this block; see src/option-d/) -->
+<section class="ro-dir" id="directory" aria-labelledby="dir-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">The list</p><h2 class="hull h2" id="dir-h">All <span>{{ro-count}} organisations</span></h2></div></div>
+    <div class="ro-tools">
+      <label class="search"><span class="sr">Search organisations</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="ro-q" placeholder="Search by name" autocomplete="off"></label>
+      <div class="ro-filter" role="group" aria-label="Filter recognised organisations">
+        <button type="button" data-f="all" aria-pressed="true">All <i>{{ro-count}}</i></button>
+        <button type="button" data-f="iacs" aria-pressed="false">IACS members <i>{{ro-iacs}}</i></button>
+        <button type="button" data-f="other" aria-pressed="false">Other ROs <i>{{ro-other}}</i></button>
+      </div>
+    </div>
+    <p class="ro-count" id="ro-count" aria-live="polite">Showing <b>{{ro-count}}</b> organisations</p>
+    <!-- TODO(client): confirm the list and IACS membership; the Croatian Register logo and the Normline website are needed -->
+    <ul class="ro-grid">
+{{ro-tiles}}
+    </ul>
+    <p class="ro-empty" id="ro-empty">No organisations match. Try another name, or <a href="mailto:ops@barbadosmaritime.com">ask the registry</a>.</p>
+  </div>
+</section>
+<!-- /@d:rodir -->
+
+<!-- ================= BULLETINS ================= -->
+<section class="sec news bul" aria-labelledby="bul-h">
+  <div class="wrap">
+    <div class="head rv"><div><p class="tag t">Bulletins</p><h2 class="hull h2" id="bul-h">From <span>Barbados Maritime</span></h2></div><a class="btn btn-line" href="https://barbadosmaritime.com/documents/bulletins/">All bulletins <svg class="ar"><use href="#ar"/></svg></a></div>
+    <div class="grid">
+      <a class="post rv" href="https://barbadosmaritime.com/bmsr-posidonia-2026-thank-you-to-everyone-we-met/"><figure><img src="assets/img/Posidonia-BMSR-840x400-840x620.png" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">News</span><time class="tag" datetime="2026-06-15">15.06.2026</time></span><h3>BMSR Posidonia 2026 – Thank you to everyone we met</h3></a>
+      <!-- TODO(client): link to the MC 102026 circular itself -->
+      <a class="post rv" href="https://barbadosmaritime.com/documents/bulletins/"><figure class="ref"><b class="hull">MC 102026</b></figure><span class="meta"><span class="tag t">Marine circular</span><time class="tag" datetime="2026-05-27">27.05.2026</time></span><h3>Newbuilding vessel registrations</h3></a>
+      <a class="post rv" href="https://barbadosmaritime.com/bmsr-press-statement-reported-seizure-by-iranian-forces-of-vessel-jin-li-ex-ocean-koi-imo-9255933/"><figure><img src="assets/img/1-840x620-840x620.png" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">Press statement</span><time class="tag" datetime="2026-05-20">20.05.2026</time></span><h3>Reported seizure by Iranian forces of vessel JIN LI (ex-OCEAN KOI), IMO 9255933</h3></a>
+      <a class="post rv" href="https://barbadosmaritime.com/bmsr-posidonia-2026/"><figure><img src="assets/img/Posidonia-BMSR-840x400-840x620.png" alt="" loading="lazy"></figure><span class="meta"><span class="tag t">News</span><time class="tag" datetime="2026-05-15">15.05.2026</time></span><h3>BMSR Posidonia 2026</h3></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?", as on its home page) ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// directory: search by name and IACS/other filter together; the count is announced
+const q = document.getElementById('ro-q'), items = [...document.querySelectorAll('.ro-grid li')], fbtns = [...document.querySelectorAll('.ro-filter button')];
+const cnt = document.getElementById('ro-count'), none = document.getElementById('ro-empty');
+let group = 'all';
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const apply = () => {
+  const w = norm(q.value.trim()); let n = 0;
+  items.forEach(li => { const ok = (group === 'all' || li.dataset.group === group) && norm(li.dataset.s).includes(w); li.classList.toggle('off', !ok); if (ok) n++; });
+  none.classList.toggle('show', !n);
+  cnt.innerHTML = n ? `Showing <b>${n}</b> organisation${n === 1 ? '' : 's'}` : 'No matches';
+};
+q.addEventListener('input', apply);
+fbtns.forEach(b => b.addEventListener('click', () => { group = b.dataset.f; fbtns.forEach(x => x.setAttribute('aria-pressed', x === b)); apply(); }));
+document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(b.dataset.copy); } catch (e) {}
+  b.classList.add('done'); b.textContent = 'Copied'; setTimeout(() => { b.classList.remove('done'); b.textContent = 'Copy'; }, 2000);
+}));
+</script>
+</body>
+</html>
