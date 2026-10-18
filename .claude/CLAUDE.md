@@ -55,6 +55,7 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 /assets/                shared
 ```
 - After any change to `src/`: run `node tools/build-options.mjs`, then commit the source and the generated files together.
+- Links: a page with a review copy goes in `LIVE` (tools/build-options.mjs). An unbuilt sub-page opens its parent page at a section via `SUB` (e.g. `registration#mortgages`); anything else one level under a LIVE page falls back to that page. Adding a page to `LIVE` switches its links over automatically. `#live` keeps a link on the live site.
 - `src/` and `tools/` are in `.vercelignore`.
 - Option D must never change A–C: after editing `src/home.html` markers or the build, diff A–C's output against the last commit.
 - Before go-live: build one final page from the chosen option and replace the review `index.html`.

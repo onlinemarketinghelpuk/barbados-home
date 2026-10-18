@@ -236,12 +236,12 @@ The list is `src/data/shipboard.json`. To check with the client: part of the cov
 
 ## Header dropdowns
 
-"Documents" in the main menu has a dropdown: Forms · Bulletins · Marine Circulars · Guides · Conventions · Barbados Legislation · Barbados Publications · All documents. It opens on hover or keyboard focus; the arrow button toggles it on touch screens, and Escape or a click outside closes it. In the mobile menu, the same links are listed under Documents. It's in `src/partials/top.html` and `src/option-d/nav.html`, styled in `src/partials/head.html`. That file also keeps the logo and flag from shrinking, and tightens the menu between 1241 and 1400px.
+"Documents" in the main menu has a dropdown: Forms · Shipboard Documents · Bulletins · Marine Circulars · Guides · Conventions · Barbados Legislation · Barbados Publications. The panels have no "All …" link (removed 18 Oct 2026): the menu name itself opens each hub page. It opens on hover or keyboard focus; the arrow button toggles it on touch screens, and Escape or a click outside closes it. In the mobile menu, the same links are listed under Documents. It's in `src/partials/top.html` and `src/option-d/nav.html`, styled in `src/partials/head.html`. That file also keeps the logo and flag from shrinking, and tightens the menu between 1241 and 1400px.
 
 
 **All six menu items with sub-pages now have dropdowns:** The BMSR, Registration, Seafarers, Inspections, Investigations and Documents. Events, and Option D's Contact, stay plain links. Each panel has its own id (`dd-bmsr`, `dd-reg`, `dd-sea`, `dd-insp`, `dd-inv`, `dd-docs`). Escape closes a panel and keeps it shut until focus or the mouse leaves. Between 1241 and 1400px the arrows and gaps tighten so the header still fits; Option D gets slightly smaller gaps because of its extra Contact item.
 
-**The BMSR menu:** Our team is a second-level item under About us: a flyout to the side in the desktop menu (opens on hover or keyboard focus; `.dd-n`, `.dd-p`, `.dd-s` in head.html), and an indented "↳ Our team" in the mobile menu. "Why register in Barbados" is not in the menu (client request); it is reached from The BMSR hub.
+**The BMSR menu:** Our team is a second-level item under About us, and "Shipping – Invest Barbados – A Welcoming Investment Climate" (https://www.investbarbados.org/shipping/, new tab) under Useful links: a flyout to the side in the desktop menu (opens on hover or keyboard focus; `.dd-n`, `.dd-p`, `.dd-s` in head.html), and an indented "↳ Our team" in the mobile menu. "Why register in Barbados" is not in the menu (client request); it is reached from The BMSR hub.
 
 ## Contact page
 
@@ -305,6 +305,14 @@ For A–C the build simply removes the markers. For D it replaces each block wit
    ```
    `w` and `h` are the logo file's pixel size; the page uses them to size every logo to the same visual weight.
 3. Run the build. Tiles are sorted A–Z. The section always shows 2 rows (3 on phones) before "Show all", so it stays the same height however many organisations there are.
+
+## Links between pages
+Live-site addresses are rewritten at build time so the review stays inside the review pages (`tools/build-options.mjs`):
+- **A page we've built** is listed in `LIVE`, and every link to its live address opens the review copy.
+- **A sub-page we haven't built yet** opens its main page at the matching section, via `SUB`. For example Ship registration goes to `registration/#types`, Mortgages to `#mortgages`, Document validity check to `seafarers/#check`, Guides to `documents/#directory`.
+- **Anything else one level under a built page** (e.g. a new `registration/<name>/` address) falls back to that page.
+- **When you build a sub-page,** add it to `LIVE`: its links switch from the parent to the new page automatically, and its `SUB` line can go.
+- **Staying live:** news posts, PDFs, privacy and terms keep their live addresses, and so does any link ending in `#live` (downloads whose files we don't have yet).
 
 ## What's in every option
 
