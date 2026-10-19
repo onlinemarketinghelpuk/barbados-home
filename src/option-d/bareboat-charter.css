@@ -1,0 +1,18 @@
+
+/* ================= Option D · Bareboat Charters, in the home page's style =================
+   The particulars sheet: the checklist, key facts and help become a side column on the left (gold rules, no boxes),
+   the two directions a ruled pair, and the charter-party requirements a numbered register. */
+.bb .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.bb .grid>aside{order:-1}
+.bb-side{gap:0}
+.box,.box.hi{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.box+.box{margin-top:24px}
+.links a,.bb figure{border-radius:0}
+.bbd{padding:22px 0 0;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.bb-dirs{gap:clamp(24px,3vw,40px)}
+.agr-h{border-bottom-width:1px;border-bottom-color:var(--line)}
+.must .n{font-size:22px;line-height:1.1;color:var(--text)}
+.must li:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.bbn li{border:0;border-top:2px solid var(--gold);border-radius:0;background:none;padding-inline:0}
+@media (max-width:1100px){.bb .grid{grid-template-columns:1fr}.bb .grid>aside{order:0}.bb-side{grid-template-columns:1fr 1fr;gap:0 32px}.box+.box{margin-top:0}}
+@media (max-width:760px){.bb-side{grid-template-columns:1fr}.box+.box{margin-top:24px}}

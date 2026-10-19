@@ -1,0 +1,30 @@
+{
+  "_note": "From the live page barbadosmaritime.com/bareboat-charter/ (WordPress feed, modified 15 Sep 2025) and docs/bareboat-charter.png. Wording as live; the live text is three paragraphs, split here into the two directions and the charter-party requirements (\"check\" marks anything tidied). Photos are the live page's own, in assets/img/bareboat-charter/.",
+  "checklist": { "code": "PPR01-C05", "title": "Checklist for Bareboat", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C05-Checklist-for-Bareboat-Rev.03.docx" },
+  "intro": "The Shipping Act 1994 permits bare-boat chartering in and out of the Barbados flag.",
+  "directions": [
+    { "id": "out", "label": "Charter out", "title": "Out of the Barbados flag",
+      "body": "Ships already registered with Barbados flag may opt to bare-boat charter under another flag, whilst maintaining suspended registration status with Barbados. Mortgages may continue to be recorded but the ship would be operating under the laws of the 'secondary' flag.",
+      "points": ["Barbados registration is suspended, not closed", "Mortgages may continue to be recorded", "The ship operates under the laws of the 'secondary' flag"] },
+    { "id": "in", "label": "Charter in", "title": "In to the Barbados flag",
+      "body": "For a ship wishing to bare-boat charter in to Barbados, consent from the foreign flag would be required, or evidence that such consent was not required.",
+      "points": ["Consent from the foreign flag", "Or evidence that such consent was not required"] }
+  ],
+  "agreement": {
+    "lead": "In all cases, a copy of the charter-party agreement must be provided to the Registrar, clearly stating:",
+    "items": [
+      { "t": "The commencement date" },
+      { "t": "The intended duration of the charter period", "d": "Normally between two and five years, with extensions possible thereafter." },
+      { "t": "The full name and address of the parties to the agreement" }
+    ],
+    "notes": [
+      { "t": "In English", "d": "Any such charter-party must be in English." },
+      { "t": "BIMCO BARECON recommended", "d": "We would recommend the use of BIMCO standard BARECON agreements." }
+    ],
+    "check": "the live paragraph is split into a list; \"two to five years\" is written \"between two and five years\""
+  },
+  "photos": [
+    { "src": "assets/img/bareboat-charter/fegulus-alongside.jpg", "alt": "A cargo ship alongside in port at dusk" },
+    { "src": "assets/img/bareboat-charter/pelican-ii.jpg", "alt": "The tug Pelican II, registered in Bridgetown, alongside" }
+  ]
+}

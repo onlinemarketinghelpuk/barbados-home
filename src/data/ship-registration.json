@@ -1,0 +1,44 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/ship-registration/ (WordPress feed, modified 14 Oct 2026) and docs/ship-registration.png. Wording as live; file links are the live Word documents. Revisions are read from the file names.",
+  "checklist": { "code": "PPR01-C01", "title": "Checklist for Vessel Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C01-Checklist-for-Vessel-Registration-Rev.02.docx" },
+  "stages": [
+    {
+      "id": "provisional", "name": "Provisional Registration",
+      "intro": "The lists below outline the forms and documents required for Provisional Registration.",
+      "forms": [
+        { "code": "PPR01-F01", "title": "Application for Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F01-Application-for-Registration-Rev.06.docx" },
+        { "code": "PPR01-F02", "title": "Application for SSL", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/08/PPR01-F02-Application-for-SSL-Rev.04.docx" },
+        { "code": "PPR01-F04", "title": "Security Communication Statement", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/PPR01-F04-Security-Communication-Statement-Rev.03.docx" },
+        { "code": "PPR01-F07", "title": "Registering EPIRB", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/10/PPR01-F07-Registering-EPIRB-Rev.04.docx" },
+        { "code": "PPR01-F09", "title": "Declaration of Ownership", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F09-Declaration-of-Ownership-on-behalf-of-a-body-corporate-Rev.05.doc" },
+        { "code": "PPR01-F13", "title": "Memorandum as to the Registration of Managing Owners", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/04/PPR01-F13-Memorandum-as-to-the-Registration-of-Managing-Owners-Rev.02.docx" },
+        { "code": "PPR01-F14", "title": "Appointment of Authorised Officer", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F14-Appointment-of-Authorised-Officer-Rev.04.docx" },
+        { "code": "PPO01-F05", "title": "Application for Minimum Safe Manning", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/04/PPO01-F05-Application-for-Minimum-Safe-Manning-Rev.01.docx" },
+        { "code": "PPO01-F07", "title": "DMLC Part I Application Form", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/04/PPO01-F07-DMLC-Part-I-Application-Form-Rev.01.docx" }
+      ],
+      "docs": [
+        "Copy of Bill of Sale or Builder's Certificate",
+        "Copy of Certificate of Incorporation for owning Company",
+        "'Blue' Card CLC Oil Pollution certificate (Tanker only)",
+        "'Blue' Card Bunker Pollution certificate (all ships)",
+        "Evidence of P&I Cover (all ships)",
+        "Copy of ISM Document of Compliance",
+        "Copy of last CSR issued to ship by former Flag (or flags if dual registry)",
+        "Copy of former Class Certificate"
+      ]
+    },
+    {
+      "id": "permanent", "name": "Permanent Registration",
+      "intro": "The list below outlines the forms and documents required for Permanent Registration.",
+      "forms": [
+        { "code": "PPR01-F04", "title": "Security Communication Statement", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/PPR01-F04-Security-Communication-Statement-Rev.03.docx" }
+      ],
+      "docs": [
+        "Bill of Sale (original)",
+        "Deletion Certificate (free of encumbrance) from former flag (if applicable)",
+        "Completed Carving & Marking Note",
+        "Copy of Operating Company's DOC"
+      ]
+    }
+  ]
+}

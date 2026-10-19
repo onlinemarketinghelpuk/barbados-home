@@ -1,0 +1,28 @@
+
+/* ================= Option D · Registry Alterations, in the home page's style =================
+   The four changes become a ruled register (number | title + summary | thumbnail) instead of photo cards;
+   below, the particulars sheet: help and the "on this page" list on the left (gold rules, no boxes), each change on the right with its number large in the margin. */
+.ra-cards{display:block;margin-top:24px;border-top:1px solid var(--line)}
+.ra-card{display:grid;grid-template-columns:72px minmax(0,1fr) 180px;align-items:center;gap:6px 26px;padding:20px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.ra-card:hover,.ra-card:focus-visible{transform:none;background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.ra-card figure{grid-column:3;grid-row:1 / span 2;aspect-ratio:3/2}
+.ra-card .b{display:contents}
+.ra-card .n{grid-column:1;grid-row:1 / span 2;font-size:34px;letter-spacing:-.02em;color:var(--text)}
+.ra-card b,.ra-card .s,.ra-card .go{grid-column:2}
+.ra-card b{grid-row:1;align-self:end}
+.ra-card .s{grid-row:2;align-self:start}
+.ra-card .go{display:none}
+.rag .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.rag .grid>aside{order:-1}
+.ra-side{gap:0}
+.box,.box.nav{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.box+.box{margin-top:24px}
+.box .links a{border-radius:0}
+.ras-h{border-bottom-width:1px;border-bottom-color:var(--line)}
+.ras-h .num{color:var(--text)}
+.needs li:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.warn,.acts a.dl{border-radius:0}
+.warn{background:none}
+@media (max-width:1100px){.rag .grid{grid-template-columns:1fr}.rag .grid>aside{order:0}.ra-side{grid-template-columns:1fr 1fr;gap:0 32px}.box+.box{margin-top:0}}
+@media (max-width:760px){.ra-side{grid-template-columns:1fr}.box+.box{margin-top:24px}
+  .ra-card{grid-template-columns:52px minmax(0,1fr)}.ra-card figure{display:none}.ra-card .n{font-size:26px;align-self:start}}

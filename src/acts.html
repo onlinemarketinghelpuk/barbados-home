@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acts - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= acts: the Merchant Shipping Acts as a register of cards, each with its photo and PDF (shared lx- styles with Regulations) ================= */
+.lxz{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.lxz .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.lxz .grid>*{min-width:0}
+.lx-intro{max-width:62ch;font-size:clamp(19px,1.5vw,22px);line-height:1.5}
+.lx-cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:28px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
+.lx-cap h2{font-size:clamp(26px,2.2vw,34px)}
+.lx-cap i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
+.lx-acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.8vw,24px);margin:24px 0 0;padding:0;list-style:none}
+.lx-act{display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.lx-act:first-child{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr)} /* the principal Act leads */
+.lx-ph{margin:0;aspect-ratio:16/10;overflow:hidden;background:var(--hull)}
+.lx-act:first-child .lx-ph{aspect-ratio:auto;min-height:260px}
+.lx-ph img{width:100%;height:100%;object-fit:cover}
+.lx-b{display:flex;flex-direction:column;gap:10px;flex:1;padding:20px 22px 22px}
+.lx-act:first-child .lx-b{justify-content:center;padding:clamp(22px,2.6vw,36px)}
+.lx-no{font:600 clamp(22px,2vw,28px)/1 var(--mono);letter-spacing:-.01em;color:var(--teal)}
+.lx-b h3{font-size:clamp(19px,1.5vw,22px);line-height:1.3}
+.lx-act:first-child .lx-b h3{font-size:clamp(24px,2.3vw,34px)}
+.lx-act:first-child .lx-dl{margin-top:14px}
+.lx-dl{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin-top:auto;min-height:44px;padding:0 16px;border:1px solid var(--line);border-radius:2px;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text);transition:border-color .2s,color .2s}
+.lx-dl:hover{border-color:var(--teal);color:var(--teal)}
+.lx-dl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lx-dl i{font-style:normal;color:var(--muted)}
+.lx-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.lx-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.lx-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.lx-box p{color:var(--muted);font-size:15px}
+.lx-box p a{color:var(--text);font-weight:700;overflow-wrap:anywhere}
+.lx-box .lx-n{display:block;margin-top:6px;font-size:clamp(46px,4.4vw,68px);line-height:1}
+.lx-box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);border-top-color:var(--gold);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.lx-box .btn{margin-top:14px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.lx-links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.lx-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.lx-links a:hover{border-color:var(--teal)}
+.lx-links .ar{flex:none;color:var(--teal)}
+.lx-side>.lx-pin{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the small Regulations box stays in view, so the column never runs off the screen */
+@media (max-width:1100px){.lxz .grid{grid-template-columns:1fr}.lx-side{grid-template-columns:1fr 1fr}.lx-side>.lx-pin{position:static}}
+@media (max-width:760px){.lx-side{grid-template-columns:1fr}.lx-acts{grid-template-columns:1fr}.lx-act:first-child{display:flex}.lx-act:first-child .lx-ph{aspect-ratio:16/10;min-height:0}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="act-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-5.jpg" style="object-position:70% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li><a href="https://barbadosmaritime.com/documents/barbados-legislation/">Barbados Legislation</a></li><li aria-current="page">Acts</li></ol></nav>
+    <p class="tag port">{{act-count}} Acts · Merchant Shipping, 2024</p>
+    <h1 class="hull" id="act-h1">Barbados <span>Acts</span></h1>
+    <div class="foot">
+      <p class="lead">The Merchant Shipping Acts of Barbados, 2024. Read each Act in full as a PDF.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#acts">The Acts <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/documents/regulations/">Regulations</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE ACTS (generated from src/data/acts.json by tools/fill/acts.mjs) ================= -->
+<section class="lxz" id="acts" aria-labelledby="act-l-h">
+  <div class="wrap grid">
+    <div>
+      <p class="lx-intro">{{act-intro}}</p>
+      <div class="lx-cap"><h2 class="hull" id="act-l-h">Merchant <span>Shipping Acts</span></h2><i>{{act-count}} Acts</i></div>
+      <ol class="lx-acts">
+{{act-list}}
+      </ol>
+    </div>
+    <aside class="lx-side" aria-label="About the Acts">
+      <div class="lx-box"><p class="tag t">Questions</p><b class="hull">{{act-support-label}}</b><p>For technical and operational questions about the legislation, email <a href="mailto:{{act-support-email}}">{{act-support-email}}</a>.</p>
+        <ul class="lx-links">
+          <li><a href="https://barbadosmaritime.com/documents/barbados-legislation/">Barbados Legislation <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/conventions/">International conventions <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="lx-box hi lx-pin"><p class="tag t">Also in Barbados Legislation</p><b class="lx-n hull">{{act-regs}}</b><p>Merchant Shipping Regulations, S.I. 2025.</p>
+        <a class="btn btn-gold" href="https://barbadosmaritime.com/documents/regulations/">The Regulations <svg class="ar"><use href="#ar"/></svg></a></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

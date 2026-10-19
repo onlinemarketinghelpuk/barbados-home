@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulations - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= regulations: the Merchant Shipping Regulations as a searchable register by S.I. number, with a subscription for new ones ================= */
+.lx{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.lx .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.lx .grid>*{min-width:0}
+.lx-intro{max-width:62ch;font-size:clamp(19px,1.5vw,22px);line-height:1.5}
+.lx-tools{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;display:grid;gap:12px;margin-top:28px;padding:14px 0;background:var(--abyss);border-bottom:1px solid var(--line)}
+.lx-tools .search{position:relative}
+.lx-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.lx-tools input{width:100%;min-height:48px;padding:10px 14px 10px 44px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.lx-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.lx-chips{display:flex;flex-wrap:wrap;gap:6px}
+.lx-chips button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer}
+.lx-chips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.lx-chips button:hover{border-color:var(--teal)}
+.lx-chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.lx-chips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.lx-count{font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.lx-count b{color:var(--text)}
+.lx-reg{margin-top:32px}
+.lx-reg h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--gold);font-size:clamp(26px,2.2vw,34px)}
+.lx-reg h2 i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
+.lx-list{margin:0;padding:0;list-style:none}
+.lx-row{display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:6px 20px;padding:16px 0;border-bottom:1px solid var(--line)}
+.lx-no small{display:block;font:500 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lx-no b{display:block;margin-top:3px;font:600 22px/1 var(--mono);letter-spacing:-.01em;white-space:nowrap;color:var(--teal)}
+.lx-tt{font-weight:600;line-height:1.4}
+.lx-tt small{display:block;margin-top:4px;font:500 11.5px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.lx-dl{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 13px;border:1px solid var(--line);border-radius:2px;font:600 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--text);transition:border-color .2s,color .2s}
+.lx-dl:hover{border-color:var(--teal);color:var(--teal)}
+.lx-dl svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.js .lx-row.off{display:none}
+.lx-empty{display:none;margin-top:24px;padding:24px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.lx-empty.show{display:block}
+.lx-empty a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.lx-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.lx-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.lx-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.lx-box p{color:var(--muted);font-size:15px}
+.lx-box p a{color:var(--text);font-weight:700;overflow-wrap:anywhere}
+.lx-box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);border-top-color:var(--gold);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.lx-links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.lx-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.lx-links a:hover{border-color:var(--teal)}
+.lx-links .ar{flex:none;color:var(--teal)}
+.lx-facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 14px;margin:12px 0 0}
+.lx-facts dt{font:600 26px/1 var(--mono);color:var(--text)}
+.lx-facts dd{margin:0;align-self:center;color:var(--muted);font-size:14.5px}
+.lx-sub form{display:grid;gap:10px;margin-top:14px}
+.lx-sub label{display:grid;gap:6px;font:600 12px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.lx-sub input{min-height:46px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--abyss);color:var(--text);font:400 15px/1.4 var(--sans);text-transform:none;letter-spacing:0}
+.lx-sub input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.lx-sub input[aria-invalid="true"]{border-color:#E5484D}
+.lx-sub .err{display:none;font-size:13.5px;color:var(--text)}
+.lx-sub .err.show{display:block}
+.lx-sub .btn{justify-self:start;cursor:pointer}
+.lx-sub .ok{display:none;padding:12px 14px;border:1px solid var(--line);border-radius:2px;font-size:15px;color:var(--text)}
+.lx-sub .ok.show{display:block}
+.lx-sub .fine{font-size:13.5px}
+.lx-sub .fine a{display:inline;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.lx-side>.lx-pin{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the small facts box stays in view, so the column never runs off the screen */
+@media (max-width:1100px){.lx .grid{grid-template-columns:1fr}.lx-side{grid-template-columns:1fr 1fr}.lx-side>.lx-pin{position:static}}
+@media (max-width:760px){.lx-side{grid-template-columns:1fr}.lx-tools{position:static}.lx-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.lx-chips::-webkit-scrollbar{display:none}.lx-chips button{flex:none}}
+@media (max-width:640px){.lx-row{grid-template-columns:76px minmax(0,1fr)}.lx-no b{font-size:18px}.lx-dl{grid-column:2;justify-self:start}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="rg-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-5.jpg" style="object-position:40% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li><a href="https://barbadosmaritime.com/documents/barbados-legislation/">Barbados Legislation</a></li><li aria-current="page">Regulations</li></ol></nav>
+    <p class="tag port">{{reg-count}} Regulations · S.I. 2025 Nos. {{reg-first}}–{{reg-last}}</p>
+    <h1 class="hull" id="rg-h1">Merchant Shipping <span>Regulations</span></h1>
+    <div class="foot">
+      <p class="lead">The Merchant Shipping Regulations, 2025, each to read or download as a PDF. Search by title or number, or filter by subject.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#reg-list">Find a Regulation <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#reg-sub">Get new Regulations</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE REGISTER (generated from src/data/regulations.json) ================= -->
+<!-- TODO(client): approve the subjects; confirm the S.I. 2025 No. 40 file (the live link's domain is misspelt) -->
+<section class="lx" aria-label="The Regulations">
+  <div class="wrap grid">
+    <div>
+      <p class="lx-intro">{{reg-intro}}</p>
+      <div class="lx-tools" role="search" aria-label="Find a Regulation">
+        <label class="search"><span class="sr">Search the Regulations</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="reg-q" placeholder="Search by title or number, e.g. ballast water or No. 40" autocomplete="off"></label>
+        <div class="lx-chips chips" role="group" aria-label="Filter by subject">
+{{reg-chips}}
+        </div>
+        <p class="lx-count" id="reg-count" aria-live="polite">Showing <b>{{reg-count}}</b> Regulations</p>
+      </div>
+      <section class="lx-reg" id="reg-list" aria-labelledby="reg-list-h">
+        <h2 class="hull" id="reg-list-h">The Regulations <i>S.I. 2025</i></h2>
+        <ul class="lx-list">
+{{reg-rows}}
+        </ul>
+      </section>
+      <p class="lx-empty" id="reg-empty">No Regulations match. Try another word or number, or <a href="https://barbadosmaritime.com/contact-us/">contact us</a>.</p>
+    </div>
+    <aside class="lx-side" aria-label="About the Regulations">
+      <div class="lx-box"><p class="tag t">Questions</p><b class="hull">{{reg-support-label}}</b><p>For technical and operational questions about the Regulations, email <a href="mailto:{{reg-support-email}}">{{reg-support-email}}</a>.</p>
+        <ul class="lx-links">
+          <li><a href="https://barbadosmaritime.com/documents/acts/">The Acts <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/barbados-legislation/">Barbados Legislation <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/conventions/">International conventions <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/bulletins/">Bulletins <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="lx-box lx-sub" id="reg-sub"><p class="tag t">Regulations subscription</p><b class="hull">New Regulations by email</b><p>{{reg-sub}}.</p>
+        <!-- TODO(dev): wire to the live Regulations subscription in WordPress (Contact Form 7 + reCAPTCHA) -->
+        <form id="reg-form" action="#" method="post" novalidate>
+          <label>Your email<input name="email" type="email" autocomplete="email" required aria-describedby="reg-err"></label>
+          <p class="err" id="reg-err" role="alert">Please enter a valid email address.</p>
+          <button class="btn btn-gold" type="submit">Subscribe <svg class="ar"><use href="#ar"/></svg></button>
+          <p class="fine">We'll only email you new Regulations. Read our <a href="https://barbadosmaritime.com/privacy-policy/">privacy policy</a>.</p>
+        </form>
+        <p class="ok" id="reg-ok" role="status">Thank you. You'll receive new Regulations by email.</p>
+      </div>
+      <div class="lx-box hi lx-pin"><p class="tag t">At a glance</p>
+        <dl class="lx-facts"><dt>{{reg-count}}</dt><dd>Regulations, S.I. 2025 Nos. {{reg-first}}–{{reg-last}}</dd><dt>{{reg-topics}}</dt><dd>subjects, from pollution to fees</dd></dl>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// search by title or number and filter by subject together; the count is announced
+const rq = document.getElementById('reg-q'), rchips = [...document.querySelectorAll('.lx-chips button')], rrows = [...document.querySelectorAll('.lx-row')];
+const rcount = document.getElementById('reg-count'), rempty = document.getElementById('reg-empty');
+let rtopic = 'all';
+const rnorm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const rapply = () => {
+  const w = rnorm(rq.value.trim()).replace(/\./g, '').split(/\s+/).filter(Boolean); let n = 0;
+  rrows.forEach(r => { const s = r.dataset.s.replace(/\./g, ''); const ok = (rtopic === 'all' || r.dataset.topic === rtopic) && w.every(x => s.includes(x)); r.classList.toggle('off', !ok); if (ok) n++; });
+  rempty.classList.toggle('show', !n);
+  rcount.innerHTML = n ? `Showing <b>${n}</b> Regulation${n === 1 ? '' : 's'}` : 'No matches';
+};
+rq.addEventListener('input', rapply);
+rchips.forEach(b => b.addEventListener('click', () => { rtopic = b.dataset.topic; rchips.forEach(x => x.setAttribute('aria-pressed', x === b)); rapply(); }));
+// subscription (front-end preview: validates and thanks; sends nothing until wired in WordPress)
+const rf = document.getElementById('reg-form'), rerr = document.getElementById('reg-err');
+rf.addEventListener('submit', e => {
+  e.preventDefault();
+  const em = rf.email, ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim());
+  em.setAttribute('aria-invalid', ok ? 'false' : 'true'); rerr.classList.toggle('show', !ok);
+  if (!ok) { em.focus(); return; }
+  rf.hidden = true; document.getElementById('reg-ok').classList.add('show');
+});
+</script>
+</body>
+</html>

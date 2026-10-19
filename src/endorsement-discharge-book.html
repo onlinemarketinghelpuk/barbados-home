@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endorsement &amp; Discharge Book - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= endorsement & discharge book: who we endorse, the key rules, four steps to apply, and the form ================= */
+.edb{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.edb .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.edb .grid>*{min-width:0}
+.edb-intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,40px);align-items:start}
+.edb-intro>*{min-width:0}
+.edb-intro figure{margin:0;overflow:hidden;border-radius:2px;border-top:3px solid var(--gold);background:var(--hull)}
+.edb-intro img{display:block;width:100%;height:auto;aspect-ratio:748/555;object-fit:cover}
+.edb-intro .txt{display:grid;gap:14px}
+.edb-intro .txt p{color:var(--muted)}
+.edb-intro .txt p:first-child{font-size:clamp(18px,1.5vw,21px);line-height:1.5;color:var(--text)}
+.edb-intro a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.edb-h{margin-top:clamp(40px,5vw,64px);padding-bottom:14px;border-bottom:2px solid var(--gold)}
+.edb-h h2{font-size:clamp(26px,2.4vw,36px)}
+.edb-h p{margin-top:6px;color:var(--muted)}
+.edb-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0 0;padding:0;list-style:none}
+.edb-facts li{min-width:0;padding:20px 22px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.edb-facts .tag{color:var(--teal)}
+.edb-facts b{display:block;margin:6px 0 6px;font-size:20px}
+.edb-facts p:last-child{color:var(--muted);font-size:15px}
+.edb-steps{margin:8px 0 0;padding:0;list-style:none;scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.edb-steps li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+.edb-steps .n{font:600 clamp(28px,2.6vw,40px)/1 var(--mono);color:var(--teal)}
+.edb-steps h3{font-size:clamp(19px,1.6vw,23px)}
+.edb-steps p{margin-top:8px;color:var(--muted)}
+.edb-dl{display:inline-flex;align-items:center;gap:8px;max-width:100%;min-height:42px;margin-top:14px;padding:0 14px;border:1px solid var(--gold);border-radius:2px;background:var(--gold);font:600 12px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.edb-dl:hover{background:#F3D57F}
+.edb-dl svg{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.edb-mlc{margin-top:clamp(28px,3vw,40px);padding:20px 22px;border:1px solid var(--line);border-radius:2px;color:var(--muted);font-size:15px}
+.edb-mlc b{color:var(--text)}
+.edb-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.edb-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.edb-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.edb-box p{color:var(--muted);font-size:15px}
+.edb-box .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.edb-box ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.edb-box ul a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.edb-box ul a:hover{border-color:var(--teal)}
+.edb-box ul .ar{flex:none;color:var(--teal)}
+.edb-box.pin{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the last, small box stays in view */
+.edb-box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+@media (max-width:1100px){.edb .grid{grid-template-columns:1fr}.edb-side{grid-template-columns:1fr 1fr}.edb-box.pin{position:static}}
+@media (max-width:760px){.edb-side{grid-template-columns:1fr}.edb-intro{grid-template-columns:1fr}}
+@media (max-width:560px){.edb-facts{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="edb-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-3.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/seafarers-manning/">Seafarers</a></li><li aria-current="page">Endorsement &amp; Discharge Book</li></ol></nav>
+    <p class="tag port">Officers · STCW Reg. I/10 · Shipping Act 1994</p>
+    <h1 class="hull" id="edb-h1">Endorsement <span>&amp; Discharge Book</span></h1>
+    <div class="foot">
+      <p class="lead">Barbados Flag State endorsements for officers serving on Barbados registered ships: who we endorse, and how the owner, manager or crewing agency applies.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#apply">How to apply <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{edb-form-file}}" download>{{edb-form-code}} ({{edb-form-type}})</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO WE ENDORSE, KEY RULES, HOW TO APPLY (facts and steps from src/data/endorsement-discharge-book.json) ================= -->
+<section class="edb" aria-label="Officer endorsements">
+  <div class="wrap grid">
+    <div>
+      <div class="edb-intro">
+        <figure><img src="assets/img/endorsement-discharge-book/crew-member-eebd.webp" alt="A crew member wearing an emergency escape breathing device" width="748" height="555" loading="lazy"></figure>
+        <div class="txt">
+          <p>All Barbados registered ships are subject to the provisions of the Shipping Act 1994, and officers should familiarise themselves with Parts II &amp; IV of the Shipping Act in particular.</p>
+          <p>Every foreign-going ship must carry certificated officers in both deck and engine departments. Barbados has undertakings in place under the STCW Convention Reg. I/10 with a number of certificate issuing countries, all of which are white-listed under STCW. Updates to this list are published via our <a href="https://barbadosmaritime.com/documents/bulletins/">Bulletins</a>.</p>
+          <p>We do not issue endorsements to ratings but we may issue endorsements to officers from a country which issues STCW compliant certificates of competency.</p>
+        </div>
+      </div>
+
+      <div class="edb-h"><p class="tag t">Before you apply</p><h2 class="hull">The <span>key rules</span></h2></div>
+      <ul class="edb-facts">
+{{edb-facts}}
+      </ul>
+
+      <div class="edb-h" id="apply"><p class="tag t">Four steps</p><h2 class="hull">How <span>to apply</span></h2><p>To apply for a Barbados Officer's endorsement:</p></div>
+      <ol class="edb-steps">
+{{edb-steps}}
+      </ol>
+
+      <p class="edb-mlc"><b>Maritime Labour Convention.</b> Barbados has ratified the Maritime Labour Convention 2006 and ships are inspected annually to include MLC aspects such as crew accommodation, crew agreements and general living conditions.</p>
+    </div>
+
+    <aside class="edb-side" aria-label="Apply and verify">
+      <div class="edb-box hi"><p class="tag t">{{edb-form-code}} · Rev {{edb-form-rev}}</p><b class="hull">The application form</b><p>{{edb-form-title}}. Instructions on completion and return are included in the notes to the form.</p>
+        <a class="btn btn-gold" href="{{edb-form-file}}" download>Download the form <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="edb-box"><p class="tag t">Related</p><b class="hull">Useful links</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/documents/bulletins/">Bulletins (white list updates) <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/forms/">All forms <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/seafarers-manning/">Seafarers &amp; manning <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="edb-box pin"><p class="tag t">Verification</p><b class="hull">Check an endorsement</b><p>Barbados issued Certificates of Endorsement may be checked via our online portal system.</p>
+        <a class="btn btn-line" href="{{edb-portal}}" rel="noopener">Go to the portal <svg class="ar"><use href="#ar"/></svg></a></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

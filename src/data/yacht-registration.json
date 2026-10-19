@@ -1,0 +1,11 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/yacht-registration/ (WordPress feed, modified 12 Sep 2025) and docs/yacht-registration.png. Wording as live; anything tidied is marked \"check\".",
+  "intro": "Please contact our team for a quote to register your yacht with us, or for any guidance on the process.",
+  "checklist": { "code": "PPR01-C02", "title": "Checklist for Yacht Registration", "about": "details all forms and documents that must be provided for a yacht to be provisionally or permanently registered.", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C02-Checklist-for-Yacht-Registration-Rev.01.docx" },
+  "inspection": {
+    "commercial": "The BMSR require commercial yachts to undergo a Flag State Inspection by one of our Appointed Nautical Inspectors a minimum of once every five years.",
+    "private": "Private yachts are recommended to undergo inspection but there is no specific requirement to do so.",
+    "check": "the live page says \"Appointed Nautical Inspections\"; changed to \"Inspectors\""
+  },
+  "contact": "At Barbados Maritime we pride ourselves on our customer service. We look forward to speaking with you soon."
+}

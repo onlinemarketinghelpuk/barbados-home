@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marine Circulars - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= marine circulars: a searchable, filterable, sortable register (as Bulletins), each with its purpose, Read and PDF ================= */
+.mcz{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.mcz .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.mcz .grid>*{min-width:0}
+.mc-tools{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;display:grid;gap:12px;padding:14px 0;background:var(--abyss);border-bottom:1px solid var(--line)}
+.mc-tools .search{position:relative}
+.mc-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.mc-tools input{width:100%;min-height:48px;padding:10px 14px 10px 44px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.mc-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.mc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.mc-chips button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer}
+.mc-chips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.mc-chips button:hover{border-color:var(--teal)}
+.mc-chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.mc-chips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.mc-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin:16px 0 4px}
+.mc-count{margin:0;font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.mc-count b{color:var(--text)}
+.mc-sort{display:inline-flex;align-items:center;gap:8px;font:500 12.5px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.mc-sort select{min-height:38px;padding:0 34px 0 12px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--text);font:600 14px/1 var(--sans);text-transform:none;letter-spacing:0;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239DB3BC' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.mc-list{margin:12px 0 0;padding:0;list-style:none;border-top:2px solid var(--gold)}
+.mcr{display:grid;grid-template-columns:118px minmax(0,1fr) auto;gap:10px 22px;padding:22px 0;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 130px)}
+.mcr>*{min-width:0}
+.mcr .no{font:600 14px/1.3 var(--mono);letter-spacing:.03em;color:var(--teal)}
+.mcr .no small{display:block;margin-top:6px;font:500 12px/1.3 var(--mono);color:var(--muted)}
+.mcr h3{font-size:19px;line-height:1.3}
+.mcr .meta{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:8px}
+.mcr .chip{padding:4px 9px;border:1px solid var(--line);border-radius:99px;font:600 11px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.mcr .to{margin-top:10px;font-size:14.5px;color:var(--muted)}
+.mcr .to b{font-weight:600;color:var(--text)}
+.mcr .x{margin-top:8px;max-width:68ch;color:var(--muted);font-size:15px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mcr .acts{display:flex;flex-direction:column;gap:6px;align-items:stretch}
+.mcr .acts a{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--text);transition:border-color .2s,color .2s}
+.mcr .acts a:hover{border-color:var(--teal);color:var(--teal)}
+.mcr .acts a.read{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.mcr .acts a.read:hover{background:#F3D57F;color:var(--ink)}
+.mcr .acts svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mcr.latest .no::after{content:"Latest";display:inline-block;margin-top:8px;padding:4px 9px;border-radius:99px;background:var(--gold);font:600 11px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.js .mcr.off{display:none}
+.mc-empty{display:none;margin-top:24px;padding:24px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.mc-empty.show{display:block}
+.mc-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.mcb{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.mcb b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.mcb p{color:var(--muted);font-size:15px}
+.mcb p a{color:var(--text);font-weight:700}
+.mcb ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.mcb ul a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.mcb ul a:hover{border-color:var(--teal)}
+.mcb ul .ar{flex:none;color:var(--teal)}
+.mcb .btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.mcb .btns .btn{max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.mcb.pin{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only this small box stays in view */
+@media (max-width:1100px){.mcz .grid{grid-template-columns:1fr}.mc-side{grid-template-columns:1fr 1fr}.mcb.pin{position:static}}
+@media (max-width:760px){.mc-side{grid-template-columns:1fr}.mc-tools{position:static}.mc-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.mc-chips::-webkit-scrollbar{display:none}.mc-chips button{flex:none}}
+@media (max-width:640px){.mcr{grid-template-columns:minmax(0,1fr)}.mcr .acts{flex-direction:row;flex-wrap:wrap}.mcr .no small{display:inline;margin:0 0 0 8px}.mcr.latest .no::after{margin:0 0 0 8px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="mc-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-4.jpg" style="object-position:70% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li aria-current="page">Marine Circulars</li></ol></nav>
+    <p class="tag port">{{mc-count}} circulars · latest {{mc-latest}}</p>
+    <h1 class="hull" id="mc-h1">Marine <span>Circulars</span></h1>
+    <div class="foot">
+      <p class="lead">Our marine circulars set out new requirements and guidance for Barbadian ships, their owners, operators and inspectors. Search by number or subject.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#circulars">Find a circular <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{mc-all}}" target="_blank" rel="noopener">All circulars</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE REGISTER (generated from src/data/marine-circulars.json by tools/fill/marine-circulars.mjs) ================= -->
+<!-- TODO(client): approve the topics; the live list page shows the wrong text under MC 032025 and MC 072025 (see "check" in the data) -->
+<section class="mcz" id="circulars" aria-label="Marine circulars">
+  <div class="wrap grid">
+    <div>
+      <div class="mc-tools" role="search" aria-label="Find a circular">
+        <label class="search"><span class="sr">Search marine circulars</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="mc-q" placeholder="Search by number or subject, e.g. 062025 or sanctions" autocomplete="off"></label>
+        <div class="mc-chips chips" role="group" aria-label="Filter by topic">
+{{mc-chips}}
+        </div>
+      </div>
+      <div class="mc-bar"><p class="mc-count" id="mc-count" aria-live="polite">Showing <b>{{mc-count}}</b> circulars</p><label class="mc-sort">Sort <select id="mc-sort"><option value="new">Newest first</option><option value="no">By number</option></select></label></div>
+      <ol class="mc-list" id="mc-list">
+{{mc-rows}}
+      </ol>
+      <p class="mc-empty" id="mc-empty">No circulars match. Try another word or number, or <a href="https://barbadosmaritime.com/contact-us/">contact us</a>.</p>
+    </div>
+    <aside class="mc-side" aria-label="Downloads and help">
+      <div class="mcb"><p class="tag t">Everything at once</p><b class="hull">Download</b><p>Every marine circular in one folder, or the list of circulars as a spreadsheet.</p>
+        <div class="btns"><a class="btn btn-gold" href="{{mc-all}}" target="_blank" rel="noopener">All circulars <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{mc-list}}" target="_blank" rel="noopener">List of circulars</a></div>
+      </div>
+      <div class="mcb"><p class="tag t">Read with</p><b class="hull">Related</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/documents/bulletins/">Bulletins <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/inspections/inspection-templates/">Inspection templates <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">Appointed Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="mcb pin"><p class="tag t">Questions?</p><b class="hull">Operations</b><p>Questions about a circular: <a href="mailto:ops@barbadosmaritime.com">ops@barbadosmaritime.com</a></p></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// search by number or subject, filter by topic, sort; the count is announced
+const mq = document.getElementById('mc-q'), mchips = [...document.querySelectorAll('.mc-chips button')], mlist = document.getElementById('mc-list');
+const mrows = [...mlist.children], mcount = document.getElementById('mc-count'), mempty = document.getElementById('mc-empty'), msort = document.getElementById('mc-sort');
+let mtopic = 'all';
+const mnorm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const mapply = () => {
+  const w = mnorm(mq.value.trim()).split(/\s+/).filter(Boolean); let n = 0;
+  mrows.forEach(r => { const ok = (mtopic === 'all' || r.dataset.topic === mtopic) && w.every(x => r.dataset.s.includes(x)); r.classList.toggle('off', !ok); if (ok) n++; });
+  mempty.classList.toggle('show', !n);
+  mcount.innerHTML = n ? `Showing <b>${n}</b> circular${n === 1 ? '' : 's'}` : 'No matches';
+};
+mq.addEventListener('input', mapply);
+mchips.forEach(b => b.addEventListener('click', () => { mtopic = b.dataset.topic; mchips.forEach(x => x.setAttribute('aria-pressed', x === b)); mapply(); }));
+msort.addEventListener('change', () => {
+  const key = msort.value === 'no' ? r => r.dataset.order : r => r.dataset.date;
+  [...mrows].sort((a, b) => msort.value === 'no' ? key(a).localeCompare(key(b)) : key(b).localeCompare(key(a))).forEach(r => mlist.append(r));
+});
+</script>
+</body>
+</html>

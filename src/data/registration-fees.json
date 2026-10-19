@@ -1,0 +1,79 @@
+{
+  "_note": "From the live fees list PP01-F01 BMSR Fees Rev.04 (Word file linked from barbadosmaritime.com/registration/registration-fees/, page modified 15 May 2026). The live page itself only offers the download. All amounts are in US dollars and copied exactly; only the number format is made consistent (thousands separators, e.g. 2900.00 → 2,900.00), and \"/hr.\" is written \"per hour\". Each \"check\" notes a tidy or a question for the client.",
+  "currency": "USD",
+  "source": { "code": "PP01-F01", "title": "BMSR Fees", "rev": "04", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PP01-F01-BMSR-Fees-Rev.04.docx" },
+  "vessel": {
+    "check": "the live list gives \"5001 - 25000 NRT\" then \"> 25001 NRT\"; the estimator treats anything over 25,000 NRT as the top band, and 2,000 NRT as the 2,000–5,000 band",
+    "bands": [
+      { "label": "Under 2,000 NRT", "upTo": 2000, "initial": { "fixed": 3000 }, "annual": { "fixed": 2900 } },
+      { "label": "2,000 – 5,000 NRT", "upTo": 5000, "initial": { "rate": 1.4, "plus": 600 }, "annual": { "rate": 0.25, "plus": 2600 } },
+      { "label": "5,001 – 25,000 NRT", "upTo": 25000, "initial": { "rate": 0.6, "plus": 5000 }, "annual": { "rate": 0.24, "plus": 3200 } },
+      { "label": "Over 25,000 NRT", "initial": { "rate": 0.27, "plus": 14000 }, "annual": { "rate": 0.055, "plus": 9000 }, "check": "live: \"> 25001 NRT\"" }
+    ]
+  },
+  "yacht": [
+    { "label": "Pleasure / Private", "initial": 1400, "annual": 800 },
+    { "label": "Charter / Commercial", "initial": 2000, "annual": 1200 }
+  ],
+  "groups": [
+    { "id": "other", "name": "Other fees", "rows": [
+      { "item": "Radio Licence (annual fee)", "fee": 200, "check": "live: \"Radio License\"" },
+      { "item": "Continuous Synopsis Record (CSR) (each report)", "fee": 200 },
+      { "item": "MMSI Registration", "fee": 200 },
+      { "item": "Carving and Marking Note (CMN)", "fee": 200 },
+      { "item": "Call Sign Registration", "fee": 200 },
+      { "item": "Safe Manning Document (SMD)", "fee": 200 },
+      { "item": "Transcript of Register", "fee": 200 },
+      { "item": "Certificate of Registry (issuance of Provisional and Permanent)", "fee": 200 },
+      { "item": "Certificate of Registry (reissuance of Provisional after 6 months)", "fee": 1000 },
+      { "item": "Deletion Certificate", "fee": 650 },
+      { "item": "Bill of Sale Registration", "fee": 650 },
+      { "item": "Mortgage Transaction", "fee": 650 },
+      { "item": "Change of Vessel's Name", "fee": 650 },
+      { "item": "Officer Certificate of Competency (CoC) Flag State Endorsement", "fee": 150 },
+      { "item": "Officer Certificate of Proficiency (CoP) Flag State Endorsement", "fee": 150 },
+      { "item": "Seaman's Record Book", "fee": 120 },
+      { "item": "Exemption & Equivalence Certificate and Temporary Permit", "fee": 200 },
+      { "item": "Change to Register Entry", "fee": 200 },
+      { "item": "Bunker / Wreck / Tanker CLC Certificate", "fee": 200 },
+      { "item": "Wreck Certificate for foreign-flagged vessels", "fee": 300 },
+      { "item": "Bareboat Charter Statement", "fee": 200 },
+      { "item": "LRIT Maintenance", "fee": 300 },
+      { "item": "DMLC Part I", "fee": 200 },
+      { "item": "Declaration of Compliance", "fee": 500 },
+      { "item": "STCW Exemption", "fee": 500 },
+      { "item": "High Speed Craft Safety Certificate", "fee": 500 },
+      { "item": "Any other Statutory Certificate", "fee": 500 },
+      { "item": "Letters / Statements", "fee": 200 },
+      { "item": "Armed Security Personnel Memorandum of Agreement (MoA)", "fee": 200 },
+      { "item": "Barbadian Authorisation of Service Provider (BASP)", "fee": 200 },
+      { "item": "Assessment and approval of any manual or plan", "fee": 150, "unit": "per hour" },
+      { "item": "Electronic Record Book – Letter of Approval (Initial / Renewal)", "fee": 300 },
+      { "item": "Electronic Record Book System Approval", "fee": 150, "unit": "per hour" },
+      { "item": "Attendance out of office hours (Mon to Fri, 09:00–17:00)", "fee": 150, "unit": "per hour", "check": "as live; office hours are 09:00–17:00, so this presumably means attendance outside them on weekdays" },
+      { "item": "Attendance on weekends and bank holidays", "fee": 300, "unit": "per hour" }
+    ] },
+    { "id": "shipboard", "name": "Shipboard documents", "intro": "The standard shipboard document set includes the printouts and electronic document shown below. Additional copies of each printout are charged per item, at the fees shown.", "rows": [
+      { "item": "Standard shipboard document set (first issuance at registration)", "fee": 350 },
+      { "item": "Standard shipboard document set (first issuance at registration), tankers only", "fee": 380 },
+      { "head": "Printouts" },
+      { "item": "Articles of Agreement (MLC)", "note": "Ship's Articles & List of Crew (black print = Ship; red print = Owner)", "fee": 30 },
+      { "item": "Official Logbook (including Freeboard Draught Sheet)", "fee": 40 },
+      { "item": "Oil Record Book Part I (MARPOL I)", "fee": 40 },
+      { "item": "Cargo Record Book (Noxious Substances) (MARPOL II)", "fee": 40 },
+      { "item": "Garbage Record Book Part I (MARPOL V)", "fee": 40 },
+      { "item": "Garbage Record Book Part II (MARPOL V)", "fee": 40 },
+      { "item": "Engine Room Logbook (Ozone Depleting Substances) (MARPOL VI)", "fee": 40 },
+      { "item": "Biofouling Record Book", "fee": 40 },
+      { "item": "GMDSS Radio Logbook", "fee": 40 },
+      { "item": "Compass Observation Book", "fee": 40 },
+      { "item": "MARPOL Annex VI Record Book – all vessels", "fee": 40 },
+      { "item": "Ballast Water Record Book", "fee": 40 },
+      { "head": "Additional printouts (ship specific)" },
+      { "item": "Oil Record Book Part II (MARPOL I), tankers only", "fee": 40 },
+      { "head": "Courier" },
+      { "item": "Courier charge – international parcels", "fee": 200 },
+      { "item": "Courier charge – UK parcels", "fee": 50 }
+    ] }
+  ]
+}

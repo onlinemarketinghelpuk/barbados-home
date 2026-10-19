@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{np-title}} - News - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<!-- @include news-css (the News cards and side column; shared with the news category pages) -->
+<style>
+/* ================= news post: the article at reading width, details and sharing alongside, older/newer, more in the topic ================= */
+.np-hero h1{max-width:22em;font-size:clamp(30px,3.6vw,56px);line-height:1.08}
+.np-hero .np-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:18px;font:500 13px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:color-mix(in srgb,#fff 80%,transparent)}
+.np-hero .np-meta a{padding:5px 10px;border:1px solid color-mix(in srgb,var(--gold) 70%,transparent);border-radius:99px;color:var(--gold)}
+.np-hero .np-meta a:hover{background:var(--gold);color:var(--ink)}
+.npz{padding-block:clamp(48px,6vw,88px) clamp(40px,5vw,72px)}
+.np-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,72px);align-items:start}
+.np-grid>*{min-width:0}
+.np-body{max-width:68ch;font-size:clamp(16px,1.15vw,18px);line-height:1.75}
+.np-body>*+*{margin-top:1.1em}
+.np-body>p:first-of-type:not(.np-empty){font-size:clamp(19px,1.5vw,22px);line-height:1.6;color:var(--text)}
+.np-body p,.np-body li{color:color-mix(in srgb,var(--text) 88%,transparent)}
+.np-body h2,.np-body h3{margin-top:1.8em;font-size:clamp(22px,2vw,28px);line-height:1.25}
+.np-body ul,.np-body ol{padding-left:1.3em}
+.np-body li+li{margin-top:.4em}
+.np-body a{color:var(--teal);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.np-body a:hover{color:var(--text)}
+.np-body blockquote{margin-inline:0;padding:4px 0 4px 22px;border-left:3px solid var(--gold);font-size:1.1em;font-style:italic}
+.np-body strong{color:var(--text)}
+.np-body .np-tw{overflow-x:auto;border:1px solid var(--line)}
+.np-body table{width:100%;border-collapse:collapse;font-size:15px}
+.np-body th,.np-body td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.np-fig{margin:2em 0}
+.np-fig img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:2px;background:var(--hull)}
+.np-fig.tall img{max-width:min(100%,520px)}
+.np-fig.small{float:left;width:auto;margin:.3em 1.4em .6em 0}
+.np-fig.small img{width:auto;max-width:160px}
+.np-fig figcaption{margin-top:10px;font:500 12.5px/1.5 var(--mono);letter-spacing:.03em;color:var(--muted)}
+.np-empty{padding:18px 20px;border:1px dashed var(--line);border-radius:2px;color:var(--muted)}
+.np-files{clear:both;margin-top:2em;padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.np-files h2{margin:0 0 12px;font-size:20px}
+.np-files ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.np-files a{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:50px;padding:8px 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;line-height:1.35;color:var(--text);text-decoration:none;transition:border-color .2s}
+.np-files a:hover{border-color:var(--teal)}
+.np-files a span{flex:none;display:inline-flex;align-items:center;gap:7px;font:600 11.5px/1 var(--mono);letter-spacing:.06em;color:var(--teal)}
+.np-files a svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.np-tags{display:flex;flex-wrap:wrap;gap:6px;clear:both;margin-top:2em;padding:0;list-style:none}
+.np-tags li{padding:5px 10px;border:1px solid var(--line);border-radius:99px;font:500 12px/1.2 var(--mono);color:var(--muted)}
+.np-side{display:grid;gap:14px;align-self:stretch;align-content:start}
+.np-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.np-box dl{display:grid;gap:12px;margin:0}
+.np-box dt{font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.np-box dd{margin:2px 0 0;font-weight:600}
+.np-box dd a{color:var(--teal)}
+.np-box .btn{margin-top:16px;max-width:100%}
+.np-share{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the small share box stays in view */
+.np-share p{margin-bottom:12px;font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.np-share ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.np-share a,.np-share button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:none;font:600 13.5px/1 var(--sans);color:var(--text);cursor:pointer;transition:border-color .2s}
+.np-share a:hover,.np-share button:hover{border-color:var(--teal)}
+.np-share .ok{display:block;min-height:1.4em;margin-top:8px;font-size:13.5px;color:var(--teal)}
+.np-pager{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);padding-bottom:clamp(40px,5vw,72px)}
+.np-pager a{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px 22px;border:1px solid var(--line);border-radius:2px;background:var(--card);transition:border-color .2s}
+.np-pager a:hover{border-color:var(--teal)}
+.np-pager .k{font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.np-pager b{font-size:17px;line-height:1.35}
+.np-pager .next{grid-column:2;text-align:right}
+.np-more{padding-block:clamp(48px,6vw,88px);border-top:1px solid var(--line);background:var(--deep)}
+.np-more .head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px}
+.np-more .nw-list{margin-top:24px}
+@media (max-width:1100px){.np-grid{grid-template-columns:1fr}.np-side{grid-template-columns:1fr 1fr}.np-share{position:static}}
+@media (max-width:640px){.np-side{grid-template-columns:1fr}.np-pager{grid-template-columns:1fr}.np-pager .next{grid-column:1;text-align:left}.np-fig.small{float:none;margin:1.2em 0}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<!-- {{np-post:{{page:post}}}} -->
+
+<main id="main">
+
+<!-- ================= HERO (the post's featured image, title, date, topic) ================= -->
+<section class="hero ph np-hero" aria-labelledby="np-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="{{np-img}}" style="object-position:50% 40%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/category/news/">News</a></li><li><a href="{{np-topic-href}}">{{np-topic}}</a></li></ol></nav>
+    <h1 class="hull" id="np-h1">{{np-title}}</h1>
+    <p class="np-meta"><time datetime="{{np-date-iso}}">{{np-date}}</time><span aria-hidden="true">·</span><span>{{np-read}} min read</span><a href="{{np-topic-href}}">{{np-topic}}</a></p>
+  </div>
+</section>
+
+<!-- ================= THE ARTICLE (from src/data/news-posts.json) ================= -->
+<section class="npz" aria-label="Article">
+  <div class="wrap np-grid">
+    <article class="np-body" aria-labelledby="np-h1">
+{{np-body}}
+{{np-files}}
+{{np-tags}}
+    </article>
+    <aside class="np-side" aria-label="About this post">
+      <div class="np-box"><dl>
+        <div><dt>Published</dt><dd><time datetime="{{np-date-iso}}">{{np-date}}</time></dd></div>
+        <div><dt>Topic</dt><dd><a href="{{np-topic-href}}">{{np-topic}}</a></dd></div>
+        <div><dt>Reading time</dt><dd>{{np-read}} min</dd></div>
+      </dl><a class="btn btn-line" href="https://barbadosmaritime.com/category/news/">All news <svg class="ar"><use href="#ar"/></svg></a></div>
+      <div class="np-box np-share"><p>Share this post</p>
+        <ul>
+          <li><button type="button" id="np-copy" data-url="{{np-live}}">Copy link</button></li>
+          <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{np-live-enc}}" target="_blank" rel="noopener">LinkedIn<span class="sr"> (opens in a new tab)</span></a></li>
+          <li><a href="https://twitter.com/intent/tweet?text={{np-title-enc}}&amp;url={{np-live-enc}}" target="_blank" rel="noopener">X<span class="sr"> (opens in a new tab)</span></a></li>
+          <li><a href="mailto:?subject={{np-title-enc}}&amp;body={{np-live-enc}}">Email</a></li>
+        </ul>
+        <span class="ok" id="np-copied" role="status"></span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= OLDER / NEWER ================= -->
+<nav class="wrap np-pager" aria-label="More posts">
+{{np-pager}}
+</nav>
+
+<!-- ================= MORE IN THE TOPIC (News cards) ================= -->
+<section class="np-more" aria-labelledby="np-more-h">
+  <div class="wrap">
+    <div class="head"><div><p class="tag t">{{np-more-tag}}</p><h2 class="hull h2" id="np-more-h">{{np-more-title}}</h2></div><a class="btn btn-line" href="{{np-more-href}}">{{np-more-all}} <svg class="ar"><use href="#ar"/></svg></a></div>
+    <ol class="nw-list">
+{{np-related}}
+    </ol>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// "Copy link": copies the post's address (the live one), with a fallback where the clipboard isn't available
+const npCopy = document.getElementById('np-copy'), npDone = document.getElementById('np-copied');
+npCopy.addEventListener('click', async () => {
+  const url = npCopy.dataset.url;
+  try { await navigator.clipboard.writeText(url); npDone.textContent = 'Link copied.'; }
+  catch { const t = document.createElement('textarea'); t.value = url; document.body.append(t); t.select(); try { document.execCommand('copy'); npDone.textContent = 'Link copied.'; } catch { npDone.textContent = url; } t.remove(); }
+  setTimeout(() => { npDone.textContent = ''; }, 4000);
+});
+</script>
+</body>
+</html>

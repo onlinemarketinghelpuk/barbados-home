@@ -3,7 +3,8 @@
 // Option D also swaps the blocks marked <!-- @d:name --> … <!-- /@d:name --> in src/home.html for src/option-d/name.html,
 // adds src/option-d/d.css, and uses its own optimised images. For A–C the markers are simply removed.
 // Output: option-{a,b,c,d}/index.html (committed, so Vercel serves them as plain static pages).
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
+// usage: node tools/build-options.mjs [--only dir1,dir2]   (--only writes just those pages, e.g. --only mortgages or --only home)
 
 const root = new URL('../', import.meta.url);
 const read = p => readFileSync(new URL(p, root), 'utf8');
@@ -14,7 +15,7 @@ export const options = [
   { id: 'c', name: 'Clean Authority', fonts: 'family=Plus+Jakarta+Sans:wght@200..800' },
   // D: Option A's headline with the improved sections (see docs/spec.md, "Option D")
   { id: 'd', name: 'Refined Plus', type: 'a', fonts: null, parts: 'src/option-d/',
-    pageCss: { 'src/contact.html': 'src/option-d/contact.css', 'src/about.html': 'src/option-d/inner.css', 'src/team.html': 'src/option-d/inner.css', 'src/registrars.html': 'src/option-d/registrars.css', 'src/ros.html': 'src/option-d/ros-page.css', 'src/quality.html': 'src/option-d/quality.css', 'src/links.html': 'src/option-d/links.css', 'src/bmsr.html': 'src/option-d/bmsr.css', 'src/why.html': 'src/option-d/why.css', 'src/holidays.html': 'src/option-d/holidays.css', 'src/registration.html': 'src/option-d/registration.css', 'src/seafarers.html': 'src/option-d/seafarers.css', 'src/inspections.html': 'src/option-d/inspections.css', 'src/investigations.html': 'src/option-d/investigations.css', 'src/events.html': 'src/option-d/events.css', 'src/documents.html': 'src/option-d/documents.css', 'src/bulletins.html': 'src/option-d/bulletins.css', 'src/conventions.html': 'src/option-d/conventions.css', 'src/shipboard.html': 'src/option-d/shipboard.css' }, // extra styles for one page only
+    pageCss: { 'src/contact.html': 'src/option-d/contact.css', 'src/about.html': 'src/option-d/inner.css', 'src/team.html': 'src/option-d/inner.css', 'src/registrars.html': 'src/option-d/registrars.css', 'src/ros.html': 'src/option-d/ros-page.css', 'src/quality.html': 'src/option-d/quality.css', 'src/links.html': 'src/option-d/links.css', 'src/bmsr.html': 'src/option-d/bmsr.css', 'src/why.html': 'src/option-d/why.css', 'src/holidays.html': 'src/option-d/holidays.css', 'src/registration.html': 'src/option-d/registration.css', 'src/seafarers.html': 'src/option-d/seafarers.css', 'src/inspections.html': 'src/option-d/inspections.css', 'src/investigations.html': 'src/option-d/investigations.css', 'src/events.html': 'src/option-d/events.css', 'src/documents.html': 'src/option-d/documents.css', 'src/bulletins.html': 'src/option-d/bulletins.css', 'src/conventions.html': 'src/option-d/conventions.css', 'src/shipboard.html': 'src/option-d/shipboard.css', 'src/news.html': 'src/option-d/news.css', 'src/news-category.html': 'src/option-d/news.css', 'src/news-post.html': 'src/option-d/news-post.css', 'src/ship-registration.html': 'src/option-d/ship-registration.css' }, // extra styles for one page only
     assets: json('src/option-d/assets.json'), // image swaps (optimised copies in assets/img/d/)
     text: json('src/option-d/text.json') },   // copy swaps, e.g. the IACS count
 ];
@@ -138,8 +139,11 @@ function fillEvents(html) {
       + `<h2 class="hull" id="${e.id}-h">${esc(e.title)}</h2>${e.body.map(p => `<p>${esc(p)}</p>`).join('')}`
       + (e.link ? `<a class="go" href="${esc(e.link)}">Read the story <svg class="ar"><use href="#ar"/></svg></a>` : '') + `</div></article>`;
   }).join('\n');
-  return html.replace('{{ev-items}}', items);
+  return html.replace('{{ev-items}}', items).replaceAll('{{ev-count}}', EV.events.length);
 }
+
+const fileType = f => (f && /\.(docx?|pdf|xlsx?)(?:$|\?)/i.exec(f)?.[1].toUpperCase()) || 'PDF';
+const revOf = f => (/Rev\.?\s*0*(\d+)/i.exec(f || '') || [])[1];
 
 // forms: one list per category, rendered from src/data/forms.json; an empty category says its list is on the way
 const FM = JSON.parse(read('src/data/forms.json'));
@@ -150,8 +154,9 @@ function fillForms(html) {
   const list = FM.categories.map(c => `      <section class="fcat" id="cat-${c.id}" data-cat="${c.id}" aria-labelledby="cat-${c.id}-h">\n`
     + `        <h2 class="hull" id="cat-${c.id}-h">${esc(c.name)} <i>${c.forms.length ? c.forms.length + ' forms' : 'Coming soon'}</i></h2>\n`
     + (c.forms.length ? c.forms.map(f => `        <div class="frow" data-s="${esc((f.code + ' ' + f.code.replace(/^.*-/, '') + ' ' + f.title).toLowerCase())}"><span class="code">${esc(f.code)}</span><span class="t">${esc(f.title)}</span>`
-      + `<a class="dl" href="${esc(f.file || LIVE_FORMS)}"${f.file ? ' download' : ''} aria-label="Download ${esc(f.code)} ${esc(f.title)}"><svg aria-hidden="true"><use href="#dl"/></svg>PDF</a></div>`).join('\n')
+      + `<a class="dl" href="${esc(f.file || LIVE_FORMS)}"${f.file ? ' download' : ''} aria-label="Download ${esc(f.code)} ${esc(f.title)}"><svg aria-hidden="true"><use href="#dl"/></svg>${fileType(f.file)}</a></div>`).join('\n')
       : `        <p class="fsoon">This list is moving to the new site. Until then, find it on the <a href="${LIVE_FORMS}">current forms page</a>.</p>`)
+    + (c.partial && c.forms.length ? `\n        <p class="fsoon">More forms in this category are moving to the new site. Until then, find them on the <a href="${LIVE_FORMS}">current forms page</a>.</p>` : '')
     + `\n      </section>`).join('\n');
   const chips = [`          <button type="button" data-cat="all" aria-pressed="true">All <i>${total}</i></button>`]
     .concat(FM.categories.map(c => `          <button type="button" data-cat="${c.id}" aria-pressed="false">${esc(c.name.replace(/ forms$/i, ''))}${c.forms.length ? ` <i>${c.forms.length}</i>` : ''}</button>`)).join('\n');
@@ -198,24 +203,77 @@ function fillShipboard(html) {
   return html.replace('{{sb-books}}', books).replaceAll('{{sb-count}}', SB.books.length).replaceAll('{{sb-online}}', esc(SB.orderOnline)).replaceAll('{{sb-offline}}', esc(SB.orderOffline));
 }
 
+// news: the latest post as a feature, then cards; rendered from src/data/news.json (newest first)
+const NW = JSON.parse(read('src/data/news.json'));
+function fillNews(html) {
+  if (!html.includes('{{nw-')) return html;
+  const only = (/<!-- \{\{nw-only:([\w-]+)\}\} -->\n?/.exec(html) || [])[1]; // a category page: just that topic's posts
+  html = html.replace(/<!-- \{\{nw-only:[\w-]+\}\} -->\n?/, '');
+  const list = only ? NW.posts.filter(p => p.topic === only) : NW.posts;
+  const LIVE_NEWS = 'https://barbadosmaritime.com/category/news/#live'; // until a post has its own "href"
+  const topic = Object.fromEntries(NW.topics.map(t => [t.id, t.name]));
+  const day = d => new Date(d + 'T12:00:00Z');
+  const posts = list.map((p, i) => {
+    const d = day(p.date), dd = d.getUTCDate(), my = d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+    return `        <li class="nw rv${i === 0 ? ' lead' : ''}" data-topic="${p.topic}"><a href="${esc(p.href || LIVE_NEWS)}">`
+      + `<figure><img src="${esc(p.img)}" alt="${esc(p.alt || '')}" loading="lazy"></figure>`
+      + `<div class="b"><p class="meta"><span class="chip">${esc(topic[p.topic])}</span><time datetime="${p.date}"><span class="dd">${dd}</span> <span class="my">${my}</span></time></p>`
+      + `<h3 class="hull">${esc(p.title)}</h3><p class="x">${esc(p.excerpt)}</p><span class="go">Read more <svg class="ar"><use href="#ar"/></svg></span></div></a></li>`;
+  }).join('\n');
+  const n = id => NW.posts.filter(p => p.topic === id).length;
+  const chips = only // a category page links to the others; the News page filters in place
+    ? [`          <a href="https://barbadosmaritime.com/category/news/">All news <i>${NW.posts.length}</i></a>`].concat(NW.topics.map(t => `          <a href="../news-${t.id}/index.html"${t.id === only ? ' aria-current="page"' : ''}>${esc(t.name)} <i>${n(t.id)}</i></a>`)).join('\n')
+    : [`          <button type="button" data-topic="all" aria-pressed="true">All <i>${NW.posts.length}</i></button>`]
+    .concat(NW.topics.map(t => `          <button type="button" data-topic="${t.id}" aria-pressed="false">${esc(t.name)} <i>${n(t.id)}</i></button>`)).join('\n');
+  return html.replace('{{nw-posts}}', posts).replace('{{nw-chips}}', chips).replaceAll('{{nw-count}}', list.length).replaceAll('{{nw-archive}}', esc(NW.archive));
+}
+
+// ship registration: two stages, each with forms (Word files) and documents, as tick lists; from src/data/ship-registration.json
+const SR = JSON.parse(read('src/data/ship-registration.json'));
+function fillShipReg(html) {
+  if (!html.includes('{{sr-')) return html;
+  const nForms = new Set(SR.stages.flatMap(st => st.forms.map(f => f.code))).size, nDocs = SR.stages.reduce((a, st) => a + st.docs.length, 0);
+  const row = (id, body, extra = '') => `          <li><label><input type="checkbox" id="${id}"><span class="t">${body}</span></label>${extra}</li>`;
+  const stages = SR.stages.map((st, i) => {
+    const forms = st.forms.map(f => row(`${st.id}-${f.code.toLowerCase()}`, `${esc(f.title)}<small>${esc(f.code)}${revOf(f.file) ? ' · Rev ' + revOf(f.file) : ''}</small>`,
+      `<a class="dl" href="${esc(f.file)}" download aria-label="Download ${esc(f.code)} ${esc(f.title)} (${fileType(f.file)})"><svg aria-hidden="true"><use href="#dl"/></svg>${fileType(f.file)}</a>`)).join('\n');
+    const docs = st.docs.map((d, j) => row(`${st.id}-doc-${j + 1}`, esc(d))).join('\n');
+    return (i ? `      <p class="then" aria-hidden="true">Then</p>\n` : '')
+      + `      <section class="stg" id="${st.id}" aria-labelledby="${st.id}-h">\n        <div class="stg-h"><span class="num">0${i + 1}</span><h2 class="hull" id="${st.id}-h">${esc(st.name)}</h2><p>${esc(st.intro)}</p><p class="prog" aria-live="polite">Ready: <b>0 of ${st.forms.length + st.docs.length}</b></p></div>\n`
+      + `        <div class="cols">\n          <div><h3>Forms to complete <span>(${st.forms.length})</span></h3><ul class="req">\n${forms}\n          </ul></div>\n`
+      + `          <div><h3>Documents to provide <span>(${st.docs.length})</span></h3><ul class="req">\n${docs}\n          </ul></div>\n        </div>\n      </section>`;
+  }).join('\n');
+  const nav = SR.stages.map((st, i) => `          <li><a href="#${st.id}"><span class="n">0${i + 1}</span>${esc(st.name)}<span class="c">0 of ${st.forms.length + st.docs.length}</span></a></li>`).join('\n');
+  return html.replace('{{sr-stages}}', stages).replace('{{sr-nav}}', nav).replaceAll('{{sr-forms}}', nForms).replaceAll('{{sr-docs}}', nDocs)
+    .replaceAll('{{sr-checklist-file}}', esc(SR.checklist.file)).replaceAll('{{sr-checklist-code}}', esc(SR.checklist.code));
+}
+
+// fill plug-ins: each tools/fill/<name>.mjs exports default (html, { read, esc, fileType, revOf }) => html.
+// A page brings its own renderer this way (for example, the registration sub-pages), without editing this file.
+const fillDir = new URL('tools/fill/', root);
+const plugins = existsSync(fillDir) ? await Promise.all(readdirSync(fillDir).filter(f => f.endsWith('.mjs')).sort().map(f => import(new URL(f, fillDir)).then(m => m.default))) : [];
+const fillPlugins = html => plugins.reduce((h, fn) => fn(h, { read, esc, fileType, revOf }), html);
+
 // pages built for every option. `links` points the live-site addresses at the review pages, so the review flows between them.
 // every review page, with the live-site address it replaces. Links to these addresses are pointed at the review copy.
 const SITE = 'https://barbadosmaritime.com/';
-const LIVE = { contact: 'contact-us/', about: 'about-us/', team: 'our-team/', registrars: 'regional-registrars/', ros: 'barbados-recognised-organisations/', quality: 'quality-assurance/', links: 'useful-links/', 'the-bmsr': 'the-bmsr/', 'why-barbados': 'why-register-in-barbados/', holidays: 'public-holidays/', registration: 'registration/', seafarers: 'seafarers-manning/', inspections: 'inspections/', investigations: 'investigations/', events: 'bmsr-events/', documents: 'documents/', forms: 'documents/forms/', bulletins: 'documents/bulletins/', conventions: 'documents/conventions/', shipboard: 'documents/shipboard-documents/' };
+const LIVE = { contact: 'contact-us/', about: 'about-us/', team: 'our-team/', registrars: 'regional-registrars/', ros: 'barbados-recognised-organisations/', quality: 'quality-assurance/', links: 'useful-links/', 'the-bmsr': 'the-bmsr/', 'why-barbados': 'why-register-in-barbados/', holidays: 'public-holidays/', registration: 'registration/', seafarers: 'seafarers-manning/', inspections: 'inspections/', investigations: 'investigations/', events: 'bmsr-events/', documents: 'documents/', forms: 'documents/forms/', bulletins: 'documents/bulletins/', conventions: 'documents/conventions/', shipboard: 'documents/shipboard-documents/', news: 'category/news/', 'ship-registration': 'registration/ship-registration/', 'yacht-registration': 'registration/yacht-registration/', mortgages: 'registration/mortgages/', 'bareboat-charter': 'bareboat-charter/', 'registry-alterations': 'registration/registry-alterations/', 'registration-fees': 'registration/registration-fees/', 'endorsement-discharge-book': 'seafarers-manning/endorsement-discharge-book/', 'inspection-templates': 'inspections/inspection-templates/', 'notices-to-nautical-inspectors': 'inspections/notices-to-nautical-inspectors/', 'nautical-inspectors': 'list-of-appointed-nautical-inspectors/', 'casualty-investigations': 'investigations/casualty-investigations/', 'accident-incident-reports': 'investigations/accident-incident-reports/', 'marine-circulars': 'documents/marine-circulars-bmsr/', guides: 'documents/guides/', 'barbados-legislation': 'documents/barbados-legislation/', 'yacht-masters-guide': 'yacht-masters-guide/', acts: 'documents/acts/', regulations: 'documents/regulations/', 'change-of-ownership': 'registration/registry-alterations/change-of-ownership/', 'change-of-vessels-name': 'registration/registry-alterations/change-of-vessels-name/', 'change-of-owners-name': 'registration/registry-alterations/change-of-owners-name-and-or-address/', 'deletion': 'registration/registry-alterations/deletion/' };
+// every news post gets a page at its live address (barbadosmaritime.com/<slug>/ → option-*/<slug>/), from src/news-post.html
+const POSTS = NW.posts.filter(p => p.href && p.href.startsWith(SITE)).map(p => p.href.slice(SITE.length, -1));
+for (const slug of POSTS) LIVE[slug] = slug + '/';
 // live sub-pages we haven't built yet, and the main review page (and section) they open instead. Once a sub-page is in LIVE, its own review page wins.
 // Any other address one level under a LIVE page (e.g. registration/anything/) falls back to that page too: see subLinks below.
 const SUB = {
-  'registration/ship-registration/': 'registration#types', 'registration/yacht-registration/': 'registration#types',
-  'registration/mortgages/': 'registration#mortgages', 'registration/bareboat-charters-registration/': 'registration#bareboat',
-  'registration/registration-fees/': 'registration#ac-h', 'registration/registry-alterations/': 'registration#ac-h',
-  'seafarers-manning/endorsement-and-discharge-book/': 'seafarers#apply', 'seafarers-manning/document-validity-check/': 'seafarers#check',
-  'list-of-appointed-nautical-inspectors/': 'inspections#ar-h',
-  'inspections/inspection-templates/': 'inspections#rs-h', 'inspections/notices-to-nautical-inspectors/': 'inspections#rs-h',
-  'investigations/marine-accident-reporting/': 'investigations#report',
-  'investigations/marine-safety-investigation-reports/': 'investigations#sections', 'investigations/ongoing-msi/': 'investigations#sections',
-  'documents/marine-circulars/': 'documents#directory', 'documents/guides/': 'documents#directory',
-  'documents/barbados-legislation/': 'documents#directory', 'documents/barbados-publications/': 'documents#directory',
+    'seafarers-manning/endorsement-validity-check/': 'seafarers#check',
+  // earlier guesses at the Seafarers sub-page addresses (they don't exist on the live site); kept so old links still land
+  'seafarers-manning/endorsement-and-discharge-book/': 'endorsement-discharge-book', 'seafarers-manning/document-validity-check/': 'seafarers#check',
+  // earlier guesses at the Investigations sub-page addresses (they don't exist on the live site); kept so old links still land
+  'investigations/marine-accident-reporting/': 'casualty-investigations', 'investigations/marine-safety-investigation-reports/': 'accident-incident-reports', 'investigations/ongoing-msi/': 'accident-incident-reports#ongoing',
+  'documents/barbados-publications/': 'documents#directory',
+  'documents/marine-circulars/': 'marine-circulars', // our earlier menu address (on the live site it wrongly redirects to Shipboard Documents)
+  'news/': 'news', // the live /news/ page is an older list of the same posts as category/news/
   'conventions/': 'conventions', // an older address of documents/conventions/, used on the home page
+  'registration/bareboat-charters-registration/': 'bareboat-charter', // the old menu address; the live page is /bareboat-charter/
 };
 const toPage = (dir, target) => { const [d, hash] = target.split('#'); const h = hash ? '#' + hash : '';
   return d === dir ? (h || 'index.html') : `${dir ? '../' : ''}${d}/index.html${h}`; };
@@ -227,7 +285,11 @@ const linksFor = dir => {
   return m;
 };
 // the fallback for sub-pages not listed in SUB: SITE + <a LIVE address> + <one more folder>/ opens that LIVE page (links ending #live stay live)
-const subLinks = (html, dir) => html.replace(/href="https:\/\/barbadosmaritime\.com\/([a-z0-9-]+\/)[a-z0-9-]+\/"/g, (all, parent) => {
+const anchorLinks = (html, dir) => html.replace(/href="https:\/\/barbadosmaritime\.com\/([a-z0-9/-]+\/)#([\w-]+)"/g, (all, path, hash) => {
+  const d = hash !== 'live' && Object.keys(LIVE).find(k => LIVE[k] === path);
+  return d ? `href="${d === dir ? '' : toPage(dir, d)}#${hash}"` : all;
+});
+const subLinks = (html, dir) => anchorLinks(html, dir).replace(/href="https:\/\/barbadosmaritime\.com\/([a-z0-9-]+\/)[a-z0-9-]+\/"/g, (all, parent) => {
   const d = Object.keys(LIVE).find(k => LIVE[k] === parent);
   return d ? `href="${toPage(dir, d)}"` : all;
 });
@@ -253,18 +315,28 @@ const pages = [
   { src: 'src/bulletins.html', out: 'bulletins/index.html', up: '../../', links: linksFor('bulletins') },
   { src: 'src/conventions.html', out: 'conventions/index.html', up: '../../', links: linksFor('conventions') },
   { src: 'src/shipboard.html', out: 'shipboard/index.html', up: '../../', links: linksFor('shipboard') },
+  { src: 'src/news.html', out: 'news/index.html', up: '../../', links: linksFor('news') },
+  // news category pages: one per topic in src/data/news.json, at news-<topic>/ (in WordPress, the category archives)
+  ...POSTS.map(slug => ({ src: 'src/news-post.html', out: `${slug}/index.html`, up: '../../', links: linksFor(slug), vars: { post: slug } })),
+  ...NW.topics.map(t => ({ src: 'src/news-category.html', out: `news-${t.id}/index.html`, up: '../../', links: linksFor(`news-${t.id}`), vars: { topic: t.id, name: t.name } })),
+  { src: 'src/ship-registration.html', out: 'ship-registration/index.html', up: '../../', links: linksFor('ship-registration') },
+  // registration sub-pages: one source, data file, D stylesheet and (optionally) fill plug-in each
+  ...['yacht-registration', 'mortgages', 'bareboat-charter', 'registry-alterations', 'registration-fees', 'endorsement-discharge-book', 'inspection-templates', 'notices-to-nautical-inspectors', 'nautical-inspectors', 'casualty-investigations', 'accident-incident-reports', 'marine-circulars', 'guides', 'barbados-legislation', 'yacht-masters-guide', 'acts', 'regulations', 'change-of-ownership', 'change-of-vessels-name', 'change-of-owners-name', 'deletion'].map(d => ({ src: `src/${d}.html`, out: `${d}/index.html`, up: '../../', links: linksFor(d) })),
 ];
 
-for (const o of options) for (const pg of pages) {
+const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1].split(',') : null;
+const todo = pages.filter(pg => (!only || only.includes(pg.out === 'index.html' ? 'home' : pg.out.split('/')[0])) && (existsSync(new URL(pg.src, root)) || console.log(`skipped ${pg.src} (not written yet)`)));
+for (const o of options) for (const pg of todo) {
   const type = o.type || o.id;
-  const css = read(`src/type-${type}.css`) + (o.parts ? read(o.parts + 'd.css') : '') + (o.pageCss?.[pg.src] ? read(o.pageCss[pg.src]) : '');
+  const css = read(`src/type-${type}.css`) + (o.parts ? read(o.parts + 'd.css') : '') + (o.pageCss?.[pg.src] ? read(o.pageCss[pg.src]) : o.parts && existsSync(new URL(`${o.parts}${pg.out.split('/')[0]}.css`, root)) ? read(`${o.parts}${pg.out.split('/')[0]}.css`) : '');
   const head = (o.fonts ? `<link href="https://fonts.googleapis.com/css2?${o.fonts}&display=swap" rel="stylesheet">\n` : '') + `<style>\n${css}</style>`;
   const from = `${pg.src} + src/partials/ + src/type-${type}.css` + (o.parts ? ` + ${o.parts}` : '');
   let html = (pg.src === 'src/home.html' ? base : include(read(pg.src))).replace(BLOCK, (all, name, inner) => {
     const part = o.parts && new URL(`${o.parts}${name}.html`, root);
     return part && existsSync(part) ? fillRos(readFileSync(part, 'utf8')) : inner;
   });
-  html = fillShipboard(fillConventions(fillBulletins(fillForms(fillEvents(fillHolidays(fillLinks(fillRos(fillRegistrars(fillTeam(html))))))))));
+  for (const [k, v] of Object.entries(pg.vars || {})) html = html.replaceAll(`{{page:${k}}}`, esc(v)); // per-page values, e.g. a news category
+  html = fillPlugins(fillShipReg(fillNews(fillShipboard(fillConventions(fillBulletins(fillForms(fillEvents(fillHolidays(fillLinks(fillRos(fillRegistrars(fillTeam(html)))))))))))));
   for (const [from, to] of Object.entries(o.assets || {})) html = html.replaceAll(`"${from}"`, `"${to}"`);
   for (const [from, to] of Object.entries(o.text || {})) {
     if (!html.includes(from)) { if (pg.strictText) throw new Error(`option-${o.id}: text swap not found: ${from}`); continue; }
@@ -277,7 +349,7 @@ for (const o of options) for (const pg of pages) {
   html = swap(html, '<title>', `<title>Option ${o.id.toUpperCase()} · `);
   html = swap(html, '<html lang="en-GB">', `<html lang="en-GB" data-option="${o.id}">`);
   html = html.replace(/(["'(])assets\//g, `$1${pg.up}assets/`);
-  if (/@d:|@include|\{\{(ro|team|rr|ul|hol|ev|fm|bl|cv|sb)-/.test(html)) throw new Error(`option-${o.id}/${pg.out}: unreplaced marker or placeholder`);
+  if (/@d:|@include|\{\{[a-z][\w:-]*\}\}/.test(html)) throw new Error(`option-${o.id}/${pg.out}: unreplaced marker or placeholder`);
   const out = `option-${o.id}/${pg.out}`;
   mkdirSync(new URL(out.replace(/[^/]+$/, ''), root), { recursive: true });
   writeFileSync(new URL(out, root), html);

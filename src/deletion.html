@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vessel Deletion - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= registry sub-page (deletion): the live text, what the Registrar needs as a tick list, the note; siblings alongside ================= */
+.rs{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.rs .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.rs .grid>*{min-width:0}
+.rs-h{padding-bottom:16px;border-bottom:2px solid var(--gold)}
+.rs-h h2{font-size:clamp(26px,2.4vw,36px)}
+.rs-body{max-width:65ch;margin-top:20px;display:grid;gap:14px;font-size:17px}
+.rs-need{margin-top:clamp(32px,4vw,48px);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.rs-need h3{font:600 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rs-need .lead2{margin-top:8px;color:var(--muted)}
+.rs-prog{margin-top:6px;font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rs-prog b{color:var(--text)}
+.rs-req{margin:10px 0 0;padding:0;list-style:none}
+.rs-req li{padding:12px 0;border-bottom:1px solid var(--line)}
+.rs-req label{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;cursor:pointer}
+.rs-req input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--gold);cursor:pointer}
+.rs-req .t{line-height:1.45}
+.rs-req li.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.rs-note{margin-top:clamp(28px,3vw,40px);padding:22px 24px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-left:3px solid var(--gold);border-radius:2px;background:color-mix(in srgb,var(--gold) 10%,var(--card))}
+.rs-note b{display:block;margin-bottom:6px;font:600 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rs-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.rs-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.rs-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.rs-box p{color:var(--muted);font-size:15px}
+.rs-box ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.rs-box ul a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:8px 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;line-height:1.3;transition:border-color .2s}
+.rs-box ul a:hover{border-color:var(--teal)}
+.rs-box ul .ar{flex:none;color:var(--teal)}
+.rs-box.hi{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.rs-box .big{display:block;margin-top:6px;font:600 34px/1 var(--mono);color:var(--text)}
+.rs-reset{margin-top:12px;padding:0;border:0;background:none;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rs-reset:hover{color:var(--text)}
+@media (max-width:1100px){.rs .grid{grid-template-columns:1fr}.rs-side{grid-template-columns:1fr 1fr}.rs-box.hi{position:static}}
+@media (max-width:760px){.rs-side{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="del-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/registry-alterations/deletion.webp" style="object-position:50% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li><a href="https://barbadosmaritime.com/registration/registry-alterations/">Registry Alterations</a></li><li aria-current="page">Deletion</li></ol></nav>
+    <p class="tag port">Registry alterations · 04 · {{del-count}} items for the Registrar</p>
+    <h1 class="hull" id="del-h1">Vessel <span>Deletion</span></h1>
+    <div class="foot">
+      <p class="lead">Taking a vessel off the Barbados Register: tell the Registry in writing, then send the Registrar what's listed below.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#needs">What you'll need <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/registry-alterations/">All registry alterations</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PAGE (generated from src/data/deletion.json) ================= -->
+<!-- TODO(client): approve the hero lead (ours) -->
+<section class="rs" aria-labelledby="del-h">
+  <div class="wrap grid">
+    <div>
+      <div class="rs-h"><p class="tag t">Registry alterations</p><h2 class="hull" id="del-h">Vessel <span>Deletion</span></h2></div>
+      <div class="rs-body">
+{{del-body}}
+      </div>
+      <div class="rs-need" id="needs">
+        <h3>What you'll need</h3>
+        <p class="lead2">{{del-needs-intro}}</p>
+        <p class="rs-prog" aria-live="polite">Ready: <b id="del-prog">0 of {{del-count}}</b></p>
+        <ul class="rs-req">
+{{del-needs}}
+        </ul>
+      </div>
+      <div class="rs-note" role="note"><b>Please note</b><p>{{del-note}}</p></div>
+    </div>
+    <aside class="rs-side" aria-label="More on registry alterations">
+      <div class="rs-box"><p class="tag t">Registry alterations</p><b class="hull">Other changes</b>
+        <ul>
+{{del-siblings}}
+          <li><a href="https://barbadosmaritime.com/registration/registry-alterations/">All registry alterations <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="rs-box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact the registry <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="rs-box hi"><p class="tag t">Your progress</p><b class="big" id="del-prog2">0 of {{del-count}}</b><p>items ready. Saved on this device only.</p>
+        <button class="rs-reset" type="button" id="del-reset">Clear my ticks</button></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// tick each item as it's ready; saved on this device (localStorage, if allowed)
+const DK = 'bmsr-deletion-v1', dboxes = [...document.querySelectorAll('.rs-req input')];
+let dsaved = {}; try { dsaved = JSON.parse(localStorage.getItem(DK) || '{}'); } catch {}
+const dshow = () => {
+  const t = `${dboxes.filter(b => b.checked).length} of ${dboxes.length}`;
+  document.getElementById('del-prog').textContent = t; document.getElementById('del-prog2').textContent = t;
+  dboxes.forEach(b => b.closest('li').classList.toggle('done', b.checked));
+};
+dboxes.forEach(b => { b.checked = !!dsaved[b.id]; b.addEventListener('change', () => { dsaved[b.id] = b.checked; try { localStorage.setItem(DK, JSON.stringify(dsaved)); } catch {} dshow(); }); });
+document.getElementById('del-reset').addEventListener('click', () => { dsaved = {}; try { localStorage.removeItem(DK); } catch {} dboxes.forEach(b => b.checked = false); dshow(); });
+dshow();
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marine Safety Investigation Reports - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= investigation reports: ongoing investigations first, then a searchable register of completed reports ================= */
+.air{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.air .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.air .grid>*{min-width:0}
+.air-sec+.air-sec{margin-top:clamp(40px,5vw,64px)}
+.air-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;padding-bottom:14px;border-bottom:2px solid var(--gold)}
+.air-h h2{font-size:clamp(26px,2.4vw,36px)}
+.air-h .tag{color:var(--muted)}
+.air-intro{max-width:62ch;margin-top:16px;color:var(--muted)}
+.air-intro a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.air-none{margin-top:18px;padding:20px 22px;border:1px dashed var(--line);border-radius:2px;color:var(--muted)}
+.air-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;margin-top:18px}
+.air-tools .search{position:relative;flex:1 1 280px;max-width:440px}
+.air-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.air-tools input{width:100%;min-height:48px;padding:10px 14px 10px 44px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.air-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.air-count{font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.air-count b{color:var(--text)}
+.air-list{margin:12px 0 0;padding:0;list-style:none}
+.air-r{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto;align-items:center;gap:8px 24px;padding:18px 0;border-bottom:1px solid var(--line)}
+.air-r:target{margin-inline:-14px;padding-inline:14px;background:color-mix(in srgb,var(--gold) 9%,transparent);box-shadow:inset 3px 0 0 var(--gold)}
+.air-v h3{font-size:20px;line-height:1.25}
+.air-imo{margin-top:4px;font:600 12.5px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.air-when .lb{display:block;font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.air-when time{display:block;margin-top:3px;font-weight:600}
+.air-f{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.air-dl{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font:600 12px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;color:var(--text);transition:border-color .2s,color .2s}
+.air-dl:hover{border-color:var(--teal);color:var(--teal)}
+.air-dl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.air-dl i{font-style:normal;color:var(--muted)}
+.js .air-r.off{display:none}
+.air-empty{display:none;margin-top:18px;padding:20px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.air-empty.show{display:block}
+.air-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.air-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.air-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.air-box p{color:var(--muted);font-size:15px}
+.air-box .rows{display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}
+.air-box .rows a{display:grid;gap:2px;padding:10px 14px;border:1px solid var(--line);border-radius:2px;transition:border-color .2s}
+.air-box .rows a:hover{border-color:var(--teal)}
+.air-box .rows small{font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.air-box .rows span{font-weight:600;overflow-wrap:anywhere}
+.air-sos{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)} /* only this small box stays in view */
+.air-sos .line{display:block;margin-top:6px;font-size:clamp(24px,2.2vw,32px);line-height:1.1;color:var(--teal)}
+.air-rel{padding-block:clamp(48px,6vw,88px);border-top:1px solid var(--line);background:var(--deep)}
+.air-rel ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin:22px 0 0;padding:0;list-style:none}
+.air-rel a{display:flex;align-items:center;justify-content:space-between;gap:12px;height:100%;padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);font-weight:700;font-size:18px;transition:transform .25s}
+.air-rel a:hover{transform:translateY(-3px)}
+.air-rel a .ar{flex:none;color:var(--teal)}
+@media (max-width:1100px){.air .grid{grid-template-columns:1fr}.air-side{grid-template-columns:1fr 1fr}.air-sos{position:static}}
+@media (max-width:760px){.air-side{grid-template-columns:1fr}.air-rel ul{grid-template-columns:1fr}}
+@media (max-width:640px){.air-r{grid-template-columns:minmax(0,1fr) auto}.air-f{grid-column:1 / -1;justify-content:flex-start}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="air-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-2.jpg" style="object-position:60% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/investigations/">Investigations</a></li><li aria-current="page">Marine Safety Investigation Reports</li></ol></nav>
+    <p class="tag port">{{air-files}} published reports · {{air-count}} vessels · {{air-span}}</p>
+    <h1 class="hull" id="air-h1">Investigation <span>Reports</span></h1>
+    <div class="foot">
+      <p class="lead">Our published marine safety investigation (MSI) reports, newest first, in Word or PDF format.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#completed">The reports <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:{{air-accidents}}">Report an accident</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ONGOING + COMPLETED (generated from src/data/accident-incident-reports.json) ================= -->
+<!-- TODO(client): confirm there are no ongoing investigations to publish; the accidents email (see "accidentsCheck" in the data) -->
+<section class="air" aria-label="Marine safety investigation reports">
+  <div class="wrap grid">
+    <div>
+      <section class="air-sec" id="ongoing" aria-labelledby="on-h">
+        <div class="air-h"><h2 class="hull" id="on-h">Ongoing <span>MSI</span></h2></div>
+        <p class="air-intro">Reports are listed below in chronological order. Click on the links to open the report in Word/PDF format. If you have any queries about the information published here, please <a href="https://barbadosmaritime.com/contact-us/">contact us</a>.</p>
+{{air-ongoing}}
+      </section>
+      <section class="air-sec" id="completed" aria-labelledby="co-h">
+        <div class="air-h"><h2 class="hull" id="co-h">Completed <span>MSI</span></h2><span class="tag">{{air-count}} vessels · {{air-files}} reports</span></div>
+        <div class="air-tools" role="search" aria-label="Find a report">
+          <label class="search"><span class="sr">Search reports</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="air-q" placeholder="Vessel, IMO number or year" autocomplete="off"></label>
+          <p class="air-count" id="air-count" aria-live="polite">Showing <b>{{air-count}}</b> vessels</p>
+        </div>
+        <ol class="air-list" id="air-list">
+{{air-reports}}
+        </ol>
+        <p class="air-empty" id="air-empty">No reports match. Try a vessel name, IMO number or year.</p>
+      </section>
+    </div>
+    <aside class="air-side" aria-label="Report an accident">
+      <div class="air-box"><p class="tag t">Accidents</p><b class="hull">Report an accident</b><p>Report a marine casualty or incident involving a Barbados ship to the investigations team.</p>
+        <ul class="rows">
+          <li><a href="mailto:{{air-accidents}}"><small>Accidents</small><span>{{air-accidents}}</span></a></li>
+          <li><a href="tel:+442076365739"><small>Phone number</small><span>+44 (0)207 636 5739</span></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/"><small>Address</small><span>Barbados High Commission, 1 Great Russell Street, London, WC1B 3ND</span></a></li>
+        </ul>
+      </div>
+      <div class="air-box air-sos"><p class="tag t">Emergency 24/7</p><p>In case of emergency only</p><a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= MORE USEFUL LINKS (the live page's three) ================= -->
+<section class="air-rel" aria-labelledby="air-rel-h">
+  <div class="wrap">
+    <p class="tag t">More useful links</p><h2 class="hull h2" id="air-rel-h">To help <span>you</span></h2>
+    <ul>
+      <li><a href="https://barbadosmaritime.com/regional-registrars/">Regional Registrars <svg class="ar"><use href="#ar"/></svg></a></li>
+      <li><a href="https://barbadosmaritime.com/barbados-recognised-organisations/">Barbados Recognised Organisations <svg class="ar"><use href="#ar"/></svg></a></li>
+      <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">List of Appointed Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// search the completed reports by vessel, IMO number or date; the count is announced
+const aq = document.getElementById('air-q'), arows = [...document.querySelectorAll('#air-list .air-r')];
+const acount = document.getElementById('air-count'), aempty = document.getElementById('air-empty');
+aq.addEventListener('input', () => {
+  const w = aq.value.trim().toLowerCase().split(/\s+/).filter(Boolean); let n = 0;
+  arows.forEach(r => { const ok = w.every(x => r.dataset.s.includes(x)); r.classList.toggle('off', !ok); if (ok) n++; });
+  acount.innerHTML = n ? `Showing <b>${n}</b> vessel${n === 1 ? '' : 's'}` : 'No matches';
+  aempty.classList.toggle('show', !n);
+});
+</script>
+</body>
+</html>

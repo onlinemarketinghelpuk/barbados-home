@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yacht Registration - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= yacht registration: three steps (quote, checklist, inspection), commercial vs private, and a quote request ================= */
+.yr{padding-block:clamp(48px,6vw,88px) clamp(48px,6vw,80px)}
+.yr .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.yr .grid>*{min-width:0}
+.yr .statement{max-width:30em;font-size:clamp(22px,2.1vw,30px);line-height:1.35}
+.ysteps{margin:clamp(28px,3vw,44px) 0 0;padding:0;list-style:none;border-top:2px solid var(--gold)}
+.ysteps>li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 22px;padding:24px 0;border-bottom:1px solid var(--line)}
+.ysteps .n{grid-row:1 / span 3;font:600 clamp(32px,3vw,44px)/1 var(--mono);color:var(--teal)}
+.ysteps h2{font-size:clamp(22px,2vw,28px)}
+.ysteps p{max-width:62ch;color:var(--muted)}
+.ysteps .act{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.ysteps .btn{max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.kinds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+.kind{padding:18px 20px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.kind.opt{border-top-color:var(--line)}
+.kind b{display:block;font-size:18px}
+.kind .req{display:inline-block;margin:8px 0;padding:4px 9px;border:1px solid var(--gold);border-radius:99px;font:600 11px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+.kind.opt .req{border-color:var(--line);color:var(--muted)}
+.kind p{color:var(--muted);font-size:15px}
+.yside{display:grid;gap:14px}
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.box .links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.box .links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.box .links a:hover{border-color:var(--teal)}
+.box .links .ar{flex:none;color:var(--teal)}
+.quote{padding-block:clamp(56px,7vw,104px);border-top:1px solid var(--line);background:var(--deep);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h))}
+.quote .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,64px);align-items:start}
+.quote .wrap>*{min-width:0}
+.quote .lead{margin-top:14px;max-width:40ch}
+.quote .reach{display:grid;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.quote .reach a{font-weight:700;color:var(--text)}
+.quote .reach span{display:block;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.qform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding:clamp(22px,2.6vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.qform .full{grid-column:1 / -1}
+.qform label{display:grid;gap:6px;font:600 12px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qform input,.qform textarea{width:100%;min-height:48px;padding:10px 12px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--abyss);color:var(--text);font:400 16px/1.4 var(--sans);text-transform:none;letter-spacing:0}
+.qform textarea{min-height:130px;resize:vertical}
+.qform input:focus,.qform textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.qform fieldset{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;padding:0;border:0}
+.qform legend{margin-bottom:8px;font:600 12px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qform fieldset label{display:inline-flex;align-items:center;gap:8px;font:500 15px/1.3 var(--sans);text-transform:none;letter-spacing:0;color:var(--text);cursor:pointer}
+.qform fieldset input{width:18px;height:18px;min-height:0;accent-color:var(--gold)}
+.qform [aria-invalid="true"]{border-color:#E5484D}
+.qform .btn{justify-self:start;cursor:pointer}
+.qform .fine{font-size:13.5px;color:var(--muted)}
+.qok{display:none;padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);font-size:17px}
+.qok.show{display:block}
+@media (max-width:1100px){.yr .grid,.quote .wrap{grid-template-columns:1fr}.yside{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.yside,.kinds{grid-template-columns:1fr}}
+@media (max-width:560px){.qform{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="yr-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/d/about-yacht.webp" style="object-position:60% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li aria-current="page">Yacht Registration</li></ol></nav>
+    <p class="tag port">Commercial and private yachts · quote on request</p>
+    <h1 class="hull" id="yr-h1">Yacht <span>Registration</span></h1>
+    <div class="foot">
+      <p class="lead">Register your yacht with Barbados. Ask us for a quote, complete the checklist, and we'll guide you through the process.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#quote">Ask for a quote <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{yr-cl-file}}" download>Checklist (Word)</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE STEPS (text from src/data/yacht-registration.json) ================= -->
+<section class="yr" aria-labelledby="ys-h">
+  <div class="wrap grid">
+    <div>
+      <p class="tag t" id="ys-h">How it works</p>
+      <p class="statement hull">{{yr-intro}}</p>
+      <ol class="ysteps">
+        <li><span class="n">01</span><h2 class="hull">Ask for a quote</h2><p>Tell us about your yacht and we'll send you a quote, and answer any questions about the process.</p><div class="act"><a class="btn btn-gold" href="#quote">Request a quote <svg class="ar"><use href="#ar"/></svg></a></div></li>
+        <li><span class="n">02</span><h2 class="hull">Complete the checklist</h2><p><b>{{yr-cl-code}}: {{yr-cl-title}}</b> {{yr-cl-about}}</p><div class="act"><a class="btn btn-line" href="{{yr-cl-file}}" download>{{yr-cl-code}} ({{yr-cl-type}}) <svg class="ar"><use href="#dl"/></svg></a></div></li>
+        <li><span class="n">03</span><h2 class="hull">Flag State Inspection</h2><p>Inspections are carried out by our Appointed Nautical Inspectors.</p>
+          <div class="kinds">
+            <div class="kind"><b class="hull">Commercial yachts</b><span class="req">Required · at least every 5 years</span><p>{{yr-commercial}}</p></div>
+            <div class="kind opt"><b class="hull">Private yachts</b><span class="req">Recommended</span><p>{{yr-private}}</p></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <aside class="yside" aria-label="Checklist and links">
+      <div class="box hi"><p class="tag t">{{yr-cl-code}} · {{yr-cl-rev}}</p><b class="hull">Yacht checklist</b><p>All the forms and documents that must be provided for a yacht to be provisionally or permanently registered.</p>
+        <a class="btn btn-gold" href="{{yr-cl-file}}" download>Download checklist <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="box"><p class="tag t">Also useful</p><b class="hull">Before you register</b>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/ship-registration/">Ship registration <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= QUOTE REQUEST (front-end preview; TODO(dev): wire to Contact Form 7 + reCAPTCHA in WordPress) ================= -->
+<section class="quote" id="quote" aria-labelledby="q-h">
+  <div class="wrap">
+    <div>
+      <p class="tag t">Quote</p>
+      <h2 class="hull h2" id="q-h">Get in touch <span>with us here</span></h2>
+      <p class="lead">{{yr-contact}}</p>
+      <ul class="reach">
+        <li><span>Office</span><a href="tel:+442076365739">+44 (0)207 636 5739</a></li>
+        <li><span>Email</span><a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <form class="qform" id="q-form" action="#" method="post" novalidate>
+        <label>Your name *<input name="name" autocomplete="name" required></label>
+        <label>Your email *<input name="email" type="email" autocomplete="email" required></label>
+        <fieldset class="full"><legend>Your yacht is</legend><label><input type="radio" name="kind" value="commercial"> Commercial</label><label><input type="radio" name="kind" value="private"> Private</label><label><input type="radio" name="kind" value="unsure" checked> Not sure yet</label></fieldset>
+        <label class="full">Subject<input name="subject" value="Yacht registration quote"></label>
+        <label class="full">Message *<textarea name="message" required placeholder="The yacht's name, length, year built and current flag help us quote."></textarea></label>
+        <button class="btn btn-gold" type="submit">Send message <svg class="ar"><use href="#ar"/></svg></button>
+        <p class="fine full">We'll only use your details to reply to you. Read our <a href="https://barbadosmaritime.com/privacy-policy/">privacy policy</a>.</p>
+      </form>
+      <p class="qok" id="q-ok" role="status">Thank you. We've received your message and will be in touch soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// quote request (front-end preview): check the required fields, then show the thank-you
+const qf = document.getElementById('q-form');
+qf.addEventListener('submit', e => {
+  e.preventDefault();
+  const bad = [qf.name, qf.email, qf.message].filter(f => !f.value.trim() || (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim())));
+  [qf.name, qf.email, qf.message].forEach(f => f.setAttribute('aria-invalid', bad.includes(f)));
+  if (bad.length) { bad[0].focus(); return; }
+  qf.hidden = true; document.getElementById('q-ok').classList.add('show');
+});
+</script>
+</body>
+</html>

@@ -6,3 +6,11 @@
 .ev .b{padding:clamp(20px,2.4vw,32px) 0 clamp(20px,2.4vw,32px) clamp(24px,3vw,48px)}
 .ev-list{gap:clamp(36px,4vw,56px)}
 @media (max-width:900px){.ev,.ev:nth-child(even){grid-template-columns:1fr}.ev .b{padding-inline:0}.ev .media{min-height:0}}
+
+/* grid view: cards under a gold rule, square corners, no boxes */
+.ev-view,.ev-view button{border-radius:0}
+.ev-view{background:none}
+.ev-list.grid{gap:clamp(28px,3vw,44px)}
+.ev-list.grid .ev,.ev-list.grid .ev:nth-child(even){border-top:2px solid var(--gold)}
+.ev-list.grid .ev .media{min-height:0}
+.ev-list.grid .ev .b{padding:clamp(18px,2vw,24px) 0 0}

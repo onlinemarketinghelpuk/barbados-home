@@ -1,0 +1,17 @@
+
+/* ================= Option D · Change of Vessel's Name, in the home page's style =================
+   The particulars sheet: the side column moves to the left under gold rules (no boxes; only the progress stays pinned),
+   and the main column is a ruled register with square corners. */
+.rs .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.rs .grid>aside{order:-1}
+.rs-side{gap:0}
+.rs-box,.rs-box.hi{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.rs-box+.rs-box{margin-top:24px}
+.rs-box ul a,.rs-dl{border-radius:0}
+.rs-h{border-bottom-width:1px;border-bottom-color:var(--line)}
+.rs-portal{border:0;border-top:2px solid var(--gold);border-bottom:1px solid var(--line);border-radius:0;background:none;padding-inline:0}
+.rs-sec h3{border-bottom:2px solid var(--gold);color:var(--text)}
+.rs-list li:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.rs-note{border-style:solid;border-width:0 0 0 2px;border-color:var(--gold);border-radius:0}
+@media (max-width:1100px){.rs .grid{grid-template-columns:1fr}.rs .grid>aside{order:0}.rs-side{grid-template-columns:1fr 1fr;gap:0 32px}.rs-box+.rs-box{margin-top:0}}
+@media (max-width:760px){.rs-side{grid-template-columns:1fr}.rs-box+.rs-box{margin-top:24px}}

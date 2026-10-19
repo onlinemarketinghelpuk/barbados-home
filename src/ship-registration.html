@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ship Registration - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= ship registration: two stages, each with forms to download and documents to provide, ticked off as you go ================= */
+.srg{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.srg .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.srg .grid>*{min-width:0}
+.stg{scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.stg+.stg{margin-top:clamp(40px,5vw,72px)}
+.stg-h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 20px;align-items:baseline;padding-bottom:16px;border-bottom:2px solid var(--gold)}
+.stg-h .num{grid-row:1 / span 2;font:600 clamp(40px,4vw,60px)/1 var(--mono);letter-spacing:-.02em;color:var(--teal)}
+.stg-h h2{font-size:clamp(26px,2.4vw,36px)}
+.stg-h p{color:var(--muted)}
+.stg-h .prog{grid-column:2;margin-top:6px;font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.stg-h .prog b{color:var(--text)}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);margin-top:24px}
+.cols>*{min-width:0}
+.cols h3{margin-bottom:6px;font:600 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.req{margin:0;padding:0;list-style:none}
+.req li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:6px 14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.req label{display:contents;cursor:pointer}
+.req input{width:20px;height:20px;margin:0;accent-color:var(--gold);cursor:pointer}
+.req .t{line-height:1.4}
+.req .t small{display:block;margin-top:2px;font:600 12px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.req li.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.req a.dl{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 12px;border:1px solid var(--line);border-radius:2px;font:600 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--text);transition:border-color .2s,color .2s}
+.req a.dl:hover{border-color:var(--teal);color:var(--teal)}
+.req a.dl svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.req a.dl i{font-style:normal;color:var(--muted)}
+.then{display:flex;align-items:center;gap:14px;margin-top:clamp(28px,3vw,44px);font:600 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.then::before,.then::after{content:"";flex:1;height:1px;background:var(--line)}
+.sr-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.sr-side>.box.hi{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the progress box stays in view, so the column never hides below the screen */
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.steps{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.steps a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;min-height:52px;padding:8px 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;transition:border-color .2s}
+.steps a:hover{border-color:var(--teal)}
+.steps .n{font:600 13px/1 var(--mono);color:var(--teal)}
+.steps .c{font:500 12px/1 var(--mono);color:var(--muted)}
+.box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.reset{margin-top:12px;padding:0;border:0;background:none;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.reset:hover{color:var(--text)}
+.box .links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.box .links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.box .links a:hover{border-color:var(--teal)}
+.box .links .ar{flex:none;color:var(--teal)}
+.rel{padding-block:clamp(48px,6vw,88px);border-top:1px solid var(--line);background:var(--deep)}
+.rel ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin:22px 0 0;padding:0;list-style:none}
+.rel a{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:transform .25s}
+.rel a:hover{transform:translateY(-3px)}
+.rel b{font-size:19px}
+.rel p{flex:1;color:var(--muted);font-size:15px}
+.rel .go{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rel .go .ar{width:16px;height:16px}
+@media (max-width:1100px){.srg .grid{grid-template-columns:1fr}.sr-side{grid-template-columns:1fr 1fr}.sr-side>.box.hi{position:static}.rel ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.cols{grid-template-columns:1fr}}
+@media (max-width:760px){.sr-side{grid-template-columns:1fr}}
+@media (max-width:560px){.rel ul{grid-template-columns:1fr}.req li{grid-template-columns:auto minmax(0,1fr)}.req a.dl{grid-column:2;justify-self:start}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="sr-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-1.jpg" style="object-position:70% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li aria-current="page">Ship Registration</li></ol></nav>
+    <p class="tag port">2 stages · {{sr-forms}} forms · {{sr-docs}} documents</p>
+    <h1 class="hull" id="sr-h1">Ship <span>Registration</span></h1>
+    <div class="foot">
+      <p class="lead">Everything you need to register a ship with Barbados: the forms to complete and the documents to provide, first for Provisional and then for Permanent Registration.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#provisional">What you need <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{sr-checklist-file}}" download>Checklist (Word)</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE TWO STAGES (generated from src/data/ship-registration.json) ================= -->
+<section class="srg" aria-label="What you need">
+  <div class="wrap grid">
+    <div>
+{{sr-stages}}
+    </div>
+    <aside class="sr-side" aria-label="Your registration">
+      <div class="box"><p class="tag t">{{sr-checklist-code}}</p><b class="hull">Registration checklist</b><p>The checklist outlines the additional forms and documents required for Provisional and/or Permanent Registration. Save or download it as a Microsoft Word document.</p>
+        <a class="btn btn-gold" href="{{sr-checklist-file}}" download>Download checklist <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/forms/">All forms <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact the registry <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="box hi"><p class="tag t">Two stages</p><b class="hull">Your progress</b><p>Tick each form and document as it's ready. Your ticks are saved on this device only.</p>
+        <ol class="steps">
+{{sr-nav}}
+        </ol>
+        <button class="reset" type="button" id="sr-reset">Clear my ticks</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= RELATED (the live page's four links) ================= -->
+<section class="rel" aria-labelledby="rel-h">
+  <div class="wrap">
+    <p class="tag t">Also useful</p><h2 class="hull h2" id="rel-h">Before <span>you register</span></h2>
+    <ul>
+      <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/"><b class="hull">Nautical Inspectors</b><p>A network of Nautical Inspectors is available to carry out annual ship safety inspections and to assist ship operators whenever required.</p><span class="go">The inspectors <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="https://barbadosmaritime.com/documents/conventions/"><b class="hull">Shipping Legislation</b><p>Barbados is an IMO Member State, and has ratified many of the international conventions that have shaped the world's shipping legislation.</p><span class="go">Conventions <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="https://barbadosmaritime.com/documents/bulletins/"><b class="hull">Bulletins</b><p>We provide regular bulletins to keep our clients and associates abreast of new developments.</p><span class="go">Bulletins <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="https://barbadosmaritime.com/barbados-recognised-organisations/"><b class="hull">Recognised Organisations</b><p>Classification societies appointed to survey and issue statutory certificates on our behalf.</p><span class="go">The ROs <svg class="ar"><use href="#ar"/></svg></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// tick forms and documents as they're ready; progress per stage; saved on this device (localStorage, if allowed)
+const SRK = 'bmsr-ship-registration-v1', boxes = [...document.querySelectorAll('.req input')];
+let saved = {}; try { saved = JSON.parse(localStorage.getItem(SRK) || '{}'); } catch {}
+const srShow = () => {
+  document.querySelectorAll('.stg').forEach(s => {
+    const all = s.querySelectorAll('.req input'), done = s.querySelectorAll('.req input:checked').length, txt = `${done} of ${all.length}`;
+    s.querySelector('.prog b').textContent = txt;
+    const nav = [...document.querySelectorAll('.steps a')].find(a => a.hash === '#' + s.id); if (nav) nav.querySelector('.c').textContent = txt;
+  });
+  boxes.forEach(b => b.closest('li').classList.toggle('done', b.checked));
+};
+boxes.forEach(b => { b.checked = !!saved[b.id]; b.addEventListener('change', () => { saved[b.id] = b.checked; try { localStorage.setItem(SRK, JSON.stringify(saved)); } catch {} srShow(); }); });
+document.getElementById('sr-reset').addEventListener('click', () => { saved = {}; try { localStorage.removeItem(SRK); } catch {} boxes.forEach(b => b.checked = false); srShow(); });
+srShow();
+</script>
+</body>
+</html>

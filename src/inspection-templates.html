@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inspection Templates - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= inspection templates: two download cards (with what's in the pack), and where inspectors go next ================= */
+.tpz{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.tpz .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.tpz .grid>*{min-width:0}
+.tp-intro{max-width:56ch;font-size:clamp(19px,1.5vw,22px);line-height:1.5}
+.tp-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin:28px 0 0;padding:0;list-style:none}
+.tp{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;padding:clamp(22px,2.6vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.tp>*{min-width:0}
+.tp-n{font:600 clamp(32px,3vw,44px)/1 var(--mono);letter-spacing:-.02em;color:var(--teal)}
+.tp-b{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.tp-k{font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.tp h2{font-size:clamp(22px,2vw,28px)}
+.tp-in{width:100%;margin-top:4px}
+.tp-in ul{margin:8px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.tp-in li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.tp-in .tp-c{font:600 12.5px/1.5 var(--mono);color:var(--text)}
+.tp-in .tp-t{grid-column:2;font:500 12px/1.3 var(--mono);color:var(--muted)}
+.tp .btn{margin-top:auto;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.tp-f{font:500 12px/1 var(--mono);letter-spacing:.05em;color:var(--muted)}
+.tp-side{display:grid;gap:14px}
+.tp-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.tp-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.tp-box p{color:var(--muted);font-size:15px}
+.tp-box ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.tp-box a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.tp-box a:hover{border-color:var(--teal)}
+.tp-box a .ar{flex:none;color:var(--teal)}
+@media (max-width:1100px){.tpz .grid{grid-template-columns:1fr}.tp-side{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.tp-list{grid-template-columns:1fr}}
+@media (max-width:760px){.tp-side{grid-template-columns:1fr}}
+@media (max-width:420px){.tp{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="it-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-4.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/inspections/">Inspections</a></li><li aria-current="page">Inspection Templates</li></ol></nav>
+    <p class="tag port">{{it-count}} downloads · for Nautical Inspectors</p>
+    <h1 class="hull" id="it-h1">Inspection <span>Templates</span></h1>
+    <div class="foot">
+      <p class="lead">{{it-intro}}</p>
+      <div class="ctas"><a class="btn btn-teal" href="#templates">The templates <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">Our inspectors</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE TEMPLATES (generated from src/data/inspection-templates.json by tools/fill/inspection-templates.mjs) ================= -->
+<section class="tpz" id="templates" aria-label="Inspection templates">
+  <div class="wrap grid">
+    <div>
+      <p class="tp-intro">Download the current templates before each inspection, so your report uses the latest revision.</p>
+      <ol class="tp-list">
+{{it-cards}}
+      </ol>
+    </div>
+    <aside class="tp-side" aria-label="For inspectors">
+      <div class="tp-box"><p class="tag t">For inspectors</p><b class="hull">Also for you</b><p>Guidance and the list of inspectors appointed by the BMSR.</p>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/inspections/notices-to-nautical-inspectors/">Notices to Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/">Appointed Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/inspections/">Inspections <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="tp-box"><p class="tag t">Questions?</p><b class="hull">Talk to us</b><p>For help with a template or an inspection, contact the registry.</p>
+        <ul><li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li></ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

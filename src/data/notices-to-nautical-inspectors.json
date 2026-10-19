@@ -1,0 +1,22 @@
+{
+  "_note": "From the live page barbadosmaritime.com/inspections/notices-to-nautical-inspectors/ (WordPress feed, modified 8 Jun 2022) and docs/notices-to-nautical-inspectors.png. Wording as live. Each notice links to its live post; \"also\" links are ours (check). Newest first; add a new notice at the top.",
+  "intro": "Our list of ACTIVE Notices to Nautical Inspectors can be found below.",
+  "notices": [
+    {
+      "id": "afsi-form", "date": "2021-02-08", "kind": "Form update",
+      "title": "Updated AFSI Form Available",
+      "text": "The AFSI form has been updated and may be downloaded from Inspection Templates. The form is an Excel Worksheet and maintains the familiar MS Office look and feel in common with other Flag States.",
+      "href": "https://barbadosmaritime.com/updated-afsi-form-available/",
+      "also": { "label": "Inspection Templates", "href": "https://barbadosmaritime.com/inspections/inspection-templates/" },
+      "check": "the \"Inspection Templates\" button is ours; the live text names the page without linking it"
+    },
+    {
+      "id": "bulletin-341", "date": "2021-01-21", "kind": "Policy change",
+      "title": "Bulletin 341: MLC/DMLC Change of Policy",
+      "text": "In a change of policy, Barbados approved inspectors may no longer authorise DMLC Part II documents on our behalf and that it must be left solely to Class.",
+      "href": "https://barbadosmaritime.com/bulletin-341-mlc-dmlc-change-of-policy/",
+      "also": { "label": "All bulletins", "href": "https://barbadosmaritime.com/documents/bulletins/" },
+      "check": "the \"All bulletins\" button is ours"
+    }
+  ]
+}

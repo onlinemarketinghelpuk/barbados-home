@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<!-- @include news-css (the News cards and side column; shared with the news category pages) -->
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="n-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-1.jpg" style="object-position:70% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">News</li></ol></nav>
+    <p class="tag port">Press statements · events · our people</p>
+    <h1 class="hull" id="n-h1">BMSR <span>News</span></h1>
+    <div class="foot">
+      <p class="lead">News from the Barbados Maritime Ship Registry: press statements, the events we attend, our people and the wider industry.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#news">Read the latest <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/bmsr-events/">Our events</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE NEWS (generated from src/data/news.json) ================= -->
+<!-- TODO(client): approve the topics and the excerpts marked "check" in the data (the live ones were wrong or copied from other posts) -->
+<section class="nwz" id="news" aria-labelledby="nw-h">
+  <div class="wrap grid">
+    <div class="nw-side">
+      <div><p class="tag t">Latest</p><h2 class="hull" id="nw-h">From <span>the Registry</span></h2><p class="intro">All {{nw-count}} posts, newest first.</p></div>
+      <div class="tools">
+        <div class="chips" role="group" aria-label="Filter by topic">
+{{nw-chips}}
+        </div>
+        <p class="nw-count" id="nw-count" aria-live="polite">Showing <b>{{nw-count}}</b> posts</p>
+        <a class="nw-cat" id="nw-cat" href="#" hidden></a>
+      </div>
+      <a class="nw-older" href="https://barbadosmaritime.com/documents/bulletins/">Bulletins &amp; circulars <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <div>
+      <ol class="nw-list" id="nw-list">
+{{nw-posts}}
+      </ol>
+      <p class="nw-more" id="nw-more"><button class="btn btn-line" type="button">Show all {{nw-count}} posts</button></p>
+      <p class="nw-empty" id="nw-empty">No posts in this topic yet. <a href="#news" data-all>Show all news</a></p>
+      <div class="archive"><div><b class="hull">Looking for bulletins or circulars?</b><p>Our numbered bulletins and marine circulars have their own lists, with search.</p></div><div class="ctas"><a class="btn btn-line" href="https://barbadosmaritime.com/documents/bulletins/">Bulletins <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/documents/marine-circulars-bmsr/">Marine Circulars <svg class="ar"><use href="#ar"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// filter by topic; the latest post is featured only while "All" is showing; "All" shows the latest posts first, then "Show all"; the count is announced
+const nchips = [...document.querySelectorAll('.nw-side .chips button')], posts = [...document.querySelectorAll('.nw')];
+const ncount = document.getElementById('nw-count'), nempty = document.getElementById('nw-empty'), nmore = document.getElementById('nw-more');
+const FIRST = 13; // the feature plus four rows of three
+let all = false;
+const nset = topic => {
+  let n = 0, shown = 0;
+  posts.forEach((p, i) => {
+    const ok = topic === 'all' || p.dataset.topic === topic;
+    p.classList.toggle('off', !ok); p.classList.toggle('lead', ok && i === 0 && topic === 'all');
+    if (ok) { n++; const later = topic === 'all' && !all && n > FIRST; p.classList.toggle('later', later); if (!later) shown++; } else p.classList.remove('later');
+  });
+  nchips.forEach(b => b.setAttribute('aria-pressed', b.dataset.topic === topic));
+  ncount.innerHTML = !n ? 'No posts' : shown < n ? `Showing <b>${shown}</b> of ${n} posts` : `Showing <b>${n}</b> post${n === 1 ? '' : 's'}`;
+  nempty.classList.toggle('show', !n); nmore.classList.toggle('show', shown < n);
+  const b = nchips.find(x => x.dataset.topic === topic), cat = document.getElementById('nw-cat'); // a topic has its own page: news-<topic>/
+  cat.hidden = topic === 'all'; if (topic !== 'all') { cat.href = `../news-${topic}/index.html`; cat.innerHTML = `All ${b.firstChild.textContent.trim()} posts <svg class="ar"><use href="#ar"/></svg>`; }
+};
+nchips.forEach(b => b.addEventListener('click', () => nset(b.dataset.topic)));
+nempty.querySelector('[data-all]').addEventListener('click', e => { e.preventDefault(); nset('all'); });
+nmore.querySelector('button').addEventListener('click', () => {
+  all = true; const next = posts.find(p => p.classList.contains('later')); nset('all');
+  if (next) { const l = next.querySelector('a'); l.focus({ preventScroll: true }); } // keyboard users carry on from the first newly shown post
+});
+nset('all');
+</script>
+</body>
+</html>

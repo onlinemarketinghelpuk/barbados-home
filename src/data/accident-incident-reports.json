@@ -1,0 +1,22 @@
+{
+  "_note": "From the live page barbadosmaritime.com/investigations/accident-incident-reports/ (WordPress feed, modified 22 Jul 2025) and docs/accident-incident-reports.png. Vessel names, IMO numbers, dates and file links exactly as live. The live page lists the reports out of date order; they're shown newest first here. Each \"check\" says what differs from the live page.",
+  "intro": "Reports are listed below in chronological order. Click on the links to open the report in Word/PDF format. If you have any queries about the information published here, please contact us.",
+  "ongoing": [],
+  "ongoingCheck": "the live Ongoing MSI heading lists no reports; the empty-state line is ours",
+  "reports": [
+    { "id": "blue-lagoon", "vessel": "Blue Lagoon", "imo": "9481427", "date": "2024-10-01", "files": [{ "label": "Report", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/07/14072025-Published-Report.pdf" }] },
+    { "id": "dsm-capella", "vessel": "DSM Capella", "imo": "9271511", "date": "2024-01-20", "files": [{ "label": "Report", "file": "https://barbadosmaritime.com/wp-content/uploads/2024/10/DSM-Capella-Published.pdf" }] },
+    { "id": "islay-trader", "vessel": "ISLAY TRADER", "imo": "9030474", "date": "2017-10-08", "files": [{ "label": "Report", "file": "https://barbadosmaritime.com/wp-content/uploads/2020/01/ISLAY-TRADER-8-October-2017.pdf" }] },
+    { "id": "fluvius-tamar", "vessel": "FLUVIUS TAMAR", "imo": "9501708", "date": "2017-01-14", "files": [{ "label": "Report", "file": "https://barbadosmaritime.com/wp-content/uploads/2020/01/FLUVIUS-TAMAR-14-January-2017.pdf" }] },
+    { "id": "hadis", "vessel": "HADIS", "imo": "9283033", "date": "2011-09-01", "files": [{ "label": "Report", "file": "https://barbadosmaritime.com/wp-content/uploads/2020/01/mai110901_f-1.pdf" }] },
+    { "id": "kea", "vessel": "KEA", "imo": "7922025", "date": "2010-03-30", "files": [{ "label": "Report", "file": "https://barbadosmaritime.com/wp-content/uploads/2020/01/FULL-REPORT-KEA.doc" }] },
+    { "id": "concordia", "vessel": "CONCORDIA", "imo": "1001269", "date": "2010-02-17", "files": [
+      { "label": "Report #1", "file": "https://barbadosmaritime.com/wp-content/uploads/2020/01/Concordia-from-Barbados..pdf" },
+      { "label": "Report #2", "file": "https://barbadosmaritime.com/wp-content/uploads/2020/01/Concordia.pdf" }] }
+  ],
+  "contact": {
+    "accidents": "accidents@barbadosmaritime.com",
+    "accidentsCheck": "the live page shows accidents@barbadosmaritime.com but its link opens registry@barbadosmaritime.com; the review uses accidents@, as the Investigations page does",
+    "hoursCheck": "the live page says 'Monday to Friday: 09:30 AM – 4:30 PM', which differs from the site-wide 9am–5pm (still to be confirmed), so the hours aren't repeated here"
+  }
+}

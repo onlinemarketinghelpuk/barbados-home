@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change of Vessel's Name - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= registry sub-page: change of vessel's name (live text, a tick list of what's needed, downloads, siblings alongside) ================= */
+.rs{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.rs .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.rs .grid>*{min-width:0}
+.rs-h{padding-bottom:14px;border-bottom:2px solid var(--gold)}
+.rs-h h2{font-size:clamp(26px,2.4vw,36px)}
+.rs-body{max-width:65ch;margin-top:20px}
+.rs-body p+p{margin-top:14px}
+.rs-body p{color:var(--muted)}
+.rs-body p:first-child{color:var(--text);font-size:clamp(18px,1.4vw,20px)}
+.rs-portal{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:24px;padding:20px 22px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-left:3px solid var(--gold);border-radius:2px;background:color-mix(in srgb,var(--gold) 9%,var(--card))}
+.rs-portal b{display:block;font-size:18px}
+.rs-portal p{margin-top:4px;color:var(--muted);font-size:15px}
+.rs-portal .btn{max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.rs-sec{margin-top:clamp(32px,4vw,52px)}
+.rs-sec h3{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid var(--line);font:600 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rs-sec h3 span{color:var(--muted)}
+.rs-list{margin:0;padding:0;list-style:none}
+.rs-list li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:6px 14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.rs-list.files li{grid-template-columns:minmax(0,1fr) auto}
+.rs-list label{display:contents;cursor:pointer}
+.rs-list input{width:20px;height:20px;margin:0;accent-color:var(--gold);cursor:pointer}
+.rs-list .t{line-height:1.45}
+.rs-list .t small{display:block;margin-top:2px;font:600 12px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.rs-list li.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.rs-dl{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 12px;border:1px solid var(--line);border-radius:2px;font:600 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--text);transition:border-color .2s,color .2s}
+.rs-dl:hover{border-color:var(--teal);color:var(--teal)}
+.rs-dl svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rs-note{margin-top:20px;padding:16px 18px;border:1px dashed var(--line);border-radius:2px;color:var(--muted);font-size:15px}
+.rs-note b{color:var(--text)}
+.rs-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.rs-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.rs-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.rs-box p{color:var(--muted);font-size:15px}
+.rs-box ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.rs-box ul a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.rs-box ul a:hover{border-color:var(--teal)}
+.rs-box ul .ar{flex:none;color:var(--teal)}
+.rs-box.hi{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)} /* only the progress box stays in view */
+.rs-box .rs-prog{margin-top:6px;font:600 clamp(30px,3vw,40px)/1 var(--mono);color:var(--text)}
+.rs-reset{margin-top:12px;padding:0;border:0;background:none;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rs-reset:hover{color:var(--text)}
+@media (max-width:1100px){.rs .grid{grid-template-columns:1fr}.rs-side{grid-template-columns:1fr 1fr}.rs-box.hi{position:static;grid-column:1 / -1}}
+@media (max-width:760px){.rs-side{grid-template-columns:1fr}}
+@media (max-width:560px){.rs-list.files li{grid-template-columns:1fr}.rs-dl{justify-self:start}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="cvn-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/registry-alterations/change-of-vessels-name.webp" style="object-position:50% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li><a href="https://barbadosmaritime.com/registration/registry-alterations/">Registry Alterations</a></li><li aria-current="page">Change of Vessel's Name</li></ol></nav>
+    <p class="tag port">Registry alteration · {{cvn-count}} things you'll need</p>
+    <h1 class="hull" id="cvn-h1">Change of <span>Vessel's Name</span></h1>
+    <div class="foot">
+      <p class="lead">Check the new name is free on our portal, then apply on PPR01-F01 Application for Registration.</p>
+      <div class="ctas"><a class="btn btn-teal" href="{{cvn-file}}" download>PPR01-F01 (DOCX) <svg class="ar"><use href="#dl"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/registry-alterations/">All registry alterations</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE CHANGE (generated from src/data/change-of-vessels-name.json) ================= -->
+<!-- TODO(client): a link for the Notice of Name Proposed form (named on the live page, not linked) -->
+<section class="rs" aria-labelledby="cvn-h">
+  <div class="wrap grid">
+    <div>
+      <div class="rs-h"><p class="tag t">How it works</p><h2 class="hull" id="cvn-h">Changing <span>the vessel's name</span></h2></div>
+      <div class="rs-body">
+{{cvn-intro}}
+      </div>
+      <div class="rs-portal"><div><b class="hull">Name availability</b><p>Check instantly whether the new name is free.</p></div><a class="btn btn-gold" href="{{cvn-portal}}" target="_blank" rel="noopener">{{cvn-portal-label}} <svg class="ar"><use href="#ar"/></svg><span class="sr"> (opens in a new tab)</span></a></div>
+
+      <div class="rs-sec">
+        <h3>What you'll need <span>({{cvn-count}})</span></h3>
+        <ul class="rs-list" id="rs-needs">
+{{cvn-needs}}
+        </ul>
+      </div>
+      <div class="rs-sec">
+        <h3>Download</h3>
+        <ul class="rs-list files">
+{{cvn-files}}
+        </ul>
+        <p class="rs-note"><b>Please note:</b> {{cvn-note}}</p>
+      </div>
+    </div>
+    <aside class="rs-side" aria-label="About this change">
+      <div class="rs-box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact the registry <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="rs-box"><p class="tag t">Registry alterations</p><b class="hull">Other changes</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/registration/registry-alterations/change-of-ownership/">Change of ownership <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registry-alterations/change-of-owners-name-and-or-address/">Change of owner's name or address <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registry-alterations/deletion/">Deletion <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registry-alterations/">All registry alterations <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="rs-box hi"><p class="tag t">Your progress</p><p class="rs-prog" aria-live="polite"><span id="rs-done">0</span> of {{cvn-count}}</p><p>Tick each item as it's ready. Your ticks are saved on this device only.</p><button class="rs-reset" type="button" id="rs-reset">Clear my ticks</button></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// tick what's ready; the count is announced; saved on this device (localStorage, if allowed)
+const RSK = 'bmsr-change-of-vessels-name-v1', rsBoxes = [...document.querySelectorAll('#rs-needs input')], rsDone = document.getElementById('rs-done');
+let rsSaved = {}; try { rsSaved = JSON.parse(localStorage.getItem(RSK) || '{}'); } catch {}
+const rsShow = () => { rsDone.textContent = rsBoxes.filter(b => b.checked).length; rsBoxes.forEach(b => b.closest('li').classList.toggle('done', b.checked)); };
+rsBoxes.forEach(b => { b.checked = !!rsSaved[b.id]; b.addEventListener('change', () => { rsSaved[b.id] = b.checked; try { localStorage.setItem(RSK, JSON.stringify(rsSaved)); } catch {} rsShow(); }); });
+document.getElementById('rs-reset').addEventListener('click', () => { rsSaved = {}; try { localStorage.removeItem(RSK); } catch {} rsBoxes.forEach(b => b.checked = false); rsShow(); });
+rsShow();
+</script>
+</body>
+</html>

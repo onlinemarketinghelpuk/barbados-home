@@ -1,0 +1,24 @@
+{
+  "_note": "From the live page barbadosmaritime.com/investigations/casualty-investigations/ (title 'Marine Accident Reporting'; WordPress feed, modified 6 Jun 2025) and docs/casualty-investigations.png. Wording as live. Each \"check\" marks something tidied or added.",
+  "form": { "code": "PPI01-F01", "title": "Accident Report Form", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/03/PPI01-F01-Accident-Report-Form-Rev.00.docx", "check": "the live 'Report A Casualty' button downloads this form" },
+  "reports": { "href": "https://barbadosmaritime.com/investigations/accident-incident-reports/", "check": "the live button links to /casualty-investigations/accident-incident-reports/, which isn't the reports page's address" },
+  "deadline": { "text": "Send an initial report within 4 hours of the occurrence; further details follow within 24 hours.", "check": "not on this live page: it's the Investigations hub's wording, repeated so the two pages agree" },
+  "duty": [
+    "Under the Barbados Shipping Act the Owner/Operator or Master of a vessel is required to report any accident resulting in loss of life or serious injury to any person. The Owner or Master is also required to report any material damage to the vessel, which may affect its seaworthiness.",
+    "The Ministry of Maritime Affairs and the Blue Economy investigates all marine accidents involving Barbados vessels worldwide and all vessels located in Barbados territorial waters. These investigations are conducted on behalf of the Minister who is responsible for maritime matters under the Shipping Act. The Minister acts independently of Barbados Maritime Shipping Registry and appoints an independent person/company to oversee all investigations."
+  ],
+  "principles": [
+    { "tag": "Purpose", "title": "To prevent future accidents", "text": "The sole objective of the Ministry of Maritime Affairs and the Blue Economy investigation is to ascertain the causes and circumstances of a particular accident in order to prevent future accidents. The Ministry does not apportion blame or liability and fulfils its mandate by examining incidents, investigating any wider implications for safety at sea and publishing the investigation reports. These reports may lead to the Ministry making safety recommendations to relevant people or organisations including the Barbados Maritime Ship Registry (BMSR), classification societies, owners/operators and others. Before publication, the draft reports are sent out to anyone whose reputation may be affected so they have the opportunity to correct any factual inaccuracies in the draft report." },
+    { "tag": "Standard", "title": "The IMO Casualty Investigation Code", "text": "Investigations are conducted in accordance with the Code of the International Standards and Recommended Practices for a Safety Investigation into a Marine Casualty or Marine Incident, as adopted by IMO." },
+    { "tag": "Powers", "title": "Inspectors of marine casualties", "text": "A person appointed by the Minister as an inspector of marine casualties has legal powers under both the Shipping Act and subordinate legislation which include the right to interview anyone they consider to have information relevant to the investigation." }
+  ],
+  "titlesCheck": "the three principle titles are ours; the texts are live",
+  "investigate": {
+    "text": [
+      "The Ministry and BMSR have published a bulletin that gives guidance on accidents and other incidents that need to be reported. When an accident is reported, the Ministry assesses whether further action is necessary. Not all accidents are formally investigated, but an accident involving either the loss of one or more lives, the total loss of the ship, or severe damage to the environment MUST be fully investigated under the IMO Casualty Investigation Code.",
+      "Most “minor” accidents are not formally investigated, but their details are recorded for statistical purposes. Any accident can be investigated if the Ministry feels that important safety lessons can be learned."
+    ],
+    "must": ["The loss of one or more lives", "The total loss of the ship", "Severe damage to the environment"],
+    "mustCheck": "the three cases are listed from the live sentence"
+  }
+}

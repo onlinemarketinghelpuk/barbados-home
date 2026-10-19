@@ -1,0 +1,38 @@
+
+/* ================= Option D · News, in the home page's style =================
+   The particulars sheet: a sticky side column on the left (title, topic chips, count, older news, under a gold rule),
+   and the posts on the right as a ruled register (large date + topic | title + excerpt | thumbnail). The latest keeps a large photo. */
+.nwz .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
+.nw-side{position:sticky;top:calc(var(--bar-h) + 80px + 24px);display:grid;gap:18px;padding:22px 0 0;border:0;border-top:2px solid var(--gold)}
+.nw-side .tools{justify-items:start}
+.chips button{border-radius:0;background:none}
+.nw-older{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.nw-older .ar{width:16px;height:16px}
+.nw-list{display:block;margin:0;border-top:1px solid var(--line)}
+.nw a{display:grid;grid-template-columns:120px minmax(0,1fr) 200px;align-items:start;gap:8px 26px;padding:24px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.nw a:hover,.nw a:focus-visible{transform:none;background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.nw .b{display:contents}
+.nw .meta{grid-column:1;grid-row:1 / span 3;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.nw time .dd{display:block;font:600 40px/1 var(--mono);letter-spacing:-.02em;color:var(--text)}
+.nw time .my{display:block;margin-top:6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.nw .chip{border-radius:0}
+.nw h3,.nw .x,.nw .go{grid-column:2}
+.nw h3{grid-row:1;font-size:20px}
+.nw .x{grid-row:2}
+.nw .go{grid-row:3;margin:0;padding:0}
+.nw figure{grid-column:3;grid-row:1 / span 3;aspect-ratio:4/3}
+.nw.lead a{grid-template-columns:120px minmax(0,1fr)}
+.nw.lead figure{grid-column:1 / -1;grid-row:1;min-height:0;aspect-ratio:16/8}
+.nw.lead .meta{grid-row:2 / span 3}
+.nw.lead h3{grid-row:2;font-size:clamp(24px,2.3vw,34px)}
+.nw.lead .x{grid-row:3}
+.nw.lead .go{grid-row:4}
+.nw.lead .meta::before{border-radius:0}
+.archive{border-left:0;border-top:2px solid var(--gold);border-radius:0;background:none;padding-inline:0}
+@media (max-width:1100px){.nwz .grid{grid-template-columns:1fr}.nw-side{position:static}}
+@media (max-width:760px){
+  .nw a,.nw.lead a{grid-template-columns:76px minmax(0,1fr)}
+  .nw figure,.nw.lead figure{grid-column:1 / -1;grid-row:1;aspect-ratio:16/9}
+  .nw .meta,.nw.lead .meta{grid-row:2 / span 3}
+  .nw h3,.nw.lead h3{grid-row:2}.nw .x,.nw.lead .x{grid-row:3}.nw .go,.nw.lead .go{grid-row:4}
+  .nw time .dd{font-size:30px}.nw .chip{display:none}}

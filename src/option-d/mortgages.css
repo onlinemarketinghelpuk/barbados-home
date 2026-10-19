@@ -1,0 +1,21 @@
+
+/* ================= Option D · Mortgages, in the home page's style =================
+   The particulars sheet: help and the facts become a side column on the left (gold rules, no boxes; only the facts stay in view),
+   and the five sections a ruled register on the right, each number set large in its own margin column. */
+.mg .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.mg .grid>aside{order:-1}
+.mg-side{gap:0}
+.box,.box.hi{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.box+.box{margin-top:24px}
+.box .links a,.req a.dl,.prio li,.prio b,.rules li{border-radius:0}
+.mg-sec{grid-template-columns:96px minmax(0,1fr);gap:6px 28px;padding-top:24px;border-top:1px solid var(--line)}
+.mg-sec .num{font-size:clamp(36px,3.4vw,52px);color:var(--text)}
+.mg-sec h2{padding-bottom:12px;border-bottom:2px solid var(--gold)}
+.prio li{background:none}
+.rules{gap:0;border-top:1px solid var(--line)}
+.rules li{border:0;border-bottom:1px solid var(--line);background:none}
+.rules li.warn{border:0;border-bottom:1px solid var(--line);border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 8%,transparent)}
+.req li:hover,.rules li:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+@media (max-width:1100px){.mg .grid{grid-template-columns:1fr}.mg .grid>aside{order:0}.mg-side{grid-template-columns:1fr 1fr;gap:0 32px}.box+.box{margin-top:0}}
+@media (max-width:760px){.mg-side{grid-template-columns:1fr}.box+.box{margin-top:24px}}
+@media (max-width:560px){.mg-sec{grid-template-columns:1fr}}

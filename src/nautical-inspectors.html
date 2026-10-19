@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appointed Nautical Inspectors - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= appointed nautical inspectors: a finder (search, regions, jump to country) over country groups of port cards ================= */
+.ni-layout{padding-bottom:clamp(64px,8vw,112px)}
+.ni-intro{padding-block:clamp(44px,5vw,72px) clamp(20px,2.4vw,32px)}
+.ni-intro .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:end}
+.ni-intro .wrap>*{min-width:0}
+.ni-intro .statement{max-width:34em;margin-top:14px;font-size:clamp(21px,1.9vw,28px);line-height:1.35}
+.ni-intro ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.ni-intro ul a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:0 16px;border:1px solid var(--line);border-radius:2px;background:var(--card);font-weight:600;transition:border-color .2s}
+.ni-intro ul a:hover{border-color:var(--teal)}
+.ni-intro ul .ar{flex:none;color:var(--teal)}
+/* finder: sticks under the header while the visitor scrolls the results */
+.finder{overflow-x:clip;position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;margin-bottom:clamp(28px,3vw,40px);padding-block:14px;background:var(--abyss);border-block:1px solid var(--line)}
+.finder .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.finder .search{position:relative;flex:1 1 320px;max-width:520px}
+.finder .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.finder input,.finder select{width:100%;min-height:46px;padding:10px 14px 10px 42px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.finder select{width:auto;min-width:220px;padding-left:14px;padding-right:40px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239DB3BC' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.finder input:focus,.finder select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer;transition:border-color .2s}
+.chips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.chips button:hover{border-color:var(--teal)}
+.chips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.chips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
+.finder .count{margin-top:10px;font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.finder .count b{color:var(--text);font-weight:600}
+/* results: a country, then one card per port */
+.ni-c{padding-block:clamp(22px,2.5vw,32px);border-top:1px solid var(--line)}
+.ni-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 18px;font-size:clamp(26px,2.2vw,34px)}
+.cc{display:inline-grid;place-items:center;min-width:44px;height:30px;padding:0 6px;border:1px solid var(--gold);border-radius:2px;font:600 12.5px/1 var(--mono);letter-spacing:.08em;color:var(--teal)}
+.ni-h i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
+.ni-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0;padding:0;list-style:none}
+.ni-li{min-width:0}
+.ni{display:flex;flex-direction:column;gap:14px;height:100%;padding:20px 22px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ni .pl{display:flex;align-items:center;gap:8px;font:600 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+.ni .pl svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8}
+.ni-who{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ni-who+.ni-who{padding-top:14px;border-top:1px dashed var(--line)}
+.ni .nm{display:block;font-size:18px;line-height:1.3}
+.ni .co{font-weight:600;color:var(--teal)}
+.ni address{font-style:normal;font-size:15px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}
+.ni .ct{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.ni .ct p{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;min-width:0;font-size:15px}
+.ni .ct .lb{color:var(--muted)}
+.ni .ct a{min-width:0;font-weight:600;overflow-wrap:anywhere;color:var(--text)}
+.ni .ct a:hover{color:var(--teal);text-decoration:underline;text-underline-offset:3px}
+.ni .ct .tl{display:inline-flex;align-items:center;gap:8px;min-height:36px}
+.ni .ct .tl svg{width:16px;height:16px;flex:none;color:var(--teal);fill:none;stroke:currentColor;stroke-width:1.8}
+.copy{display:inline-flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;padding:0;border:1px solid var(--line);border-radius:2px;background:none;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.copy svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+.copy:hover{color:var(--text);border-color:var(--teal)}
+.copy.done{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.js .ni-c.off,.js .ni-li.off{display:none}
+.ni-empty{display:none;padding:32px;border:1px dashed var(--line);border-radius:2px;text-align:center;color:var(--muted)}
+.ni-empty.show{display:block}
+.ni-empty a{color:var(--teal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.ni-src{margin-top:clamp(28px,3vw,40px);font-size:14px;color:var(--muted)}
+@media (max-width:1100px){.ni-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ni-intro .wrap{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .ni-grid{grid-template-columns:1fr}
+  .finder{position:static}
+  .finder select{width:100%;min-width:0}
+  .finder label{width:100%}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut)}
+  .chips::-webkit-scrollbar{display:none}
+  .chips button{flex:none}
+}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="ni-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-3.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/inspections/">Inspections</a></li><li aria-current="page">Appointed Nautical Inspectors</li></ol></nav>
+    <p class="tag port">{{ni-count}} inspectors · {{ni-cities}} ports · {{ni-countries}} countries</p>
+    <h1 class="hull" id="ni-h1">Appointed <span>Nautical Inspectors</span></h1>
+    <div class="foot">
+      <p class="lead">Our network of appointed Nautical Inspectors around the world. Search by country, port, inspector or company.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#finder">Find an inspector <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/inspections/">About inspections</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="ni-intro" aria-labelledby="nii-h">
+  <div class="wrap">
+    <div><p class="tag t" id="nii-h">The network</p><p class="statement">A network of Nautical Inspectors is available to carry out annual ship safety inspections and to assist ship operators whenever required.</p></div>
+    <ul>
+      <li><a href="https://barbadosmaritime.com/inspections/">Arranging an inspection <svg class="ar"><use href="#ar"/></svg></a></li>
+      <li><a href="https://barbadosmaritime.com/inspections/notices-to-nautical-inspectors/">Notices to Nautical Inspectors <svg class="ar"><use href="#ar"/></svg></a></li>
+      <li><a href="https://barbadosmaritime.com/inspections/inspection-templates/">Inspection templates <svg class="ar"><use href="#ar"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= FINDER + RESULTS (generated from src/data/nautical-inspectors.json by tools/fill/nautical-inspectors.mjs) ================= -->
+<!-- TODO(client): every entry was taken from the live page as published (last updated {{ni-modified}}); please confirm the list is current, and the phone numbers listed under "checks" in the data -->
+<div class="ni-layout" id="finder">
+  <div class="finder" role="search" aria-label="Find a nautical inspector">
+    <div class="wrap">
+      <div class="row">
+        <label class="search"><span class="sr">Search inspectors</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="ni-q" placeholder="Country, port, name or company" autocomplete="off"></label>
+        <label><span class="sr">Jump to a country</span><select id="ni-jump"><option value="">Jump to a country…</option>
+{{ni-options}}
+        </select></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <div class="chips" role="group" aria-label="Filter by region">
+{{ni-chips}}
+        </div>
+      </div>
+      <p class="count" id="ni-count" aria-live="polite">Showing <b>{{ni-count}}</b> inspectors in <b>{{ni-countries}}</b> countries</p>
+    </div>
+  </div>
+  <div class="wrap ni-results">
+{{ni-groups}}
+    <p class="ni-empty" id="ni-empty">No inspectors match your search. Try another country or port, or <a href="https://barbadosmaritime.com/contact-us/">contact us</a> and we'll help.</p>
+    <p class="ni-src">List as published on the current site, last updated {{ni-modified}}.</p>
+  </div>
+  <p class="sr" aria-live="polite" id="copy-live"></p>
+</div>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// finder: search text and region together decide which ports show; empty countries hide; the count is announced
+const niq = document.getElementById('ni-q'), nijump = document.getElementById('ni-jump'), nicount = document.getElementById('ni-count'), niempty = document.getElementById('ni-empty');
+const nichips = [...document.querySelectorAll('.finder .chips button')], nigroups = [...document.querySelectorAll('.ni-c')];
+let niregion = 'all';
+const ninorm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const niapply = () => {
+  const words = ninorm(niq.value.trim()).split(/\s+/).filter(Boolean);
+  let people = 0, places = 0;
+  nigroups.forEach(g => {
+    const inRegion = niregion === 'all' || g.dataset.region === niregion;
+    let shown = 0;
+    g.querySelectorAll('.ni-li').forEach(li => { const ok = inRegion && words.every(w => li.dataset.s.includes(w)); li.classList.toggle('off', !ok); if (ok) shown += li.querySelectorAll('.ni-who').length; });
+    g.classList.toggle('off', !shown); people += shown; if (shown) places++;
+  });
+  niempty.classList.toggle('show', !people);
+  nicount.innerHTML = people ? `Showing <b>${people}</b> inspector${people === 1 ? '' : 's'} in <b>${places}</b> countr${places === 1 ? 'y' : 'ies'}` : 'No matches';
+};
+niq.addEventListener('input', niapply);
+nichips.forEach(c => c.addEventListener('click', () => { niregion = c.dataset.region; nichips.forEach(x => x.setAttribute('aria-pressed', x === c)); niapply(); }));
+nijump.addEventListener('change', () => {
+  if (!nijump.value) return;
+  niq.value = ''; niregion = 'all'; nichips.forEach(x => x.setAttribute('aria-pressed', x.dataset.region === 'all')); niapply();
+  // land the country below the header and, where it spans the page, the pinned finder (Option D's side finder doesn't cover the results)
+  const g = document.getElementById(nijump.value), f = document.querySelector('.finder'), fs = getComputedStyle(f);
+  const covers = fs.position === 'sticky' && f.offsetWidth > innerWidth * .6;
+  const offset = covers ? parseFloat(fs.top) + f.offsetHeight : parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 150;
+  scrollTo({ top: g.getBoundingClientRect().top + scrollY - offset - 12, behavior: reduce ? 'auto' : 'smooth' }); g.querySelector('h2').focus({ preventScroll: true });
+  nijump.value = '';
+});
+// copy buttons
+const nilive = document.getElementById('copy-live');
+document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', async () => {
+  const text = b.dataset.copy;
+  try { await navigator.clipboard.writeText(text); }
+  catch (e) { const t = document.createElement('textarea'); t.value = text; document.body.append(t); t.select(); try { document.execCommand('copy'); } catch (e2) {} t.remove(); }
+  b.classList.add('done'); b.querySelector('use').setAttribute('href', '#i-check'); nilive.textContent = text + ' copied';
+  clearTimeout(b._t); b._t = setTimeout(() => { b.classList.remove('done'); b.querySelector('use').setAttribute('href', '#i-copy'); }, 2000);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/registry-alterations/deletion/ (WordPress feed, modified 2 Mar 2025). Wording as live. The live page has no downloads. \"check\" marks what we tidied or added.",
+  "title": "Vessel Deletion",
+  "body": [
+    "The Registry must be informed in writing of the owner's intention to take the vessel away from the Registry. Registrars will inform the owner of the documents required to remove the vessel from the Register. Registrars will also inform the Accounts department to confirm that all due fees have been paid."
+  ],
+  "needsIntro": "For the deletion of the vessel to be completed the Registrar must be in receipt of the following:",
+  "needs": [
+    "Confirmation all outstanding fees have been paid.",
+    "The original Barbados Certificate of Registry for cancellation.",
+    "Original mortgage instrument stamped and signed by the mortgagee if there is a mortgage recorded.",
+    { "text": "If bare-boated in, evidence that Primary flag has accepted the vessel on its register.", "check": "full stop added" }
+  ],
+  "note": "Compulsory de-registration will be applied where due fees are not paid on time or there is evidence that vessels are not being maintained in accordance with international standards.",
+  "siblings": [
+    { "title": "Change of Ownership", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-ownership/" },
+    { "title": "Change of Vessel's Name", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-vessels-name/" },
+    { "title": "Change of Owner's Name and/or Address", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-owners-name-and-or-address/" }
+  ]
+}

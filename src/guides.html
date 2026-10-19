@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guides - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= guides: the Masters' guides as cards with their covers and file details; related links alongside ================= */
+.gdz{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.gdz .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.gdz .grid>*{min-width:0}
+.gd-intro{max-width:60ch;font-size:clamp(19px,1.5vw,22px);line-height:1.5}
+.gd-list{display:grid;gap:clamp(16px,2vw,24px);margin:28px 0 0;padding:0;list-style:none}
+.gd{display:grid;grid-template-columns:150px minmax(0,1fr);gap:clamp(20px,2.6vw,36px);align-items:start;padding:clamp(22px,2.6vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.gd>*{min-width:0}
+.gd-cov{margin:0}
+.gd-cov img{display:block;width:100%;height:auto;aspect-ratio:282/400;object-fit:cover;border:1px solid var(--line);box-shadow:0 14px 30px rgba(3,20,31,.28)}
+.gd-k{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font:600 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.gd-n{color:var(--muted)}
+.gd h2{margin-top:8px;font-size:clamp(26px,2.4vw,36px)}
+.gd-d{margin-top:10px;max-width:56ch;color:var(--muted)}
+.gd-f{display:flex;flex-wrap:wrap;gap:8px 28px;margin:18px 0 0}
+.gd-f dt{font:600 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.gd-f dd{margin:4px 0 0;font-weight:600}
+.gd-a{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.gd-side{display:grid;gap:14px}
+.gd-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.gd-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.gd-box>p{color:var(--muted);font-size:15px}
+.gd-rel{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.gd-rel a{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 12px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;transition:border-color .2s}
+.gd-rel a:hover{border-color:var(--teal)}
+.gd-rel b{font-size:15.5px}
+.gd-rel span{grid-column:1;color:var(--muted);font-size:14px;line-height:1.4}
+.gd-rel .ar{grid-column:2;grid-row:1 / span 2;flex:none;color:var(--teal)}
+@media (max-width:1100px){.gdz .grid{grid-template-columns:1fr}}
+@media (max-width:600px){.gd{grid-template-columns:96px minmax(0,1fr)}.gd-a .btn{width:100%}}
+@media (max-width:420px){.gd{grid-template-columns:1fr}.gd-cov{width:120px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="gd-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-4.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li aria-current="page">Guides</li></ol></nav>
+    <p class="tag port">{{gd-count}} guides · for Masters</p>
+    <h1 class="hull" id="gd-h1">Masters' <span>Guides</span></h1>
+    <div class="foot">
+      <p class="lead">The Ship Master's guide for commercial vessels, and the Yacht Master's guide for yachts, commercial and pleasure.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#guides">The guides <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/documents/">All documents</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE GUIDES (generated from src/data/guides.json by tools/fill/guides.mjs) ================= -->
+<!-- TODO(client): confirm the Ship Master's guide file (Rev 3, 2017; a Rev 4 cover exists) and that the Yacht Master's guide (2016) is current -->
+<section class="gdz" id="guides" aria-label="Guides">
+  <div class="wrap grid">
+    <div>
+      <p class="gd-intro">{{gd-intro}}</p>
+      <ol class="gd-list">
+{{gd-cards}}
+      </ol>
+    </div>
+    <aside class="gd-side" aria-label="Related">
+      <div class="gd-box"><p class="tag t">Also useful</p><b class="hull">Related</b><p>More documents for Masters and operators of Barbadian ships.</p>
+        <ul class="gd-rel">
+{{gd-related}}
+        </ul>
+      </div>
+      <div class="gd-box"><p class="tag t">Questions?</p><b class="hull">Talk to us</b><p>For help with a guide or anything about your ship, contact the registry.</p>
+        <ul class="gd-rel"><li><a href="https://barbadosmaritime.com/contact-us/"><b>Contact us</b><span>office@barbadosmaritime.com</span><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a></li></ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

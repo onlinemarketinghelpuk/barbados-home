@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change of Ownership - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= registry alteration sub-page: the live text, what you'll need as a tick list, the outcome; other alterations alongside ================= */
+.rs{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.rs .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.rs .grid>*{min-width:0}
+.rs-h{padding-bottom:16px;border-bottom:2px solid var(--gold)}
+.rs-h h2{font-size:clamp(26px,2.4vw,36px)}
+.rs-body{display:grid;gap:14px;max-width:65ch;margin-top:20px}
+.rs-body p{color:var(--muted)}
+.rs-need{margin-top:clamp(32px,4vw,52px)}
+.rs-need h3,.rs-out h3{font:600 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rs-need .prog{margin-top:6px;font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rs-need .prog b{color:var(--text)}
+.rs-req{margin:10px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.rs-req li{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px 14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.rs-req label{display:contents;cursor:pointer}
+.rs-req input{width:20px;height:20px;margin:0;accent-color:var(--gold);cursor:pointer}
+.rs-req .t{line-height:1.4}
+.rs-req .t small{display:block;margin-top:3px;font-size:14px;color:var(--muted)}
+.rs-req li.done .t{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.rs-out{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:start;margin-top:clamp(28px,3vw,40px);padding:20px 22px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-left:3px solid var(--gold);border-radius:2px;background:color-mix(in srgb,var(--gold) 8%,var(--card))}
+.rs-out svg{grid-row:1 / span 2;width:28px;height:28px;color:var(--teal);fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rs-out p{color:var(--text)}
+.rs-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.rs-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.rs-side>.rs-box.hi{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the progress box stays in view */
+.rs-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.rs-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.rs-box p{color:var(--muted);font-size:15px}
+.rs-box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.rs-box .big{font:600 clamp(34px,3vw,44px)/1 var(--mono);color:var(--text)}
+.rs-reset{margin-top:12px;padding:0;border:0;background:none;font:600 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rs-reset:hover{color:var(--text)}
+.rs-links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.rs-links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:8px 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;line-height:1.3;transition:border-color .2s}
+.rs-links a:hover{border-color:var(--teal)}
+.rs-links .ar{flex:none;color:var(--teal)}
+.rs-links a.all{border-style:dashed}
+@media (max-width:1100px){.rs .grid{grid-template-columns:1fr}.rs-side{grid-template-columns:1fr 1fr}.rs-side>.rs-box.hi{position:static}}
+@media (max-width:760px){.rs-side{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="coo-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="{{coo-img}}" style="object-position:50% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li><a href="https://barbadosmaritime.com/registration/registry-alterations/">Registry Alterations</a></li><li aria-current="page">Change of Ownership</li></ol></nav>
+    <p class="tag port">Registry alteration · the vessel stays on the Register</p>
+    <h1 class="hull" id="coo-h1">Change of <span>Ownership</span></h1>
+    <div class="foot">
+      <p class="lead">When a vessel changes hands but stays on the Barbados Register: what to send us, whose agreement you need, and what you'll receive.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#need">What you'll need <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/registry-alterations/">All registry alterations</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE CHANGE (generated from src/data/change-of-ownership.json) ================= -->
+<section class="rs" aria-labelledby="coo-h">
+  <div class="wrap grid">
+    <div>
+      <div class="rs-h"><p class="tag t">Change of Ownership</p><h2 class="hull" id="coo-h">Changing <span>vessel ownership</span></h2></div>
+      <div class="rs-body">
+{{coo-body}}
+      </div>
+      <div class="rs-need" id="need">
+        <h3>What you'll need <span>({{coo-count}})</span></h3>
+        <p class="prog" aria-live="polite">Ready: <b id="coo-prog">0 of {{coo-count}}</b></p>
+        <ul class="rs-req">
+{{coo-need}}
+        </ul>
+      </div>
+      <div class="rs-out"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13l2 2 4-4"/></svg><h3>You'll receive</h3><p>{{coo-outcome}}</p></div>
+      <div class="rs-acts"><a class="btn btn-gold" href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/mortgages/">Mortgages</a></div>
+    </div>
+    <aside class="rs-side" aria-label="More on registry alterations">
+      <div class="rs-box"><p class="tag t">Other changes</p><b class="hull">Other registry alterations</b>
+        <ul class="rs-links">
+{{coo-siblings}}
+          <li><a class="all" href="https://barbadosmaritime.com/registration/registry-alterations/">All registry alterations <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="rs-box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b>
+        <ul class="rs-links">
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="rs-box hi"><p class="tag t">Your progress</p><p class="big" id="coo-big">0/{{coo-count}}</p><p>Tick each item as it's ready. Your ticks are saved on this device only.</p>
+        <button class="rs-reset" type="button" id="coo-reset">Clear my ticks</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// tick each item as it's ready; saved on this device (localStorage, if allowed)
+const COK = 'bmsr-change-of-ownership-v1', cboxes = [...document.querySelectorAll('.rs-req input')];
+let csaved = {}; try { csaved = JSON.parse(localStorage.getItem(COK) || '{}'); } catch {}
+const cshow = () => {
+  const n = cboxes.filter(b => b.checked).length;
+  document.getElementById('coo-prog').textContent = `${n} of ${cboxes.length}`;
+  document.getElementById('coo-big').textContent = `${n}/${cboxes.length}`;
+  cboxes.forEach(b => b.closest('li').classList.toggle('done', b.checked));
+};
+cboxes.forEach(b => { b.checked = !!csaved[b.id]; b.addEventListener('change', () => { csaved[b.id] = b.checked; try { localStorage.setItem(COK, JSON.stringify(csaved)); } catch {} cshow(); }); });
+document.getElementById('coo-reset').addEventListener('click', () => { csaved = {}; try { localStorage.removeItem(COK); } catch {} cboxes.forEach(b => b.checked = false); cshow(); });
+cshow();
+</script>
+</body>
+</html>

@@ -1,16 +1,39 @@
 {
-  "_note": "From a screenshot of barbadosmaritime.com/documents/shipboard-documents/ (docs/shipboard-documents.png). The covers were read from the page's image; part of it was hidden behind the site header, so there may be more (one yellow form-style cover could not be read). Colours match the covers. Order form addresses weren't visible.",
-  "orderOnline": "https://barbadosmaritime.com/documents/shipboard-documents/#live",
-  "orderOffline": "https://barbadosmaritime.com/documents/shipboard-documents/#live",
+  "_note": "From the live pages documents/shipboard-documents/ (modified 28 Dec 2025) and its online order form documents/ship-document-online-form/ (modified 24 Dec 2025), read from the WordPress feed on 19 Oct 2026. The list and prices are the order form's (they match PP01-F01 BMSR Fees Rev 04 in registration-fees.json). Colours: the covers seen in the live page's cover image; titles not on that image use colours of ours (\"check\"). The build renders title, sub and colour; tools/fill/shipboard.mjs adds the price, the groups, the set and the courier charges.",
+  "orderOnline": "https://barbadosmaritime.com/documents/ship-document-online-form/#live",
+  "orderOffline": "https://barbadosmaritime.com/wp-content/uploads/2025/12/PPD01-F01-Shipboard-Documents-Order-Rev.02.docx",
+  "offlineCode": "PPD01-F01",
+  "offlineTitle": "Shipboard Documents Order",
+  "currency": "USD",
+  "set": {
+    "title": "Standard Shipboard Document Set",
+    "when": "First issuance at Registration",
+    "text": "The Shipboard Document Set includes one copy of the printouts and electronic document shown below.",
+    "fee": 350, "feeTankers": 380,
+    "bundle": ["Consolidated Shipping Legislation", "Account of Property of Deceased Seaman", "Certificate of Discharge", "Guidance to Ensure Positive PSC Inspections", "Model Table for Hours of Work and Rest", "Model Table for Shipboard Working Arrangements (Form 159)", "PSC Pre Arrival Check List", "Report of Conduct", "Return of Births & Deaths"],
+    "check": "the live form calls the set 'printouts and electronic document' and lists these nine items as a 'Bundle'; that they are the electronic document is our reading"
+  },
+  "groups": [
+    { "id": "all", "name": "Printouts", "sub": "For all types of vessels" },
+    { "id": "tankers", "name": "Additional printouts", "sub": "Vessel specific" }
+  ],
+  "courier": [
+    { "name": "International parcels", "fee": 200 },
+    { "name": "UK parcels", "fee": 50 }
+  ],
   "books": [
-    { "title": "GMDSS Radio Logbook", "sub": "Radio communications", "colour": "#BFE3F8" },
-    { "title": "Oil Record Book", "sub": "Part I: machinery space operations", "colour": "#BC9A80", "check": "subtitle hidden in the screenshot; Part I is assumed" },
-    { "title": "Oil Record Book", "sub": "Part II: cargo / ballast operations", "colour": "#B7B7B7" },
-    { "title": "Cargo Record Book", "sub": "For ships carrying noxious liquid substances in bulk", "colour": "#98C47E" },
-    { "title": "Ballast Water Record Book", "sub": "Ballast water management", "colour": "#3F88C9" },
-    { "title": "Garbage Record Book", "sub": "Garbage management", "colour": "#F2A36B" },
-    { "title": "Compass Observation Book", "sub": "Navigation", "colour": "#AACB9C" },
-    { "title": "Biofouling Record Book", "sub": "Biofouling management", "colour": "#B07DC6" },
-    { "title": "Ozone-Depleting Substances Record Book", "sub": "Air pollution", "colour": "#F7CBA4" }
+    { "group": "all", "title": "Articles of Agreement (MLC)", "sub": "Ship's Articles & List of Crew: black print = Ship, red print = Owner", "colour": "#D9D2C1", "price": 30, "check": "colour ours" },
+    { "group": "all", "title": "Official Logbook", "sub": "Including Freeboard Draught Sheet", "colour": "#2F4A6E", "price": 40, "check": "colour ours" },
+    { "group": "all", "title": "Oil Record Book Part I", "sub": "MARPOL I", "colour": "#BC9A80", "price": 40 },
+    { "group": "all", "title": "Cargo Record Book", "sub": "Noxious Substances · MARPOL II", "colour": "#98C47E", "price": 40 },
+    { "group": "all", "title": "Garbage Record Book Part I", "sub": "MARPOL V", "colour": "#F2A36B", "price": 40 },
+    { "group": "all", "title": "Garbage Record Book Part II", "sub": "MARPOL V", "colour": "#E8C29A", "price": 40, "check": "colour ours (a lighter shade of Part I's cover)" },
+    { "group": "all", "title": "Engine Room Logbook", "sub": "Ozone Depleting Substances · MARPOL VI", "colour": "#F7CBA4", "price": 40, "check": "the cover image calls it 'Ozone-Depleting Substances Record Book'; the order form's name is used" },
+    { "group": "all", "title": "Biofouling Record Book", "sub": "Biofouling management", "colour": "#B07DC6", "price": 40 },
+    { "group": "all", "title": "GMDSS Radio Logbook", "sub": "Radio communications", "colour": "#BFE3F8", "price": 40 },
+    { "group": "all", "title": "Compass Observation Book", "sub": "Navigation", "colour": "#AACB9C", "price": 40 },
+    { "group": "all", "title": "MARPOL Annex VI Record Book", "sub": "All ships", "colour": "#9FB4C7", "price": 40, "check": "colour ours" },
+    { "group": "all", "title": "Ballast Water Record Book", "sub": "Ballast water management", "colour": "#3F88C9", "price": 40 },
+    { "group": "tankers", "title": "Oil Record Book Part II", "sub": "MARPOL I · Tankers only", "colour": "#B7B7B7", "price": 40 }
   ]
 }

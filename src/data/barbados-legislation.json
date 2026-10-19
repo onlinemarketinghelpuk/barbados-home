@@ -1,0 +1,256 @@
+{
+ "_note": "From the live pages documents/barbados-legislation/, documents/acts/ and documents/regulations/ (WordPress feed, read 19 Oct 2026), parsed by script. \"live\" is each title exactly as published (in capitals); \"title\" is the same words in title case for display. The live Regulations page also repeats the text of Bulletin B011 (Minimum Safe Manning) under every regulation, which looks like a page-builder leftover: not reproduced here (check). Topics are ours, for filtering (client to approve).",
+ "intro": "Find all Barbados Legislation information right here",
+ "topics": [
+  {
+   "id": "env",
+   "name": "Pollution & environment"
+  },
+  {
+   "id": "ship",
+   "name": "Ships & certification"
+  },
+  {
+   "id": "control",
+   "name": "Flag, port & coastal state control"
+  },
+  {
+   "id": "casualty",
+   "name": "Accidents, collisions & wrecks"
+  },
+  {
+   "id": "ops",
+   "name": "Security & ferrying"
+  },
+  {
+   "id": "admin",
+   "name": "Fees, administration & insurance"
+  }
+ ],
+ "acts": [
+  { "live": "MERCHANT SHIPPING ACT, 2024",
+   "title": "Merchant Shipping Act",
+   "year": "2024",
+   "no": "",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-ACT-2024.pdf"
+  },
+  { "live": "MERCHANT SHIPPING (LIABILITY AND COMPENSATION) ACT, 2024-30",
+   "title": "Merchant Shipping (Liability and Compensation) Act",
+   "year": "2024",
+   "no": "2024-30",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-LIABILITY-AND-COMPENSATION-ACT-2024-30.pdf"
+  },
+  { "live": "MERCHANT SHIPPING (LINER CONFERENCES) ACT, 2024-32",
+   "title": "Merchant Shipping (Liner Conferences) Act",
+   "year": "2024",
+   "no": "2024-32",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-LINER-CONFERENCES-ACT-2024-32.pdf"
+  },
+  { "live": "MERCHANT SHIPPING (MARITIME MARRIAGE) ACT, 2024-31",
+   "title": "Merchant Shipping (Maritime Marriage) Act",
+   "year": "2024",
+   "no": "2024-31",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-MARITIME-MARRIAGE-ACT-2024-31.pdf"
+  },
+  { "live": "MERCHANT SHIPPING (MULTIMODAL TRANSPORT) ACT, 2024-29",
+   "title": "Merchant Shipping (Multimodal Transport) Act",
+   "year": "2024",
+   "no": "2024-29",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-MULTIMODAL-TRANSPORT-ACT-2024-29.pdf"
+  }
+ ],
+ "regulations": [
+  { "si": "S.I. 2025 No. 22",
+   "no": 22,
+   "year": "2025",
+   "live": "S.I. 2025 No. 22 MERCHANT SHIPPING (OIL POLLUTION PREVENTION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Oil Pollution Prevention) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-22-MERCHANT-SHIPPING-OIL-POLLUTION-PREVENTION-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 23",
+   "no": 23,
+   "year": "2025",
+   "live": "S.I. 2025 No. 23 MERCHANT SHIPPING (CHEMICAL POLLUTION PREVENTION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Chemical Pollution Prevention) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-23-MERCHANT-SHIPPING-CHEMICAL-POLLUTION-PREVENTION-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 24",
+   "no": 24,
+   "year": "2025",
+   "live": "S.I. 2025 No. 24 MERCHANT SHIPPING (SEWAGE AND GARBAGE POLLUTION PREVENTION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Sewage and Garbage Pollution Prevention) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-24-MERCHANT-SHIPPING-SEWAGE-AND-GARBAGE-POLLUTION-PREVENTION-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 25",
+   "no": 25,
+   "year": "2025",
+   "live": "S.I. 2025 No. 25 MERCHANT SHIPPING (PORT WASTE RECEPTION FACILITIES) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Port Waste Reception Facilities) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-25-MERCHANT-SHIPPING-PORT-WASTE-RECEPTION-FACILITIES-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 26",
+   "no": 26,
+   "year": "2025",
+   "live": "S.I. 2025 No. 26 MERCHANT SHIPPING (ANTI-FOULING SYSTEMS) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Anti-Fouling Systems) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-26-MERCHANT-SHIPPING-ANTI-FOULING-SYSTEMS-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 27",
+   "no": 27,
+   "year": "2025",
+   "live": "S.I. 2025 No. 27 MERCHANT SHIPPING (BALLAST WATER AND SEDIMENT MANAGEMENT) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Ballast Water and Sediment Management) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-27-MERCHANT-SHIPPING-BALLAST-WATER-AND-SEDIMENT-MANAGEMENT-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 28",
+   "no": 28,
+   "year": "2025",
+   "live": "S.I. 2025 No. 28 MERCHANT SHIPPING (UNDERWATER NOISE REDUCTION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Underwater Noise Reduction) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-28-MERCHANT-SHIPPING-UNDERWATER-NOISE-REDUCTION-REGULATIONS-2025.pdf",
+   "topic": "env"
+  },
+  { "si": "S.I. 2025 No. 29",
+   "no": 29,
+   "year": "2025",
+   "live": "S.I. 2025 No. 29 MERCHANT SHIPPING (TONNAGE) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Tonnage) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-29-MERCHANT-SHIPPING-TONNAGE-REGULATIONS-2025.pdf",
+   "topic": "ship"
+  },
+  { "si": "S.I. 2025 No. 30",
+   "no": 30,
+   "year": "2025",
+   "live": "S.I. 2025 No. 30 MERCHANT SHIPPING (LOAD LINES) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Load Lines) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-30-MERCHANT-SHIPPING-LOAD-LINES-REGULATIONS-2025.pdf",
+   "topic": "ship"
+  },
+  { "si": "S.I. 2025 No. 31",
+   "no": 31,
+   "year": "2025",
+   "live": "S.I. 2025 No. 31 MERCHANT SHIPPING (EMERGENCY POSITION INDICATING RADIO BEACON DEVICES) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Emergency Position Indicating Radio Beacon Devices) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-31-MERCHANT-SHIPPING-EMERGENCY-POSITION-INDICATING-RADIO-BEACON-DEVICES-REGULATIONS-2025.pdf",
+   "topic": "ship"
+  },
+  { "si": "S.I. 2025 No. 32",
+   "no": 32,
+   "year": "2025",
+   "live": "S.I. 2025 No. 32 MERCHANT SHIPPING (SHIPS’ MEDICAL STORES) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Ships’ Medical Stores) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-32-MERCHANT-SHIPPING-SHIPS-MEDICAL-STORES-REGULATIONS-2025.pdf",
+   "topic": "ship"
+  },
+  { "si": "S.I. 2025 No. 33",
+   "no": 33,
+   "year": "2025",
+   "live": "S.I. 2025 No. 33 MERCHANT SHIPPING (MARITIME ACCIDENT AND INCIDENT INVESTIGATION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Maritime Accident and Incident Investigation) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-33-MERCHANT-SHIPPING-MARITIME-ACCIDENT-AND-INCIDENT-INVESTIGATION-REGULATIONS-2025.pdf",
+   "topic": "casualty"
+  },
+  { "si": "S.I. 2025 No. 34",
+   "no": 34,
+   "year": "2025",
+   "live": "S.I. 2025 No. 34 MERCHANT SHIPPING (ALLISION AND COLLISION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Allision and Collision) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-34-MERCHANT-SHIPPING-ALLISION-AND-COLLISION-REGULATIONS-2025.pdf",
+   "topic": "casualty"
+  },
+  { "si": "S.I. 2025 No. 35",
+   "no": 35,
+   "year": "2025",
+   "live": "S.I. 2025 No. 35 MERCHANT SHIPPING (WRECK DISCOVERIES AND SUNKEN MILITARY CRAFT) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Wreck Discoveries and Sunken Military Craft) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-35-MERCHANT-SHIPPING-WRECK-DISCOVERIES-AND-SUNKEN-MILITARY-CRAFT-REGULATIONS-2025.pdf",
+   "topic": "casualty"
+  },
+  { "si": "S.I. 2025 No. 36",
+   "no": 36,
+   "year": "2025",
+   "live": "S.I. 2025 No. 36 MERCHANT SHIPPING (SHIP AND PORT FACILITY SECURITY) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Ship and Port Facility Security) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-36-MERCHANT-SHIPPING-SHIP-AND-PORT-FACILITY-SECURITY-REGULATIONS-2025.pdf",
+   "topic": "ops"
+  },
+  { "si": "S.I. 2025 No. 37",
+   "no": 37,
+   "year": "2025",
+   "live": "S.I. 2025 No. 37 MERCHANT SHIPPING (FERRYING) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Ferrying) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-37-MERCHANT-SHIPPING-FERRYING-REGULATIONS-2025.pdf",
+   "topic": "ops"
+  },
+  { "si": "S.I. 2025 No. 38",
+   "no": 38,
+   "year": "2025",
+   "live": "S.I. 2025 No. 38 MERCHANT SHIPPING (VESSEL FEES) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Vessel Fees) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-38-MERCHANT-SHIPPING-VESSEL-FEES-REGULATIONS-2025.pdf",
+   "topic": "admin"
+  },
+  { "si": "S.I. 2025 No. 39",
+   "no": 39,
+   "year": "2025",
+   "live": "S.I. 2025 No. 39 MERCHANT SHIPPING (FLAG STATE CONTROL) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Flag State Control) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-39-MERCHANT-SHIPPING-FLAG-STATE-CONTROL-REGULATIONS-2025.pdf",
+   "topic": "control"
+  },
+  { "si": "S.I. 2025 No. 40",
+   "no": 40,
+   "year": "2025",
+   "live": "S.I. 2025 No. 40 MERCHANT SHIPPING (PORT STATE CONTROL) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Port State Control) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-40-MERCHANT-SHIPPING-PORT-STATE-CONTROL-REGULATIONS-2025.pdf",
+   "liveFile": "https://barbadosmaritaime.org/wp-content/uploads/2025/05/S.I.-2025-No.-40-MERCHANT-SHIPPING-PORT-STATE-CONTROL-REGULATIONS-2025.pdf",
+   "check": "the live link has a misspelt domain (barbadosmaritaime.org) and fails; this is the same file on barbadosmaritime.com (returns 200)",
+   "topic": "control"
+  },
+  { "si": "S.I. 2025 No. 41",
+   "no": 41,
+   "year": "2025",
+   "live": "S.I. 2025 No. 41 MERCHANT SHIPPING (COASTAL STATE CONTROL) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Coastal State Control) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-41-MERCHANT-SHIPPING-COASTAL-STATE-CONTROL-REGULATIONS-2025.pdf",
+   "topic": "control"
+  },
+  { "si": "S.I. 2025 No. 42",
+   "no": 42,
+   "year": "2025",
+   "live": "S.I. 2025 No. 42 MERCHANT SHIPPING (VESSEL SURVEY AND CERTIFICATION) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Vessel Survey and Certification) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-42-MERCHANT-SHIPPING-VESSEL-SURVEY-AND-CERTIFICATION-REGULATIONS-2025.pdf",
+   "topic": "ship"
+  },
+  { "si": "S.I. 2025 No. 43",
+   "no": 43,
+   "year": "2025",
+   "live": "S.I. 2025 No. 43 MERCHANT SHIPPING (ADMINISTRATION OF MARITIME INSTRUMENTS) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Administration of Maritime Instruments) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-43-MERCHANT-SHIPPING-ADMINISTRATION-OF-MARITIME-INSTRUMENTS-REGULATIONS-2025.pdf",
+   "topic": "admin"
+  },
+  { "si": "S.I. 2025 No. 44",
+   "no": 44,
+   "year": "2025",
+   "live": "S.I. 2025 No. 44 MERCHANT SHIPPING (SHIPOWNERS INSURANCE) REGULATIONS, 2025",
+   "title": "Merchant Shipping (Shipowners Insurance) Regulations, 2025",
+   "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/S.I.-2025-No.-44-MERCHANT-SHIPPING-SHIPOWNERS-INSURANCE-REGULATIONS-2025.pdf",
+   "topic": "admin"
+  }
+ ],
+ "subscription": { "live": "Emails entered here will receive any new Regulations as they are published"
+ },
+ "support": {
+  "label": "Technical and Operational Support",
+  "email": "ops@barbadosmaritime.com"
+ }
+}

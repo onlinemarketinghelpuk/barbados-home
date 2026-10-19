@@ -1,0 +1,34 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/registry-alterations/change-of-owners-name-and-or-address/ (WordPress feed, modified 23 Sep 2025). No screenshot. Wording as live; the tick list is drawn from the live text (check).",
+  "title": "Change of Owner's Name and/or Address",
+  "heading": "Changing the Owner's Name or Address",
+  "lead": "Same owner, new registered name or address: tell the Registry in writing and we'll issue a new Certificate of Registration and CSR.",
+  "lead_check": "the hero lead is ours, from the live text",
+  "img": "assets/img/registry-alterations/change-of-owners-name.webp",
+  "body": [
+    "Changes to the owner's registered details to be recorded in the Register are to be communicated in writing to the Registry in accordance with PPR01-C04 Checklist for Change of Owner, ensuring the agreement of any existing mortgagees as shown against the vessel.",
+    "On receipt of the required documentation and the appropriate fee, the Registry will issue a new Certificate of Registration and Continuous Synopsis Record (CSR)."
+  ],
+  "outcome": "A new Certificate of Registration and Continuous Synopsis Record (CSR)",
+  "needs": [
+    "Written notice to the Registry of the change of the owner's name and/or address",
+    "Completed PPR01-C04 Checklist for Change of Owner",
+    "The agreement of any existing mortgagees shown against the vessel",
+    "The appropriate fee"
+  ],
+  "needs_check": "the four items are drawn from the live text, which isn't a list",
+  "files": [
+    { "code": "PPR01-C04", "title": "Checklist for Change of Owner", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C04-Checklist-for-Change-of-Owner-Rev.00.docx" }
+  ],
+  "files_check": "the live page also links an older, unlabelled file, PPR01-F12 Checklist for Change of Owner Rev.00 (Feb 2025: https://barbadosmaritime.com/wp-content/uploads/2025/02/PPR01-F12-Checklist-for-Change-of-Owner-Rev.00.docx); left out here as it looks superseded by C04",
+  "siblings": [
+    { "title": "Change of Ownership", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-ownership/" },
+    { "title": "Change of Vessel's Name", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-vessels-name/" },
+    { "title": "Deletion", "href": "https://barbadosmaritime.com/registration/registry-alterations/deletion/" }
+  ],
+  "useful": [
+    { "title": "Regional Registrars", "href": "https://barbadosmaritime.com/regional-registrars/" },
+    { "title": "Recognised Organisations", "href": "https://barbadosmaritime.com/barbados-recognised-organisations/" },
+    { "title": "Appointed Nautical Inspectors", "href": "https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/" }
+  ]
+}

@@ -1,0 +1,22 @@
+
+/* ================= Option D · Guides, in the home page's style =================
+   The particulars sheet: the related links become a side column on the left (gold rules, no boxes),
+   and the guides a ruled register on the right: number in the margin | cover | title, details and download. */
+.gdz .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.gdz .grid>aside{order:-1}
+.gd-side{gap:0}
+.gd-box{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.gd-box+.gd-box{margin-top:24px}
+.gd-rel a{border-radius:0}
+.gd-list{gap:0;border-top:1px solid var(--line);counter-reset:gd}
+.gd{grid-template-columns:56px 130px minmax(0,1fr);padding:28px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.gd{counter-increment:gd}
+.gd::before{content:counter(gd,decimal-leading-zero);font:600 36px/1 var(--mono);letter-spacing:-.02em;color:var(--text)}
+.gd-cov{grid-column:2}
+.gd-b{grid-column:3}
+.gd-k .gd-n{display:none}
+.gd-cov img{box-shadow:none}
+@media (max-width:1100px){.gdz .grid{grid-template-columns:1fr}.gdz .grid>aside{order:0}.gd-side{grid-template-columns:1fr 1fr;gap:0 32px}.gd-box+.gd-box{margin-top:0}}
+@media (max-width:760px){.gd-side{grid-template-columns:1fr}.gd-box+.gd-box{margin-top:24px}}
+@media (max-width:600px){.gd{grid-template-columns:96px minmax(0,1fr)}.gd::before{display:none}.gd-cov{grid-column:1}.gd-b{grid-column:2}}
+@media (max-width:420px){.gd{grid-template-columns:1fr}.gd-b{grid-column:1}}

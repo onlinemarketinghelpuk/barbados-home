@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marine Accident Reporting - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= marine accident reporting: the duty to report, how to report now, how investigations work, what must be investigated ================= */
+.ci{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.ci .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.ci .grid>*{min-width:0}
+.ci-blk+.ci-blk{margin-top:clamp(40px,5vw,72px)}
+.ci-blk>h2{font-size:clamp(26px,2.4vw,36px)}
+.ci-blk>h2+*{margin-top:18px}
+.ci-blk p{color:var(--muted)}
+.ci-blk p+p{margin-top:14px}
+.ci-duty{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3vw,40px);align-items:start}
+.ci-duty>*{min-width:0}
+.ci-duty p:first-child{color:var(--text);font-size:clamp(17px,1.3vw,19px)}
+.ci-duty figure{margin:0;overflow:hidden;border-radius:2px;background:var(--hull)}
+.ci-duty img{display:block;width:100%;height:auto;aspect-ratio:1024/767;object-fit:cover}
+.ci-duty figcaption{padding:10px 0 0;font:500 12px/1.4 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.ci-now{scroll-margin-top:0;padding:clamp(22px,3vw,36px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.ci-now h2{font-size:clamp(26px,2.4vw,36px)}
+.ci-now .lead{margin-top:10px;color:var(--text)}
+.ci-now .note{margin-top:8px;font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.ci-how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.ci-how a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border:1px solid var(--line);border-radius:2px;background:var(--card);font-weight:700;color:var(--text);transition:border-color .2s}
+.ci-how a .em{font-size:15px;overflow-wrap:normal}
+.ci-how a:hover{border-color:var(--teal)}
+.ci-how a svg{width:22px;height:22px;fill:none;stroke:var(--teal);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ci-how a small{font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ci-how a.primary{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.ci-how a.primary svg{stroke:var(--ink)}
+.ci-how a.primary small{color:var(--ink);opacity:.75}
+.ci-prs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin:0;padding:0;list-style:none}
+.ci-pr{display:flex;flex-direction:column;gap:8px;padding:22px 22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ci-pr .n{font:600 13px/1 var(--mono);color:var(--teal)}
+.ci-pr h3{font-size:19px;line-height:1.25}
+.ci-pr p:not(.tag){font-size:15px}
+.ci-must{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,2vw,28px);margin-top:22px}
+.ci-must>*{min-width:0}
+.ci-must .box{padding:20px 22px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ci-must .box b{display:block;margin-bottom:10px;font:600 12.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.ci-must ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.ci-must li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;color:var(--text);font-weight:600}
+.ci-must li::before{content:"";width:8px;height:8px;margin-top:.55em;background:var(--gold)}
+.ci-must .box p{font-size:15px}
+.ci-rep{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:clamp(22px,2.6vw,32px);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ci-rep b{display:block;font-size:clamp(20px,1.7vw,24px)}
+.ci-rep p{margin-top:6px;font-size:15px}
+.ci-rep .btn{max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.ci-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.ci-side>.ci-box:last-child{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the small help box stays in view */
+.ci-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ci-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.ci-box p{color:var(--muted);font-size:15px}
+.ci-box .code{display:block;margin-top:6px;font:600 12px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.ci-box .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.ci-box ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.ci-box ul a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.ci-box ul a:hover{border-color:var(--teal)}
+.ci-box ul .ar{flex:none;color:var(--teal)}
+@media (max-width:1100px){.ci .grid{grid-template-columns:1fr}.ci-side{grid-template-columns:1fr 1fr}.ci-side>.ci-box:last-child{position:static}}
+@media (max-width:860px){.ci-duty,.ci-must{grid-template-columns:1fr}.ci-prs{grid-template-columns:1fr}}
+@media (max-width:760px){.ci-side{grid-template-columns:1fr}.ci-how{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="ci-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-4.jpg" style="object-position:60% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/investigations/">Investigations</a></li><li aria-current="page">Marine Accident Reporting</li></ol></nav>
+    <p class="tag port">Report · investigate · learn</p>
+    <h1 class="hull" id="ci-h1">Marine Accident <span>Reporting</span></h1>
+    <div class="foot">
+      <p class="lead">Owners, operators and masters of Barbados vessels must report accidents. They're investigated to find the causes and prevent the next one, never to apportion blame.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#report-now">Report a casualty <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{ci-reports}}">Investigation reports</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PAGE (wording from src/data/casualty-investigations.json, via tools/fill/casualty-investigations.mjs) ================= -->
+<!-- TODO(client): confirm the 4h/24h line (from the Investigations hub) belongs here too, and that PPI01-F01 Rev 0 is current -->
+<section class="ci" aria-label="Marine accident reporting">
+  <div class="wrap grid">
+    <div>
+      <div class="ci-blk">
+        <p class="tag t">The law</p>
+        <h2 class="hull">Your duty <span>to report</span></h2>
+        <div class="ci-duty">
+          <div>
+        {{ci-duty}}
+          </div>
+          <figure><img src="assets/img/casualty-investigations/concordia.webp" alt="The sail training yacht CONCORDIA alongside" width="1024" height="767" loading="lazy"><figcaption>Sail training yacht CONCORDIA</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="ci-blk ci-now" id="report-now" aria-labelledby="rn-h">
+        <p class="tag">Report a casualty</p>
+        <h2 class="hull" id="rn-h">Report <span>now</span></h2>
+        <p class="lead">{{ci-deadline}}</p>
+        <ul class="ci-how">
+          <li><a class="primary" href="tel:+447494116754"><svg aria-hidden="true"><use href="#phone"/></svg>+44 (0)7494 116754<small>24/7 emergency line</small></a></li>
+          <li><a href="mailto:accidents@barbadosmaritime.com"><svg aria-hidden="true"><use href="#i-mail"/></svg><span class="em">accidents@<wbr>barbadosmaritime.com</span><small>Email</small></a></li>
+          <li><a href="{{ci-form-file}}" download><svg aria-hidden="true"><use href="#i-form"/></svg>{{ci-form-title}}<small>{{ci-form-code}} · {{ci-form-type}}</small></a></li>
+        </ul>
+      </div>
+
+      <div class="ci-blk" aria-labelledby="hw-h">
+        <p class="tag t">Investigations</p>
+        <h2 class="hull" id="hw-h">How investigations <span>work</span></h2>
+        <ol class="ci-prs">
+{{ci-principles}}
+        </ol>
+      </div>
+
+      <div class="ci-blk" aria-labelledby="wr-h">
+        <p class="tag t">What's investigated</p>
+        <h2 class="hull" id="wr-h">What has to be reported <span>and what can be investigated</span></h2>
+        {{ci-investigate}}
+        <div class="ci-must">
+          <div class="box"><b>Must be fully investigated</b><ul>
+{{ci-must}}
+          </ul></div>
+          <div class="box"><b>Minor accidents</b><p>Recorded for statistical purposes, and investigated if the Ministry feels important safety lessons can be learned.</p></div>
+        </div>
+      </div>
+
+      <div class="ci-blk ci-rep"><div><b class="hull">Marine Safety Investigation Reports</b><p>You can view our Marine Safety Investigation Reports here.</p></div><a class="btn btn-line" href="{{ci-reports}}">View the reports <svg class="ar"><use href="#ar"/></svg></a></div>
+    </div>
+
+    <aside class="ci-side" aria-label="Forms and help">
+      <div class="ci-box"><p class="tag t">The form</p><b class="hull">Accident report</b><p>Download, complete and send the accident report form.</p><span class="code">{{ci-form-code}} · Rev {{ci-form-rev}} · {{ci-form-type}}</span>
+        <a class="btn btn-gold" href="{{ci-form-file}}" download>Download the form <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="ci-box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/useful-links/">Useful links <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

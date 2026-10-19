@@ -1,20 +1,20 @@
 {
-  "_note": "From a screenshot of barbadosmaritime.com/documents/forms/ (docs/forms.png). Only the Registration Forms tab was open; the other six categories need their lists from the client. The PDF addresses weren't visible, so every form links to the live forms page until \"file\" is filled in. PPR01-F03 is missing from the live list (check).",
+  "_note": "From a screenshot of barbadosmaritime.com/documents/forms/ (docs/forms.png). Only the Registration Forms tab was open; the other six categories need their lists from the client. The PDF addresses weren't visible, so every form links to the live forms page until \"file\" is filled in. Files for the forms also on the live Ship Registration page come from there (19 Oct 2026). The mortgage, operation, STCW and checklist categories are partly filled from the new registration and seafarers pages (marked partial: the rest are on the live forms page). PPR01-F03 is missing from the live list (check).",
   "categories": [
     { "id": "registration", "name": "Registration forms", "forms": [
-      { "code": "PPR01-F01", "title": "Application for Registration" },
-      { "code": "PPR01-F02", "title": "Application for SSL" },
-      { "code": "PPR01-F04", "title": "Security Communication Statement" },
+      { "code": "PPR01-F01", "title": "Application for Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F01-Application-for-Registration-Rev.06.docx" },
+      { "code": "PPR01-F02", "title": "Application for SSL", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/08/PPR01-F02-Application-for-SSL-Rev.04.docx" },
+      { "code": "PPR01-F04", "title": "Security Communication Statement", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/PPR01-F04-Security-Communication-Statement-Rev.03.docx" },
       { "code": "PPR01-F05", "title": "Bill of Sale – Body Corporate" },
       { "code": "PPR01-F06", "title": "Bill of Sale – Individuals or Joint Owners" },
-      { "code": "PPR01-F07", "title": "Registering EPIRB" },
+      { "code": "PPR01-F07", "title": "Registering EPIRB", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/10/PPR01-F07-Registering-EPIRB-Rev.04.docx" },
       { "code": "PPR01-F08", "title": "Protocol of Delivery and Acceptance" },
-      { "code": "PPR01-F09", "title": "Declaration of Ownership on behalf of a body corporate" },
+      { "code": "PPR01-F09", "title": "Declaration of Ownership on behalf of a body corporate", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F09-Declaration-of-Ownership-on-behalf-of-a-body-corporate-Rev.05.doc" },
       { "code": "PPR01-F10", "title": "Declaration of Ownership by individual" },
       { "code": "PPR01-F11", "title": "Declaration of Ownership by a joint owner or transferee" },
       { "code": "PPR01-F12", "title": "Declaration of Pleasure Use of a yacht" },
-      { "code": "PPR01-F13", "title": "Memorandum as to the Registration of Managing Owners" },
-      { "code": "PPR01-F14", "title": "Appointment of Authorised Officer" },
+      { "code": "PPR01-F13", "title": "Memorandum as to the Registration of Managing Owners", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/04/PPR01-F13-Memorandum-as-to-the-Registration-of-Managing-Owners-Rev.02.docx" },
+      { "code": "PPR01-F14", "title": "Appointment of Authorised Officer", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F14-Appointment-of-Authorised-Officer-Rev.04.docx" },
       { "code": "PPR01-F15", "title": "Bareboat Chartering Owners Declaration" },
       { "code": "PPR01-F16", "title": "Confirmation of vessel status following temporary transfer out" },
       { "code": "PPR01-F17", "title": "ISM Declaration of company" },
@@ -22,11 +22,27 @@
       { "code": "PPR01-F19", "title": "Bareboat Charter letter of Authority" },
       { "code": "PPR01-F20", "title": "CSR Application Form" }
     ] },
-    { "id": "mortgage", "name": "Mortgage forms", "forms": [] },
-    { "id": "operation", "name": "Operation forms", "forms": [] },
-    { "id": "stcw", "name": "STCW", "forms": [] },
-    { "id": "investigation", "name": "Investigation", "forms": [] },
-    { "id": "checklists", "name": "Checklists", "forms": [] },
+    { "id": "mortgage", "name": "Mortgage forms", "partial": true, "forms": [
+      { "code": "PPR02-F01", "title": "Mortgage to Secure Account Current (Body Corporate)", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/11/PPR02-F01-Mortgage-to-Secure-Account-Current-Body-Corporate-Rev.07.docx" },
+      { "code": "PPR02-F02", "title": "Mortgage to Secure Principal Sum and Interest (Body Corporate)", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/03/PPR02-F02-Mortgage-to-Secure-Principal-Sum-and-Interest-Body-Corporate-Rev.07.docx" }
+    ] },
+    { "id": "operation", "name": "Operation forms", "partial": true, "forms": [
+      { "code": "PPO01-F05", "title": "Application for Minimum Safe Manning", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/04/PPO01-F05-Application-for-Minimum-Safe-Manning-Rev.01.docx" },
+      { "code": "PPO01-F07", "title": "DMLC Part I Application Form", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/04/PPO01-F07-DMLC-Part-I-Application-Form-Rev.01.docx" },
+      { "code": "PPO01-F03", "title": "Certificate of Inspection", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/03/PPO01-F03-Certificate-of-Inspection-Rev.00.docx" }
+    ] },
+    { "id": "stcw", "name": "STCW", "partial": true, "forms": [
+      { "code": "PPS01-F01", "title": "Application for Flag State Endorsement and Seaman's Record Book", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/12/PPS01-F01-Application-for-Flag-State-Endorsement-and-Seamans-Record-Book-Rev.02.docx" }
+    ] },
+    { "id": "investigation", "name": "Investigation", "partial": true, "forms": [
+      { "code": "PPI01-F01", "title": "Accident Report Form", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/03/PPI01-F01-Accident-Report-Form-Rev.00.docx" }
+    ] },
+    { "id": "checklists", "name": "Checklists", "partial": true, "forms": [
+      { "code": "PPR01-C01", "title": "Checklist for Vessel Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C01-Checklist-for-Vessel-Registration-Rev.02.docx" },
+      { "code": "PPR01-C02", "title": "Checklist for Yacht Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C02-Checklist-for-Yacht-Registration-Rev.01.docx" },
+      { "code": "PPR01-C04", "title": "Checklist for Change of Owner", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C04-Checklist-for-Change-of-Owner-Rev.00.docx" },
+      { "code": "PPR01-C05", "title": "Checklist for Bareboat", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C05-Checklist-for-Bareboat-Rev.03.docx" }
+    ] },
     { "id": "samples", "name": "Sample forms", "forms": [] }
   ]
 }

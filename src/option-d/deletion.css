@@ -1,0 +1,15 @@
+
+/* ================= Option D · Deletion (registry sub-page), in the home page's style =================
+   The particulars sheet: the side column on the left under gold rules (no boxes), the Registrar's list as ruled rows, square corners. */
+.rs .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.rs .grid>aside{order:-1}
+.rs-side{gap:0}
+.rs-box,.rs-box.hi{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.rs-box+.rs-box{margin-top:24px}
+.rs-box ul a{border-radius:0}
+.rs-h{border-bottom-width:1px;border-bottom-color:var(--line)}
+.rs-need h3{padding-bottom:10px;border-bottom:2px solid var(--gold);color:var(--text)}
+.rs-req li:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.rs-note{border:0;border-top:2px solid var(--gold);border-radius:0;background:none;padding-inline:0}
+@media (max-width:1100px){.rs .grid{grid-template-columns:1fr}.rs .grid>aside{order:0}.rs-side{grid-template-columns:1fr 1fr;gap:0 32px}.rs-box+.rs-box{margin-top:0}}
+@media (max-width:760px){.rs-side{grid-template-columns:1fr}.rs-box+.rs-box{margin-top:24px}}

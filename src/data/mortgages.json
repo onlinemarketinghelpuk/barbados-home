@@ -1,0 +1,7 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/mortgages/ (WordPress feed, modified 23 Mar 2026) and docs/mortgages.png. Wording as live; the page splits it into sections under our own headings. File links are the live Word documents; revisions are read from the file names.",
+  "forms": [
+    { "code": "PPR02-F01", "title": "Mortgage to Secure Account Current (Body Corporate)", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/11/PPR02-F01-Mortgage-to-Secure-Account-Current-Body-Corporate-Rev.07.docx" },
+    { "code": "PPR02-F02", "title": "Mortgage to Secure Principal Sum and Interest (Body Corporate)", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/03/PPR02-F02-Mortgage-to-Secure-Principal-Sum-and-Interest-Body-Corporate-Rev.07.docx" }
+  ]
+}

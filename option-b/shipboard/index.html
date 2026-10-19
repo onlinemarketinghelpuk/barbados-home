@@ -148,6 +148,11 @@ button,input{font:inherit}
 .hdr .sr,.mnav .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .hdr .in>nav .dd-s a{white-space:normal;line-height:1.35}
 .dd-s::before{content:"";position:absolute;top:0;bottom:0;left:-12px;width:12px} /* bridges the gap to the flyout */
+/* the Documents menu sits near the right edge, so its flyouts open to the left */
+#dd-docs .dd-s{left:auto;right:100%;margin-left:0;margin-right:10px;transform:translateX(6px)}
+#dd-docs .dd-s::before{left:auto;right:-12px}
+#dd-docs .dd-n:hover>.dd-s,#dd-docs .dd-n:focus-within>.dd-s{transform:none}
+#dd-docs .dd-p svg{transform:scaleX(-1)}
 .dd-n:hover>.dd-s,.dd-n:focus-within>.dd-s{opacity:1;visibility:visible;transform:none;transition:opacity .15s,transform .15s,visibility 0s}
 .hdr .in>nav .dd-m .dd-n:hover>a.dd-p,.hdr .in>nav .dd-m .dd-n:focus-within>a.dd-p{background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--teal)}
 .dd.shut:not(.open) .dd-s,.dd:not(:hover):not(:focus-within):not(.open) .dd-s{opacity:0;visibility:hidden}
@@ -467,23 +472,40 @@ button,input{font:inherit}
 @media (max-width:360px){.tgrid{grid-template-columns:1fr}}
 </style>
 <style>
-/* ================= shipboard documents: the record books (coloured like their covers), and two ways to order ================= */
+/* ================= shipboard documents: the standard set, the record books (coloured like their covers, with prices), and two ways to order ================= */
 .sbd{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .sbd .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
 .sbd .grid>*{min-width:0}
+.sbd .intro{max-width:62ch;color:var(--muted)}
+.sbd .intro a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.set{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 32px;margin-top:22px;padding:clamp(22px,2.6vw,32px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 12%,var(--card)),var(--card) 65%)}
+.set>*{min-width:0}
+.set-h h2{margin-top:6px;font-size:clamp(24px,2.2vw,32px)}
+.set-h p:last-child{margin-top:10px;color:var(--muted)}
+.set-fee{display:grid;gap:10px;margin:0;align-content:start}
+.set-fee div{padding:10px 14px;border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.set-fee dt{font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.set-fee dd{margin:4px 0 0;font:600 20px/1.2 var(--mono);color:var(--text);white-space:nowrap}
+.set-b{grid-column:1 / -1;padding-top:16px;border-top:1px solid var(--line)}
+.set-b ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px 24px;margin:10px 0 0;padding:0;list-style:none}
+.set-b li{position:relative;padding-left:16px;font-size:15px;line-height:1.45}
+.set-b li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--gold)}
+.bkg{margin-top:clamp(32px,4vw,52px)}
 .sbd .cap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
-.sbd .cap h2{font-size:clamp(24px,2vw,30px)}
-.sbd .intro{max-width:62ch;margin:18px 0 0;color:var(--muted)}
-.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:24px 0 0;padding:0;list-style:none}
-.book{position:relative;display:flex;flex-direction:column;min-height:190px;padding:20px 18px 18px 30px;border:1px solid var(--line);border-radius:2px;background:var(--card);overflow:hidden}
+.sbd .cap h3{font-size:clamp(22px,1.9vw,28px)}
+.sbd .cap h3 span{display:block;margin-top:4px;font:500 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:20px 0 0;padding:0;list-style:none}
+.book{position:relative;display:flex;flex-direction:column;min-height:200px;padding:20px 18px 18px 30px;border:1px solid var(--line);border-radius:2px;background:var(--card);overflow:hidden}
 .book::before{content:"";position:absolute;left:0;top:0;bottom:0;width:12px;background:var(--c)} /* the cover's colour, as a spine */
 .book::after{content:"";position:absolute;left:12px;top:0;bottom:0;width:1px;background:color-mix(in srgb,#000 18%,transparent)}
 .book .bk{font:600 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .book b{display:block;margin-top:auto;padding-top:22px;font-size:19px;line-height:1.25}
 .book span.s{display:block;margin-top:6px;color:var(--muted);font-size:14.5px;line-height:1.4}
-.sbd .more{margin-top:18px;color:var(--muted);font-size:15px}
+.book .pr{display:block;margin-top:12px;font:600 14px/1.2 var(--mono);color:var(--teal)}
+.book .pr small{font-size:11.5px;font-weight:500;letter-spacing:.04em;color:var(--muted)}
+.sbd .more{margin-top:22px;color:var(--muted);font-size:15px}
 .sbd .more a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.order{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);display:grid;gap:14px}
+.order{align-self:stretch;display:grid;align-content:start;gap:14px;scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 16px)}
 .way{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
 .way .num{font:600 12px/1 var(--mono);letter-spacing:.08em;color:var(--teal)}
 .way b{display:block;margin:10px 0 10px;font-size:clamp(22px,1.9vw,28px)}
@@ -491,9 +513,26 @@ button,input{font:inherit}
 .way p a{color:var(--text);font-weight:700}
 .way .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
 .way.on{border-color:color-mix(in srgb,var(--gold) 50%,transparent);border-top-color:var(--gold);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
-@media (max-width:1100px){.sbd .grid{grid-template-columns:1fr}.order{position:static;grid-template-columns:1fr 1fr}}
-@media (max-width:760px){.order{grid-template-columns:1fr}}
+.way .code{display:block;margin-top:8px;font:600 12px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.costs{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only this small box stays in view, so the column never runs off the screen */
+.costs ul{display:grid;gap:0;margin:12px 0 0;padding:0;list-style:none}
+.costs li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.costs li b{margin:0;font:600 15px/1.3 var(--mono);color:var(--text);white-space:nowrap}
+.costs .fine{margin-top:12px;font-size:14px}
+.costs .fine a{color:var(--text);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.rel{padding-block:clamp(48px,6vw,88px);border-top:1px solid var(--line);background:var(--deep)}
+.rel ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin:22px 0 0;padding:0;list-style:none}
+.rel a{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:transform .25s}
+.rel a:hover{transform:translateY(-3px)}
+.rel b{font-size:19px}
+.rel p{flex:1;color:var(--muted);font-size:15px}
+.rel .go{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rel .go .ar{width:16px;height:16px}
+@media (max-width:1100px){.sbd .grid{grid-template-columns:1fr}.order{grid-template-columns:1fr 1fr}.costs{position:static}.rel ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.order{grid-template-columns:1fr}.set{grid-template-columns:1fr}.set-fee{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.rel ul{grid-template-columns:1fr}}
 @media (max-width:520px){.books{grid-template-columns:1fr}.book{min-height:0}}
+@media (max-width:440px){.set-fee{grid-template-columns:1fr}.set-fee div{min-width:0}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..1000&display=swap" rel="stylesheet">
 <style>
@@ -566,7 +605,7 @@ button,input{font:inherit}
         <ul>
           <li><b>Notice</b><a href="../holidays/index.html">The London office is closed on UK public holidays. The 24/7 emergency line stays open.</a></li>
           <li><b>Guidance</b><a href="https://barbadosmaritime.com/wp-content/uploads/2026/03/BMSR-War-Guidance-Update-03.03.pdf">Navigational guidance for Barbadian-flagged vessels in the Strait of Hormuz</a></li>
-          <li><b>News</b><a href="https://barbadosmaritime.com/bmsr-posidonia-2026-thank-you-to-everyone-we-met/">BMSR at Posidonia 2026: thank you to everyone we met</a></li>
+          <li><b>News</b><a href="../bmsr-posidonia-2026-thank-you-to-everyone-we-met/index.html">BMSR at Posidonia 2026: thank you to everyone we met</a></li>
           <li><b>Portal</b><a href="https://portal.barbadosmaritime.org/">Manage your registrations online through the BMSR Portal</a></li>
         </ul>
       </div></div>
@@ -575,14 +614,14 @@ button,input{font:inherit}
   </div>
   <div class="wrap in">
     <a class="brand" href="../index.html" aria-label="Barbados Maritime Ship Registry, home"><img class="lg lg-w" src="../../assets/img/bmsr-logo-white.png" alt="Barbados Maritime Ship Registry" width="757" height="289"><img class="lg lg-n" src="../../assets/img/bmsr-logo-navy.png" alt="" width="757" height="289"><svg class="flag" viewBox="0 0 24000 16000" aria-hidden="true"><use href="#flag"/></svg></a>
-    <nav aria-label="Main"><span class="dd"><a href="../the-bmsr/index.html">The BMSR</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-bmsr" aria-label="Show the The BMSR menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-bmsr"><span class="dd-h">The BMSR</span><span class="dd-n"><a class="dd-p" href="../about/index.html">About us<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../team/index.html">Our team</a></span></span><a href="../registrars/index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><span class="dd-n"><a class="dd-p" href="../links/index.html">Useful links<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a></span></span><a href="../holidays/index.html">Public holidays</a></span></span><span class="dd"><a href="../registration/index.html">Registration</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-reg" aria-label="Show the Registration menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-reg"><span class="dd-h">Registration</span><a href="../registration/index.html#types">Ship registration</a><a href="../registration/index.html#types">Yacht registration</a><a href="../registration/index.html#mortgages">Mortgages</a><a href="../registration/index.html#bareboat">Bareboat charters</a><a href="../registration/index.html#ac-h">Registration fees</a><a href="../registration/index.html#ac-h">Registry alterations</a></span></span><span class="dd"><a href="../seafarers/index.html">Seafarers</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-sea" aria-label="Show the Seafarers menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-sea"><span class="dd-h">Seafarers</span><a href="../seafarers/index.html#apply">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span></span><span class="dd"><a href="../inspections/index.html">Inspections</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-insp" aria-label="Show the Inspections menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-insp"><span class="dd-h">Inspections</span><a href="../inspections/index.html#ar-h">Appointed Nautical Inspectors</a><a href="../inspections/index.html#rs-h">Inspection templates</a><a href="../inspections/index.html#rs-h">Notices to Nautical Inspectors</a></span></span><span class="dd"><a href="../investigations/index.html">Investigations</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-inv" aria-label="Show the Investigations menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-inv"><span class="dd-h">Investigations</span><a href="../investigations/index.html#report">Marine accident reporting</a><a href="../investigations/index.html#sections">Marine safety investigation reports</a><a href="../investigations/index.html#sections">Ongoing investigations</a></span></span><span class="dd"><a href="../documents/index.html">Documents</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-docs" aria-label="Show the Documents menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-docs"><span class="dd-h">Documents</span><a href="../forms/index.html">Forms</a><a href="index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../documents/index.html#directory">Marine Circulars</a><a href="../documents/index.html#directory">Guides</a><a href="../conventions/index.html">Conventions</a><a href="../documents/index.html#directory">Barbados Legislation</a><a href="../documents/index.html#directory">Barbados Publications</a></span></span><a href="../events/index.html">Events</a></nav>
+    <nav aria-label="Main"><span class="dd"><a href="../the-bmsr/index.html">The BMSR</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-bmsr" aria-label="Show the The BMSR menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-bmsr"><span class="dd-h">The BMSR</span><span class="dd-n"><a class="dd-p" href="../about/index.html">About us<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../team/index.html">Our team</a></span></span><a href="../registrars/index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><span class="dd-n"><a class="dd-p" href="../links/index.html">Useful links<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a></span></span><a href="../holidays/index.html">Public holidays</a><a href="../news/index.html">News</a></span></span><span class="dd"><a href="../registration/index.html">Registration</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-reg" aria-label="Show the Registration menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-reg"><span class="dd-h">Registration</span><a href="../ship-registration/index.html">Ship registration</a><a href="../yacht-registration/index.html">Yacht registration</a><a href="../mortgages/index.html">Mortgages</a><a href="../bareboat-charter/index.html">Bareboat charters</a><a href="../registration-fees/index.html">Registration fees</a><span class="dd-n"><a class="dd-p" href="../registry-alterations/index.html">Registry alterations<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../change-of-ownership/index.html">Change of ownership</a><a href="../change-of-vessels-name/index.html">Change of vessel's name</a><a href="../change-of-owners-name/index.html">Change of owner's name or address</a><a href="../deletion/index.html">Deletion</a></span></span></span></span><span class="dd"><a href="../seafarers/index.html">Seafarers</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-sea" aria-label="Show the Seafarers menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-sea"><span class="dd-h">Seafarers</span><a href="../endorsement-discharge-book/index.html">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span></span><span class="dd"><a href="../inspections/index.html">Inspections</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-insp" aria-label="Show the Inspections menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-insp"><span class="dd-h">Inspections</span><a href="../nautical-inspectors/index.html">Appointed Nautical Inspectors</a><a href="../inspection-templates/index.html">Inspection templates</a><a href="../notices-to-nautical-inspectors/index.html">Notices to Nautical Inspectors</a></span></span><span class="dd"><a href="../investigations/index.html">Investigations</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-inv" aria-label="Show the Investigations menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-inv"><span class="dd-h">Investigations</span><a href="../casualty-investigations/index.html">Marine accident reporting</a><a href="../accident-incident-reports/index.html">Marine safety investigation reports</a><a href="../accident-incident-reports/index.html#ongoing">Ongoing investigations</a></span></span><span class="dd"><a href="../documents/index.html">Documents</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-docs" aria-label="Show the Documents menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-docs"><span class="dd-h">Documents</span><a href="../forms/index.html">Forms</a><a href="index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../marine-circulars/index.html">Marine Circulars</a><span class="dd-n"><a class="dd-p" href="../guides/index.html">Guides<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../yacht-masters-guide/index.html">Yacht Master's Guide</a></span></span><a href="../conventions/index.html">Conventions</a><span class="dd-n"><a class="dd-p" href="../barbados-legislation/index.html">Barbados Legislation<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../acts/index.html">Acts</a><a href="../regulations/index.html">Regulations</a></span></span><a href="../documents/index.html#directory">Barbados Publications</a></span></span><a href="../events/index.html">Events</a></nav>
     <a class="portal" href="https://portal.barbadosmaritime.org/">Portal <svg class="ar"><use href="#ext"/></svg></a>
     <button class="theme" type="button" aria-label="Switch to light mode"><svg class="ar sun"><use href="#sun"/></svg><svg class="ar moon"><use href="#moon"/></svg></button>
     <button class="burger" type="button" aria-controls="mnav" aria-expanded="false" aria-label="Menu"><svg class="ar o"><use href="#menu"/></svg><svg class="ar x"><use href="#close"/></svg></button>
   </div>
 </header>
 <nav class="mnav hull" id="mnav" aria-label="Main">
-  <a href="../the-bmsr/index.html">The BMSR</a><span class="msub"><a href="../about/index.html">About us</a><a class="m3" href="../team/index.html">Our team</a><a href="../registrars/index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><a href="../links/index.html">Useful links</a><a class="m3" href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a><a href="../holidays/index.html">Public holidays</a></span><a href="../registration/index.html">Registration</a><span class="msub"><a href="../registration/index.html#types">Ship registration</a><a href="../registration/index.html#types">Yacht registration</a><a href="../registration/index.html#mortgages">Mortgages</a><a href="../registration/index.html#bareboat">Bareboat charters</a><a href="../registration/index.html#ac-h">Registration fees</a><a href="../registration/index.html#ac-h">Registry alterations</a></span><a href="../seafarers/index.html">Seafarers</a><span class="msub"><a href="../seafarers/index.html#apply">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span><a href="../inspections/index.html">Inspections</a><span class="msub"><a href="../inspections/index.html#ar-h">Appointed Nautical Inspectors</a><a href="../inspections/index.html#rs-h">Inspection templates</a><a href="../inspections/index.html#rs-h">Notices to Nautical Inspectors</a></span><a href="../investigations/index.html">Investigations</a><span class="msub"><a href="../investigations/index.html#report">Marine accident reporting</a><a href="../investigations/index.html#sections">Marine safety investigation reports</a><a href="../investigations/index.html#sections">Ongoing investigations</a></span><a href="../documents/index.html">Documents</a><span class="msub"><a href="../forms/index.html">Forms</a><a href="index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../documents/index.html#directory">Marine Circulars</a><a href="../documents/index.html#directory">Guides</a><a href="../conventions/index.html">Conventions</a><a href="../documents/index.html#directory">Barbados Legislation</a><a href="../documents/index.html#directory">Barbados Publications</a></span><a href="../events/index.html">Events</a><a href="../contact/index.html">Contact us</a>
+  <a href="../the-bmsr/index.html">The BMSR</a><span class="msub"><a href="../about/index.html">About us</a><a class="m3" href="../team/index.html">Our team</a><a href="../registrars/index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><a href="../links/index.html">Useful links</a><a class="m3" href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a><a href="../holidays/index.html">Public holidays</a><a href="../news/index.html">News</a></span><a href="../registration/index.html">Registration</a><span class="msub"><a href="../ship-registration/index.html">Ship registration</a><a href="../yacht-registration/index.html">Yacht registration</a><a href="../mortgages/index.html">Mortgages</a><a href="../bareboat-charter/index.html">Bareboat charters</a><a href="../registration-fees/index.html">Registration fees</a><a href="../registry-alterations/index.html">Registry alterations</a><a class="m3" href="../change-of-ownership/index.html">Change of ownership</a><a class="m3" href="../change-of-vessels-name/index.html">Change of vessel's name</a><a class="m3" href="../change-of-owners-name/index.html">Change of owner's name or address</a><a class="m3" href="../deletion/index.html">Deletion</a></span><a href="../seafarers/index.html">Seafarers</a><span class="msub"><a href="../endorsement-discharge-book/index.html">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span><a href="../inspections/index.html">Inspections</a><span class="msub"><a href="../nautical-inspectors/index.html">Appointed Nautical Inspectors</a><a href="../inspection-templates/index.html">Inspection templates</a><a href="../notices-to-nautical-inspectors/index.html">Notices to Nautical Inspectors</a></span><a href="../investigations/index.html">Investigations</a><span class="msub"><a href="../casualty-investigations/index.html">Marine accident reporting</a><a href="../accident-incident-reports/index.html">Marine safety investigation reports</a><a href="../accident-incident-reports/index.html#ongoing">Ongoing investigations</a></span><a href="../documents/index.html">Documents</a><span class="msub"><a href="../forms/index.html">Forms</a><a href="index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../marine-circulars/index.html">Marine Circulars</a><a href="../guides/index.html">Guides</a><a class="m3" href="../yacht-masters-guide/index.html">Yacht Master's Guide</a><a href="../conventions/index.html">Conventions</a><a href="../barbados-legislation/index.html">Barbados Legislation</a><a class="m3" href="../acts/index.html">Acts</a><a class="m3" href="../regulations/index.html">Regulations</a><a href="../documents/index.html#directory">Barbados Publications</a></span><a href="../events/index.html">Events</a><a href="../contact/index.html">Contact us</a>
   <a class="portal" href="https://portal.barbadosmaritime.org/">BMSR Portal <svg class="ar"><use href="#ext"/></svg></a>
 </nav>
 
@@ -607,41 +646,70 @@ document.querySelectorAll('.dd').forEach(dd => {
   <div class="bgs"><div class="bg on"><img alt="" src="../../assets/img/BMSR-1.jpg" style="object-position:70% 60%" fetchpriority="high"></div></div>
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../documents/index.html">Documents</a></li><li aria-current="page">Shipboard Documents</li></ol></nav>
-    <p class="tag port">9 record books · order online or offline</p>
+    <p class="tag port">13 printouts · order online or offline</p>
     <h1 class="hull" id="s-h1">Shipboard <span>Documents</span></h1>
     <div class="foot">
-      <p class="lead">Find all the required publications here. Order new shipboard documents with our online order form, or email us the offline form.</p>
-      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/documents/shipboard-documents/#live">Order online <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#order">Ways to order</a></div>
+      <p class="lead">Find all required publications right here. Order new Shipboard Documents via either the online or offline order form as required.</p>
+      <div class="ctas"><a class="btn btn-teal" href="https://barbadosmaritime.com/documents/ship-document-online-form/#live">Order online <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="#order">Ways to order</a></div>
     </div>
   </div>
 </section>
 
-<!-- ================= THE BOOKS + ORDERING (books generated from src/data/shipboard.json) ================= -->
-<!-- TODO(client): the full list of shipboard documents (part of the cover image was hidden); the online form's address and the offline form's PDF -->
-<section class="sbd" aria-labelledby="bk-h">
+<!-- ================= THE SET, THE BOOKS + ORDERING (from src/data/shipboard.json; groups, prices and set by tools/fill/shipboard.mjs) ================= -->
+<!-- TODO(client): confirm the nine "Also in the set" items are the electronic document; cover colours marked "check" in the data are ours -->
+<section class="sbd" aria-labelledby="set-h">
   <div class="wrap grid">
     <div>
-      <div class="cap"><h2 class="hull" id="bk-h">Record books <span>&amp; logbooks</span></h2><span class="tag">9 titles</span></div>
-      <p class="intro">Official Barbados Maritime Ship Registry editions of the record books and logbooks that Barbadian ships must carry.</p>
-      <ul class="books">
-        <li class="book" style="--c:#BFE3F8"><span class="bk">BMSR edition</span><b class="hull">GMDSS Radio Logbook</b><span class="s">Radio communications</span></li>
-        <li class="book" style="--c:#BC9A80"><span class="bk">BMSR edition</span><b class="hull">Oil Record Book</b><span class="s">Part I: machinery space operations</span></li>
-        <li class="book" style="--c:#B7B7B7"><span class="bk">BMSR edition</span><b class="hull">Oil Record Book</b><span class="s">Part II: cargo / ballast operations</span></li>
-        <li class="book" style="--c:#98C47E"><span class="bk">BMSR edition</span><b class="hull">Cargo Record Book</b><span class="s">For ships carrying noxious liquid substances in bulk</span></li>
-        <li class="book" style="--c:#3F88C9"><span class="bk">BMSR edition</span><b class="hull">Ballast Water Record Book</b><span class="s">Ballast water management</span></li>
-        <li class="book" style="--c:#F2A36B"><span class="bk">BMSR edition</span><b class="hull">Garbage Record Book</b><span class="s">Garbage management</span></li>
-        <li class="book" style="--c:#AACB9C"><span class="bk">BMSR edition</span><b class="hull">Compass Observation Book</b><span class="s">Navigation</span></li>
-        <li class="book" style="--c:#B07DC6"><span class="bk">BMSR edition</span><b class="hull">Biofouling Record Book</b><span class="s">Biofouling management</span></li>
-        <li class="book" style="--c:#F7CBA4"><span class="bk">BMSR edition</span><b class="hull">Ozone-Depleting Substances Record Book</b><span class="s">Air pollution</span></li>
-      </ul>
+      <p class="intro">Here you can order new Shipboard Documents via either the online or offline order form as required. Fees are from the <a href="../registration-fees/index.html">Barbados Maritime Ship Registry fees</a> list.</p>
+      <div class="set"><div class="set-h"><p class="tag t">First issuance at Registration</p><h2 class="hull" id="set-h">Standard Shipboard Document Set</h2><p>The Shipboard Document Set includes one copy of the printouts and electronic document shown below.</p></div><dl class="set-fee"><div><dt>All vessels</dt><dd>USD 350.00</dd></div><div><dt>Tankers</dt><dd>USD 380.00</dd></div></dl><div class="set-b"><p class="tag">Also in the set</p><ul><li>Consolidated Shipping Legislation</li><li>Account of Property of Deceased Seaman</li><li>Certificate of Discharge</li><li>Guidance to Ensure Positive PSC Inspections</li><li>Model Table for Hours of Work and Rest</li><li>Model Table for Shipboard Working Arrangements (Form 159)</li><li>PSC Pre Arrival Check List</li><li>Report of Conduct</li><li>Return of Births &amp; Deaths</li></ul></div></div>
+      <section class="bkg" aria-labelledby="bkg-all">
+        <div class="cap"><h3 class="hull" id="bkg-all">Printouts <span>For all types of vessels</span></h3><span class="tag">12 titles</span></div>
+        <ul class="books">
+          <li class="book" style="--c:#D9D2C1"><span class="bk">BMSR edition</span><b class="hull">Articles of Agreement (MLC)</b><span class="s">Ship's Articles &amp; List of Crew: black print = Ship, red print = Owner</span><span class="pr">USD 30.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#2F4A6E"><span class="bk">BMSR edition</span><b class="hull">Official Logbook</b><span class="s">Including Freeboard Draught Sheet</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#BC9A80"><span class="bk">BMSR edition</span><b class="hull">Oil Record Book Part I</b><span class="s">MARPOL I</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#98C47E"><span class="bk">BMSR edition</span><b class="hull">Cargo Record Book</b><span class="s">Noxious Substances · MARPOL II</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#F2A36B"><span class="bk">BMSR edition</span><b class="hull">Garbage Record Book Part I</b><span class="s">MARPOL V</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#E8C29A"><span class="bk">BMSR edition</span><b class="hull">Garbage Record Book Part II</b><span class="s">MARPOL V</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#F7CBA4"><span class="bk">BMSR edition</span><b class="hull">Engine Room Logbook</b><span class="s">Ozone Depleting Substances · MARPOL VI</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#B07DC6"><span class="bk">BMSR edition</span><b class="hull">Biofouling Record Book</b><span class="s">Biofouling management</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#BFE3F8"><span class="bk">BMSR edition</span><b class="hull">GMDSS Radio Logbook</b><span class="s">Radio communications</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#AACB9C"><span class="bk">BMSR edition</span><b class="hull">Compass Observation Book</b><span class="s">Navigation</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#9FB4C7"><span class="bk">BMSR edition</span><b class="hull">MARPOL Annex VI Record Book</b><span class="s">All ships</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+          <li class="book" style="--c:#3F88C9"><span class="bk">BMSR edition</span><b class="hull">Ballast Water Record Book</b><span class="s">Ballast water management</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+        </ul>
+      </section>
+      <section class="bkg" aria-labelledby="bkg-tankers">
+        <div class="cap"><h3 class="hull" id="bkg-tankers">Additional printouts <span>Vessel specific</span></h3><span class="tag">1 title</span></div>
+        <ul class="books">
+          <li class="book" style="--c:#B7B7B7"><span class="bk">BMSR edition</span><b class="hull">Oil Record Book Part II</b><span class="s">MARPOL I · Tankers only</span><span class="pr">USD 40.00 <small>per copy</small></span></li>
+        </ul>
+      </section>
       <p class="more">Need a document that isn't listed? <a href="../contact/index.html">Contact us</a> and we'll help.</p>
     </div>
     <aside class="order" id="order" aria-label="Ways to order">
-      <div class="way on"><p class="num">01 · Online</p><b class="hull">Order online</b><p>Order your shipboard documents through our online ordering form.</p>
-        <a class="btn btn-gold" href="https://barbadosmaritime.com/documents/shipboard-documents/#live">Online order form <svg class="ar"><use href="#ar"/></svg></a></div>
-      <div class="way"><p class="num">02 · Offline</p><b class="hull">Order by email</b><p>Download the offline order form, fill it in and email it to <a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a>.</p>
-        <a class="btn btn-line" href="https://barbadosmaritime.com/documents/shipboard-documents/#live">Offline order form <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="way on"><p class="num">01 · Online</p><b class="hull">Order online</b><p>Order your Shipboard Documents via our online ordering form.</p>
+        <a class="btn btn-gold" href="https://barbadosmaritime.com/documents/ship-document-online-form/#live">Online order form <svg class="ar"><use href="#ar"/></svg></a></div>
+      <div class="way"><p class="num">02 · Offline</p><b class="hull">Order by email</b><p>Download the offline ordering form and email it to <a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a>.</p>
+        <span class="code">PPD01-F01 · Shipboard Documents Order</span>
+        <a class="btn btn-line" href="https://barbadosmaritime.com/wp-content/uploads/2025/12/PPD01-F01-Shipboard-Documents-Order-Rev.02.docx" download>Offline order form (DOCX) <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="way costs"><p class="num">Delivery</p><b class="hull">Courier charges</b>
+        <ul><li><span>International parcels</span><b>USD 200.00</b></li><li><span>UK parcels</span><b>USD 50.00</b></li></ul>
+        <p class="fine">Printouts are USD 30.00 or more per copy. See all <a href="../registration-fees/index.html">registration fees</a>.</p></div>
     </aside>
+  </div>
+</section>
+
+<!-- ================= RELATED (the live page's four links) ================= -->
+<section class="rel" aria-labelledby="rel-h">
+  <div class="wrap">
+    <p class="tag t">Also useful</p><h2 class="hull h2" id="rel-h">For <span>your ship</span></h2>
+    <ul>
+      <li><a href="../nautical-inspectors/index.html"><b class="hull">Nautical Inspectors</b><p>A network of Nautical Inspectors is available to carry out annual ship safety inspections and to assist ship operators whenever required.</p><span class="go">The inspectors <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="../conventions/index.html"><b class="hull">Shipping Legislation</b><p>Barbados is an IMO Member State, and has ratified many of the international conventions that have shaped the world's shipping legislation.</p><span class="go">Conventions <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="../bulletins/index.html"><b class="hull">Bulletins</b><p>We provide regular bulletins to keep our clients and associates abreast of new developments.</p><span class="go">Bulletins <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="../ros/index.html"><b class="hull">Recognised Organisations</b><p>Classification societies appointed to survey and issue statutory certificates on our behalf.</p><span class="go">The ROs <svg class="ar"><use href="#ar"/></svg></span></a></li>
+    </ul>
   </div>
 </section>
 
@@ -677,7 +745,7 @@ document.querySelectorAll('.dd').forEach(dd => {
       </div>
       <div><p class="tag">Contact</p><ul><li><a href="tel:+442076365739">+44 (0)207 636 5739</a></li><li><a href="tel:+447494116754">+44 (0)7494 116754</a> <span class="tag" style="display:inline">24hr</span></li><li><a href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a></li><li><a href="https://www.linkedin.com/company/barbados-maritime-ship-registry">LinkedIn</a></li></ul></div>
       <div><p class="tag">Important links</p><ul><li><a href="../the-bmsr/index.html">The BMSR</a></li><li><a href="../about/index.html">About Us</a></li><li><a href="../contact/index.html">Contact us</a></li><li><a href="../links/index.html">Useful Links</a></li></ul></div>
-      <div><p class="tag">Resources</p><ul><li><a href="../bulletins/index.html">Bulletins</a></li><li><a href="../holidays/index.html">Public Holidays</a></li><li><a href="../registration/index.html#types">Yacht Registration</a></li><li><a href="../registration/index.html#ac-h">Registration Fees</a></li></ul></div>
+      <div><p class="tag">Resources</p><ul><li><a href="../bulletins/index.html">Bulletins</a></li><li><a href="../news/index.html">News</a></li><li><a href="../holidays/index.html">Public Holidays</a></li><li><a href="../yacht-registration/index.html">Yacht Registration</a></li><li><a href="../registration-fees/index.html">Registration Fees</a></li></ul></div>
     </div>
     <div class="bottom"><span>© 2026 Barbados Maritime Ship Registry. All rights reserved.</span><span class="legal"><a href="https://barbadosmaritime.com/privacy-policy/">Privacy policy</a><a class="totop" href="#main">Back to top <svg class="ar"><use href="#ar"/></svg></a></span></div>
   </div>

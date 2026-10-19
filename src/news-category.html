@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{page:name}} - News - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<!-- @include news-css (the News cards and side column; shared with the news category pages) -->
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="n-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-1.jpg" style="object-position:70% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li><a href="https://barbadosmaritime.com/category/news/">News</a></li><li aria-current="page">{{page:name}}</li></ol></nav>
+    <p class="tag port">News category · {{nw-count}} posts</p>
+    <h1 class="hull" id="n-h1">{{page:name}}</h1>
+    <div class="foot">
+      <p class="lead">{{page:name}}: news from the Barbados Maritime Ship Registry, newest first.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#news">Read the latest <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/category/news/">All news</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ONE CATEGORY (generated from src/data/news.json; the build makes one page per topic) ================= -->
+<!-- {{nw-only:{{page:topic}}}} -->
+<!-- TODO(client): approve the topics and the excerpts marked "check" in the data (the live ones were wrong or copied from other posts) -->
+<section class="nwz" id="news" aria-labelledby="nw-h">
+  <div class="wrap grid">
+    <div class="nw-side">
+      <div><p class="tag t">Category</p><h2 class="hull" id="nw-h">{{page:name}}</h2><p class="intro">{{nw-count}} posts, newest first.</p></div>
+      <div class="tools">
+        <nav class="chips" aria-label="News categories">
+{{nw-chips}}
+        </nav>
+
+      </div>
+      <a class="nw-older" href="https://barbadosmaritime.com/documents/bulletins/">Bulletins &amp; circulars <svg class="ar"><use href="#ar"/></svg></a>
+    </div>
+    <div>
+      <ol class="nw-list" id="nw-list">
+{{nw-posts}}
+      </ol>
+      <div class="archive"><div><b class="hull">More from the Registry</b><p>See every post, or our bulletins and marine circulars.</p></div><div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/category/news/">All news <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/documents/bulletins/">Bulletins</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

@@ -34,6 +34,28 @@
 .meet .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
 .meet .lead{max-width:40em;margin-top:14px}
 @media (max-width:900px){.ev,.ev:nth-child(even){grid-template-columns:1fr}.ev:nth-child(even) .media{order:0}.ev .media{min-height:0;width:100%;aspect-ratio:16/9}}
+/* list or grid: the toolbar above the events, and the grid view (cards: photo on top, summary in three lines) */
+.ev-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-bottom:clamp(18px,2vw,26px)}
+.ev-n{font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.ev-n b{color:var(--text)}
+.ev-view{display:inline-flex;border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.ev-view button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:0;background:none;font:600 13px/1 var(--sans);color:var(--muted);cursor:pointer}
+.ev-view button+button{border-left:1px solid var(--line)}
+.ev-view button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.ev-view button:hover{color:var(--text)}
+.ev-view button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+.ev-list.grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.ev-list.grid .ev,.ev-list.grid .ev:nth-child(even){display:flex;flex-direction:column}
+.ev-list.grid .ev .media{order:0;min-height:0;width:100%;aspect-ratio:16/10}
+.ev-list.grid .ev .b{flex:1;gap:12px;padding:clamp(20px,2vw,26px)}
+.ev-list.grid .ev h2{font-size:clamp(22px,1.8vw,28px)}
+.ev-list.grid .ev .b p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-size:15px}
+.ev-list.grid .ev .b p~p{display:none}
+.ev-list.swap{animation:evfade .25s ease-out}
+@keyframes evfade{from{opacity:.25}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ev-list.swap{animation:none}}
+@media (max-width:1100px){.ev-list.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.ev-view{display:none}.ev-list.grid{grid-template-columns:1fr}} /* on phones both views are one column, so the toggle hides */
 </style>
 <!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
 </head>
@@ -67,6 +89,12 @@
 <!-- ================= EVENTS (generated from src/data/events.json; newest first) ================= -->
 <!-- TODO(client): add photos and videos for each event (they didn't load on the live page); confirm the Dubai date and the Athens year -->
 <section aria-label="Events">
+  <div class="wrap ev-bar">
+    <p class="ev-n"><b>{{ev-count}}</b> events, newest first</p>
+    <div class="ev-view" role="group" aria-label="Show events as">
+      <button type="button" data-view="list" aria-pressed="true"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>List</button><button type="button" data-view="grid" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1"/></svg>Grid</button>
+    </div>
+  </div>
   <div class="wrap ev-list" id="events">
 {{ev-items}}
   </div>
@@ -99,6 +127,15 @@
 
 <script>
 <!-- @include script-base (shared page behaviour; see src/partials/) -->
+// list or grid view; the choice is remembered on this device (localStorage, if allowed)
+const evList = document.getElementById('events'), evBtns = [...document.querySelectorAll('.ev-view button')], EVK = 'bmsr-events-view';
+const evSet = (v, fade) => {
+  evList.classList.toggle('grid', v === 'grid'); evBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.view === v));
+  if (fade) { evList.classList.remove('swap'); void evList.offsetWidth; evList.classList.add('swap'); }
+};
+let evView = 'list'; try { evView = localStorage.getItem(EVK) === 'grid' ? 'grid' : 'list'; } catch {}
+evSet(evView);
+evBtns.forEach(b => b.addEventListener('click', () => { evSet(b.dataset.view, true); try { localStorage.setItem(EVK, b.dataset.view); } catch {} }));
 </script>
 </body>
 </html>

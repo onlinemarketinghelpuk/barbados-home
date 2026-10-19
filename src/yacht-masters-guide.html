@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yacht Master's Guide - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= yacht master's guide: the PDF in an on-page reader (PDF.js), with the guide's own contents beside it ================= */
+.ymg{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.ymg .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.ymg .grid>*{min-width:0}
+.ymg-fw{max-width:62ch;margin-bottom:24px;color:var(--muted);font-size:clamp(16px,1.2vw,18px)}
+.ymg-fw b{color:var(--text)}
+.ymg-reader{border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 12px)}
+.ymg-reader:focus{outline:none}
+.ymg-reader:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.ymg-bar{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:4;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--card)}
+.ymg-bar .grp{display:flex;align-items:center;gap:6px}
+.ymg-bar button,.ymg-bar .dl{display:inline-grid;place-items:center;min-width:40px;min-height:40px;padding:0 10px;border:1px solid var(--line);border-radius:2px;background:none;color:var(--text);font:600 13px/1 var(--mono);letter-spacing:.04em;cursor:pointer;transition:border-color .2s,color .2s}
+.ymg-bar button:hover,.ymg-bar .dl:hover{border-color:var(--teal);color:var(--teal)}
+.ymg-bar button:disabled{opacity:.4;cursor:default;border-color:var(--line);color:var(--text)}
+.ymg-bar svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ymg-bar label{display:flex;align-items:center;gap:6px;font:500 12.5px/1 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.ymg-bar label .ymg-of{color:inherit} /* not the site-wide form-label colour */
+.ymg-bar input{width:52px;min-height:40px;padding:0 6px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--abyss);color:var(--text);font:600 14px/1 var(--mono);text-align:center}
+.ymg-bar input:focus{outline:none;border-color:var(--teal)}
+.ymg-bar output{min-width:46px;font:600 12.5px/1 var(--mono);text-align:center;color:var(--muted)}
+.ymg-bar .dl{margin-left:auto;grid-auto-flow:column;gap:8px;border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.ymg-bar .dl:hover{background:#F3D57F;border-color:#F3D57F;color:var(--ink)}
+.ymg-stage{position:relative;overflow:auto;min-height:320px;padding:16px;background:var(--deep);text-align:center}
+.ymg-stage canvas{display:none;margin:0 auto;background:#fff;box-shadow:0 10px 30px rgba(3,20,31,.35)}
+.ymg-reader.ready .ymg-stage canvas{display:block}
+.ymg-wait{display:grid;justify-items:center;gap:14px;padding:24px 12px;color:var(--muted)}
+.ymg-wait img{width:min(220px,60%);height:auto;box-shadow:0 10px 30px rgba(3,20,31,.35)}
+.ymg-wait .btn{max-width:100%;white-space:normal}
+.ymg-reader.ready .ymg-wait{display:none}
+.ymg-reader:fullscreen{display:flex;flex-direction:column;border:0;border-radius:0}
+.ymg-reader:fullscreen .ymg-bar{position:static}
+.ymg-reader:fullscreen .ymg-stage{flex:1}
+.ymg-side{display:grid;gap:14px}
+.ymg-box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.ymg-box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.ymg-box p{color:var(--muted);font-size:15px}
+.ymg-about{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:start}
+.ymg-about img{width:96px;height:auto;box-shadow:0 6px 18px rgba(3,20,31,.3)}
+.ymg-about dl{display:grid;gap:6px;margin:0}
+.ymg-about dl div{display:flex;flex-wrap:wrap;gap:4px 10px}
+.ymg-about dt{min-width:72px;font:600 11.5px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ymg-about dd{margin:0;font-size:15px;font-weight:600}
+.ymg-box .btn{margin-top:16px;max-width:100%;white-space:normal}
+.ymg-toc{margin:12px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.ymg-toc a{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 4px;border-bottom:1px solid var(--line);font-size:15px;transition:background .2s}
+.ymg-toc a:hover,.ymg-toc a:focus-visible{background:color-mix(in srgb,var(--gold) 10%,transparent)}
+.ymg-toc a[aria-current="true"] .ymg-t{color:var(--teal);font-weight:700}
+.ymg-n{font:600 12px/1 var(--mono);color:var(--teal)}
+.ymg-p{font:500 12px/1 var(--mono);color:var(--muted);white-space:nowrap}
+.ymg-note{border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.ymg-note a{color:var(--text);font-weight:700;white-space:nowrap}
+.ymg-back{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.ymg-back .ar{width:16px;height:16px}
+@media (max-width:1100px){.ymg .grid{grid-template-columns:1fr}.ymg-side{grid-template-columns:1fr 1fr}.ymg-side .ymg-toc-box{grid-row:span 2}}
+@media (max-width:760px){.ymg-side{grid-template-columns:1fr}.ymg-side .ymg-toc-box{grid-row:auto}.ymg-stage{padding:8px}}
+@media (max-width:520px){.ymg-bar{gap:6px}.ymg-bar .zm{order:3;width:100%}.ymg-bar .dl{margin-left:0}.ymg-about{grid-template-columns:72px minmax(0,1fr)}.ymg-about img{width:72px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="ymg-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/d/about-yacht.webp" style="object-position:50% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/documents/">Documents</a></li><li><a href="https://barbadosmaritime.com/documents/guides/">Guides</a></li><li aria-current="page">Yacht Master's Guide</li></ol></nav>
+    <p class="tag port">{{ymg-pages}} pages · {{ymg-type}} · {{ymg-published}}</p>
+    <h1 class="hull" id="ymg-h1">Yacht Master's <span>Guide</span></h1>
+    <div class="foot">
+      <p class="lead">{{ymg-desc}}</p>
+      <div class="ctas"><a class="btn btn-teal" href="#reader" data-page="1">Start reading <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{ymg-file}}" download>Download PDF</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE READER (details and contents from src/data/yacht-masters-guide.json) ================= -->
+<!-- TODO(client): confirm the January 2016 edition is current (its foreword gives an older 24/7 number) -->
+<section class="ymg" aria-label="Read the guide">
+  <div class="wrap grid">
+    <div>
+      <p class="ymg-fw"><b>Foreword.</b> {{ymg-foreword}}</p>
+      <div class="ymg-reader" id="reader" tabindex="-1" aria-label="Yacht Master's Guide reader" data-pdf="assets/docs/yacht-masters-guide.pdf" data-pages="{{ymg-pages}}">
+        <div class="ymg-bar" role="toolbar" aria-label="Reader controls">
+          <div class="grp">
+            <button type="button" id="ymg-prev" aria-label="Previous page"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+            <label>Page <input type="number" id="ymg-pg" min="1" max="{{ymg-pages}}" value="1" inputmode="numeric" aria-label="Page number"> <span class="ymg-of">of {{ymg-pages}}</span></label>
+            <button type="button" id="ymg-next" aria-label="Next page"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+          </div>
+          <div class="grp zm">
+            <button type="button" id="ymg-out" aria-label="Zoom out"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+            <output id="ymg-zoom" aria-live="polite">100%</output>
+            <button type="button" id="ymg-in" aria-label="Zoom in"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></svg></button>
+            <button type="button" id="ymg-fit" aria-label="Fit to width">Fit</button>
+            <button type="button" id="ymg-full" aria-label="Full screen"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+          </div>
+          <a class="dl" href="{{ymg-file}}" download aria-label="Download the Yacht Master's Guide ({{ymg-type}}, {{ymg-size}})"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg>{{ymg-type}}</a>
+        </div>
+        <div class="ymg-stage" id="ymg-stage">
+          <canvas id="ymg-canvas" role="img" aria-label="Page 1 of the Yacht Master's Guide"></canvas>
+          <div class="ymg-wait" id="ymg-wait">
+            <img src="{{ymg-cover}}" alt="Cover of the Yacht Master's Guide" width="{{ymg-cover-w}}" height="{{ymg-cover-h}}" loading="lazy">
+            <p id="ymg-msg">The guide opens here when you reach it.</p>
+            <button class="btn btn-gold" type="button" id="ymg-open">Open the guide <svg class="ar"><use href="#ar"/></svg></button>
+            <a class="btn btn-line" id="ymg-raw" href="assets/docs/yacht-masters-guide.pdf" target="_blank" rel="noopener" hidden>Open the PDF in a new tab</a>
+          </div>
+        </div>
+        <div class="sr" id="ymg-text" aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="ymg-side" aria-label="About the guide">
+      <div class="ymg-box"><p class="tag t">About this guide</p><b class="hull">Yacht Master's Guide</b>
+        <div class="ymg-about">
+          <img src="{{ymg-cover}}" alt="" width="{{ymg-cover-w}}" height="{{ymg-cover-h}}" loading="lazy">
+          <dl><div><dt>For</dt><dd>{{ymg-for}}</dd></div><div><dt>Published</dt><dd>{{ymg-published}}</dd></div><div><dt>Format</dt><dd>{{ymg-type}} · {{ymg-size}} · {{ymg-pages}} pages</dd></div></dl>
+        </div>
+        <a class="btn btn-gold" href="{{ymg-file}}" download>Download PDF <svg class="ar"><use href="#dl"/></svg></a>
+        <a class="ymg-back" href="https://barbadosmaritime.com/documents/guides/">All guides <svg class="ar"><use href="#ar"/></svg></a>
+      </div>
+      <div class="ymg-box ymg-toc-box"><p class="tag t">{{ymg-count}} sections</p><b class="hull">Contents</b><p>From the guide's own contents page. Choose a section to open its page.</p>
+        <ol class="ymg-toc" id="ymg-toc">
+{{ymg-contents}}
+        </ol>
+      </div>
+      <div class="ymg-box ymg-note"><p class="tag t">Please note</p><p>{{ymg-note}} <a href="tel:+447494116754">+44 (0)7494 116754</a>.</p></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// the guide reader: PDF.js (loaded only when the reader is reached or opened) draws one page at a time to a canvas.
+// If it can't load (offline, a local file:// copy, a blocked CDN), the reader offers the PDF itself instead.
+(() => {
+  const PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+  const R = document.getElementById('reader'), stage = document.getElementById('ymg-stage'), cv = document.getElementById('ymg-canvas');
+  const pg = document.getElementById('ymg-pg'), prev = document.getElementById('ymg-prev'), next = document.getElementById('ymg-next');
+  const zoomOut = document.getElementById('ymg-out'), zoomIn = document.getElementById('ymg-in'), fit = document.getElementById('ymg-fit'), full = document.getElementById('ymg-full');
+  const zoomEl = document.getElementById('ymg-zoom'), msg = document.getElementById('ymg-msg'), raw = document.getElementById('ymg-raw'), open = document.getElementById('ymg-open'), textEl = document.getElementById('ymg-text');
+  const toc = [...document.querySelectorAll('#ymg-toc a')], total = +R.dataset.pages;
+  const ZOOMS = [0.5, 0.75, 1, 1.25, 1.5, 2, 3];
+  let doc = null, loading = null, page = 1, zoom = 1, task = null;
+
+  const loadScript = src => new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.append(s); });
+  const fail = () => { msg.textContent = 'The reader couldn’t load here. You can still open or download the PDF.'; open.hidden = true; raw.hidden = false; };
+  const load = () => loading || (loading = (async () => {
+    if (location.protocol === 'file:') return fail(); // browsers won't let a page opened from disk read the PDF; offer it instead
+    msg.textContent = 'Loading the guide…'; open.hidden = true;
+    try {
+      if (!window.pdfjsLib) await loadScript(PDFJS + 'pdf.min.js');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.js';
+      doc = await pdfjsLib.getDocument(new URL(R.dataset.pdf, location.href).href).promise;
+      R.classList.add('ready'); await show(page);
+    } catch (e) { fail(); }
+  })());
+
+  // draw a page; "Fit" fills the reader's width (in full screen, the whole page fits the screen)
+  async function show(n) {
+    page = Math.min(total, Math.max(1, n | 0 || 1)); pg.value = page;
+    prev.disabled = page === 1; next.disabled = page === total;
+    toc.forEach(a => a.setAttribute('aria-current', String(+a.dataset.page === page)));
+    if (!doc) return;
+    const p = await doc.getPage(page), base = p.getViewport({ scale: 1 });
+    const room = stage.clientWidth - 2 * parseFloat(getComputedStyle(stage).paddingLeft);
+    let s = room / base.width;
+    if (document.fullscreenElement === R) s = Math.min(s, (stage.clientHeight - 32) / base.height);
+    const vp = p.getViewport({ scale: s * zoom }), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (task) task.cancel();
+    cv.width = Math.floor(vp.width * dpr); cv.height = Math.floor(vp.height * dpr); cv.style.width = Math.floor(vp.width) + 'px'; cv.style.height = Math.floor(vp.height) + 'px';
+    cv.setAttribute('aria-label', `Page ${page} of ${total} of the Yacht Master's Guide`);
+    task = p.render({ canvasContext: cv.getContext('2d'), viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null });
+    try { await task.promise; } catch (e) { return; }
+    zoomEl.textContent = Math.round(zoom * 100) + '%';
+    zoomOut.disabled = zoom === ZOOMS[0]; zoomIn.disabled = zoom === ZOOMS[ZOOMS.length - 1];
+    // the page's words, for screen readers (the canvas itself is only a picture)
+    const tc = await p.getTextContent(); textEl.textContent = `Page ${page}. ` + tc.items.map(t => t.str).join(' ').replace(/\s+/g, ' ');
+  }
+  const go = n => { if (doc) show(n); else { page = n; load(); } };
+
+  prev.addEventListener('click', () => go(page - 1));
+  next.addEventListener('click', () => go(page + 1));
+  pg.addEventListener('change', () => go(+pg.value));
+  zoomIn.addEventListener('click', () => { zoom = ZOOMS[Math.min(ZOOMS.length - 1, ZOOMS.indexOf(zoom) + 1)]; show(page); });
+  zoomOut.addEventListener('click', () => { zoom = ZOOMS[Math.max(0, ZOOMS.indexOf(zoom) - 1)]; show(page); });
+  fit.addEventListener('click', () => { zoom = 1; show(page); });
+  full.addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen(); else R.requestFullscreen?.().catch(() => {}); });
+  document.addEventListener('fullscreenchange', () => { full.setAttribute('aria-label', document.fullscreenElement ? 'Exit full screen' : 'Full screen'); show(page); });
+  open.addEventListener('click', load);
+  R.addEventListener('keydown', e => {
+    if (e.target === pg) return;
+    const k = { ArrowLeft: -1, PageUp: -1, ArrowRight: 1, PageDown: 1 }[e.key];
+    if (k) { e.preventDefault(); go(page + k); } else if (e.key === 'Home') { e.preventDefault(); go(1); } else if (e.key === 'End') { e.preventDefault(); go(total); }
+  });
+  // the contents and the "Start reading" button open a page and bring the reader into view
+  document.querySelectorAll('a[href="#reader"][data-page]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); go(+a.dataset.page);
+    R.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); R.focus({ preventScroll: true });
+  }));
+  let w = stage.clientWidth;
+  addEventListener('resize', () => { if (doc && Math.abs(stage.clientWidth - w) > 8) { w = stage.clientWidth; show(page); } });
+  // load only once the reader is close to the screen
+  if ('IntersectionObserver' in window) new IntersectionObserver((es, io) => { if (es.some(x => x.isIntersecting)) { io.disconnect(); load(); } }, { rootMargin: '200px' }).observe(R);
+  else load();
+})();
+</script>
+</body>
+</html>

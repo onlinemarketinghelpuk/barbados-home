@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registry Alterations - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= registry alterations: choose the change (four cards), then one section each with what to send and what you'll receive ================= */
+.ra-choose{padding-block:clamp(48px,6vw,88px) clamp(32px,4vw,56px)}
+.ra-choose .intro{max-width:62ch;margin-top:12px;color:var(--muted)}
+.ra-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin:28px 0 0;padding:0;list-style:none}
+.ra-cards>li{min-width:0}
+.ra-card{display:flex;flex-direction:column;height:100%;overflow:hidden;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);color:var(--text);transition:transform .25s,border-color .25s}
+.ra-card:hover,.ra-card:focus-visible{transform:translateY(-3px);border-color:color-mix(in srgb,var(--gold) 55%,transparent)}
+.ra-card figure{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--hull)}
+.ra-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ra-card:hover img{transform:scale(1.04)}
+.ra-card .b{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px 20px 20px}
+.ra-card .n{font:600 12.5px/1 var(--mono);letter-spacing:.06em;color:var(--teal)}
+.ra-card b{font-size:20px;line-height:1.25}
+.ra-card .s{flex:1;color:var(--muted);font-size:15px}
+.ra-card .go{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.ra-card .go .ar{width:16px;height:16px}
+.rag{padding-block:clamp(24px,3vw,40px) clamp(64px,8vw,112px)}
+.rag .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.rag .grid>*{min-width:0}
+/* the section anchors use the site-wide scroll-padding-top, so they land just below the sticky header */
+.ras+.ras{margin-top:clamp(40px,5vw,64px)}
+.ras-h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 20px;align-items:end;padding-bottom:16px;border-bottom:2px solid var(--gold)}
+.ras-h .num{font:600 clamp(40px,4vw,60px)/1 var(--mono);letter-spacing:-.02em;color:var(--teal)}
+.ras-h h2{margin-top:6px;font-size:clamp(26px,2.4vw,36px)}
+.ras-b{max-width:68ch;padding-top:20px}
+.ras-b>p+p{margin-top:14px}
+.ras-b .ni{margin-top:18px;font-weight:600}
+.needs{display:grid;gap:0;margin:10px 0 0;padding:0;list-style:none;counter-reset:nd}
+.needs li{position:relative;padding:12px 0 12px 44px;border-bottom:1px solid var(--line);counter-increment:nd}
+.needs li::before{content:counter(nd,decimal-leading-zero);position:absolute;left:0;top:12px;font:600 13px/1.6 var(--mono);color:var(--teal)}
+.warn{margin-top:20px;padding:16px 18px;border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-left:3px solid var(--gold);border-radius:2px;background:color-mix(in srgb,var(--gold) 10%,var(--card));font-size:15px}
+.warn b{display:block;margin-bottom:4px;font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px}
+.acts .out{flex:1 1 100%;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;font-weight:600}
+.acts .out .tag{color:var(--muted)}
+.acts a.dl{display:inline-flex;align-items:center;gap:12px;min-height:52px;max-width:100%;padding:8px 16px;border:1px solid var(--gold);border-radius:2px;background:var(--gold);color:var(--ink);font-weight:700;line-height:1.3}
+.acts a.dl:hover{background:#F3D57F}
+.acts a.dl svg{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.acts a.dl small{display:block;font:600 11.5px/1.3 var(--mono);letter-spacing:.05em;opacity:.75}
+.acts .btn{max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.ra-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.box .links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.box .links a:hover{border-color:var(--teal)}
+.box .links .ar{flex:none;color:var(--teal)}
+.box.nav{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only this small box stays in view */
+.box.nav ol{display:grid;gap:2px;margin:12px 0 0;padding:0;list-style:none}
+.box.nav a{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line);font-weight:600;font-size:15px;transition:color .2s}
+.box.nav a:hover{color:var(--teal)}
+.box.nav .n{font:600 12.5px/1 var(--mono);color:var(--teal)}
+@media (max-width:1100px){.ra-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.rag .grid{grid-template-columns:1fr}.ra-side{grid-template-columns:1fr 1fr}.box.nav{position:static}}
+@media (max-width:760px){.ra-side{grid-template-columns:1fr}}
+@media (max-width:560px){.ra-cards{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="ra-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/3.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li aria-current="page">Registry Alterations</li></ol></nav>
+    <p class="tag port">Ownership · vessel name · owner's details · deletion</p>
+    <h1 class="hull" id="ra-h1">Registry <span>Alterations</span></h1>
+    <div class="foot">
+      <p class="lead">Find all Registry Alterations information right here: how to change the registered details of your vessel, or take it off the Register.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#ra-choose">Choose your change <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHOOSE (cards generated from src/data/registry-alterations.json) ================= -->
+<!-- TODO(client): approve the one-line summaries; the Notice of Name Proposed form needs a link ("check" in the data) -->
+<section class="ra-choose" id="ra-choose" aria-labelledby="rc-h">
+  <div class="wrap">
+    <p class="tag t">{{ra-count}} kinds of change</p><h2 class="hull h2" id="rc-h">What do you <span>need to change?</span></h2>
+    <p class="intro">{{ra-intro}}</p>
+    <ul class="ra-cards">
+{{ra-cards}}
+    </ul>
+  </div>
+</section>
+
+<!-- ================= THE FOUR CHANGES (the live sub-pages, as sections; their old addresses open these anchors) ================= -->
+<section class="rag" aria-label="How to make each change">
+  <div class="wrap grid">
+    <div>
+{{ra-sections}}
+    </div>
+    <aside class="ra-side" aria-label="Help with alterations">
+      <div class="box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b><p>We are here to help you with any queries you may have.</p>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/regional-registrars/">Regional Registrars <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/useful-links/">Useful links <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact the registry <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <nav class="box nav" aria-label="On this page"><p class="tag t">On this page</p>
+        <ol>
+{{ra-nav}}
+        </ol>
+      </nav>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

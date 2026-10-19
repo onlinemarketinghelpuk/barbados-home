@@ -1,0 +1,5201 @@
+{
+ "_note": "From the live page barbadosmaritime.com/list-of-appointed-nautical-inspectors/ (WordPress feed, modified 2023-01-31; read 19 Oct 2026), parsed by script. Names, companies, addresses and contact details are kept exactly as published; only the tel: links are made international. \"checks\" lists every phone link that was inferred or repaired: the client should confirm them, and the whole list is third-party contact data to be verified before go-live.",
+ "modified": "2023-01-31",
+ "regions": [
+  {
+   "id": "europe",
+   "name": "Europe"
+  },
+  {
+   "id": "mideast",
+   "name": "Middle East"
+  },
+  {
+   "id": "africa",
+   "name": "Africa"
+  },
+  {
+   "id": "asia",
+   "name": "Asia & Pacific"
+  },
+  {
+   "id": "americas",
+   "name": "Americas"
+  }
+ ],
+ "checks": [
+  "Argentina / Buenos Aires: \"54 11 4624 4574\" is linked without a + or 00 prefix; dialled as +541146244574",
+  "Argentina / Buenos Aires: \"54 9 11 6538 0755\" is linked without a + or 00 prefix; dialled as +5491165380755",
+  "Australia / Port Adelaide: \"08 8447 5924\" is linked without a + or 00 prefix; dialled as +61884475924",
+  "Australia / Port Adelaide: \"08 8341 1564\" is linked without a + or 00 prefix; dialled as +61883411564",
+  "Brazil / Santos, São Paulo: \"13-3227-0385\" is linked without a + or 00 prefix; dialled as +551332270385",
+  "Brazil / Santos, São Paulo: \"55 – 21 – 2247.4076\" is linked without a + or 00 prefix; dialled as +552122474076",
+  "Brazil / Rio de Janeiro: \"55 21 252 566 25\" is linked without a + or 00 prefix; dialled as +552125256625",
+  "Brazil / Rio de Janeiro: \"55 – 21 – 99707.6848\" is linked without a + or 00 prefix; dialled as +5521997076848",
+  "Brazil / Rio de Janeiro: \"55 – 21 – 99999.0276\" is linked without a + or 00 prefix; dialled as +5521999990276",
+  "Canada / Montreal, Quebec: \"(514) 866-1801\" is linked without a + or 00 prefix; dialled as +15148661801",
+  "Canada / Ontario: \"519-991-0189\" is linked without a + or 00 prefix; dialled as +15199910189",
+  "China / Zhoushan: \"+8613505803521\" was linked as \"http://+8613505803521\" on the live page; made a phone link",
+  "China / Zhoushan: \"+8619518089521\" was linked as \"http://+8619518089521\" on the live page; made a phone link",
+  "Croatia / Rijeka: \"385 51 400 617\" is linked without a + or 00 prefix; dialled as +38551400617",
+  "Croatia / Rijeka: \"385912022080\" is linked without a + or 00 prefix; dialled as +385912022080",
+  "Cyprus / Limassol: \"357 25335089\" is linked without a + or 00 prefix; dialled as +35725335089",
+  "Cyprus / Limassol: \"357 99206580\" is linked without a + or 00 prefix; dialled as +35799206580",
+  "Cyprus / Limassol: \"357 25 366310\" is linked without a + or 00 prefix; dialled as +35725366310",
+  "Cyprus / Limassol: \"+357 99048255\" is linked without a + or 00 prefix; dialled as +35799048255",
+  "Egypt / Alexandria: \"03 3923716\" is linked without a + or 00 prefix; dialled as +2033923716",
+  "Estonia / Tallinn: \"372 5 342 1812\" is linked without a + or 00 prefix; dialled as +37253421812",
+  "France / Antibes: \"33 6 76 74 44 55\" is linked without a + or 00 prefix; dialled as +33676744455",
+  "Germany / Bremen: \"49 421 38 92 7-20\" is linked without a + or 00 prefix; dialled as +494213892720",
+  "Germany / Bremen: \"49 179 59 25 330\" is linked without a + or 00 prefix; dialled as +491795925330",
+  "Germany / Bremen: \"49 179 59 73 909\" is linked without a + or 00 prefix; dialled as +491795973909",
+  "Ghana / Tema: \"233 24 836 8073\" is linked without a + or 00 prefix; dialled as +233248368073",
+  "Greece / Piraeus: the email link was \"mailto:Email: pr@liberoservices.org\" on the live page; repaired to mailto:pr@liberoservices.org",
+  "Hong Kong / Hong Kong: \"852 2581 2678\" is linked without a + or 00 prefix; dialled as +85225812678",
+  "Hong Kong / Hong Kong: \"852 2581 2722\" is linked without a + or 00 prefix; dialled as +85225812722",
+  "Hong Kong / Hong Kong: \"852 2581 2678\" is linked without a + or 00 prefix; dialled as +85225812678",
+  "Hong Kong / Hong Kong: \"852 2581 2722\" is linked without a + or 00 prefix; dialled as +85225812722",
+  "India / Chennai: \"+91-44-35046463\" was linked as \"+91-44-35046463\" on the live page; made a phone link",
+  "India / Kandla: \"91 2836 228578\" is linked without a + or 00 prefix; dialled as +912836228578",
+  "India / Kandla: \"91 94253 49765\" is linked without a + or 00 prefix; dialled as +919425349765",
+  "India / Kolkata: \"91 98303 42999\" is linked without a + or 00 prefix; dialled as +919830342999",
+  "India / Mumbai: \"91 22 2757 1216\" is linked without a + or 00 prefix; dialled as +912227571216",
+  "India / Mumbai: \"9821751591\" is linked without a + or 00 prefix; dialled as +919821751591",
+  "India / Mumbai: \"8169455597\" is linked without a + or 00 prefix; dialled as +918169455597",
+  "Lebanon / Barja: \"9613 936744\" is linked without a + or 00 prefix; dialled as +9613936744",
+  "Lebanon / Khaldeh: \"961 3 894098\" is linked without a + or 00 prefix; dialled as +9613894098",
+  "Malta / Valletta: \"356 256 91500\" is linked without a + or 00 prefix; dialled as +35625691500",
+  "Norway / Bergen: \"47 915 63 774\" is linked without a + or 00 prefix; dialled as +4791563774",
+  "Panama / Panama City: \"507 314 1756\" is linked without a + or 00 prefix; dialled as +5073141756",
+  "Panama / Panama City: \"507 6676 8505\" is linked without a + or 00 prefix; dialled as +50766768505",
+  "Romania / Constanta: \"40 241 693750\" is linked without a + or 00 prefix; dialled as +40241693750",
+  "Romania / Constanta: \"40 241 693700\" is linked without a + or 00 prefix; dialled as +40241693700",
+  "Spain / Madrid: \"34 618 10 5331\" is linked without a + or 00 prefix; dialled as +34618105331",
+  "Thailand / Phuket: \"66 (0) 87 997 2050\" is linked without a + or 00 prefix; dialled as +66879972050",
+  "United Arab Emirates / Dubai: \"0971 4 5766791\" is linked without a + or 00 prefix; dialled as +97145766791",
+  "United Arab Emirates / Dubai: \"04 346 7755\" is linked without a + or 00 prefix; dialled as +97143467755",
+  "United Arab Emirates / Dubai: \"971 (0)50 4819277\" is linked without a + or 00 prefix; dialled as +971504819277",
+  "USA / Maryland: \"240 508 4863\" is linked without a + or 00 prefix; dialled as +12405084863",
+  "Vietnam / Ho Chi Minh City: \"0906892669\" is linked without a + or 00 prefix; dialled as +84906892669"
+ ],
+ "countries": [
+  {
+   "country": "Albania",
+   "code": "AL",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Durres",
+     "inspectors": [
+      {
+       "names": [
+        "Engin Ozbek"
+       ],
+       "company": "Adriatic Bureau of Shipping",
+       "address": [
+        "Durres Durres DURRES Lagjja 13, Shkembi i Kavajes, Plazh, Zona Kadastrale 8518, Godine me nr. Pasurie 58/569"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+90 533 931 3979",
+          "href": "tel:+905339313979"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "adriaticbureauofshipping@gmail.com",
+          "href": "mailto:adriaticbureauofshipping@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Algeria",
+   "code": "DZ",
+   "region": "africa",
+   "cities": [
+    {
+     "city": "Algiers",
+     "inspectors": [
+      {
+       "names": [
+        "Kamel Chafik Abdelmajid"
+       ],
+       "company": "Icosium Maritime Cargo LLC",
+       "address": [
+        "Lot 51 Pins Maritime Mohammedia, Algiers, Algeria"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "00213 661 15 00 26",
+          "href": "tel:+213661150026"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "chafik@icosiummaritime.com",
+          "href": "mailto:chafik@icosiummaritime.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "msalg@icosiummaritime.com",
+          "href": "mailto:msalg@icosiummaritime.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "raihana@icosiummaritime.com",
+          "href": "mailto:raihana@icosiummaritime.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "chafik65@hotmail.com",
+          "href": "mailto:chafik65@hotmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Argentina",
+   "code": "AR",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Buenos Aires",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Claudio Norberto Mazzi",
+        "Fernando Mazzi"
+       ],
+       "company": "Master Mariner Surveyor SRL",
+       "address": [
+        "La Pialada 3263 Ituzaingo (1714), Provincia de Buenos Aires"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "54 11 4624 4574",
+          "href": "tel:+541146244574"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "54 9 11 6538 0755",
+          "href": "tel:+5491165380755"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "Claudio_mazzi@mastersurveyor.com.ar",
+          "href": "mailto:Claudio_mazzi@mastersurveyor.com.ar"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@mastersurveyor.com.ar",
+          "href": "mailto:info@mastersurveyor.com.ar"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Australia",
+   "code": "AU",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Port Adelaide",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Nadarajah Ganesan"
+       ],
+       "company": "E.J.C. Carr & Assoc.",
+       "address": [
+        "242A St. Vincent St., PO Box 3024 Port Adelaide 5015 South Australia"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "08 8447 5924",
+          "href": "tel:+61884475924"
+         }
+        ],
+        [
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "08 8341 1564",
+          "href": "tel:+61883411564"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "carrmarine@carrmarine.com.au",
+          "href": "mailto:carrmarine@carrmarine.com.au"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Sydney, Port Kembla and Newcastle region in New South Wales",
+     "inspectors": [
+      {
+       "names": [
+        "ANI Mr Rahul Sharma"
+       ],
+       "company": "Trident Solutions Pty Ltd",
+       "address": [
+        "16 Freshwater street, Throsby ACT-2914",
+        "Australia"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+61 452216729",
+          "href": "tel:+61452216729"
+         }
+        ],
+        [
+         "E-Mail:",
+         {
+          "k": "mail",
+          "text": "Contact@tridentsolutions.org",
+          "href": "mailto:Contact@tridentsolutions.org"
+         },
+         "/",
+         {
+          "k": "mail",
+          "text": "Sharma.r@outlook.com.au",
+          "href": "mailto:Sharma.r@outlook.com.au"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Barbados",
+   "code": "BB",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Bridgetown",
+     "inspectors": [
+      {
+       "names": [
+        "Gerald Lambert Anthony"
+       ],
+       "company": "HELMSMAN CONSULTING INC.",
+       "address": [
+        "#152 Cherry Avenue North, Village at Coverley, Christ Church, Barbados"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+1 (246) 2826481",
+          "href": "tel:+12462826481"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "geraldanthony12@yahoo.com",
+          "href": "mailto:geraldanthony12@yahoo.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Belgium",
+   "code": "BE",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Antwerp",
+     "inspectors": [
+      {
+       "names": [
+        "Walter Vervloesem"
+       ],
+       "company": "IMCS bv",
+       "address": [
+        "Nooderlaan 76 box 6 2030 Antwerp Belgium"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+32 3 475468163",
+          "href": "tel:+323475468163"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+32 3 458 2930",
+          "href": "tel:+3234582930"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "shipdesk@imcs.be",
+          "href": "mailto:shipdesk@imcs.be"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "walter@imcs.be",
+          "href": "mailto:walter@imcs.be"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Brazil",
+   "code": "BR",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Santos, São Paulo",
+     "inspectors": [
+      {
+       "names": [
+        "Fabio Vasconcellos"
+       ],
+       "company": "Pirani & Associates",
+       "address": [
+        "Rua Carolina Rodrigues, 1`7 Apto 152, 11.050-070 – Santos SP- Brazil"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "13-3227-0385",
+          "href": "tel:+551332270385"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "55 – 21 – 2247.4076",
+          "href": "tel:+552122474076"
+         },
+         "(Fabio A.Vasconcellos"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "pirani.associates@outlook.com",
+          "href": "mailto:pirani.associates@outlook.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Rio de Janeiro",
+     "inspectors": [
+      {
+       "names": [
+        "Marco Pirani & Claudio Pirani"
+       ],
+       "company": "Pirani & Associates",
+       "address": [
+        "Rua Visconde de Piraja, 303. gr.711, Cep 22410-001, Rio de Janeiro, RJ, Brazil"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "55 21 252 566 25",
+          "href": "tel:+552125256625"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "55 – 21 – 99707.6848",
+          "href": "tel:+5521997076848"
+         },
+         "(Marco Pirani)"
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "55 – 21 – 99999.0276",
+          "href": "tel:+5521999990276"
+         },
+         "(Claudio Pirani)"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "pirani.associates@outlook.com",
+          "href": "mailto:pirani.associates@outlook.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Rio Grande",
+     "inspectors": [
+      {
+       "names": [
+        "Tiago Pereira Oliveira"
+       ],
+       "company": "CONSUNAV Consultoria e Projetos Navais Ltda.",
+       "address": [
+        "Rua Zalony nº 160, sala 1001, Rio Grande, RS, Brazil. ZIP Code: 96200-070"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+ 55 53 999763305",
+          "href": "tel:+5553999763305"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "tiago@consunav.com.br",
+          "href": "mailto:tiago@consunav.com.br"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Bulgaria",
+   "code": "BG",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Bourgas",
+     "inspectors": [
+      {
+       "names": [
+        "Yaroslav Mladenov & Plamen V. Peev"
+       ],
+       "company": "Kalimbassieris Maritime Ltd.",
+       "address": [
+        "59, Vasil Levski Street, 8000 Bourgas, Bulgaria"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+359 56 840442",
+          "href": "tel:+35956840442"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+359 888 321384",
+          "href": "tel:+359888321384"
+         }
+        ],
+        [
+         "AOH:",
+         {
+          "k": "tel",
+          "text": "+359 888 546504",
+          "href": "tel:+359888546504"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "y.mladenov@kalimbassieris.com",
+          "href": "mailto:y.mladenov@kalimbassieris.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "bourgas@kalimbassieris.com",
+          "href": "mailto:bourgas@kalimbassieris.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Cameroon",
+   "code": "CM",
+   "region": "africa",
+   "cities": [
+    {
+     "city": "Douala",
+     "inspectors": [
+      {
+       "names": [
+        "Bertrand Flavien Simb"
+       ],
+       "company": "Siman Services",
+       "address": [
+        "702, Bonateki Street, Deido, Douala – Cameroon"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+237 699587488",
+          "href": "tel:+237699587488"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+237 678813676",
+          "href": "tel:+237678813676"
+         }
+        ],
+        [
+         "Email:"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "bertrand.simb@siman.cm",
+          "href": "mailto:bertrand.simb@siman.cm"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "bsimb@yahoo.com",
+          "href": "mailto:bsimb@yahoo.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Canada",
+   "code": "CA",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Montreal",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Faisal Azim"
+       ],
+       "company": "Blueline Marine Services",
+       "address": [
+        "3485 32e Avenue, Pointe Aux Trembles, Montreal H1A 3L9, Quebec, Canada"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+1 438 493 1971",
+          "href": "tel:+14384931971"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "info@blueline-marine.com",
+          "href": "mailto:info@blueline-marine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Montreal, Quebec",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Hafiz Ullah"
+       ],
+       "company": "Hayes Stuart",
+       "address": [
+        "9900 Boulevard Cavendish Suite 350, Saint-Laurent, H4M 2V2 QC"
+       ],
+       "contact": [
+        [
+         "Phone:",
+         {
+          "k": "tel",
+          "text": "(514) 866-1801",
+          "href": "tel:+15148661801"
+         },
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "+1 (514) 866 1259",
+          "href": "tel:+15148661259"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ontario",
+     "inspectors": [
+      {
+       "names": [
+        "George Raad"
+       ],
+       "company": "Delta Marine Services",
+       "address": [
+        "1696 Blairwood Crescent, Windsor, Ontario N8W 5N9"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "519-991-0189",
+          "href": "tel:+15199910189"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "dms@deltamarineservices.ca",
+          "href": "mailto:dms@deltamarineservices.ca"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "technical1@live.ca",
+          "href": "mailto:technical1@live.ca"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Chile",
+   "code": "CL",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Valparaiso",
+     "inspectors": [
+      {
+       "names": [
+        "Pablo Felipe Saldivia Vilches"
+       ],
+       "company": "NauticVerify SpA",
+       "address": [
+        "Habana 476, Dep. 101A, Viña del Mar, Valparaíso – CHILE"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+56 9 9731 8049",
+          "href": "tel:+56997318049"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "psvsaldivia@gmail.com",
+          "href": "mailto:psvsaldivia@gmail.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "psaldivia@nauticverify.com",
+          "href": "mailto:psaldivia@nauticverify.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "China",
+   "code": "CN",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Dalian",
+     "inspectors": [
+      {
+       "names": [
+        "Lyu Tiehe"
+       ],
+       "company": "PMDS MARINE SERVICE CO., LIMITED",
+       "address": [
+        "611, Mingshi Fortune center B Building , No.20 Gangwan Road, Zhongshan Dist., Dalian, China 116001"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+852 5596 8600",
+          "href": "tel:+85255968600"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "box_lu@163.com",
+          "href": "mailto:box_lu@163.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Dalian",
+     "inspectors": [
+      {
+       "names": [
+        "Mr. Zhu Jiusheng"
+       ],
+       "company": "Dalian Everpeace Marine Services Ltd.",
+       "address": [
+        "Room #103 North Yongping Street, Shahekou District, Dalian City, China",
+        "Zip Code： 116021"
+       ],
+       "contact": [
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+86 13555993631",
+          "href": "tel:+8613555993631"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "everpeace_dl@163.com",
+          "href": "mailto:everpeace_dl@163.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Fuzhou",
+     "inspectors": [
+      {
+       "names": [
+        "Jiang Yuehuadi"
+       ],
+       "company": "CHIEF OCEAN SHIPPING CO., LIMITED",
+       "address": [
+        "Room 101, Office 12, Floor 1-4, Building 11#, Rongxin Youth City (Plot 3), South Zhongping Road, Cangxia Street, Taijiang District, Fuzhou City, Fujian Province, 350009, P.R.China"
+       ],
+       "contact": [
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "jiangyuehuadi@163.com",
+          "href": "mailto:jiangyuehuadi@163.com"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+86 059188250099",
+          "href": "tel:+86059188250099"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Zhoushan",
+     "inspectors": [
+      {
+       "names": [
+        "Yuan Miao Hui"
+       ],
+       "company": "Pearl Marine Shipping Technology Co.,Ltd",
+       "address": [
+        "Room 1214,Building No A, ZhongLang International Building, No.101 Ganghang Road, Qiandao Street, Dinghai District, Zhoushan City, Zhejiang Province 316021, China"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+8613505803521",
+          "href": "tel:+8613505803521"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+8619518089521",
+          "href": "tel:+8619518089521"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "mstyuan@pearlmarine.net",
+          "href": "mailto:mstyuan@pearlmarine.net"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Croatia",
+   "code": "HR",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Rijeka",
+     "inspectors": [
+      {
+       "names": [
+        "Igor Sikic"
+       ],
+       "company": "NARVAL d.o.o.",
+       "address": [
+        "J.P. Kamova 95b, HR-51000, Rijeka, Hrvatska (Croatia)"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "385 51 400 617",
+          "href": "tel:+38551400617"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "385912022080",
+          "href": "tel:+385912022080"
+         },
+         "(24hrs)"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "narval@narval.hr",
+          "href": "mailto:narval@narval.hr"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Cyprus",
+   "code": "CY",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Limassol",
+     "inspectors": [
+      {
+       "names": [
+        "Constantinos Thalassetis"
+       ],
+       "company": "InterMarine Maritime Services",
+       "address": [
+        "9 Meteoron Str., Marina Court 3, Apart.102, Limassol, 3086 Cyprus."
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "357 25335089",
+          "href": "tel:+35725335089"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "357 99206580",
+          "href": "tel:+35799206580"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@intermarine-surveyors.com",
+          "href": "mailto:info@intermarine-surveyors.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Limassol",
+     "inspectors": [
+      {
+       "names": [
+        "George Anastasakis"
+       ],
+       "company": "GS Marine Services",
+       "address": [
+        "Agias Zonis 23, Kotsios Court, Block A, 3027 Limassol, Cyprus"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "357 25 366310",
+          "href": "tel:+35725366310"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+357 99048255",
+          "href": "tel:+35799048255"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "gsmarine@cytanet.com.cy",
+          "href": "mailto:gsmarine@cytanet.com.cy"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Denmark",
+   "code": "DK",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Vejle",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Oleksandr Fedorenko"
+       ],
+       "company": "Lerus Maritime Co.",
+       "address": [
+        "7100, Vejle, Fyrretoften 103"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+4550199680",
+          "href": "tel:+4550199680"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "oleksandr@lerus-online.com",
+          "href": "mailto:oleksandr@lerus-online.com"
+         }
+        ],
+        [
+         "Website:",
+         {
+          "k": "web",
+          "text": "https://www.lerus.com/",
+          "href": "https://www.lerus.com/"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Egypt",
+   "code": "EG",
+   "region": "mideast",
+   "cities": [
+    {
+     "city": "Alexandria",
+     "inspectors": [
+      {
+       "names": [
+        "Cpt. Mohammad El Sayed Moro"
+       ],
+       "company": "Middle East Maritime Consultants SAL",
+       "address": [
+        "20 El-Lewaa Hamdy Khatta St., Off Fouad St. Alexandria"
+       ],
+       "contact": [
+        [
+         "Tel.",
+         {
+          "k": "tel",
+          "text": "03 3923716",
+          "href": "tel:+2033923716"
+         }
+        ],
+        [
+         "Tel.",
+         {
+          "k": "tel",
+          "text": "+201006210363",
+          "href": "tel:+201006210363"
+         }
+        ],
+        [
+         "Tel.",
+         {
+          "k": "tel",
+          "text": "+201092544224",
+          "href": "tel:+201092544224"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "mohammad.moro@memaritime.me",
+          "href": "mailto:mohammad.moro@memaritime.me"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "barbados.me@gmail.com",
+          "href": "mailto:barbados.me@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Alexandria",
+     "inspectors": [
+      {
+       "names": [
+        "Ahmed Gafour"
+       ],
+       "company": "Smart Marine Solutions EG",
+       "address": [
+        "19 Kamal Eldin Salah, Smouha, Alexandria, EGYPT"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+20 3 4238843",
+          "href": "tel:+2034238843"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "smseg@smseg.net",
+          "href": "mailto:smseg@smseg.net"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Alexandria",
+     "inspectors": [
+      {
+       "names": [
+        "Cpt. Umur Ugurlu"
+       ],
+       "company": "LAM EGYPT",
+       "address": [
+        "9, fawatem Street, Bab Shark , Alexandria, Egypt"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+20 3 484 20 33",
+          "href": "tel:+2034842033"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "umur.ugurlu@makzu.me",
+          "href": "mailto:umur.ugurlu@makzu.me"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Estonia",
+   "code": "EE",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Tallinn",
+     "inspectors": [
+      {
+       "names": [
+        "Igor Kurshakov"
+       ],
+       "company": "SQS Safety and Quality Service OU",
+       "address": [
+        "Veeru 12-57, Tallinn, 74113, Estonia"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "372 5 342 1812",
+          "href": "tel:+37253421812"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "i.kurshakov@gmail.com",
+          "href": "mailto:i.kurshakov@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Tallinn",
+     "inspectors": [
+      {
+       "names": [
+        "Kaupo Puvi"
+       ],
+       "company": "Van Ameyde Krogius",
+       "address": [
+        "Mustamäe tee 16, 10617 Tallinn, Estonia"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+372 611 6620",
+          "href": "tel:+3726116620"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+372 5919 4838",
+          "href": "tel:+37259194838"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "kaupo.puvi@ameydemarine.com",
+          "href": "mailto:kaupo.puvi@ameydemarine.com"
+         }
+        ],
+        [
+         {
+          "k": "web",
+          "text": "www.ameydemarine.com",
+          "href": "http://www.ameydemarine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "France",
+   "code": "FR",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Antibes",
+     "inspectors": [
+      {
+       "names": [
+        "Nicolas Dulauroy (Yachts)"
+       ],
+       "company": "Cabinet D'Expertises Maritimes Dulauroy",
+       "address": [
+        "Riviera Park C4, 1160 route de Grasse,06600 Antibes, France"
+       ],
+       "contact": [
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "33 6 76 74 44 55",
+          "href": "tel:+33676744455"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "expert.m@ritime.fr",
+          "href": "mailto:expert.m@ritime.fr"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Le Havre",
+     "inspectors": [
+      {
+       "names": [
+        "Cpt Romain BERTRAND"
+       ],
+       "company": "LH Maritime Survey",
+       "address": [
+        "21 place de la République, 76600 Le Havre, France"
+       ],
+       "contact": [
+        [
+         "Tel 1 :",
+         {
+          "k": "tel",
+          "text": "+33 622 352 580",
+          "href": "tel:+33622352580"
+         }
+        ],
+        [
+         "Tel 2 :",
+         {
+          "k": "tel",
+          "text": "+33 614 281 130",
+          "href": "tel:+33614281130"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "contact@lh-ms.fr",
+          "href": "mailto:contact@lh-ms.fr"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "r.bertrand@lh-ms.fr",
+          "href": "mailto:r.bertrand@lh-ms.fr"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "contact@lh-ms.fr",
+          "href": "mailto:contact@lh-ms.fr"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Port Saint Louis du Rhone",
+     "inspectors": [
+      {
+       "names": [
+        "Rafiqul Islam"
+       ],
+       "company": "Marine & Ship’s Services",
+       "address": [
+        "14 Rue de L’îlon,Lotissement \"Coeur Saint-Louis\" 13230, Port-Saint-Louis-du-Rhône, France"
+       ],
+       "contact": [
+        [
+         "Tel :",
+         {
+          "k": "tel",
+          "text": "+33 (0)6 30 92 98 35",
+          "href": "tel:+33630929835"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "technical@marships.eu",
+          "href": "mailto:technical@marships.eu"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Germany",
+   "code": "DE",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Berlin",
+     "inspectors": [
+      {
+       "names": [
+        "Piotr Michał Ambroziak"
+       ],
+       "company": "UMS MARBALCO Co. Ltd",
+       "address": [
+        "Pasewalker str. 53",
+        "13127 Berlin"
+       ],
+       "contact": [
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+48 503770226",
+          "href": "tel:+48503770226"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "ambpex@gmail.com",
+          "href": "mailto:ambpex@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Bremen",
+     "inspectors": [
+      {
+       "names": [
+        "Jens Hammerschmidt"
+       ],
+       "company": "IMCS Germany Partnerschaft",
+       "address": [
+        "Rasch Metzger Borsbach Sachverstandige Segelmacherstrasse 1 D-28777 Bremen"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "49 421 38 92 7-20",
+          "href": "tel:+494213892720"
+         },
+         "(24/7)"
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "49 179 59 25 330",
+          "href": "tel:+491795925330"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "49 179 59 73 909",
+          "href": "tel:+491795973909"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "office@imcsgermany.de",
+          "href": "mailto:office@imcsgermany.de"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "nautics@imcsgermany.de",
+          "href": "mailto:nautics@imcsgermany.de"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Hamburg",
+     "inspectors": [
+      {
+       "names": [
+        "Kerim Safak Ozcan"
+       ],
+       "company": "Maveks Marine Company",
+       "address": [
+        "Feld str 46 / 24534 Neumunster, GERMANY"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+49 15256534854",
+          "href": "tel:+4915256534854"
+         }
+        ],
+        [
+         "E:",
+         {
+          "k": "mail",
+          "text": "info@maveksmarine.de",
+          "href": "mailto:info@maveksmarine.de"
+         }
+        ],
+        [
+         "E:",
+         {
+          "k": "mail",
+          "text": "ops@maveksmarine.de",
+          "href": "mailto:ops@maveksmarine.de"
+         }
+        ],
+        [
+         "E:",
+         {
+          "k": "mail",
+          "text": "survey@maveksmarine.com",
+          "href": "mailto:survey@maveksmarine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Ghana",
+   "code": "GH",
+   "region": "africa",
+   "cities": [
+    {
+     "city": "Tema",
+     "inspectors": [
+      {
+       "names": [
+        "Francis Kofi Korsah"
+       ],
+       "company": "Penguin Marine Services",
+       "address": [
+        "Rm #9, 1st Floor, Mayflower Hse Rev. Dagadu St., Community 10, Tema"
+       ],
+       "contact": [
+        [
+         "Cellphone:",
+         {
+          "k": "tel",
+          "text": "233 24 836 8073",
+          "href": "tel:+233248368073"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "kfkorsah@gmail.com",
+          "href": "mailto:kfkorsah@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Greece",
+   "code": "GR",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Athens",
+     "inspectors": [
+      {
+       "names": [
+        "Ilias Kossieris & Spyridon Litsas"
+       ],
+       "company": "Martec Ltd.",
+       "address": [
+        "13 Vouliagmenis Ave. 16675 Athens, Greece"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+30 210 4180460",
+          "href": "tel:+302104180460"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "+306978 779 500",
+          "href": "tel:+306978779500"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "martec@otenet.gr",
+          "href": "mailto:martec@otenet.gr"
+         },
+         "/",
+         {
+          "k": "mail",
+          "text": "iliaskossieris@hotmail.com",
+          "href": "mailto:iliaskossieris@hotmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Piraeus",
+     "inspectors": [
+      {
+       "names": [
+        "Vasileios Lymperopoulos"
+       ],
+       "company": "LiberoServices",
+       "address": [
+        "2 Efplias Street, 18537 Piraeus, Greece"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+30 2104100535",
+          "href": "tel:+302104100535"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "pr@liberoservices.org",
+          "href": "mailto:pr@liberoservices.org"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Piraeus",
+     "inspectors": [
+      {
+       "names": [
+        "Christos Michalopoulos & Ioannis Papastratis"
+       ],
+       "company": "Efplias Maritime Holding Single Member P.C.",
+       "address": [
+        "4-6 Efplias Street, 4th Floor, 18537, Piraeus, Greece"
+       ],
+       "contact": [
+        [
+         "Tel: ‪",
+         {
+          "k": "tel",
+          "text": "+302104293837",
+          "href": "tel:+302104293837"
+         }
+        ],
+        [
+         "Mob: ‪",
+         {
+          "k": "tel",
+          "text": "+306977023575",
+          "href": "tel:+306977023575"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "gm@emhm.gr",
+          "href": "mailto:gm@emhm.gr"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "christos.michalopoulos@emhm.gr",
+          "href": "mailto:christos.michalopoulos@emhm.gr"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Hong Kong",
+   "code": "HK",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Hong Kong",
+     "inspectors": [
+      {
+       "names": [
+        "Quincy Lloyd"
+       ],
+       "company": "Carmichael & Clarke",
+       "address": [
+        "17F Jade Centre, 98 Wellington St. Central Hong Kong"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "852 2581 2678",
+          "href": "tel:+85225812678"
+         }
+        ],
+        [
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "852 2581 2722",
+          "href": "tel:+85225812722"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "carmi@hkstar.com",
+          "href": "mailto:carmi@hkstar.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Hong Kong",
+     "inspectors": [
+      {
+       "names": [
+        "Shu Zhiyang & Yao Tuan"
+       ],
+       "company": "MaritimeLink Hong Kong Limited",
+       "address": [
+        "Flat 19B 10/F Liven House 61-63 King Yip St Kwun Tong, Hong Kong"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+86 13817531330",
+          "href": "tel:+8613817531330"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "admin@maritimelinkhk.com",
+          "href": "mailto:admin@maritimelinkhk.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Hong Kong",
+     "inspectors": [
+      {
+       "names": [
+        "Jason Dunbing Hong"
+       ],
+       "company": "Carmichael & Clarke",
+       "address": [
+        "17F Jade Centre, 98 Wellington St. Central Hong Kong"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "852 2581 2678",
+          "href": "tel:+85225812678"
+         }
+        ],
+        [
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "852 2581 2722",
+          "href": "tel:+85225812722"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "jasonhong@carmichaelandclarke.com",
+          "href": "mailto:jasonhong@carmichaelandclarke.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "India",
+   "code": "IN",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Chennai",
+     "inspectors": [
+      {
+       "names": [
+        "Aditya Kapoor"
+       ],
+       "company": "NAUTIC VERITAS",
+       "address": [
+        "B2, DBS Paxina Apartments 10, Bishop Waller Avenue, CIT Colony, Mylapore, Chennai 600004, India"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+91-44-35046463",
+          "href": "tel:+914435046463"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+91-9841036328",
+          "href": "tel:+919841036328"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "adskapoor@yahoo.com",
+          "href": "mailto:adskapoor@yahoo.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "f.o.cinspection@gmail.com",
+          "href": "mailto:f.o.cinspection@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "All Indian Ports",
+     "inspectors": [
+      {
+       "names": [
+        "Rajesh Madusudanan"
+       ],
+       "company": "N/A",
+       "address": [
+        "Chennai/Mumbai (India)"
+       ],
+       "contact": [
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+91-9870567419",
+          "href": "tel:+919870567419"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "rmadusudanan@yahoo.com",
+          "href": "mailto:rmadusudanan@yahoo.com"
+         }
+        ],
+        [
+         {
+          "k": "web",
+          "text": "linkedin.com/in/vtprajesh",
+          "href": "http://linkedin.com/in/vtprajesh"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Kolkata",
+     "inspectors": [
+      {
+       "names": [
+        "Arun P. Choudhary"
+       ],
+       "company": "Checkship Marine Services",
+       "address": [
+        "21/1, Prasanna Naskar Lane, Picnic Garden, Kolkata – 700039 (India)"
+       ],
+       "contact": [
+        [
+         "Tel :",
+         {
+          "k": "tel",
+          "text": "+91-9831114751",
+          "href": "tel:+919831114751"
+         }
+        ],
+        [
+         "Email :",
+         {
+          "k": "mail",
+          "text": "capt.apc@gmail.com",
+          "href": "mailto:capt.apc@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Kandla",
+     "inspectors": [
+      {
+       "names": [
+        "Manish Kumar Bansal"
+       ],
+       "company": "Pride Engineers and Marine Consultants",
+       "address": [
+        "208, Madhuban Complex, Oslo Road, Gandhidham (Gujarat), Kutch, India, PIN 370201"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "91 2836 228578",
+          "href": "tel:+912836228578"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "+91 94092 40710",
+          "href": "tel:+919409240710"
+         },
+         "(1st)"
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "91 94253 49765",
+          "href": "tel:+919425349765"
+         },
+         "(2nd)"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "manishbansal21@yahoo.co.in",
+          "href": "mailto:manishbansal21@yahoo.co.in"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Kolkata",
+     "inspectors": [
+      {
+       "names": [
+        "Capt Tapan Kumar Banerjee"
+       ],
+       "company": "Neptune Marine",
+       "address": [
+        "61/23, Moore Avenue, Moore Mansion, Kolkata-700040, India"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "91 98303 42999",
+          "href": "tel:+919830342999"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "neptunemarine19@gmail.com",
+          "href": "mailto:neptunemarine19@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Mumbai",
+     "inspectors": [
+      {
+       "names": [
+        "Chandresh Mathur"
+       ],
+       "company": "IP Marine Solutions Pvt Ltd",
+       "address": [
+        "317, B Wing, Shree Nand Dham,Sector 11, CBD Belapur, Navi Mumbai- 400614"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "91 22 2757 1216",
+          "href": "tel:+912227571216"
+         }
+        ],
+        [
+         "Tel & Mob:",
+         {
+          "k": "tel",
+          "text": "+91 22 27571216",
+          "href": "tel:+912227571216"
+         },
+         "&",
+         {
+          "k": "tel",
+          "text": "9821751591",
+          "href": "tel:+919821751591"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "8169455597",
+          "href": "tel:+918169455597"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "chandresh@ipmarine.com",
+          "href": "mailto:chandresh@ipmarine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Indonesia",
+   "code": "ID",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Jakarta",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Matthew Paul Gormley"
+       ],
+       "company": "PT NUSANTARA SHIP INSPECTION",
+       "address": [
+        "Indonesia Stock Exchange Building, Tower 1,",
+        "Unit 304, Jl. Jend. Sudirman Kav. 52–53,",
+        "Senayan, South Jakarta, 12190. Indonesia"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+62 818 144 938",
+          "href": "tel:+62818144938"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "info@nusantaraship.com",
+          "href": "mailto:info@nusantaraship.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Ireland",
+   "code": "IE",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Cork",
+     "inspectors": [
+      {
+       "names": [
+        "Mohammed Rafiqul Islam"
+       ],
+       "company": "Marine & Ship’s Services",
+       "address": [
+        "27 Meadow Park Avenue, Ballyvolane, Cork, Republic of Ireland"
+       ],
+       "contact": [
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+33(0) 630929835",
+          "href": "tel:+33630929835"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "technical@marships.eu",
+          "href": "mailto:technical@marships.eu"
+         },
+         {
+          "k": "mail",
+          "text": "info@marships.eu",
+          "href": "mailto:info@marships.eu"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Israel",
+   "code": "IL",
+   "region": "mideast",
+   "cities": [
+    {
+     "city": "Haifa",
+     "inspectors": [
+      {
+       "names": [
+        "Nicolas Bialystocki"
+       ],
+       "company": "Antares Maritime Services",
+       "address": [
+        "2 Etgar St., Tirat Carmel, 3903213, Israel"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+972 524 839966",
+          "href": "tel:+972524839966"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "nicolas@antares.co.il",
+          "href": "mailto:nicolas@antares.co.il"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Italy",
+   "code": "IT",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Ancona",
+     "inspectors": [
+      {
+       "names": [
+        "Stefano Raimondi"
+       ],
+       "company": "Stefano Raimondi",
+       "address": [
+        "Via Martiri Della Resistenza 35 – 60125 Ancona, Italy"
+       ],
+       "contact": [
+        [
+         "Tel: 0039 3703119609"
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "s.raimondi1970@gmail.com",
+          "href": "mailto:s.raimondi1970@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Brindisi",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Cellie Antonio"
+       ],
+       "company": "N/A",
+       "address": [
+        "Via Benedetto Croce, 110 – 72012 Carovigno (Br), Italy"
+       ],
+       "contact": [
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+39 389 0959151",
+          "href": "tel:+393890959151"
+         }
+        ],
+        [
+         {
+          "k": "tel",
+          "text": "+ 39 333 9697500",
+          "href": "tel:+393339697500"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "capt.cellieantonio@gmail.com",
+          "href": "mailto:capt.cellieantonio@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Cagliari",
+     "inspectors": [
+      {
+       "names": [
+        "Luigi Poma"
+       ],
+       "company": "STUDIO TECNICO NAVALE LUIGI POMA",
+       "address": [
+        "Via P.Cugia,1 – 09129, Cagliari (CA), ITALY"
+       ],
+       "contact": [
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+39 335 7020904",
+          "href": "tel:+393357020904"
+         },
+         "/ Tel:",
+         {
+          "k": "tel",
+          "text": "+39 070 6499512",
+          "href": "tel:+390706499512"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "lp@stnpoma.com",
+          "href": "mailto:lp@stnpoma.com"
+         },
+         "/",
+         {
+          "k": "mail",
+          "text": "marine@lupom.net",
+          "href": "mailto:marine@lupom.net"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Catania",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Mario Sciacca"
+       ],
+       "company": "N/A",
+       "address": [
+        "Via G. Marconi n.13, 95016 Mascali (CT), Italy"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+39 349 64 99 621",
+          "href": "tel:+393496499621"
+         }
+        ],
+        [
+         "email:",
+         {
+          "k": "mail",
+          "text": "mariosciacca3@libero.it",
+          "href": "mailto:mariosciacca3@libero.it"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Crotone",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Pasquale D. Ottaviano"
+       ],
+       "company": "GE.TRA. DE. Sri Marine Consultant & Surveyors",
+       "address": [
+        "Via Marinella, 12 88900 Crotone"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+39 0962 27901",
+          "href": "tel:+39096227901"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "+39 329 27909",
+          "href": "tel:+3932927909"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "survey@getradesrl.it",
+          "href": "mailto:survey@getradesrl.it"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ravenna",
+     "inspectors": [
+      {
+       "names": [
+        "Mr. Maurizio Marendo"
+       ],
+       "company": "Studio Peritale Maurizio Marendon",
+       "address": [
+        "Via Ravegnana, No. 367 48124 Ravenna."
+       ],
+       "contact": [
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "info@maurizio-marendon.it",
+          "href": "mailto:info@maurizio-marendon.it"
+         }
+        ],
+        [
+         "Phone:",
+         {
+          "k": "tel",
+          "text": "+39 335 477287",
+          "href": "tel:+39335477287"
+         }
+        ],
+        [
+         "Fax: +",
+         {
+          "k": "tel",
+          "text": "39 0544 270538",
+          "href": "tel:+390544270538"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Venice",
+     "inspectors": [
+      {
+       "names": [
+        "Andrea Preden"
+       ],
+       "company": "Ships & Boat SRL",
+       "address": [
+        "Via J. Salamonio, 3 – 30175 Venezia – Italy"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+39 3337706123",
+          "href": "tel:+393337706123"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "preden@ship-boat.it",
+          "href": "mailto:preden@ship-boat.it"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Ivory Coast",
+   "code": "CI",
+   "region": "africa",
+   "cities": [
+    {
+     "city": "Abidjan",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Rishi Mehrotra & Akhom Abhijit Singha"
+       ],
+       "company": "Africa Maritime&Offshore Consulting LLC",
+       "address": [
+        "ABIDJAN, COTE D'IVOIRE (IVORY COAST)"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+225 07 79 75 78 75",
+          "href": "tel:+2250779757875"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+225 07 87 83 87 75",
+          "href": "tel:+2250787838775"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+225 07 87 83 87 74",
+          "href": "tel:+2250787838774"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "team@amoc.io",
+          "href": "mailto:team@amoc.io"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "ops@amoc.io",
+          "href": "mailto:ops@amoc.io"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Japan",
+   "code": "JP",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Akashi",
+     "inspectors": [
+      {
+       "names": [
+        "Shinichiro Noji"
+       ],
+       "company": "NOJI MARINE OFFICE",
+       "address": [
+        "1207 – 13 Fujie, Akashi – City, Hyogo – Pref’, 673-0044 JAPAN"
+       ],
+       "contact": [
+        [
+         {
+          "k": "mail",
+          "text": "",
+          "href": "mailto:ops@amoc.io"
+         },
+         "Tel :",
+         {
+          "k": "tel",
+          "text": "+81 – 80 – 7537 – 1861",
+          "href": "tel:+818075371861"
+         }
+        ],
+        [
+         "Email :",
+         {
+          "k": "mail",
+          "text": "noji-marine@live.jp",
+          "href": "mailto:noji-marine@live.jp"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Latvia",
+   "code": "LV",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Liepaja",
+     "inspectors": [
+      {
+       "names": [
+        "Anatolijs Krjucenkovs"
+       ],
+       "company": "Rayah Maritime Services Group",
+       "address": [
+        "36-39 Rojas str., LV3407, Liepaja, Latvia, EU"
+       ],
+       "contact": [
+        [
+         "Phone:",
+         {
+          "k": "tel",
+          "text": "+371 26810672",
+          "href": "tel:+37126810672"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "anatolijsk@gmail.com",
+          "href": "mailto:anatolijsk@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Riga, Ventspils & Liepaja",
+     "inspectors": [
+      {
+       "names": [
+        "Andrius Uldukis"
+       ],
+       "company": "INOSHIP LT UAB",
+       "address": [
+        "Vilhelmo Berbomo str. 10 / 207, LT-92221, Klaipeda, Lithuania"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+37069886079",
+          "href": "tel:+37069886079"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "andrius.uldukis@inoship.lt",
+          "href": "mailto:andrius.uldukis@inoship.lt"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@inoship.lt",
+          "href": "mailto:info@inoship.lt"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Lebanon",
+   "code": "LB",
+   "region": "mideast",
+   "cities": [
+    {
+     "city": "Barja",
+     "inspectors": [
+      {
+       "names": [
+        "Walid Abdul Damaz"
+       ],
+       "company": "Personal",
+       "address": [
+        "Barja, Al Burjain Str., Marej Barja, Damaj Bldg, Barja, Lebanon"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "9613 936744",
+          "href": "tel:+9613936744"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "wk_damaj@yahoo.com",
+          "href": "mailto:wk_damaj@yahoo.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Khaldeh",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Haytham Chaaban"
+       ],
+       "company": "LEVANT SHIPPING",
+       "address": [
+        "3rd Fl., Abou Diab Bld, Old Sea Road, Khaldeh, Lebanon"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "961 3 894098",
+          "href": "tel:+9613894098"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "barbados.me@gmail.com",
+          "href": "mailto:barbados.me@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Khaldeh",
+     "inspectors": [
+      {
+       "names": [
+        "Bassem Kawtharani"
+       ],
+       "company": "Middle East Maritime Consultants SAL",
+       "address": [
+        "3rd Fl., Abou Diab Bld, Old Sea Road, Khaldeh, Lebanon"
+       ],
+       "contact": [
+        [
+         "Email:"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "surveys@memaritime.me",
+          "href": "mailto:surveys@memaritime.me"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "capt_kawtharani@hotmail.com",
+          "href": "mailto:capt_kawtharani@hotmail.com"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+961 388 9775",
+          "href": "tel:+9613889775"
+         },
+         "(Bassem)"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Lithuania",
+   "code": "LT",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Klaipeda",
+     "inspectors": [
+      {
+       "names": [
+        "Andrius Uldukis"
+       ],
+       "company": "INOSHIP LT UAB",
+       "address": [
+        "Vilhelmo Berbomo str. 10 / 207, LT-92221, Klaipeda, Lithuania"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+37069886079",
+          "href": "tel:+37069886079"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "andrius.uldukis@inoship.lt",
+          "href": "mailto:andrius.uldukis@inoship.lt"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@inoship.lt",
+          "href": "mailto:info@inoship.lt"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Malaysia",
+   "code": "MY",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Johor Bahru",
+     "inspectors": [
+      {
+       "names": [
+        "Kim Su"
+       ],
+       "company": "Taso Global",
+       "address": [
+        "Skybreeze, Bukit Indah, Johor Bahru, Malaysia"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+60 (0)11 7023 0794",
+          "href": "tel:+601170230794"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "engineerkim1@tasoworld.com",
+          "href": "mailto:engineerkim1@tasoworld.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Malacca (Melaka)",
+     "inspectors": [
+      {
+       "names": [
+        "Kamalanathan Shanmugam"
+       ],
+       "company": "Intermaritime Group Services",
+       "address": [
+        "Lot No JB 3587, Jalan OG 2/12, Taman Orna Resort,",
+        "Jalan Gapam, Pekan Bemban, Jasin.",
+        "Melaka, Malaysia. Post code: 77200"
+       ],
+       "contact": [
+        [
+         {
+          "k": "mail",
+          "text": "nathan@igs-pa.com",
+          "href": "mailto:nathan@igs-pa.com"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+6063172977",
+          "href": "tel:+6063172977"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Malta",
+   "code": "MT",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Valletta",
+     "inspectors": [
+      {
+       "names": [
+        "Keith D. Manara & Capt. Mario Grech"
+       ],
+       "company": "O F Gollcher & Sons",
+       "address": [
+        "19 Zachary Street, Valletta VLT 1133, Malta"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "356 256 91500",
+          "href": "tel:+35625691500"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "contact@gollcher.com",
+          "href": "mailto:contact@gollcher.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Morocco",
+   "code": "MA",
+   "region": "africa",
+   "cities": [
+    {
+     "city": "Casablanca",
+     "inspectors": [
+      {
+       "names": [
+        "Abderrazak Atide"
+       ],
+       "company": "Middle East Maritime Consultants SAL",
+       "address": [
+        "Lot Imane, Rue 1, N 36, Ain Chock, Casablanca"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+212661713995",
+          "href": "tel:+212661713995"
+         }
+        ],
+        [
+         "Mail:",
+         {
+          "k": "mail",
+          "text": "abderrazak.atide@memaritime.me",
+          "href": "mailto:abderrazak.atide@memaritime.me"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Norway",
+   "code": "NO",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Bergen",
+     "inspectors": [
+      {
+       "names": [
+        "Anders Walaker"
+       ],
+       "company": "AWIN AS",
+       "address": [
+        "Box 19 Nestun, N-5852 Bergen Norway"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "47 915 63 774",
+          "href": "tel:+4791563774"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "survey@awin.no",
+          "href": "mailto:survey@awin.no"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Pakistan",
+   "code": "PK",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Hyderabad",
+     "inspectors": [
+      {
+       "names": [
+        "Yakoob Ali Syed"
+       ],
+       "company": "The Burgeon",
+       "address": [
+        "26 E,BLOCK E, UNIT NO 9, LATIF ABD HYDERABAD PAKISTAN"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+92 22813400",
+          "href": "tel:+9222813400"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+92 3108195948",
+          "href": "tel:+923108195948"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "+92 3232936378",
+          "href": "tel:+923232936378"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "+92 3453157935",
+          "href": "tel:+923453157935"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "yakoobsyed43@gmail.com",
+          "href": "mailto:yakoobsyed43@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Panama",
+   "code": "PA",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Panama",
+     "inspectors": [
+      {
+       "names": [
+        "JOSE GUILLERMO STOUTE CARBAJAL"
+       ],
+       "company": "International Marine Experts",
+       "address": [
+        "Bldg 0750-D, Williamson Place La Boca, Balboa, Panama, Republic of Panama"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+507 314 1756",
+          "href": "tel:+5073141756"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+507 6670 6775",
+          "href": "tel:+50766706775"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "jstoute@ime.com.pa",
+          "href": "mailto:jstoute@ime.com.pa"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Panama",
+     "inspectors": [
+      {
+       "names": [
+        "Edward Michael Velarde"
+       ],
+       "company": "International Marine Experts",
+       "address": [
+        "Bldg 0750-D, Williamson Place La Boca, Balboa, Panama, Republic of Panama"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+507 314 1756",
+          "href": "tel:+5073141756"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+507 6195 7020",
+          "href": "tel:+50761957020"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "evelarde@ime.com.pa",
+          "href": "mailto:evelarde@ime.com.pa"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Panama City",
+     "inspectors": [
+      {
+       "names": [
+        "Javier Bru Roncallo"
+       ],
+       "company": "International Marine Experts",
+       "address": [
+        "0750D Williamson Place, Balboa Ancon, PO Box 0830-01108 Panama, Republic of Panama"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "507 314 1756",
+          "href": "tel:+5073141756"
+         }
+        ],
+        [
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "507 6676 8505",
+          "href": "tel:+50766768505"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "jbru@ime.com.pa",
+          "href": "mailto:jbru@ime.com.pa"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Peru",
+   "code": "PE",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Ica",
+     "inspectors": [
+      {
+       "names": [
+        "Ivo Alexis Ramirez Ayala"
+       ],
+       "company": "",
+       "address": [
+        "Mza D Lote 33, Asoc. Santa Rosa, 2da Etapa, Parcona, Ica, 11003, Peru"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+ 51 928 405 334",
+          "href": "tel:+51928405334"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "iramirez@seasconsult.com",
+          "href": "mailto:iramirez@seasconsult.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Poland",
+   "code": "PL",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "All Polish Ports including Gdansk, Gydnia & Szczecin",
+     "inspectors": [
+      {
+       "names": [
+        "Kazimierz Goworowski, Krzysztof Radwanski & Waldemar Frankiewicz"
+       ],
+       "company": "UMS Marbalco Co. Ltd",
+       "address": [
+        "ul.3 Maja 21/2, 81-747 Sopot, Poland"
+       ],
+       "contact": [
+        [
+         "Phone:",
+         {
+          "k": "tel",
+          "text": "+48 58 551 70 37",
+          "href": "tel:+48585517037"
+         }
+        ],
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+48 602 281 932",
+          "href": "tel:+48602281932"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "survey@marbalco.com",
+          "href": "mailto:survey@marbalco.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Portugal",
+   "code": "PT",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Lisbon",
+     "inspectors": [
+      {
+       "names": [
+        "Eurico Teodoro"
+       ],
+       "company": "B.V. Campbell Lda.",
+       "address": [
+        "R. Quinta da Brita 19, 2815-886 Almada, Portugal"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+351 911 738 635",
+          "href": "tel:+351911738635"
+         }
+        ],
+        [
+         "Phone: :",
+         {
+          "k": "tel",
+          "text": "+ 351 218 680 758",
+          "href": "tel:+351218680758"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "bvc-consultancy@bvcampbelllda.onmicrosoft.com",
+          "href": "mailto:bvc-consultancy@bvcampbelllda.onmicrosoft.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Romania",
+   "code": "RO",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Constanta",
+     "inspectors": [
+      {
+       "names": [
+        "Ionut Paris"
+       ],
+       "company": "Efplias Maritime Holding Single Member P.C.",
+       "address": [
+        "Strada 11, nr 9, Ovidiu, Constanta ZIP:905900 , Romania"
+       ],
+       "contact": [
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "0040726380900",
+          "href": "tel:+40726380900"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "ionut_prs@yahoo.com",
+          "href": "mailto:ionut_prs@yahoo.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Constanta",
+     "inspectors": [
+      {
+       "names": [
+        "Antonios Kalmoukis"
+       ],
+       "company": "Kalimbassieris Maritime SRL",
+       "address": [
+        "67 Zorelelor Street, 900553 Constantza, Romania"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "40 241 693750",
+          "href": "tel:+40241693750"
+         }
+        ],
+        [
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "40 241 693700",
+          "href": "tel:+40241693700"
+         }
+        ],
+        [
+         "Mobile",
+         {
+          "k": "tel",
+          "text": "+40 723 313620",
+          "href": "tel:+40723313620"
+         }
+        ],
+        [
+         "Mobile",
+         {
+          "k": "tel",
+          "text": "+30 694 6504401",
+          "href": "tel:+306946504401"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "constantza@kalimbassieris.com",
+          "href": "mailto:constantza@kalimbassieris.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Russia",
+   "code": "RU",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Krasnodar (Novorossiysk)",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Ivan Yarovoy"
+       ],
+       "company": "N/A",
+       "address": [
+        "Apt. 3, Griboedova 25 Goryachiy Kluch, Krasnodar Region, 353290"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "007952 872 5639",
+          "href": "tel:+79528725639"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "ivan.yarovoy.seatec@gmail.com",
+          "href": "mailto:ivan.yarovoy.seatec@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "St. Petersburg",
+     "inspectors": [
+      {
+       "names": [
+        "Andrey Tsurikov"
+       ],
+       "company": "Bureau of Independent Surveyors",
+       "address": [
+        "5A Mezhevoy Kanal, Baltic Maritime Center Office, 210 St. Petersburg 198035 Russia."
+       ],
+       "contact": [
+        [
+         "Phone",
+         {
+          "k": "tel",
+          "text": "+7 921 9433086",
+          "href": "tel:+79219433086"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "andreitsurikov@gmail.com",
+          "href": "mailto:andreitsurikov@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Saudi Arabia",
+   "code": "SA",
+   "region": "mideast",
+   "cities": [
+    {
+     "city": "Jeddah",
+     "inspectors": [
+      {
+       "names": [
+        "Youssef Mohammed"
+       ],
+       "company": "Expert Bureau of Shipping",
+       "address": [
+        "Jeddah, Po Box 321306, Saudi Arabia",
+        "Asafra – Ibn Saed St, from St.45, Bldg. 3, Alexandria, Egypt."
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+201028555397",
+          "href": "tel:+201028555397"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@ebs-marine.com",
+          "href": "mailto:info@ebs-marine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Saudi Arabia",
+     "inspectors": [
+      {
+       "names": [
+        "Hamada Halouma"
+       ],
+       "company": "Blue Ocean Maritime",
+       "address": [
+        "Office 805",
+        "Al Saheel 1",
+        "AlNahda",
+        "Dubai UAE",
+        "PO Box 237951"
+       ],
+       "contact": [
+        [
+         {
+          "k": "mail",
+          "text": "ceo@nashapanama.com",
+          "href": "mailto:ceo@nashapanama.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@ocean-registrar.com",
+          "href": "mailto:info@ocean-registrar.com"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+971529712880",
+          "href": "tel:+971529712880"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Singapore",
+   "code": "SG",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Singapore",
+     "inspectors": [
+      {
+       "names": [
+        "Inder Jit Singh, Thum Ban Shii, Zulfiqur Husain, Bambang Purwanto & Md Rezaul Karim"
+       ],
+       "company": "SIMINTEC",
+       "address": [
+        "21, Telok Blangah Drive, Harbour View Towers, #05-04, Singapore (109258)"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+65 917 66939",
+          "href": "tel:+6591766939"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "ijsingh@simintec.com",
+          "href": "mailto:ijsingh@simintec.com"
+         },
+         ";",
+         {
+          "k": "mail",
+          "text": "operations@simintec.com",
+          "href": "mailto:operations@simintec.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "South Korea",
+   "code": "KR",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Busan",
+     "inspectors": [
+      {
+       "names": [
+        "Jeeong Heeseok"
+       ],
+       "company": "Aquarius Marine Consulting",
+       "address": [
+        "A‐2803, 192, Songdohaebyeon‐ro, Seo‐gu, Busan, Republic of Korea"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+82-10-4464-3953",
+          "href": "tel:+821044643953"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "+81-80-3091-6638",
+          "href": "tel:+818030916638"
+         }
+        ],
+        [
+         "Emal:",
+         {
+          "k": "mail",
+          "text": "j1586012@nate.com",
+          "href": "mailto:j1586012@nate.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Busan",
+     "inspectors": [
+      {
+       "names": [
+        "Yongsu Kim"
+       ],
+       "company": "Taso Global",
+       "address": [
+        "1007 Ho, 14 Dong, Woosung Blg, Busan, South Korea."
+       ],
+       "contact": [
+        [
+         "Phone:",
+         {
+          "k": "tel",
+          "text": "+82 10 9627 4787",
+          "href": "tel:+821096274787"
+         }
+        ],
+        [
+         "Email :",
+         {
+          "k": "mail",
+          "text": "engineerkim1@tasoworld.com",
+          "href": "mailto:engineerkim1@tasoworld.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Spain",
+   "code": "ES",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Madrid",
+     "inspectors": [
+      {
+       "names": [
+        "Samuel Bull"
+       ],
+       "company": "European Marine Consultants SL",
+       "address": [
+        "C/ Manolete 23 28270 Madrid, Spain"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "34 618 10 5331",
+          "href": "tel:+34618105331"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@emcsl.com",
+          "href": "mailto:info@emcsl.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Tenerife, Canary Islands",
+     "inspectors": [
+      {
+       "names": [
+        "Roberts Zutte"
+       ],
+       "company": "",
+       "address": [
+        "Roque de Los Muchachos, Balcon del Duque, N37, Adeje, Tenerife, Canary Islands, Spain"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+34673862216",
+          "href": "tel:+34673862216"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "caproberto07@gmail.com",
+          "href": "mailto:caproberto07@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Valencia & Spanish Mediterranean Ports",
+     "inspectors": [
+      {
+       "names": [
+        "Arturo Ramon"
+       ],
+       "company": "VLC Marine Inspectors",
+       "address": [
+        "C/MORA DE RUBIELOS 3, ESC 2 PTA 4",
+        "46007 VALENCIA (SPAIN)"
+       ],
+       "contact": [
+        [
+         "Tel",
+         {
+          "k": "tel",
+          "text": "+ 34 696562406",
+          "href": "tel:+34696562406"
+         }
+        ],
+        [
+         "Email",
+         {
+          "k": "mail",
+          "text": "arturo.monzo@vlcmarineinspectors.com",
+          "href": "mailto:arturo.monzo@vlcmarineinspectors.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Sweden",
+   "code": "SE",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "All Regions",
+     "inspectors": [
+      {
+       "names": [
+        "Eng. Radwan Yahya"
+       ],
+       "company": "Rayah Maritime Services Group",
+       "address": [
+        "Malmo, Sweden"
+       ],
+       "contact": [
+        [
+         "GSM:",
+         {
+          "k": "tel",
+          "text": "+905372407007",
+          "href": "tel:+905372407007"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "malmo@rayahgroup.com",
+          "href": "mailto:malmo@rayahgroup.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Syria",
+   "code": "SY",
+   "region": "mideast",
+   "cities": [
+    {
+     "city": "Tartous",
+     "inspectors": [
+      {
+       "names": [
+        "Mahmoud Sabrah"
+       ],
+       "company": "AFS Shipping Company",
+       "address": [
+        "AFS SHIPPING COMPANY S.A.",
+        "Flag – Class Registration & Survey",
+        "Al-Minaa Street Near Al-Lfaah Fast Food",
+        "TARTOUS – SYRIA"
+       ],
+       "contact": [
+        [
+         "Whatsapp:",
+         {
+          "k": "tel",
+          "text": "+963 992 015105",
+          "href": "tel:+963992015105"
+         }
+        ],
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+963 932 636 021",
+          "href": "tel:+963932636021"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "mahmoudsabrah70@gmail.com",
+          "href": "mailto:mahmoudsabrah70@gmail.com"
+         },
+         "/"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@afs-shipping.com",
+          "href": "mailto:info@afs-shipping.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Tartous",
+     "inspectors": [
+      {
+       "names": [
+        "Radwan Yahya"
+       ],
+       "company": "Rayah Maritime Survey Services",
+       "address": [
+        "Almina Street, Nouman Building, 1st floor , Tartous, Syria"
+       ],
+       "contact": [
+        [
+         "Whatsapp:",
+         {
+          "k": "tel",
+          "text": "+90 5372 40 7007",
+          "href": "tel:+905372407007"
+         }
+        ],
+        [
+         "Office: Land line",
+         {
+          "k": "tel",
+          "text": "+963 183 176 70",
+          "href": "tel:+96318317670"
+         }
+        ],
+        [
+         "Mobile:",
+         {
+          "k": "tel",
+          "text": "+90 5372 40 7007",
+          "href": "tel:+905372407007"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "istanbul@rayahgroup.com",
+          "href": "mailto:istanbul@rayahgroup.com"
+         },
+         {
+          "k": "mail",
+          "text": "tech@rayahgroup.com",
+          "href": "mailto:tech@rayahgroup.com"
+         }
+        ],
+        [
+         {
+          "k": "web",
+          "text": "www.rayahmaritime.com",
+          "href": "http://www.rayahmaritime.com/"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Thailand",
+   "code": "TH",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Phuket",
+     "inspectors": [
+      {
+       "names": [
+        "Mark Borkett"
+       ],
+       "company": "MSCT Thailand",
+       "address": [
+        "Cheun Chuan Lagoon koh Kaew Phuket 83000"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "66 (0) 87 997 2050",
+          "href": "tel:+66879972050"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "Borkett.marinesurveyors@gmail.com",
+          "href": "mailto:Borkett.marinesurveyors@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "The Netherlands",
+   "code": "NL",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Amsterdam",
+     "inspectors": [
+      {
+       "names": [
+        "Deniz Tosun"
+       ],
+       "company": "Atlas Shipping B.V.",
+       "address": [
+        "Mozartstraat 26,",
+        "3281TE Numansdorp",
+        "Netherlands"
+       ],
+       "contact": [
+        [
+         {
+          "k": "mail",
+          "text": "info@atlasshipping.nl",
+          "href": "mailto:info@atlasshipping.nl"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "d.tosun@atlasshipping.nl",
+          "href": "mailto:d.tosun@atlasshipping.nl"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+31 611088504",
+          "href": "tel:+31611088504"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+905334991953",
+          "href": "tel:+905334991953"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "IJmuiden",
+     "inspectors": [
+      {
+       "names": [
+        "Anton Dalhuijsen"
+       ],
+       "company": "Limdal b.v.",
+       "address": [
+        "Ronde Zonnedauw 50 1991 HW Velserbroek The Netherlands"
+       ],
+       "contact": [
+        [
+         "Cell phone :",
+         {
+          "k": "tel",
+          "text": "+31653376384",
+          "href": "tel:+31653376384"
+         }
+        ],
+        [
+         "Telephone:",
+         {
+          "k": "tel",
+          "text": "+31-235490335",
+          "href": "tel:+31235490335"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "anton@surveyors.nl",
+          "href": "mailto:anton@surveyors.nl"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Rotterdam",
+     "inspectors": [
+      {
+       "names": [
+        "Ali Devrim Avci"
+       ],
+       "company": "Navique Marine B.V.",
+       "address": [
+        "Room 2.22, Ligusterbaan 1, 2908 LW Capelle aan den Ijssel, Netherlands"
+       ],
+       "contact": [
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+ 90 532 225 84 64",
+          "href": "tel:+905322258464"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "survey@naviquemarine.com",
+          "href": "mailto:survey@naviquemarine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Tunisia",
+   "code": "TN",
+   "region": "africa",
+   "cities": [
+    {
+     "city": "Bizerte",
+     "inspectors": [
+      {
+       "names": [
+        "Akram Naffati"
+       ],
+       "company": "All Ships Services A.S.S",
+       "address": [
+        "795 Rue Othman Kaak, 7000 Bizerte, Tunisia"
+       ],
+       "contact": [
+        [
+         {
+          "k": "tel",
+          "text": "+216 28231445",
+          "href": "tel:+21628231445"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "+33617967995",
+          "href": "tel:+33617967995"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "akram.neffati1@gmail.com",
+          "href": "mailto:akram.neffati1@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Turkey",
+   "code": "TR",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Istanbul",
+     "inspectors": [
+      {
+       "names": [
+        "Levent Ulker"
+       ],
+       "company": "GERDA SHIPPING AND TRADING CO.",
+       "address": [
+        "Aydıntepe Mah. Beydağı Cad. Evora Sitesi C8 No: 2H-39 Tuzla/Istanbul/Turkiye"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+90 542 656 7977",
+          "href": "tel:+905426567977"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "info@gerdashipping.com",
+          "href": "mailto:info@gerdashipping.com"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "survey@gerdashipping.com",
+          "href": "mailto:survey@gerdashipping.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Istanbul",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Ahmad Obaji"
+       ],
+       "company": "Rayah Maritime Services Group",
+       "address": [
+        "Soganlik Yeni Mah. Baltaci MehmetPasa Sk. AC Yapi Moment İstanbul B-Blok 4 B 10 Kartal"
+       ],
+       "contact": [
+        [
+         "GSM:",
+         {
+          "k": "tel",
+          "text": "+905348210697",
+          "href": "tel:+905348210697"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "istanbul@rayahgroup.com",
+          "href": "mailto:istanbul@rayahgroup.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Istanbul",
+     "inspectors": [
+      {
+       "names": [
+        "Serdar Kandemir"
+       ],
+       "company": "WORLD MARITIME Shipping Co.",
+       "address": [
+        "Kaynarca Mahallesi , Aydınlıyolu Caddesi , Mavi Kule Rezidans No.137 Kat.4 Daire.19 Pendik – Istanbul – TURKIYE Postal Code 34890"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+90 532 466 4377",
+          "href": "tel:+905324664377"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "info@worldmaritime.com.tr",
+          "href": "mailto:info@worldmaritime.com.tr"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Istanbul",
+     "inspectors": [
+      {
+       "names": [
+        "Bulent Haznedar, Okan Gun & Vahap Yildirim"
+       ],
+       "company": "B&B MARITIME LTD.",
+       "address": [
+        "Cevizli mah. Mustafa Kemal Cad. Seyitgazi Sok. Hukukçular Towers, No:66, B blok, D:56, Kartal,Istanbul,34865,Turkiye"
+       ],
+       "contact": [
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+90 541 727 02 42",
+          "href": "tel:+905417270242"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+90 540 931 09 88",
+          "href": "tel:+905409310988"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "bnb@bnbmaritime.com",
+          "href": "mailto:bnb@bnbmaritime.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Samsun and Izmir Regions",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Ahmad Obaji"
+       ],
+       "company": "Rayah Maritime Services Group",
+       "address": [
+        "Soganlik Yeni Mah. Baltaci MehmetPasa Sk. AC Yapi Moment İstanbul B-Blok 4 B 10 Kartal / Istanbul – Turkey"
+       ],
+       "contact": [
+        [
+         "GSM:",
+         {
+          "k": "tel",
+          "text": "+905348210697",
+          "href": "tel:+905348210697"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "istanbul@rayahgroup.com",
+          "href": "mailto:istanbul@rayahgroup.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Istanbul",
+     "inspectors": [
+      {
+       "names": [
+        "Cem Ertem & Selim Ozdemir"
+       ],
+       "company": "KLAS Shipping and Consultancy & Survey LTD",
+       "address": [
+        "Tunel Yolu Cad., Yali Yolu Sok. Ismail Ergis Is Mrk.No.54B. Blok Kat 3 D.6, Ustbostanci"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+90 216 410 61 74",
+          "href": "tel:+902164106174"
+         },
+         "(Pbx)"
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+905455395367",
+          "href": "tel:+905455395367"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "barbados@klassurvey.com",
+          "href": "mailto:barbados@klassurvey.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "United Arab Emirates",
+   "code": "AE",
+   "region": "mideast",
+   "cities": [
+    {
+     "city": "Dubai",
+     "inspectors": [
+      {
+       "names": [
+        "Shadi Mansourah"
+       ],
+       "company": "Middle East Maritime Consultants SAL",
+       "address": [
+        "Allahidi Street, Allferdous Building, Office M02, bur Dubai, UAE PO Box 43113 Dubai"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+971 54 4239533",
+          "href": "tel:+971544239533"
+         }
+        ],
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+971 52 8771339",
+          "href": "tel:+971528771339"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "Shadi.Mansourah@memaritime.me",
+          "href": "mailto:Shadi.Mansourah@memaritime.me"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "surveys@memaritime.me",
+          "href": "mailto:surveys@memaritime.me"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Dubai",
+     "inspectors": [
+      {
+       "names": [
+        "Lazaros Sarris & Capt. Prabir Ghosh"
+       ],
+       "company": "Central Ship Management",
+       "address": [
+        "2103 Fortune Executive, Cluster T JLT Dubai, UAE PO Box 124747, Dubai"
+       ],
+       "contact": [
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "+971506241680",
+          "href": "tel:+971506241680"
+         }
+        ],
+        [
+         "mail:",
+         {
+          "k": "mail",
+          "text": "sarris.lazaros@gmail.com",
+          "href": "mailto:sarris.lazaros@gmail.com"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "+97152750-8749",
+          "href": "tel:+971527508749"
+         }
+        ],
+        [
+         "email:",
+         {
+          "k": "mail",
+          "text": "prabir1@gmail.com",
+          "href": "mailto:prabir1@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Dubai",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Zahid Ahmad"
+       ],
+       "company": "Sea Crest Marine Services L.L.C",
+       "address": [
+        "Mubarak Building 2nd Floor, Plot SR-15 Inside Dubai Maritime City, Dubai P.O. Box 7687"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "0971 4 5766791",
+          "href": "tel:+97145766791"
+         }
+        ],
+        [
+         "Fax:",
+         {
+          "k": "tel",
+          "text": "04 346 7755",
+          "href": "tel:+97143467755"
+         }
+        ],
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "971 (0)50 4819277",
+          "href": "tel:+971504819277"
+         }
+        ],
+        [
+         "email:",
+         {
+          "k": "mail",
+          "text": "surveys@seacrestuae.com",
+          "href": "mailto:surveys@seacrestuae.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Dubai",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Suheil Alkhayer"
+       ],
+       "company": "LEVANT SHIPPING",
+       "address": [
+        "Allahidi Street, Allferdous Building, Office M02, bur Dubai, UAE PO Box 43113 Dubai"
+       ],
+       "contact": [
+        [
+         "email:_",
+         {
+          "k": "tel",
+          "text": "00971504676132",
+          "href": "tel:+971504676132"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "suheil_76@yahoo.com",
+          "href": "mailto:suheil_76@yahoo.com"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "barbados.me@gmail.com",
+          "href": "mailto:barbados.me@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Dubai",
+     "inspectors": [
+      {
+       "names": [
+        "Ahmed Mohamed, Ali Elbahar & Mohyeldin Hassan Dabour"
+       ],
+       "company": "Blue Ocean Maritime",
+       "address": [
+        "Office 805",
+        "Al Saheel 1",
+        "AlNahda",
+        "Dubai UAE",
+        "PO Box 237951"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+971529712880",
+          "href": "tel:+971529712880"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@ocean-registrar.com",
+          "href": "mailto:info@ocean-registrar.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Dubai",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Amit Srivastava"
+       ],
+       "company": "High tide ships trading llc",
+       "address": [
+        "Unit M01-0239, Hamsah A Building, Unique World Business Centre, Karama, Dubai, U.A.E., PO Box 118762"
+       ],
+       "contact": [
+        [
+         "Tel :",
+         {
+          "k": "tel",
+          "text": "+971 526 654 600",
+          "href": "tel:+971526654600"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "barbadosinspectoruae@gmail.com",
+          "href": "mailto:barbadosinspectoruae@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "United Kingdom",
+   "code": "GB",
+   "region": "europe",
+   "cities": [
+    {
+     "city": "Glasgow",
+     "inspectors": [
+      {
+       "names": [
+        "Anshuman Jain"
+       ],
+       "company": "Marine Counsel Ltd.",
+       "address": [
+        "58, Shawwood Crescent, Newton Mearns, Glasgow, G775NB, UK"
+       ],
+       "contact": [
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+44 7459340194",
+          "href": "tel:+447459340194"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "contact@marinecounsel.uk",
+          "href": "mailto:contact@marinecounsel.uk"
+         }
+        ],
+        [
+         {
+          "k": "web",
+          "text": "www.marinecounsel.uk",
+          "href": "http://marinecounsel.uk"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Grimsby (Immingham/Hull/River Humber ports)",
+     "inspectors": [
+      {
+       "names": [
+        "Capt. Matt Turner"
+       ],
+       "company": "Zero Deficiencies Ltd.",
+       "address": [
+        "16 Dudley Street Grimsby"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "0044 1472 908799",
+          "href": "tel:+441472908799"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "support@zerodeficiencies.com",
+          "href": "mailto:support@zerodeficiencies.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Southampton",
+     "inspectors": [
+      {
+       "names": [
+        "Vikrant Bharat"
+       ],
+       "company": "Vessconn Maritime Ltd.",
+       "address": [
+        "71-75 Shelton Street , Covent Garden , London WC2H 9JQ, UK"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+44 (0) 7427655390",
+          "href": "tel:+447427655390"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "vik.bharat@vessconn.com",
+          "href": "mailto:vik.bharat@vessconn.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Southampton",
+     "inspectors": [
+      {
+       "names": [
+        "Ilker Simsek"
+       ],
+       "company": "ISMarine Ltd",
+       "address": [
+        "Enterprise House, Ocean Village, Southampton, Hampshire, England, SO14 3XB"
+       ],
+       "contact": [
+        [
+         "Tel: +44 239 2047878"
+        ],
+        [
+         "Mob: +44 783 7630316"
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "info@ismarine.co.uk",
+          "href": "mailto:info@ismarine.co.uk"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Newcastle Upon Tyne",
+     "inspectors": [
+      {
+       "names": [
+        "Glen Jones"
+       ],
+       "company": "DOCKSPEC Marine Ltd",
+       "address": [
+        "Killingworth Newcastle Upon Tyne NE127BJ United Kingdom"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+ 44 7535513545",
+          "href": "tel:+447535513545"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "glenjones@dockspec.com",
+          "href": "mailto:glenjones@dockspec.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Liverpool",
+     "inspectors": [
+      {
+       "names": [
+        "John Timms"
+       ],
+       "company": "G & W Marine Ltd.",
+       "address": [
+        "95 Greendale Road Port Sunlight Wirral CH62 4XE"
+       ],
+       "contact": [
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "+44(0)7740 719 185",
+          "href": "tel:+447740719185"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "john.timms@gandwmarine.com",
+          "href": "mailto:john.timms@gandwmarine.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Isle of Wight",
+     "inspectors": [
+      {
+       "names": [
+        "Mark Robinson"
+       ],
+       "company": "Mark Robinson Maritime Consultants (MRMC)",
+       "address": [
+        "Moor House, Orchard Way, Shorwell, Newport, Isle of Wight. PO30 3LF."
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "00 44 (0) 7714 251321",
+          "href": "tel:+447714251321"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "survey@mrmc.co",
+          "href": "mailto:survey@mrmc.co"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "USA",
+   "code": "US",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Maryland",
+     "inspectors": [
+      {
+       "names": [
+        "Virendra Singh"
+       ],
+       "company": "N/A",
+       "address": [
+        "18417 Cherry Laurel Lane, Gaithersburg, Maryland 20879."
+       ],
+       "contact": [
+        [
+         "Cell:",
+         {
+          "k": "tel",
+          "text": "240 508 4863",
+          "href": "tel:+12405084863"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "vsas12@yahoo.com",
+          "href": "mailto:vsas12@yahoo.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "St. Augustine, Florida",
+     "inspectors": [
+      {
+       "names": [
+        "Philip Joel Carmichael"
+       ],
+       "company": "Trinity Maritime LLC",
+       "address": [
+        "99 King St,",
+        "Box 494.",
+        "St. Augustine, FL 32092",
+        "USA"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+1 571 377 9684",
+          "href": "tel:+15713779684"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "flaginspections@trinitymarinesurvey.com",
+          "href": "mailto:flaginspections@trinitymarinesurvey.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Texas & Louisiana",
+     "inspectors": [
+      {
+       "names": [
+        "Murat Gunay"
+       ],
+       "company": "US Marine Co.",
+       "address": [
+        "5554 S Peek Road, Unit #2117, Katy, Texas 77450, USA"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+1 832 507 8284",
+          "href": "tel:+18325078284"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "Operation@USMarineSurvey.com",
+          "href": "mailto:Operation@USMarineSurvey.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Venezuela",
+   "code": "VE",
+   "region": "americas",
+   "cities": [
+    {
+     "city": "Caracas",
+     "inspectors": [
+      {
+       "names": [
+        "John Thomas Aitken"
+       ],
+       "company": "N/A",
+       "address": [
+        "Edificio Impolu, Apto 2B, Av. Avila, San Bernardino, Caracas – Venezuela"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "0058 41 2677 0804",
+          "href": "tel:+584126770804"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "0057 32 3400 5332",
+          "href": "tel:+573234005332"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "johntaitken@yahoo.co.uk",
+          "href": "mailto:johntaitken@yahoo.co.uk"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "country": "Vietnam",
+   "code": "VN",
+   "region": "asia",
+   "cities": [
+    {
+     "city": "Vung Tau City",
+     "inspectors": [
+      {
+       "names": [
+        "Le Duc Anh"
+       ],
+       "company": "Global Offshore Vietnam Co., Ltd",
+       "address": [
+        "Global Offshore Vietnam Co., Ltd",
+        "6th Floor, Giao Chau Building,",
+        "102A Le Hong Phong St.,",
+        "Ward 4, Vung Tau City",
+        "Vietnam"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+8490 2496526",
+          "href": "tel:+84902496526"
+         },
+         "/",
+         {
+          "k": "tel",
+          "text": "+8490 1246380",
+          "href": "tel:+84901246380"
+         }
+        ],
+        [
+         {
+          "k": "mail",
+          "text": "anh.le@globaloffcon.com",
+          "href": "mailto:anh.le@globaloffcon.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ho Chi Minh City",
+     "inspectors": [
+      {
+       "names": [
+        "Phuc Hong Tran"
+       ],
+       "company": "Seamar Maritime Management Company Ltd.",
+       "address": [
+        "153/8 Le Thi Hong Gam, Ben Thanh Ward, Ho Chi Minh City, Vietnam"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+84 828667335",
+          "href": "tel:+84828667335"
+         }
+        ],
+        [
+         "Mob:",
+         {
+          "k": "tel",
+          "text": "+84 909095475",
+          "href": "tel:+84909095475"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "phucseamar@gmail.com",
+          "href": "mailto:phucseamar@gmail.com"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "city": "Ho Chi Minh City",
+     "inspectors": [
+      {
+       "names": [
+        "Surendra Shrikishan Sharma"
+       ],
+       "company": "Ship Agency India Company Ltd",
+       "address": [
+        "15, Nguyen Luong Bang St, 6FL/2 , Golden King Building , Ward Phu My – Dist-7 Ho Chi Minh City – PIN 70000- Vietnam"
+       ],
+       "contact": [
+        [
+         "Tel:",
+         {
+          "k": "tel",
+          "text": "+842838293179",
+          "href": "tel:+842838293179"
+         }
+        ],
+        [
+         "AOH Mob:",
+         {
+          "k": "tel",
+          "text": "+84976596981",
+          "href": "tel:+84976596981"
+         }
+        ],
+        [
+         "/",
+         {
+          "k": "tel",
+          "text": "0906892669",
+          "href": "tel:+84906892669"
+         }
+        ],
+        [
+         "Email:",
+         {
+          "k": "mail",
+          "text": "captsharma@shipagencyindia.com",
+          "href": "mailto:captsharma@shipagencyindia.com"
+         }
+        ],
+        [
+         "Web:",
+         {
+          "k": "web",
+          "text": "www.shipagencygroup.com",
+          "href": "http://www.shipagencyindia.com"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

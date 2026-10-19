@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notices to Nautical Inspectors - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= notices to nautical inspectors: the active notices (date, kind, text, links), with inspector resources alongside ================= */
+.nnz{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.nnz .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.nnz .grid>*{min-width:0}
+.nn-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 24px;padding-bottom:16px;border-bottom:2px solid var(--gold)}
+.nn-head h2{max-width:22em;font-size:clamp(24px,2.2vw,34px);line-height:1.25}
+.nn-head .tag{white-space:nowrap}
+.nni-list{display:grid;gap:clamp(16px,2vw,24px);margin:24px 0 0;padding:0;list-style:none}
+.nni{min-width:0;scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.nni article{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:12px clamp(20px,3vw,40px);padding:clamp(22px,2.6vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.nni article>*{min-width:0}
+.nni-meta{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin:0}
+.nni-meta time .dd{display:block;font:600 clamp(34px,3vw,46px)/1 var(--mono);letter-spacing:-.02em;color:var(--text)}
+.nni-meta time .my{display:block;margin-top:6px;font:500 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chip{padding:5px 10px;border:1px solid var(--line);border-radius:99px;font:600 11px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
+.chip.new{border-color:var(--gold);background:var(--gold);color:var(--ink)}
+.nni-b h3{font-size:clamp(21px,1.8vw,26px);line-height:1.25}
+.nni-b>p{margin-top:10px;color:var(--muted)}
+.nni-acts{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:18px}
+.nni-acts .btn{min-height:46px;max-width:100%;white-space:normal}
+.lnk{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.lnk .ar{width:16px;height:16px}
+.nn-foot{margin-top:22px;color:var(--muted);font-size:15px}
+.nn-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.nn-side>.box:last-child{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the small help box stays in view */
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.box .links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:6px 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.box .links a:hover{border-color:var(--teal)}
+.box .links .ar{flex:none;color:var(--teal)}
+.box .links small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+.box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);border-top-color:var(--gold);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+@media (max-width:1100px){.nnz .grid{grid-template-columns:1fr}.nn-side{grid-template-columns:1fr 1fr}.nn-side>.box:last-child{position:static}}
+@media (max-width:760px){.nn-side{grid-template-columns:1fr}.nni article{grid-template-columns:1fr}.nni-meta{flex-direction:row;flex-wrap:wrap;align-items:center}.nni-meta time{margin-right:6px}.nni-meta time .dd,.nni-meta time .my{display:inline}.nni-meta time .dd{font-size:24px}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="nn-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/3.jpg" style="object-position:60% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/inspections/">Inspections</a></li><li aria-current="page">Notices to Nautical Inspectors</li></ol></nav>
+    <p class="tag port">{{nni-count}} active notices · latest {{nni-latest}}</p>
+    <h1 class="hull" id="nn-h1">Notices to <span>Nautical Inspectors</span></h1>
+    <div class="foot">
+      <p class="lead">The notices currently in force for Barbados-appointed Nautical Inspectors: changes to our forms, policies and procedures.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#notices">Active notices <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/inspections/inspection-templates/">Templates</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE NOTICES (generated from src/data/notices-to-nautical-inspectors.json) ================= -->
+<section class="nnz" id="notices" aria-labelledby="nn-h">
+  <div class="wrap grid">
+    <div>
+      <div class="nn-head"><h2 class="hull" id="nn-h">{{nni-intro}}</h2><span class="tag">{{nni-count}} active</span></div>
+      <ol class="nni-list">
+{{nni-items}}
+      </ol>
+      <p class="nn-foot">Earlier notices have been withdrawn or replaced. For anything not covered here, please <a href="https://barbadosmaritime.com/contact-us/">contact us</a>.</p>
+    </div>
+    <aside class="nn-side" aria-label="For Nautical Inspectors">
+      <div class="box hi"><p class="tag t">For inspectors</p><b class="hull">Inspector resources</b>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/inspections/inspection-templates/"><span>Inspection Templates<small>Including the AFSI form</small></span><svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/"><span>Appointed Nautical Inspectors<small>The full list</small></span><svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/bulletins/"><span>Bulletins<small>Including Bulletin 341</small></span><svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b><p>We are here to help you with any queries you may have.</p>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/useful-links/">Useful links <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

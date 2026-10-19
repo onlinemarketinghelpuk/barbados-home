@@ -1,0 +1,19 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/registry-alterations/change-of-vessels-name/ (WordPress feed, modified 28 May 2026). Wording as live; the tick list restates the live sentences (marked check). No screenshot.",
+  "intro": [
+    "In order to change a Barbadian vessel's name, first use our portal to check instantly if the new name is available.",
+    "Requests to change a vessel's name must be submitted on PPR01-F01 Application for Registration by email to the Registry.",
+    "Where the Registry is informed of the intention to change a vessel's name, the owner must obtain written approval for the name change from any existing mortgagees. The owner must forward the mortgagee's written consent together with the Notice of Name Proposed form to the Registry."
+  ],
+  "needs": [
+    { "id": "name", "text": "The new name, checked as available on our portal", "check": "restates the live sentence" },
+    { "id": "f01", "text": "PPR01-F01 Application for Registration, completed" },
+    { "id": "consent", "text": "Written consent to the name change from any existing mortgagees (if the vessel is mortgaged)" },
+    { "id": "notice", "text": "The Notice of Name Proposed form", "check": "named on the live page, but not linked there" }
+  ],
+  "files": [
+    { "code": "PPR01-F01", "title": "Application for Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F01-Application-for-Registration-Rev.06.docx" }
+  ],
+  "portal": { "label": "Check name availability", "href": "https://portal.barbadosmaritime.org/name_availability" },
+  "note": "Send the completed form, and any mortgagee's written consent with the Notice of Name Proposed form, to the Registry by email."
+}

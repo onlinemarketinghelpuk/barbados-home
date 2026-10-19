@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registration Fees - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= registration fees: a fee estimator for ships (by NRT), then every fee as a searchable table ================= */
+.rfz{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.rfz .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.rfz .grid>*{min-width:0}
+.est{padding:clamp(22px,2.6vw,32px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.est h2{font-size:clamp(24px,2.2vw,32px)}
+.est>p{max-width:60ch;margin-top:8px;color:var(--muted)}
+.est-f{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:16px 24px;align-items:end;margin-top:20px}
+.est-f>*{min-width:0}
+.est label{display:grid;gap:8px;font:600 12px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.est input{width:100%;min-height:52px;padding:10px 14px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--abyss);color:var(--text);font:600 20px/1.2 var(--mono)}
+.est input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.est-out{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0}
+.est-out div{padding:12px 16px;border:1px solid var(--line);border-radius:2px;background:var(--card)}
+.est-out dt{font:600 11.5px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.est-out dd{margin:6px 0 0;font:600 clamp(20px,2vw,26px)/1.2 var(--mono);color:var(--text);overflow-wrap:anywhere}
+.est-out dd small{font-size:13px;color:var(--muted)}
+.est .band{margin-top:14px;font-size:15px;color:var(--muted)}
+.est .band b{color:var(--text)}
+.est .fine{margin-top:8px;font-size:13.5px;color:var(--muted)}
+.rf-tools{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:clamp(28px,3vw,44px);padding:14px 0;background:var(--abyss);border-bottom:1px solid var(--line)}
+.rf-tools .search{position:relative;flex:1 1 280px}
+.rf-tools .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
+.rf-tools input{width:100%;min-height:48px;padding:10px 14px 10px 44px;border:1px solid color-mix(in srgb,var(--text) 24%,transparent);border-radius:2px;background:var(--card);color:var(--text);font:400 16px/1.4 var(--sans)}
+.rf-tools input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 25%,transparent)}
+.rf-count{font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.rf-count b{color:var(--text)}
+.fees{margin-top:clamp(28px,3vw,44px);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 90px)}
+.fh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--gold)}
+.fh h2{font-size:clamp(24px,2vw,30px)}
+.fi{max-width:65ch;margin-top:12px;color:var(--muted);font-size:15px}
+.ft{width:100%;border-collapse:collapse}
+.ft thead th{padding:12px 0 8px;font:600 11.5px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left}
+.ft th,.ft td{padding:13px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.ft tbody th{padding-right:20px;font-weight:600;line-height:1.4}
+.ft tbody th small{display:block;margin-top:3px;font-weight:400;font-size:14px;color:var(--muted)}
+.ft td{padding-left:16px;white-space:nowrap}
+.ft.two td,.ft.two thead th:last-child{text-align:right}
+.ft .amt{font:600 15px/1.4 var(--mono);color:var(--text)}
+.ft .unit{font-size:13px;color:var(--muted)}
+.ft tr.sub th{padding-top:22px;font:600 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.js .ft tr.off,.js .fees.off{display:none}
+.rf-empty{display:none;margin-top:24px;padding:24px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
+.rf-empty.show{display:block}
+.rf-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.box ul{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.box ul a{display:flex;align-items:center;gap:12px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.box ul a:hover{border-color:var(--teal)}
+.box ul .n{font:600 13px/1 var(--mono);color:var(--teal)}
+.box ul .ar{flex:none;margin-left:auto;color:var(--teal)}
+.rf-side>.jump{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the short jump list stays in view */
+.rel{padding-block:clamp(48px,6vw,88px);border-top:1px solid var(--line);background:var(--deep)}
+.rel ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,22px);margin:22px 0 0;padding:0;list-style:none}
+.rel a{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:transform .25s}
+.rel a:hover{transform:translateY(-3px)}
+.rel b{font-size:19px}
+.rel p{flex:1;color:var(--muted);font-size:15px}
+.rel .go{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.rel .go .ar{width:16px;height:16px}
+@media (max-width:1100px){.rfz .grid{grid-template-columns:1fr}.rf-side{grid-template-columns:1fr 1fr}.rf-side>.jump{position:static}.rel ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.rf-side{grid-template-columns:1fr}.rf-tools{position:static}.est-f{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .rel ul{grid-template-columns:1fr}.est-out{grid-template-columns:1fr}
+  .ft thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ft.three tr{display:grid;grid-template-columns:minmax(0,1fr);padding:12px 0;border-bottom:1px solid var(--line)}
+  .ft.three th,.ft.three td{padding:2px 0;border:0;white-space:normal}
+  .ft.three td{display:flex;justify-content:space-between;gap:12px}
+  .ft.three td .amt{text-align:right}
+  .ft.three td::before{content:attr(data-l);font:600 11.5px/1.6 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .ft.two td{white-space:normal}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="rf-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/3.jpg" style="object-position:50% 50%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li aria-current="page">Registration Fees</li></ol></nav>
+    <p class="tag port">All fees in US dollars · {{rf-code}} Rev {{rf-rev}}</p>
+    <h1 class="hull" id="rf-h1">Registration <span>Fees</span></h1>
+    <div class="foot">
+      <p class="lead">The Barbados Maritime Ship Registry fees: registration and annual fees for ships and yachts, certificates and services, and shipboard documents.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#estimate">Estimate your fees <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{rf-file}}" download>Fees list (Word)</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESTIMATOR + EVERY FEE (generated from src/data/registration-fees.json by tools/fill/registration-fees.mjs) ================= -->
+<!-- TODO(client): confirm the NRT band edges (2,000 / 25,000–25,001) and the "out of office hours" wording ("check" in the data) -->
+<section class="rfz" aria-label="Fees">
+  <div class="wrap grid">
+    <div>
+      <div class="est" id="estimate" aria-labelledby="est-h">
+        <p class="tag t">Ships</p><h2 class="hull" id="est-h">Estimate your <span>fees</span></h2>
+        <p>Ship fees depend on the net registered tonnage (NRT). Enter it to see the initial registration fee and the annual fee.</p>
+        <div class="est-f">
+          <label>Net tonnage (NRT)<input type="number" id="est-nrt" inputmode="decimal" min="0" step="any" placeholder="e.g. 12000"></label>
+          <dl class="est-out" aria-live="polite">
+            <div><dt>Initial registration</dt><dd id="est-init">–</dd></div>
+            <div><dt>Annual fee</dt><dd id="est-ann">–</dd></div>
+          </dl>
+        </div>
+        <p class="band" id="est-band">Enter the NRT to see which band applies.</p>
+        <p class="fine">An estimate in US dollars from the published fees list. Other fees (certificates, documents) are listed below. The Registry confirms the fee for every registration.</p>
+      </div>
+
+      <div class="rf-tools" role="search" aria-label="Find a fee">
+        <label class="search"><span class="sr">Search fees</span><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="rf-q" placeholder="Search fees, e.g. mortgage, CSR or logbook" autocomplete="off"></label>
+        <p class="rf-count" id="rf-count" aria-live="polite">Showing <b>{{rf-count}}</b> fees</p>
+      </div>
+
+      <section class="fees" id="vessels" aria-labelledby="vessels-h">
+        <div class="fh"><h2 class="hull" id="vessels-h">Ships</h2><span class="tag">By net tonnage</span></div>
+        <p class="fi">Initial registration and annual fees, by net registered tonnage (NRT).</p>
+        <table class="ft three"><caption class="sr">Ship fees by NRT, in US dollars</caption><thead><tr><th scope="col">NRT</th><th scope="col">Initial registration</th><th scope="col">Annual fee</th></tr></thead><tbody>
+{{rf-vessel}}
+        </tbody></table>
+      </section>
+      <section class="fees" id="yachts" aria-labelledby="yachts-h">
+        <div class="fh"><h2 class="hull" id="yachts-h">Yachts</h2><span class="tag">By use</span></div>
+        <table class="ft three"><caption class="sr">Yacht fees, in US dollars</caption><thead><tr><th scope="col">Use</th><th scope="col">Initial registration</th><th scope="col">Annual fee</th></tr></thead><tbody>
+{{rf-yacht}}
+        </tbody></table>
+      </section>
+{{rf-groups}}
+      <p class="rf-empty" id="rf-empty">No fees match. Try another word, or download the full fees list.</p>
+    </div>
+    <aside class="rf-side" aria-label="About these fees">
+      <div class="box"><p class="tag t">{{rf-code}} · Rev {{rf-rev}}</p><b class="hull">Fees list</b><p>The official list of Barbados Maritime Ship Registry fees, as a Microsoft Word document.</p>
+        <a class="btn btn-gold" href="{{rf-file}}" download>Download fees list <svg class="ar"><use href="#dl"/></svg></a></div>
+      <div class="box"><p class="tag t">Next steps</p><b class="hull">Register with us</b>
+        <ul>
+          <li><a href="https://barbadosmaritime.com/registration/ship-registration/">Ship registration <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/documents/shipboard-documents/">Order shipboard documents <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact the registry <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <nav class="box jump" aria-label="Fee tables"><p class="tag t">Jump to</p>
+        <ul>
+{{rf-nav}}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= RELATED (the live page's four links) ================= -->
+<section class="rel" aria-labelledby="rel-h">
+  <div class="wrap">
+    <p class="tag t">Also useful</p><h2 class="hull h2" id="rel-h">Before <span>you register</span></h2>
+    <ul>
+      <li><a href="https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/"><b class="hull">Nautical Inspectors</b><p>A network of Nautical Inspectors is available to carry out annual ship safety inspections and to assist ship operators whenever required.</p><span class="go">The inspectors <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="https://barbadosmaritime.com/documents/conventions/"><b class="hull">Shipping Legislation</b><p>Barbados is an IMO Member State, and has ratified many of the international conventions that have shaped the world's shipping legislation.</p><span class="go">Conventions <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="https://barbadosmaritime.com/documents/bulletins/"><b class="hull">Bulletins</b><p>We provide regular bulletins to keep our clients and associates abreast of new developments.</p><span class="go">Bulletins <svg class="ar"><use href="#ar"/></svg></span></a></li>
+      <li><a href="https://barbadosmaritime.com/barbados-recognised-organisations/"><b class="hull">Recognised Organisations</b><p>Classification societies appointed to survey and issue statutory certificates on our behalf.</p><span class="go">The ROs <svg class="ar"><use href="#ar"/></svg></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script type="application/json" id="rf-bands">{{rf-bands}}</script>
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// fee estimator: initial and annual fee for a ship's NRT, from the published bands (fixed, or rate × NRT + amount)
+const rfBands = JSON.parse(document.getElementById('rf-bands').textContent);
+const rfMoney = n => '$' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const rfFee = (r, nrt) => r.fixed !== undefined ? r.fixed : r.rate * nrt + r.plus;
+const nrtIn = document.getElementById('est-nrt'), outI = document.getElementById('est-init'), outA = document.getElementById('est-ann'), outB = document.getElementById('est-band');
+const rfBandNames = [...document.querySelectorAll('#vessels tbody th')].map(th => th.textContent);
+nrtIn.addEventListener('input', () => {
+  const nrt = parseFloat(nrtIn.value);
+  if (!(nrt > 0)) { outI.textContent = outA.textContent = '–'; outB.textContent = 'Enter the NRT to see which band applies.'; return; }
+  const i = rfBands.findIndex((b, k) => b.upTo === undefined || (k === 0 ? nrt < b.upTo : nrt <= b.upTo)), b = rfBands[i];
+  outI.textContent = rfMoney(rfFee(b.initial, nrt)); outA.textContent = rfMoney(rfFee(b.annual, nrt));
+  outB.innerHTML = `Band: <b>${rfBandNames[i]}</b>`;
+});
+// search every fee table; a table with no matches is hidden; the count is announced
+const rfQ = document.getElementById('rf-q'), rfRows = [...document.querySelectorAll('.ft tbody tr[data-s]')], rfSecs = [...document.querySelectorAll('.fees')];
+const rfNorm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+rfQ.addEventListener('input', () => {
+  const w = rfNorm(rfQ.value.trim()).split(/\s+/).filter(Boolean); let n = 0;
+  rfRows.forEach(r => { const ok = w.every(x => r.dataset.s.includes(x)); r.classList.toggle('off', !ok); if (ok) n += r.querySelectorAll('td').length; });
+  rfSecs.forEach(s => { s.classList.toggle('off', !s.querySelector('tr[data-s]:not(.off)')); s.querySelectorAll('tr.sub').forEach(h => h.classList.toggle('off', !!w.length)); });
+  document.getElementById('rf-count').innerHTML = n ? `Showing <b>${n}</b> fee${n === 1 ? '' : 's'}` : 'No matches';
+  document.getElementById('rf-empty').classList.toggle('show', !n);
+});
+</script>
+</body>
+</html>

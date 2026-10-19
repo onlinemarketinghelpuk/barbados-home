@@ -1,0 +1,64 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/registry-alterations/ and its four sub-pages (WordPress feed, read 19 Oct 2026) plus docs/registry-alterations.png. Body wording as live; the one-line summaries are ours, and the intro is reworded from 'please visit the links below' (client to approve). Photos are the live ones, as WebP in assets/img/registry-alterations/. Each \"check\" notes something to confirm.",
+  "intro": "For guidance on altering the registered details of your vessel, choose the change you need below.",
+  "sections": [
+    {
+      "id": "change-of-ownership", "title": "Change of Ownership", "heading": "Changing Vessel Ownership",
+      "summary": "The vessel stays on the Register under new owners.",
+      "img": "assets/img/registry-alterations/change-of-ownership.webp",
+      "live": "https://barbadosmaritime.com/registration/registry-alterations/change-of-ownership/",
+      "body": [
+        "When ownership of the vessel changes while the vessel remains on the Register, the documentation providing details of ownership, the discharge/transfer of any existing mortgages and the recording of any new mortgages must be submitted to the Registry.",
+        "Declarations of Agreement to the transfer of ownership must be obtained from parties having a registered interest in the vessel, namely mortgagees and/or bareboat charter party principals. On completion of entering the amended particulars into the Register and payment of the appropriate fee, a new Certificate of Registry will be issued by our registrars."
+      ],
+      "outcome": "A new Certificate of Registry",
+      "links": [{ "label": "Registration fees", "href": "https://barbadosmaritime.com/registration/registration-fees/" }]
+    },
+    {
+      "id": "change-of-vessels-name", "title": "Change of Vessel's Name", "heading": "Changing the Vessel's Name",
+      "summary": "Check the new name is free, then apply on PPR01-F01.",
+      "img": "assets/img/registry-alterations/change-of-vessels-name.webp",
+      "live": "https://barbadosmaritime.com/registration/registry-alterations/change-of-vessels-name/",
+      "body": [
+        "In order to change a Barbadian vessel's name, first use our portal to check instantly if the new name is available.",
+        "Requests to change a vessel's name must be submitted on PPR01-F01 Application for Registration by email to the Registry.",
+        "Where the Registry is informed of the intention to change a vessel's name, the owner must obtain written approval for the name change from any existing mortgagees. The owner must forward the mortgagee's written consent together with the Notice of Name Proposed form to the Registry."
+      ],
+      "files": [{ "code": "PPR01-F01", "title": "Application for Registration", "file": "https://barbadosmaritime.com/wp-content/uploads/2026/05/PPR01-F01-Application-for-Registration-Rev.06.docx" }],
+      "links": [{ "label": "Check name availability", "href": "https://portal.barbadosmaritime.org/name_availability", "ext": true }],
+      "check": "the Notice of Name Proposed form has no link on the live page"
+    },
+    {
+      "id": "change-of-owners-name", "title": "Change of Owner's Name and/or Address", "heading": "Changing the Owner's Name or Address",
+      "summary": "Same owner, new registered name or address.",
+      "img": "assets/img/registry-alterations/change-of-owners-name.webp",
+      "live": "https://barbadosmaritime.com/registration/registry-alterations/change-of-owners-name-and-or-address/",
+      "body": [
+        "Changes to the owner's registered details to be recorded in the Register are to be communicated in writing to the Registry in accordance with PPR01-C04 Checklist for Change of Owner, ensuring the agreement of any existing mortgagees as shown against the vessel.",
+        "On receipt of the required documentation and the appropriate fee, the Registry will issue a new Certificate of Registration and Continuous Synopsis Record (CSR)."
+      ],
+      "outcome": "A new Certificate of Registration and CSR",
+      "files": [{ "code": "PPR01-C04", "title": "Checklist for Change of Owner", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/09/PPR01-C04-Checklist-for-Change-of-Owner-Rev.00.docx" }],
+      "check": "the live page also links an older file, PPR01-F12 Checklist for Change of Owner Rev.00 (Feb 2025), with no link text; left out here"
+    },
+    {
+      "id": "deletion", "title": "Deletion", "heading": "Vessel Deletion",
+      "summary": "Taking the vessel off the Barbados Register.",
+      "img": "assets/img/registry-alterations/deletion.webp",
+      "live": "https://barbadosmaritime.com/registration/registry-alterations/deletion/",
+      "body": [
+        "The Registry must be informed in writing of the owner's intention to take the vessel away from the Registry. Registrars will inform the owner of the documents required to remove the vessel from the Register. Registrars will also inform the Accounts department to confirm that all due fees have been paid."
+      ],
+      "needs": {
+        "intro": "For the deletion of the vessel to be completed the Registrar must be in receipt of the following:",
+        "items": [
+          "Confirmation all outstanding fees have been paid.",
+          "The original Barbados Certificate of Registry for cancellation.",
+          "Original mortgage instrument stamped and signed by the mortgagee if there is a mortgage recorded.",
+          "If bare-boated in, evidence that Primary flag has accepted the vessel on its register."
+        ]
+      },
+      "note": "Compulsory de-registration will be applied where due fees are not paid on time or there is evidence that vessels are not being maintained in accordance with international standards."
+    }
+  ]
+}

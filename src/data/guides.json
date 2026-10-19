@@ -1,0 +1,27 @@
+{
+  "_note": "From the live page barbadosmaritime.com/documents/guides/ (WordPress feed, modified 29 Jul 2025) and docs/guides.png. The live page shows one tile (Yacht Master's Guide); its intro also names the Ship Master's guide, whose button points at the Forms page, so that guide's file is taken from the media library (marked check). File sizes are from the live server. Covers are the live media library's own images, in assets/img/guides/.",
+  "intro": "The BMSR has published guides on laws and regulations specific to Barbadian ships to aid Masters in their duties and obligations.",
+  "guides": [
+    {
+      "id": "ship-masters-guide", "title": "Ship Master's Guide", "for": "Commercial vessels",
+      "desc": "Laws and regulations specific to Barbadian ships, to aid Masters of commercial vessels in their duties and obligations.",
+      "file": "https://barbadosmaritime.com/wp-content/uploads/2017/03/mastershandbook-revision-3.pdf", "type": "PDF", "size": "781 KB", "rev": "3", "year": "2017",
+      "cover": "assets/img/guides/ship-masters-guide-cover.png", "w": 113, "h": 160,
+      "check": "not linked on the live page (its button points at the Forms page); the file is the media library's 'mastershandbook revision 3' (March 2017), and a 'Ship Masters Guide rev4' cover (Sept 2018) suggests a later revision exists"
+    },
+    {
+      "id": "yacht-masters-guide", "title": "Yacht Master's Guide", "for": "Yachts, commercial and pleasure",
+      "desc": "Laws and regulations specific to Barbadian yachts, commercial and pleasure, to aid Masters in their duties and obligations.",
+      "file": "https://barbadosmaritime.com/wp-content/uploads/2016/01/Yachtmaster_Layout-1.pdf", "type": "PDF", "size": "822 KB", "year": "2016",
+      "online": "https://barbadosmaritime.com/yacht-masters-guide/",
+      "cover": "assets/img/guides/yacht-masters-guide-cover.png", "w": 282, "h": 400,
+      "check": "the PDF dates from January 2016; confirm it is the current edition"
+    }
+  ],
+  "related": [
+    { "title": "Forms", "text": "Registration and operational forms for Barbadian ships.", "href": "https://barbadosmaritime.com/documents/forms/" },
+    { "title": "Nautical Inspectors", "text": "A network of Nautical Inspectors is available to carry out annual ship safety inspections and to assist ship operators whenever required.", "href": "https://barbadosmaritime.com/list-of-appointed-nautical-inspectors/", "check": "the live tile links to the Recognised Organisations page" },
+    { "title": "Bulletins", "text": "We provide regular bulletins to keep our clients and associates abreast of new developments.", "href": "https://barbadosmaritime.com/documents/bulletins/" },
+    { "title": "Conventions", "text": "The international conventions that have been instrumental in shaping the world's shipping legislation.", "href": "https://barbadosmaritime.com/documents/conventions/" }
+  ]
+}

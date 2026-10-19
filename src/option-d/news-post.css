@@ -1,0 +1,17 @@
+
+/* ================= Option D · News post, in the home page's style =================
+   The particulars sheet: the post's details and sharing become a side column on the left (gold rules, no boxes, the date set large),
+   the article runs alongside, and older/newer and downloads are ruled rows with square corners. */
+.np-grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.np-grid>aside{order:-1}
+.np-side{gap:0}
+.np-box{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.np-box+.np-box{margin-top:24px}
+.np-box dl>div:first-child dd{font:600 clamp(30px,2.6vw,40px)/1.05 var(--mono);letter-spacing:-.02em}
+.np-share a,.np-share button,.np-files,.np-files a,.np-fig img,.np-pager a{border-radius:0}
+.np-files{padding-inline:0;border:0;border-top:2px solid var(--gold);background:none}
+.np-pager a{border:0;border-top:2px solid var(--gold);background:none;padding-inline:0}
+.np-hero .np-meta a{border-radius:0}
+.np-tags li{border-radius:0}
+@media (max-width:1100px){.np-grid{grid-template-columns:1fr}.np-grid>aside{order:0}.np-side{grid-template-columns:1fr 1fr;gap:0 32px}.np-box+.np-box{margin-top:0}}
+@media (max-width:640px){.np-side{grid-template-columns:1fr}.np-box+.np-box{margin-top:24px}}

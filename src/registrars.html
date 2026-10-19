@@ -154,7 +154,11 @@ chips.forEach(c => c.addEventListener('click', () => { region = c.dataset.region
 jump.addEventListener('change', () => {
   if (!jump.value) return;
   q.value = ''; region = 'all'; chips.forEach(x => x.setAttribute('aria-pressed', x.dataset.region === 'all')); apply();
-  const g = document.getElementById(jump.value); g.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); g.querySelector('h2').focus({ preventScroll: true });
+  // land the country just below whatever is pinned over it: the header, plus the finder when it sits above the list (not beside it, as in Option D's side column)
+  const g = document.getElementById(jump.value), f = document.querySelector('.finder'), fr = f.getBoundingClientRect(), gr = g.getBoundingClientRect();
+  const over = getComputedStyle(f).position === 'sticky' && fr.left < gr.right && fr.right > gr.left;
+  const top = (parseFloat(getComputedStyle(f).top) || 0) + (over ? fr.height : 0) + 12;
+  scrollTo({ top: gr.top + scrollY - top, behavior: reduce ? 'auto' : 'smooth' }); g.querySelector('h2').focus({ preventScroll: true });
   jump.value = '';
 });
 // copy buttons

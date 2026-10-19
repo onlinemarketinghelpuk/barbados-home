@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bareboat Charters Registration - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= bareboat charters: the two directions (out of / in to the flag), what the charter-party must state, the checklist ================= */
+.bb{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.bb .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.bb .grid>*{min-width:0}
+.bb-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3vw,40px);align-items:center}
+.bb-intro>*{min-width:0}
+.bb-intro h2{font-size:clamp(28px,2.6vw,40px)}
+.bb-intro .lead{margin-top:14px;max-width:46ch;font-size:clamp(18px,1.4vw,21px);line-height:1.5}
+.bb figure{margin:0;overflow:hidden;border-radius:2px;background:var(--hull)}
+.bb figure img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+.bb-dirs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin:clamp(32px,4vw,48px) 0 0;padding:0;list-style:none}
+.bbd{min-width:0;padding:24px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.bbd h3{margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.bbd>p{color:var(--muted);font-size:15.5px}
+.pts{display:grid;gap:8px;margin:16px 0 0;padding:14px 0 0;border-top:1px solid var(--line);list-style:none}
+.pts li{position:relative;padding-left:24px;font-weight:600;font-size:15px;line-height:1.4}
+.pts li::before{content:"";position:absolute;left:2px;top:.42em;width:10px;height:6px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
+.agr{margin-top:clamp(40px,5vw,72px);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.agr-h{padding-bottom:16px;border-bottom:2px solid var(--gold)}
+.agr-h h2{font-size:clamp(26px,2.4vw,36px)}
+.agr-h p{margin-top:8px;color:var(--muted)}
+.agr-body{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3vw,40px);margin-top:20px;align-items:start}
+.agr-body>*{min-width:0}
+.must{margin:0;padding:0;list-style:none}
+.must li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.must .n{font:600 13px/1.6 var(--mono);color:var(--teal)}
+.must b{display:block;font-size:17px;line-height:1.35}
+.must small{display:block;margin-top:4px;color:var(--muted);font-size:15px}
+.bbn{display:grid;gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.bbn li{padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.bbn b{display:block;font-size:16px}
+.bbn span{display:block;margin-top:2px;color:var(--muted);font-size:15px}
+.bb-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.bb-side>.box:last-child{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the last, small box stays in view */
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .btn{margin-top:16px;max-width:100%;white-space:normal;text-align:left;line-height:1.25;padding-block:10px}
+.box.hi{border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
+.box .file{margin-top:10px;font:600 12px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.facts{display:grid;gap:0;margin:12px 0 0}
+.facts div{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{font:600 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+.facts dd{margin:0;font-weight:600}
+.links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.links a:hover{border-color:var(--teal)}
+.links .ar{flex:none;color:var(--teal)}
+@media (max-width:1100px){.bb .grid{grid-template-columns:1fr}.bb-side{grid-template-columns:1fr 1fr}.bb-side>.box:last-child{position:static}}
+@media (max-width:860px){.bb-intro,.agr-body{grid-template-columns:1fr}.bb-dirs{grid-template-columns:1fr}}
+@media (max-width:760px){.bb-side{grid-template-columns:1fr}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="bb-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-5.jpg" style="object-position:60% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li aria-current="page">Bareboat Charters</li></ol></nav>
+    <p class="tag port">Shipping Act 1994 · charter in · charter out</p>
+    <h1 class="hull" id="bb-h1">Bareboat <span>Charters</span></h1>
+    <div class="foot">
+      <p class="lead">Barbados permits bareboat chartering both in to and out of its flag. Here's how each works, and what the charter-party must state.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#charter-out">Charter in or out <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="{{bb-ck-file}}" download>Checklist (Word)</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE TWO DIRECTIONS + THE AGREEMENT (generated from src/data/bareboat-charter.json) ================= -->
+<section class="bb" aria-label="Bareboat chartering">
+  <div class="wrap grid">
+    <div>
+      <div class="bb-intro">
+        <div><p class="tag t">Bareboat Charter</p><h2 class="hull">In and out of <span>the Barbados flag</span></h2><p class="lead">{{bb-intro}}</p></div>
+        <figure>{{bb-photo-1}}</figure>
+      </div>
+      <ol class="bb-dirs" aria-label="The two directions">
+{{bb-directions}}
+      </ol>
+      <section class="agr" id="agreement" aria-labelledby="agr-h">
+        <div class="agr-h"><p class="tag t">In all cases</p><h2 class="hull" id="agr-h">The charter-party <span>agreement</span></h2><p>{{bb-lead}}</p></div>
+        <div class="agr-body">
+          <div>
+            <ol class="must">
+{{bb-items}}
+            </ol>
+            <ul class="bbn">
+{{bb-notes}}
+            </ul>
+          </div>
+          <figure>{{bb-photo-2}}</figure>
+        </div>
+      </section>
+    </div>
+    <aside class="bb-side" aria-label="Checklist and help">
+      <div class="box hi"><p class="tag t">{{bb-ck-code}}</p><b class="hull">Bareboat checklist</b><p>Everything you need to provide for a bareboat charter registration, as a Microsoft Word document.</p>
+        <a class="btn btn-gold" href="{{bb-ck-file}}" download>Download checklist <svg class="ar"><use href="#dl"/></svg></a>
+        <p class="file">{{bb-ck-type}} · Rev {{bb-ck-rev}}</p></div>
+      <div class="box"><p class="tag t">At a glance</p><b class="hull">Key facts</b>
+        <dl class="facts">
+          <div><dt>Legal basis</dt><dd>Shipping Act 1994</dd></div>
+          <div><dt>Charter period</dt><dd>Normally 2 to 5 years, extensions possible</dd></div>
+          <div><dt>Language</dt><dd>English</dd></div>
+          <div><dt>Recommended form</dt><dd>BIMCO standard BARECON</dd></div>
+        </dl>
+      </div>
+      <div class="box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/useful-links/">Useful links <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

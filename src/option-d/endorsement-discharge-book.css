@@ -1,0 +1,22 @@
+
+/* ================= Option D · Endorsement & Discharge Book, in the home page's style =================
+   The particulars sheet: the form, links and portal become a side column on the left (gold rules, no boxes),
+   the key rules a ruled two-column sheet, and the steps a register with large numbers in the margin. */
+.edb .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.edb .grid>aside{order:-1}
+.edb-side{gap:0}
+.edb-box,.edb-box.hi{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.edb-box+.edb-box{margin-top:24px}
+.edb-box ul a,.edb-dl{border-radius:0}
+.edb-intro figure{border-radius:0}
+.edb-h{border-bottom-width:1px;border-bottom-color:var(--line)}
+.edb-facts{gap:0;border-top:2px solid var(--gold)}
+.edb-facts li{padding:20px 22px 20px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.edb-facts li:nth-child(odd){padding-right:28px}
+.edb-steps li{grid-template-columns:96px minmax(0,1fr)}
+.edb-steps li:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.edb-steps .n{font-size:clamp(36px,3.4vw,52px);color:var(--text)}
+.edb-mlc{border:0;border-top:2px solid var(--gold);border-radius:0;padding-inline:0}
+@media (max-width:1100px){.edb .grid{grid-template-columns:1fr}.edb .grid>aside{order:0}.edb-side{grid-template-columns:1fr 1fr;gap:0 32px}.edb-box+.edb-box{margin-top:0}}
+@media (max-width:760px){.edb-side{grid-template-columns:1fr}.edb-box+.edb-box{margin-top:24px}.edb-steps li{grid-template-columns:56px minmax(0,1fr)}}
+@media (max-width:560px){.edb-facts li:nth-child(odd){padding-right:0}}

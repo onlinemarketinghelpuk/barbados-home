@@ -1,0 +1,17 @@
+
+/* ================= Option D · Notices to Nautical Inspectors, in the home page's style =================
+   The particulars sheet: inspector resources and help become a side column on the left (gold rules, no boxes),
+   and the notices a ruled register on the right (large date | kind + title + text + links). */
+.nnz .grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px)}
+.nnz .grid>aside{order:-1}
+.nn-side{gap:0}
+.box,.box.hi{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
+.box+.box{margin-top:24px}
+.box .links a,.nni-acts .btn{border-radius:0}
+.nn-head{border-bottom-width:1px;border-bottom-color:var(--line)}
+.nni-list{gap:0;margin-top:0}
+.nni article{padding:clamp(22px,2.6vw,32px) 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
+.nni article:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
+.chip{border-radius:0}
+@media (max-width:1100px){.nnz .grid{grid-template-columns:1fr}.nnz .grid>aside{order:0}.nn-side{grid-template-columns:1fr 1fr;gap:0 32px}.box+.box{margin-top:0}}
+@media (max-width:760px){.nn-side{grid-template-columns:1fr}.box+.box{margin-top:24px}}

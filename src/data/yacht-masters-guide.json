@@ -1,0 +1,31 @@
+{
+  "_note": "Live page barbadosmaritime.com/yacht-masters-guide/ (WordPress feed, modified 8 Jun 2022) is a flipbook viewer of the PDF plus a download link. The PDF can't be framed from another site (X-Frame-Options: SAMEORIGIN), so a copy is served from assets/docs/ and read with PDF.js. The contents are the guide's own contents page (PDF page 3); its printed page numbers match the PDF's pages.",
+  "title": "Yacht Master's Guide",
+  "for": "Commercial yachts (LY2 or Large Yacht Code compliant)",
+  "desc": "Laws and regulations specific to Barbadian yachts, commercial and pleasure, to aid Masters in their duties and obligations.",
+  "foreword": "This guide has been produced to assist all Masters and senior officers of Barbados registered Commercial Yachts, i.e. LY2 or Large Yacht Code compliant yachts. The guide should answer most of your questions regarding Barbados shipping legislation and of course, all seafarers, masters, operators etc. are welcome to contact the Ships' Registry by telephone or email should they have other concerns that are not answered in this guide.",
+  "pdf": "assets/docs/yacht-masters-guide.pdf",
+  "file": "https://barbadosmaritime.com/wp-content/uploads/2016/01/Yachtmaster_Layout-1.pdf",
+  "type": "PDF",
+  "size": "822 KB",
+  "pages": 22,
+  "published": "January 2016",
+  "cover": "assets/img/guides/yacht-masters-guide-cover.png", "w": 282, "h": 400,
+  "contents": [
+    { "n": 1, "title": "Commercial certification", "page": 4 },
+    { "n": 2, "title": "Crew agreement and articles", "page": 4 },
+    { "n": 3, "title": "Official log book", "page": 5 },
+    { "n": 4, "title": "Publications to be held on board", "page": 7 },
+    { "n": 5, "title": "LRIT", "page": 8 },
+    { "n": 6, "title": "Safety", "page": 9 },
+    { "n": 7, "title": "Accident Reporting", "page": 9 },
+    { "n": 8, "title": "Hours of Rest", "page": 10 },
+    { "n": 9, "title": "Barbados Nautical Inspectors and Class Societies", "page": 13 },
+    { "n": 10, "title": "Manning Requirements", "page": 14 },
+    { "n": 11, "title": "ISM", "page": 17 },
+    { "n": 12, "title": "Continuous Synopsis Record", "page": 17 },
+    { "n": 13, "title": "Complaints Procedure", "page": 19 },
+    { "n": 14, "title": "Frequently asked questions", "page": 20 }
+  ],
+  "note": { "text": "This guide was published in January 2016, so some details in it may have changed. For an emergency, use our 24/7 line:", "check": "ours. The guide's foreword gives an older 24/7 number (+44 (0)7703 359326) and a fax line; the current 24/7 number is +44 (0)7494 116754. Confirm the guide is still current or due for a new edition." }
+}

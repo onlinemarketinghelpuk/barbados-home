@@ -1,0 +1,24 @@
+{
+  "_note": "From the live page barbadosmaritime.com/registration/registry-alterations/change-of-ownership/ (WordPress feed, modified 8 Jun 2022). Wording as live. The live page has no downloads. The 'need' list is ours, drawn from the live paragraphs (check).",
+  "title": "Change of Ownership",
+  "heading": "Changing Vessel Ownership",
+  "img": "assets/img/registry-alterations/change-of-ownership.webp",
+  "body": [
+    "When ownership of the vessel changes while the vessel remains on the Register, the documentation providing details of ownership, the discharge/transfer of any existing mortgages and the recording of any new mortgages must be submitted to the Registry.",
+    "Declarations of Agreement to the transfer of ownership must be obtained from parties having a registered interest in the vessel, namely mortgagees and/or bareboat charter party principals. On completion of entering the amended particulars into the Register and payment of the appropriate fee, a new Certificate of Registry will be issued by our registrars."
+  ],
+  "need": [
+    { "t": "Documentation providing details of the new ownership" },
+    { "t": "The discharge or transfer of any existing mortgages", "s": "If the vessel has registered mortgages" },
+    { "t": "The recording of any new mortgages", "s": "If the new owners are mortgaging the vessel" },
+    { "t": "Declarations of Agreement to the transfer of ownership", "s": "From every party with a registered interest: mortgagees and/or bareboat charter party principals" },
+    { "t": "Payment of the appropriate fee", "s": "See Registration fees" }
+  ],
+  "check": "the 'need' list restates the two live paragraphs as items; the sub-lines are ours",
+  "outcome": "A new Certificate of Registry, issued by our registrars once the amended particulars are entered in the Register and the fee is paid.",
+  "siblings": [
+    { "t": "Change of Vessel's Name", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-vessels-name/" },
+    { "t": "Change of Owner's Name and/or Address", "href": "https://barbadosmaritime.com/registration/registry-alterations/change-of-owners-name-and-or-address/" },
+    { "t": "Deletion", "href": "https://barbadosmaritime.com/registration/registry-alterations/deletion/" }
+  ]
+}

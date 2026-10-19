@@ -1,0 +1,19 @@
+{
+  "_note": "From the live page barbadosmaritime.com/inspections/inspection-templates/ (WordPress feed, modified 17 Oct 2025) and docs/inspection-templates.png. The live page is two download tiles; headings and button wording as live. The ZIP's contents and both file sizes were read from the live files (19 Oct 2026). Lines marked \"check\" are ours.",
+  "intro": "Templates for Barbados Nautical Inspectors: the Annual Flag State Inspection pack and the Certificate of Inspection.",
+  "introCheck": "ours; the live page has no intro",
+  "templates": [
+    {
+      "id": "annual-fsi", "title": "Annual Flag State Inspection", "cta": "Click to download Annual Flag State Inspection Template",
+      "file": "https://barbadosmaritime.com/wp-content/uploads/2025/10/Flag-State-Inspection-Templates.zip", "type": "ZIP", "size": "306 KB",
+      "contains": [
+        { "code": "PPO01-F01", "title": "Flag State Inspection Checklist", "type": "Excel", "rev": "00" },
+        { "code": "PPO01-F02", "title": "Inspection Photos", "type": "Word", "rev": "02" }
+      ]
+    },
+    {
+      "id": "certificate", "code": "PPO01-F03", "title": "Certificate of Inspection", "cta": "Click to download Certificate of Inspection Template",
+      "file": "https://barbadosmaritime.com/wp-content/uploads/2025/03/PPO01-F03-Certificate-of-Inspection-Rev.00.docx", "type": "DOCX", "size": "104 KB"
+    }
+  ]
+}

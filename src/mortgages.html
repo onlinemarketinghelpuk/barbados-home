@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgages - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* ================= mortgages: recording, priority (A, B, C…), the forms, completing the mortgage, recording and discharge ================= */
+.mg{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
+.mg .grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,4vw,64px);align-items:start}
+.mg .grid>*{min-width:0}
+.mg-intro{max-width:34em;font-size:clamp(20px,1.7vw,25px);line-height:1.45}
+.mg-sec{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 22px;margin-top:clamp(32px,4vw,52px);padding-top:20px;border-top:2px solid var(--gold);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 24px)}
+.mg-sec>*{min-width:0}
+.mg-sec .num{grid-row:1 / span 9;font:600 clamp(30px,3vw,44px)/1 var(--mono);letter-spacing:-.02em;color:var(--teal)}
+.mg-sec h2{font-size:clamp(24px,2.2vw,32px)}
+.mg-sec p{max-width:65ch;margin-top:12px;color:var(--muted)}
+.mg-sec p strong{color:var(--text)}
+.prio{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.prio li{display:flex;align-items:center;gap:12px;padding:10px 16px 10px 10px;border:1px solid var(--line);border-radius:2px;background:var(--card);font-size:15px}
+.prio b{display:grid;place-items:center;width:40px;height:40px;border-radius:2px;background:var(--gold);font:600 20px/1 var(--mono);color:var(--ink)}
+.prio li+li b{background:none;border:1px solid var(--gold);color:var(--teal)}
+.prio small{display:block;font:500 11.5px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.req{margin:16px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.req li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.req .t{font-weight:600;line-height:1.4}
+.req .t small{display:block;margin-top:3px;font:600 12px/1.3 var(--mono);letter-spacing:.04em;color:var(--teal)}
+.req a.dl{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font:600 11.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:var(--text);transition:border-color .2s,color .2s}
+.req a.dl:hover{border-color:var(--teal);color:var(--teal)}
+.req a.dl svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rules{display:grid;gap:10px;margin:16px 0 0;padding:0;list-style:none}
+.rules li{position:relative;padding:14px 16px 14px 46px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--text);font-size:15.5px;line-height:1.55}
+.rules li::before{content:"";position:absolute;left:16px;top:18px;width:14px;height:8px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
+.rules li.warn{border-color:color-mix(in srgb,var(--gold) 55%,transparent);background:color-mix(in srgb,var(--gold) 10%,var(--card))}
+.rules li.warn::before{content:"!";left:18px;top:13px;width:auto;height:auto;border:0;transform:none;font:700 17px/1 var(--mono);color:var(--teal)}
+.mg-side{align-self:stretch;display:grid;align-content:start;gap:14px}
+.box{padding:22px 24px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
+.box b.hull{display:block;margin:8px 0 10px;font-size:clamp(22px,1.9vw,28px)}
+.box p{color:var(--muted);font-size:15px}
+.box .links{display:grid;gap:8px;margin:14px 0 0;padding:0;list-style:none}
+.box .links a{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;border:1px solid var(--line);border-radius:2px;font-weight:600;font-size:15px;transition:border-color .2s}
+.box .links a:hover{border-color:var(--teal)}
+.box .links .ar{flex:none;color:var(--teal)}
+.facts{margin:12px 0 0;padding:0}
+.facts div{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{font:500 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-weight:600;font-size:15px}
+.box.hi{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px);border-color:color-mix(in srgb,var(--gold) 50%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)} /* only this small box stays in view */
+@media (max-width:1100px){.mg .grid{grid-template-columns:1fr}.mg-side{grid-template-columns:1fr 1fr}.box.hi{position:static}}
+@media (max-width:760px){.mg-side{grid-template-columns:1fr}}
+@media (max-width:560px){.mg-sec{grid-template-columns:1fr}.mg-sec .num{grid-row:auto}.req li{grid-template-columns:1fr}.req a.dl{justify-self:start}}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero ph" aria-labelledby="mg-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/BMSR-3.jpg" style="object-position:60% 55%" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/registration/">Registration</a></li><li aria-current="page">Mortgages</li></ol></nav>
+    <p class="tag port">Mortgage registration on Barbados flag</p>
+    <h1 class="hull" id="mg-h1">Ship <span>Mortgages</span></h1>
+    <div class="foot">
+      <p class="lead">Record a mortgage against a Barbados ship as soon as it's provisionally registered. Priority follows the date and time of recording, and the fees are set, whatever the sum.</p>
+      <div class="ctas"><a class="btn btn-teal" href="#forms">Mortgage forms <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="https://barbadosmaritime.com/registration/registration-fees/">Fees</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MORTGAGES (wording from the live page; forms from src/data/mortgages.json) ================= -->
+<section class="mg" aria-label="Mortgage registration">
+  <div class="wrap grid">
+    <div>
+      <p class="mg-intro">Barbados has long been regarded as a fiscally responsible jurisdiction with a respected reputation worldwide, as evidenced by the wide-ranging number of banks, lenders and shipowners involved in financing of ships registered on Barbados flag.</p>
+
+      <section class="mg-sec" id="recording" aria-labelledby="s1-h"><span class="num">01</span>
+        <h2 class="hull" id="s1-h">Recording <span>a mortgage</span></h2>
+        <p>Mortgages may be recorded against a ship as soon as the ship has completed all the registration requirements for initial (provisional) registration. The mortgage will remain recorded on the ship's register until the loan is recorded as discharged and will not lose its priority if any further mortgage is recorded.</p>
+        <p><strong>Mortgages take priority according to the date and time of recording in the register, and not from the date shown on the mortgage.</strong></p>
+      </section>
+
+      <section class="mg-sec" id="priority" aria-labelledby="s2-h"><span class="num">02</span>
+        <h2 class="hull" id="s2-h">Priority, <span>by letter</span></h2>
+        <ol class="prio" aria-label="Order of priority">
+          <li><b>A</b><span>First mortgage<small>First priority</small></span></li>
+          <li><b>B</b><span>Next mortgage<small>Then</small></span></li>
+          <li><b>C</b><span>And so on<small>Consecutive letters</small></span></li>
+        </ol>
+        <p>The first mortgage to be recorded against a ship will be annotated with the letter 'A', any subsequent mortgage would be allocated the letter 'B' and consecutive letters of the alphabet being used for any further mortgages. In the event that Mortgage 'A' is recorded as discharged, then Mortgage 'B' would become the first priority mortgage.</p>
+        <p>If a ship leaves the register without discharging any mortgage, the mortgage will remain on the register in perpetuity.</p>
+      </section>
+
+      <section class="mg-sec" id="forms" aria-labelledby="s3-h"><span class="num">03</span>
+        <h2 class="hull" id="s3-h">The mortgage <span>forms</span></h2>
+        <p>There are several different mortgage forms in use, with the most common being these two.</p>
+        <ul class="req">
+{{mg-forms}}
+        </ul>
+      </section>
+
+      <section class="mg-sec" id="completing" aria-labelledby="s4-h"><span class="num">04</span>
+        <h2 class="hull" id="s4-h">Completing <span>the mortgage</span></h2>
+        <ul class="rules">
+          <li class="warn">Avoid the use of the word 'Trust' in the mortgage document, in order to remain within the confines of the legislation enshrined in the Shipping Act 1994 (as amended).</li>
+          <li>Both the Mortgagor and the Mortgagee must be clearly identified by name and address of each party.</li>
+          <li>The mortgage recital may refer to a Covenant or Loan Agreement if required, but not attached to the mortgage document.</li>
+          <li>The Mortgage instrument must be notarised or under company seal or may be executed by an Attorney-in-Fact as a Deed, under a notarised Power of Attorney.</li>
+        </ul>
+      </section>
+
+      <section class="mg-sec" id="discharge" aria-labelledby="s5-h"><span class="num">05</span>
+        <h2 class="hull" id="s5-h">Recording <span>&amp; discharge</span></h2>
+        <p>Fees for recording or discharging a mortgage are set fees regardless of the sums involved in the transaction.</p>
+        <p>The original mortgage must be presented to the Registrar, who will annotate, sign and date the mortgage document, with the original being returned to the sender or otherwise as instructed. A copy of the mortgage will be held on the register. A transcript of the register may be requested at any time on payment of a small fee.</p>
+        <p>Recording the discharge of a mortgage requires the lender to record the reverse side of the original mortgage document, either notarised or under company seal. Again, this may be effected by an Attorney-in-Fact, under a notarised Power of Attorney. The discharged mortgage will be recorded, and a copy retained on the register before the original is returned to the sender or otherwise as instructed.</p>
+      </section>
+    </div>
+
+    <aside class="mg-side" aria-label="Mortgages at a glance">
+      <div class="box"><p class="tag t">Need help?</p><b class="hull">Talk to us</b><p>We are here to help you with any queries you may have.</p>
+        <ul class="links">
+          <li><a href="https://barbadosmaritime.com/registration/registration-fees/">Registration fees <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a></li>
+          <li><a href="https://barbadosmaritime.com/useful-links/">Useful links <svg class="ar"><use href="#ar"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="box hi"><p class="tag t">At a glance</p>
+        <dl class="facts">
+          <div><dt>Recorded from</dt><dd>Provisional registration</dd></div>
+          <div><dt>Priority</dt><dd>Date and time of recording</dd></div>
+          <div><dt>Fees</dt><dd>Set, whatever the sum</dd></div>
+          <div><dt>Forms</dt><dd>{{mg-count}} common forms (Word)</dd></div>
+        </dl>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND (A–C: the 24/7 band; Option D swaps in "Ready to register?") ================= -->
+<!-- @d:cta (Option D swaps this block; see src/option-d/) -->
+<section class="cta" aria-labelledby="cta-h">
+  <div class="wrap rv">
+    <p class="tag t">Principal Registrar</p>
+    <h2 class="hull h2" id="cta-h">We provide a 24/7 emergency service, <span>365 days a year.</span></h2>
+    <p class="lead">Urgent dispensation and exemptions may be dealt with outside of normal office hours, and the Principal Registrar may be contacted directly for help, advice and guidance.</p>
+    <a class="line hull" href="tel:+447494116754">+44 (0)7494 116754</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Contact us <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com">Email the office</a></div>
+  </div>
+</section>
+<!-- /@d:cta -->
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+</script>
+</body>
+</html>

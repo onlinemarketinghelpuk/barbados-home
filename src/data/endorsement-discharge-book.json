@@ -1,0 +1,17 @@
+{
+  "_note": "From the live page barbadosmaritime.com/seafarers-manning/endorsement-discharge-book/ (WordPress feed, modified 18 Dec 2025) and docs/endorsement-discharge-book.png. Wording as live; the photo is the live page's own (assets/img/endorsement-discharge-book/). Each \"check\" notes a tidy.",
+  "form": { "code": "PPS01-F01", "title": "Application for Flag State Endorsement and Seaman's Record Book", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/12/PPS01-F01-Application-for-Flag-State-Endorsement-and-Seamans-Record-Book-Rev.02.docx" },
+  "portal": "https://portal.barbadosmaritime.org/",
+  "facts": [
+    { "k": "Who", "v": "Officers only", "d": "We do not issue endorsements to ratings." },
+    { "k": "Certificates", "v": "White-listed countries", "d": "Certificates of Competency from a country we have an Undertaking with under STCW Reg. I/10.", "check": "the live page writes Reg. 1/10; the STCW regulation is I/10" },
+    { "k": "Language", "v": "English translation", "d": "Certificates of competency issued in a foreign language must carry one." },
+    { "k": "Medical", "v": "Valid medical certificate", "d": "Meeting STCW and ILO requirements." }
+  ],
+  "steps": [
+    { "t": "Download and complete the application", "d": "Download PPS01-F01 Application for Flag State Endorsement and Seaman's Record Book. Instructions on completion and return of the officer endorsement application form are included in the notes to the form.", "form": true },
+    { "t": "The owner, manager or crewing agency applies", "d": "Barbados does not accept applications from individuals for issue of endorsements. Owners/operators must provide the Registry with a signed letter of authorisation for the crewing agents they will use to man their ships, and this must confirm the agency is in compliance with the Company's ISM system and with MLC 2006 Regulations regarding Recruitment & Placement Agencies." },
+    { "t": "Certificate of Receipt of Application (CRA)", "d": "On receipt of a valid completed application, a CRA will be issued as soon as possible to the ship Owner/Manager or authorised crewing agency making the application. The CRA allows the holder to serve on board a Barbados registered ship for a maximum period of three months, pending issue of the full endorsement." },
+    { "t": "Full endorsement", "d": "A full endorsement will follow before the expiry date of the CRA. Barbados issued Certificates of Endorsement may be verified via our online portal system." }
+  ]
+}

@@ -11,7 +11,7 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 - Static site with inline CSS and JS, no framework. Vercel serves the committed files as they are (no build step on Vercel).
 - Fonts come from Google Fonts: Archivo (variable width and weight) and IBM Plex Mono site-wide; Nunito (option B) and Plus Jakarta Sans (option C) for the hero only.
 - Deployed to Vercel (project `barbados-v6`). Anything not listed in `.vercelignore` is **public**, so keep briefs and notes out of the deploy.
-- Local preview: `node .claude/serve.mjs` then open http://localhost:5173 (Python is not installed on this machine). Add `?theme=light` to a URL to force a theme.
+- Local preview: `node .claude/dev.mjs` (dev mode: rebuilds on changes to src/ or tools/ and live-reloads the browser; build errors show as a red bar) or `node .claude/serve.mjs` (plain), then open http://localhost:5173 (Python is not installed on this machine). Add `?theme=light` to a URL to force a theme.
 - The final build will be moved into WordPress. Forms are placeholders (Contact Form 7 id 51587 + reCAPTCHA).
 
 ## Structure: one source page, three generated options
@@ -32,12 +32,25 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 /src/inspections.html   Inspections (option-*/inspections/): facts, arranging, 5-type timeline, B004, resources
 /src/investigations.html Investigations (option-*/investigations/): report within 4h/24h, duty sheet, 3 sections
 /src/events.html, /src/data/events.json   Events (option-*/events/): one card per event, newest first
-/src/documents.html     Documents hub (option-*/documents/): 7 types in 3 groups + latest notices
+/src/documents.html     Documents hub (option-*/documents/): 8 types in 3 groups + latest notices; Events has a list/grid toggle (remembered)
 /src/forms.html, /src/data/forms.json   Forms (option-*/forms/): search + categories; only Registration (19) known
 /src/bulletins.html, /src/data/bulletins.json   Bulletins (option-*/bulletins/): search + topics + sort, subscription; 028–031 and PDFs to confirm
 /src/conventions.html, /src/data/conventions.json   Conventions (option-*/conventions/): 26 in 5 groups, search; 3 titles tidied (see "check")
 /src/shipboard.html, /src/data/shipboard.json   Shipboard Documents (option-*/shipboard/): 9 record books, order online/offline; also in the Documents menu and hub
-- Header dropdowns on The BMSR, Registration, Seafarers, Inspections, Investigations, Documents (src/partials/top.html + src/option-d/nav.html); keep both navs in step. Our team is a flyout under About us; Why register is not in the menu
+/src/news.html, /src/data/news.json   News (option-*/news/, live category/news/): feature + cards, topic chips; page 1 only (10 posts), newest first; photos in assets/img/news/
+/src/ship-registration.html, /src/data/ship-registration.json   Ship Registration (option-*/ship-registration/, live registration/ship-registration/): 2 stages, Word forms + documents as tick lists (localStorage); content from the live WordPress feed
+/src/{yacht-registration,mortgages,bareboat-charter,registry-alterations,registration-fees}.html   Registration sub-pages (option-*/<name>/), each with src/data/<name>.json, src/option-d/<name>.css and tools/fill/<name>.mjs; content from the live WordPress feed. Bareboat's live page is /bareboat-charter/; Registry Alterations holds its 4 live sub-pages as sections (#deletion etc.); Registration Fees shows the PP01-F01 Rev 04 schedule + NRT estimator
+/src/endorsement-discharge-book.html   Seafarers > Endorsement & discharge book (live seafarers-manning/endorsement-discharge-book/), same pattern
+/src/{inspection-templates,notices-to-nautical-inspectors,nautical-inspectors}.html   Inspections sub-pages (live inspections/…, list-of-appointed-nautical-inspectors/); Nautical Inspectors is a finder over 124 listings in 58 countries (parsed from the feed; 53 phone links inferred, see "checks")
+/src/{casualty-investigations,accident-incident-reports}.html   Investigations sub-pages ("Marine Accident Reporting", "Marine Safety Investigation Reports"; "Ongoing investigations" = accident-incident-reports#ongoing)
+/src/{marine-circulars,guides,barbados-legislation}.html   Documents sub-pages (live documents/marine-circulars-bmsr/, guides/, barbados-legislation/ with #acts and #regulations); shipboard rebuilt from the live order form (13 books, prices)
+/src/{change-of-ownership,change-of-vessels-name,change-of-owners-name,deletion}.html   Registry Alterations sub-pages (live registration/registry-alterations/…), a flyout under Registry alterations; shared rs- layout with tick lists; registry-alterations is now the overview
+/src/yacht-masters-guide.html   Documents > Guides > Yacht Master's Guide: PDF.js reader (cdnjs 3.11.174) over assets/docs/yacht-masters-guide.pdf
+/src/{acts,regulations}.html   Documents > Barbados Legislation > Acts / Regulations (live documents/acts/, documents/regulations/); barbados-legislation is now the overview
+/src/news-category.html   one page per news topic (option-*/news-<topic>/), built from news.json topics with page vars {{page:topic}}/{{page:name}}; News styles in src/partials/news-css.html; footer has News (live /news/ = same page)
+/src/news-post.html, /src/data/news-posts.json   one page per news post at its live address (option-*/<slug>/, 37), text cleaned from the feed; tools/fill/news-post.mjs; pictures in assets/img/news/posts/
+- New pages: own src/<dir>.html, src/data/<dir>.json, src/option-d/<dir>.css, optional tools/fill/<dir>.mjs (build plug-in); build one with --only <dir>; list it in LIVE + pages. Pull content from the live WordPress feed (wp-json), not screenshots
+- Header dropdowns on The BMSR, Registration, Seafarers, Inspections, Investigations, Documents (src/partials/top.html + src/option-d/nav.html); keep both navs in step. Our team is a flyout under About us; News is the last item; Why register is not in the menu
 /src/partials/page-css.html, script-base.html   inner-page styles (page hero, team cards) and shared page script
 /src/partials/          head, top (header, announcement bar), bottom (footer): shared by both pages via <!-- @include name -->
 /src/type-{a,b,c}.css   each option's hero typography (the only thing that differs)

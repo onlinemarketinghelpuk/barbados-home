@@ -26,6 +26,9 @@
 .sub .btn{justify-self:start;cursor:pointer}
 .sub .ok{display:none;padding:12px 14px;border:1px solid var(--line);border-radius:2px;font-size:15px;color:var(--text)}
 .sub .ok.show{display:block}
+.fm .aside-h{position:static;align-self:stretch;align-content:start}
+.fm .aside-h>.sub{position:sticky;top:calc(var(--bar-h) + var(--hdr-h) + 16px)} /* only the subscription stays in view, so the column never hides below the screen */
+@media (max-width:1100px){.fm .aside-h>.sub{position:static}}
 .sub .fine{font-size:13.5px;color:var(--muted)}
 .sub .fine a{display:inline;min-height:0;padding:0;border:0;color:var(--text);text-decoration:underline;text-underline-offset:3px}
 .help .dlall a{display:inline-flex;justify-content:center;padding:0 18px}.help .dlall .btn-gold{border-color:var(--gold)}

@@ -1,0 +1,12 @@
+{
+  "_note": "From the live page barbadosmaritime.com/documents/acts/ (WordPress feed, modified 30 May 2025) and docs/acts.png. Titles, numbers and PDF links as parsed into src/data/barbados-legislation.json (\"live\" keeps the exact published title, in capitals; \"title\" is the same words in title case). Order as live. Photos are the live page's own tiles (1024px PNGs, saved as 720px WebP in assets/img/acts/).",
+  "intro": "Find all Barbados Acts information right here",
+  "support": { "label": "Technical and Operational Support", "email": "ops@barbadosmaritime.com" },
+  "acts": [
+    { "live": "MERCHANT SHIPPING ACT, 2024", "title": "Merchant Shipping Act", "year": "2024", "no": "", "img": "merchant-shipping-act.webp", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-ACT-2024.pdf" },
+    { "live": "MERCHANT SHIPPING (LIABILITY AND COMPENSATION) ACT, 2024-30", "title": "Merchant Shipping (Liability and Compensation) Act", "year": "2024", "no": "2024-30", "img": "liability-and-compensation.webp", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-LIABILITY-AND-COMPENSATION-ACT-2024-30.pdf" },
+    { "live": "MERCHANT SHIPPING (LINER CONFERENCES) ACT, 2024-32", "title": "Merchant Shipping (Liner Conferences) Act", "year": "2024", "no": "2024-32", "img": "liner-conferences.webp", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-LINER-CONFERENCES-ACT-2024-32.pdf" },
+    { "live": "MERCHANT SHIPPING (MARITIME MARRIAGE) ACT, 2024-31", "title": "Merchant Shipping (Maritime Marriage) Act", "year": "2024", "no": "2024-31", "img": "maritime-marriage.webp", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-MARITIME-MARRIAGE-ACT-2024-31.pdf" },
+    { "live": "MERCHANT SHIPPING (MULTIMODAL TRANSPORT) ACT, 2024-29", "title": "Merchant Shipping (Multimodal Transport) Act", "year": "2024", "no": "2024-29", "img": "multimodal-transport.webp", "file": "https://barbadosmaritime.com/wp-content/uploads/2025/05/MERCHANT-SHIPPING-MULTIMODAL-TRANSPORT-ACT-2024-29.pdf" }
+  ]
+}
