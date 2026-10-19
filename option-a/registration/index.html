@@ -34,6 +34,7 @@
   --abyss:#03141F; --deep:#051D2C; --hull:#072638; --card:#082B40;
   --mint:#FEC725; --teal:#FEC725; --gold:#FEC725; --mist:#EAF2F4;
   --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14); --glass:rgba(3,20,31,.94);
+  --ph:#FFFFFF; /* input placeholder text: white on dark, muted on light */
   color:var(--text);
 }
 [data-theme="light"]{
@@ -41,6 +42,7 @@
   --abyss:#F4F7F8; --deep:#E7EEF1; --hull:#D9E4E8; --card:#FFFFFF;
   --mint:#1B3A93; --teal:#1B3A93;
   --text:#0A2230; --muted:#475E6B; --line:rgba(5,29,44,.13); --glass:rgba(244,247,248,.94);
+  --ph:var(--muted);
 }
 :root{
   --ink:#03141F;
@@ -49,6 +51,7 @@
   --bar-h:38px; --hdr-h:96px; --logo-h:clamp(52px,1.6vw + 37px,64px);
 }
 *,*::before,*::after{box-sizing:border-box}
+::placeholder{color:var(--ph);opacity:1}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}} /* Back to top and in-page links glide; reduced-motion users jump */
 body{margin:0;background:var(--abyss);color:var(--text);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -136,7 +139,6 @@ button,input{font:inherit}
 .dd:hover .dd-m,.dd:focus-within .dd-m,.dd.open .dd-m{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s,visibility 0s}
 .dd:hover .dd-t svg,.dd:focus-within .dd-t svg,.dd.open .dd-t svg{transform:rotate(180deg)}
 .dd.shut:not(.open) .dd-m{opacity:0;visibility:hidden}.dd.shut:not(.open) .dd-t svg{transform:none}
-.dd-h{padding:6px 12px 8px;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .hdr .in>nav .dd-m a{display:block;padding:10px 12px;border-radius:2px;font-size:14.5px;color:var(--text)}
 .hdr .in>nav .dd-m a::after{display:none}
 .hdr .in>nav .dd-m a:hover,.hdr .in>nav .dd-m a:focus-visible{background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--teal)}
@@ -344,7 +346,9 @@ button,input{font:inherit}
 .ftr .bottom{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:24px;border-top:1px solid var(--line);font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
 .ftr .bottom .legal{display:flex;gap:28px}
 .ftr .bottom a{color:var(--muted)}.ftr .bottom a:hover{color:var(--gold)}
-.totop{display:inline-flex;align-items:center;gap:8px}
+.ftr .bottom .legal{align-items:center}
+.totop{display:inline-grid;place-items:center;width:36px;height:36px;margin-block:-8px;border:1px solid var(--line);border-radius:50%;transition:border-color .2s,color .2s} /* icon only; its name comes from aria-label */
+.ftr .bottom .totop:hover{border-color:var(--gold)}
 .totop .ar{width:14px;height:14px;transform:rotate(-90deg)}.totop:hover .ar{transform:rotate(-90deg) translateX(3px)}
 
 /* ================= draught marks: a fixed depth scale that tracks how far down the page you are ================= */
@@ -542,65 +546,548 @@ button,input{font:inherit}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
-  <symbol id="dl" viewBox="0 0 24 24"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></symbol>
-  <symbol id="left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
-  <symbol id="right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
-  <symbol id="pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
-  <symbol id="play" viewBox="0 0 24 24"><path d="m7 4 12 8-12 8z"/></symbol>
-  <symbol id="menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
-  <symbol id="close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
-  <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-  <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+  <symbol id="ar" viewBox="0 0 24 24">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </symbol>
+  <symbol id="ext" viewBox="0 0 24 24">
+    <path d="M7 17 17 7M8 7h9v9" />
+  </symbol>
+  <symbol id="dl" viewBox="0 0 24 24">
+    <path d="M12 4v12M6 11l6 6 6-6M5 20h14" />
+  </symbol>
+  <symbol id="left" viewBox="0 0 24 24">
+    <path d="m15 18-6-6 6-6" />
+  </symbol>
+  <symbol id="right" viewBox="0 0 24 24">
+    <path d="m9 18 6-6-6-6" />
+  </symbol>
+  <symbol id="pause" viewBox="0 0 24 24">
+    <path d="M9 5v14M15 5v14" />
+  </symbol>
+  <symbol id="play" viewBox="0 0 24 24">
+    <path d="m7 4 12 8-12 8z" />
+  </symbol>
+  <symbol id="menu" viewBox="0 0 24 24">
+    <path d="M4 8h16M4 16h16" />
+  </symbol>
+  <symbol id="close" viewBox="0 0 24 24">
+    <path d="M6 6l12 12M18 6 6 18" />
+  </symbol>
+  <symbol id="sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4" />
+    <path
+      d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+    />
+  </symbol>
+  <symbol id="moon" viewBox="0 0 24 24">
+    <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
+  </symbol>
   <!-- flag of Barbados (public domain geometry, official ultramarine and gold) -->
-  <symbol id="flag" viewBox="0 0 24000 16000"><path fill="#00267F" d="M0 0h24000v16000H0z"/><path fill="#FFC726" d="M8000 0h8000v16000H8000z"/><path id="trident" d="M12000 4124c-260 709-525 1447-1092 2012 176-58 484-110 682-105v2982l-842 125c-30-3-40-50-40-114-81-926-300-1704-552-2509-18-110-337-530-91-456 30 4 359 138 307 74-448-464-1103-798-1739-897-56-14-89 14-39 79 844 1299 1550 2832 1544 4651 328 0 1123-194 1452-194v2104h415l95-5876z"/><use href="#trident" transform="matrix(-1 0 0 1 24000 0)"/></symbol>
-  <symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="flag" viewBox="0 0 24000 16000">
+    <path fill="#00267F" d="M0 0h24000v16000H0z" />
+    <path fill="#FFC726" d="M8000 0h8000v16000H8000z" />
+    <path
+      id="trident"
+      d="M12000 4124c-260 709-525 1447-1092 2012 176-58 484-110 682-105v2982l-842 125c-30-3-40-50-40-114-81-926-300-1704-552-2509-18-110-337-530-91-456 30 4 359 138 307 74-448-464-1103-798-1739-897-56-14-89 14-39 79 844 1299 1550 2832 1544 4651 328 0 1123-194 1452-194v2104h415l95-5876z"
+    />
+    <use href="#trident" transform="matrix(-1 0 0 1 24000 0)" />
+  </symbol>
+  <symbol id="phone" viewBox="0 0 24 24">
+    <path
+      d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+    />
+  </symbol>
 </svg>
 
 <header class="hdr">
   <div class="abar" role="region" aria-label="Announcements">
     <div class="wrap">
-      <button class="stop" type="button" aria-label="Pause announcements"><svg class="ar pause"><use href="#pause"/></svg><svg class="ar play"><use href="#play"/></svg></button>
-      <div class="tick"><div class="belt">
-        <!-- TODO(client): announcement items. Edit them here only; the script repeats them to fill the bar and loop it. -->
-        <ul>
-          <li><b>Notice</b><a href="../holidays/index.html">The London office is closed on UK public holidays. The 24/7 emergency line stays open.</a></li>
-          <li><b>Guidance</b><a href="https://barbadosmaritime.com/wp-content/uploads/2026/03/BMSR-War-Guidance-Update-03.03.pdf">Navigational guidance for Barbadian-flagged vessels in the Strait of Hormuz</a></li>
-          <li><b>News</b><a href="../bmsr-posidonia-2026-thank-you-to-everyone-we-met/index.html">BMSR at Posidonia 2026: thank you to everyone we met</a></li>
-          <li><b>Portal</b><a href="https://portal.barbadosmaritime.org/">Manage your registrations online through the BMSR Portal</a></li>
-        </ul>
-      </div></div>
-      <a class="em" href="tel:+447494116754" aria-label="24/7 emergency line, +44 (0)7494 116754"><svg class="ar"><use href="#phone"/></svg>24/7 emergency <span>+44 (0)7494 116754</span></a>
+      <button class="stop" type="button" aria-label="Pause announcements">
+        <svg class="ar pause">
+          <use href="#pause" /></svg
+        ><svg class="ar play">
+          <use href="#play" />
+        </svg>
+      </button>
+      <div class="tick">
+        <div class="belt">
+          <!-- TODO(client): announcement items. Edit them here only; the script repeats them to fill the bar and loop it. -->
+          <ul>
+            <li>
+              <b>Notice</b
+              ><a href="../holidays/index.html"
+                >The London office is closed on UK public holidays. The 24/7
+                emergency line stays open.</a
+              >
+            </li>
+            <li>
+              <b>Guidance</b
+              ><a
+                href="https://barbadosmaritime.com/wp-content/uploads/2026/03/BMSR-War-Guidance-Update-03.03.pdf"
+                >Navigational guidance for Barbadian-flagged vessels in the
+                Strait of Hormuz</a
+              >
+            </li>
+            <li>
+              <b>News</b
+              ><a
+                href="../bmsr-posidonia-2026-thank-you-to-everyone-we-met/index.html"
+                >BMSR at Posidonia 2026: thank you to everyone we met</a
+              >
+            </li>
+            <li>
+              <b>Portal</b
+              ><a href="https://portal.barbadosmaritime.org/"
+                >Manage your registrations online through the BMSR Portal</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a
+        class="em"
+        href="tel:+447494116754"
+        aria-label="24/7 emergency line, +44 (0)7494 116754"
+        ><svg class="ar">
+          <use href="#phone" /></svg
+        >24/7 emergency <span>+44 (0)7494 116754</span></a
+      >
     </div>
   </div>
   <div class="wrap in">
-    <a class="brand" href="../index.html" aria-label="Barbados Maritime Ship Registry, home"><img class="lg lg-w" src="../../assets/img/bmsr-logo-white.png" alt="Barbados Maritime Ship Registry" width="757" height="289"><img class="lg lg-n" src="../../assets/img/bmsr-logo-navy.png" alt="" width="757" height="289"><svg class="flag" viewBox="0 0 24000 16000" aria-hidden="true"><use href="#flag"/></svg></a>
-    <nav aria-label="Main"><span class="dd"><a href="../the-bmsr/index.html">The BMSR</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-bmsr" aria-label="Show the The BMSR menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-bmsr"><span class="dd-h">The BMSR</span><span class="dd-n"><a class="dd-p" href="../about/index.html">About us<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../team/index.html">Our team</a></span></span><a href="../registrars/index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><span class="dd-n"><a class="dd-p" href="../links/index.html">Useful links<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a></span></span><a href="../holidays/index.html">Public holidays</a><a href="../news/index.html">News</a></span></span><span class="dd"><a href="index.html">Registration</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-reg" aria-label="Show the Registration menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-reg"><span class="dd-h">Registration</span><a href="../ship-registration/index.html">Ship registration</a><a href="../yacht-registration/index.html">Yacht registration</a><a href="../mortgages/index.html">Mortgages</a><a href="../bareboat-charter/index.html">Bareboat charters</a><a href="../registration-fees/index.html">Registration fees</a><span class="dd-n"><a class="dd-p" href="../registry-alterations/index.html">Registry alterations<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../change-of-ownership/index.html">Change of ownership</a><a href="../change-of-vessels-name/index.html">Change of vessel's name</a><a href="../change-of-owners-name/index.html">Change of owner's name or address</a><a href="../deletion/index.html">Deletion</a></span></span></span></span><span class="dd"><a href="../seafarers/index.html">Seafarers</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-sea" aria-label="Show the Seafarers menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-sea"><span class="dd-h">Seafarers</span><a href="../endorsement-discharge-book/index.html">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span></span><span class="dd"><a href="../inspections/index.html">Inspections</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-insp" aria-label="Show the Inspections menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-insp"><span class="dd-h">Inspections</span><a href="../nautical-inspectors/index.html">Appointed Nautical Inspectors</a><a href="../inspection-templates/index.html">Inspection templates</a><a href="../notices-to-nautical-inspectors/index.html">Notices to Nautical Inspectors</a></span></span><span class="dd"><a href="../investigations/index.html">Investigations</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-inv" aria-label="Show the Investigations menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-inv"><span class="dd-h">Investigations</span><a href="../casualty-investigations/index.html">Marine accident reporting</a><a href="../accident-incident-reports/index.html">Marine safety investigation reports</a><a href="../accident-incident-reports/index.html#ongoing">Ongoing investigations</a></span></span><span class="dd"><a href="../documents/index.html">Documents</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-docs" aria-label="Show the Documents menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-docs"><span class="dd-h">Documents</span><a href="../forms/index.html">Forms</a><a href="../shipboard/index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../marine-circulars/index.html">Marine Circulars</a><span class="dd-n"><a class="dd-p" href="../guides/index.html">Guides<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../yacht-masters-guide/index.html">Yacht Master's Guide</a></span></span><a href="../conventions/index.html">Conventions</a><span class="dd-n"><a class="dd-p" href="../barbados-legislation/index.html">Barbados Legislation<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../acts/index.html">Acts</a><a href="../regulations/index.html">Regulations</a></span></span><a href="../documents/index.html#directory">Barbados Publications</a></span></span><a href="../events/index.html">Events</a></nav>
-    <a class="portal" href="https://portal.barbadosmaritime.org/">Portal <svg class="ar"><use href="#ext"/></svg></a>
-    <button class="theme" type="button" aria-label="Switch to light mode"><svg class="ar sun"><use href="#sun"/></svg><svg class="ar moon"><use href="#moon"/></svg></button>
-    <button class="burger" type="button" aria-controls="mnav" aria-expanded="false" aria-label="Menu"><svg class="ar o"><use href="#menu"/></svg><svg class="ar x"><use href="#close"/></svg></button>
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Barbados Maritime Ship Registry, home"
+      ><img
+        class="lg lg-w"
+        src="../../assets/img/bmsr-logo-white.png"
+        alt="Barbados Maritime Ship Registry"
+        width="757"
+        height="289" /><img
+        class="lg lg-n"
+        src="../../assets/img/bmsr-logo-navy.png"
+        alt=""
+        width="757"
+        height="289" /><svg
+        class="flag"
+        viewBox="0 0 24000 16000"
+        aria-hidden="true"
+      >
+        <use href="#flag" /></svg
+    ></a>
+    <nav aria-label="Main">
+      <span class="dd"
+        ><a href="../the-bmsr/index.html">The BMSR</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-bmsr"
+          aria-label="Show the The BMSR menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-bmsr"
+          ><span class="dd-n"
+            ><a class="dd-p" href="../about/index.html"
+              >About us<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a href="../team/index.html"
+                >Our team</a
+              ></span
+            ></span
+          ><a href="../registrars/index.html"
+            >Regional Registrars</a
+          ><a
+            href="../ros/index.html"
+            >Recognised Organisations</a
+          ><a href="../quality/index.html"
+            >Quality Assurance</a
+          ><span class="dd-n"
+            ><a class="dd-p" href="../links/index.html"
+              >Useful links<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a
+                href="https://www.investbarbados.org/shipping/"
+                target="_blank"
+                rel="noopener"
+                >Shipping – Invest Barbados – A Welcoming Investment
+                Climate<span class="sr"> (opens in a new tab)</span></a
+              ></span
+            ></span
+          ><a href="../holidays/index.html"
+            >Public holidays</a
+          ><a href="../news/index.html">News</a></span
+        ></span
+      ><span class="dd"
+        ><a href="index.html">Registration</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-reg"
+          aria-label="Show the Registration menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-reg"
+          ><a
+            href="../ship-registration/index.html"
+            >Ship registration</a
+          ><a
+            href="../yacht-registration/index.html"
+            >Yacht registration</a
+          ><a href="../mortgages/index.html"
+            >Mortgages</a
+          ><a href="../bareboat-charter/index.html"
+            >Bareboat charters</a
+          ><a
+            href="../registration-fees/index.html"
+            >Registration fees</a
+          ><span class="dd-n"
+            ><a
+              class="dd-p"
+              href="../registry-alterations/index.html"
+              >Registry alterations<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a
+                href="../change-of-ownership/index.html"
+                >Change of ownership</a
+              ><a
+                href="../change-of-vessels-name/index.html"
+                >Change of vessel's name</a
+              ><a
+                href="../change-of-owners-name/index.html"
+                >Change of owner's name or address</a
+              ><a
+                href="../deletion/index.html"
+                >Deletion</a
+              ></span
+            ></span
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../seafarers/index.html">Seafarers</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-sea"
+          aria-label="Show the Seafarers menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-sea"
+          ><a
+            href="../endorsement-discharge-book/index.html"
+            >Endorsement &amp; discharge book</a
+          ><a
+            href="../seafarers/index.html#check"
+            >Document validity check</a
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../inspections/index.html">Inspections</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-insp"
+          aria-label="Show the Inspections menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-insp"
+          ><a
+            href="../nautical-inspectors/index.html"
+            >Appointed Nautical Inspectors</a
+          ><a
+            href="../inspection-templates/index.html"
+            >Inspection templates</a
+          ><a
+            href="../notices-to-nautical-inspectors/index.html"
+            >Notices to Nautical Inspectors</a
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../investigations/index.html"
+          >Investigations</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-inv"
+          aria-label="Show the Investigations menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-inv"
+          ><a
+            href="../casualty-investigations/index.html"
+            >Marine accident reporting</a
+          ><a
+            href="../accident-incident-reports/index.html"
+            >Marine safety investigation reports</a
+          ><a
+            href="../accident-incident-reports/index.html#ongoing"
+            >Ongoing investigations</a
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../documents/index.html">Documents</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-docs"
+          aria-label="Show the Documents menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-docs"
+          ><a href="../forms/index.html">Forms</a
+          ><a href="../shipboard/index.html"
+            >Shipboard Documents</a
+          ><a href="../bulletins/index.html"
+            >Bulletins</a
+          ><a
+            href="../marine-circulars/index.html"
+            >Marine Circulars</a
+          ><span class="dd-n"
+            ><a
+              class="dd-p"
+              href="../guides/index.html"
+              >Guides<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a href="../yacht-masters-guide/index.html"
+                >Yacht Master's Guide</a
+              ></span
+            ></span
+          ><a href="../conventions/index.html"
+            >Conventions</a
+          ><span class="dd-n"
+            ><a
+              class="dd-p"
+              href="../barbados-legislation/index.html"
+              >Barbados Legislation<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a href="../acts/index.html">Acts</a
+              ><a href="../regulations/index.html"
+                >Regulations</a
+              ></span
+            ></span
+          ><a
+            href="../documents/index.html#directory"
+            >Barbados Publications</a
+          ></span
+        ></span
+      ><a href="../events/index.html">Events</a>
+    </nav>
+    <a class="portal" href="https://portal.barbadosmaritime.org/"
+      >Portal
+      <svg class="ar">
+        <use href="#ext" /></svg
+    ></a>
+    <button class="theme" type="button" aria-label="Switch to light mode">
+      <svg class="ar sun">
+        <use href="#sun" /></svg
+      ><svg class="ar moon">
+        <use href="#moon" />
+      </svg>
+    </button>
+    <button
+      class="burger"
+      type="button"
+      aria-controls="mnav"
+      aria-expanded="false"
+      aria-label="Menu"
+    >
+      <svg class="ar o">
+        <use href="#menu" /></svg
+      ><svg class="ar x">
+        <use href="#close" />
+      </svg>
+    </button>
   </div>
 </header>
 <nav class="mnav hull" id="mnav" aria-label="Main">
-  <a href="../the-bmsr/index.html">The BMSR</a><span class="msub"><a href="../about/index.html">About us</a><a class="m3" href="../team/index.html">Our team</a><a href="../registrars/index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><a href="../links/index.html">Useful links</a><a class="m3" href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a><a href="../holidays/index.html">Public holidays</a><a href="../news/index.html">News</a></span><a href="index.html">Registration</a><span class="msub"><a href="../ship-registration/index.html">Ship registration</a><a href="../yacht-registration/index.html">Yacht registration</a><a href="../mortgages/index.html">Mortgages</a><a href="../bareboat-charter/index.html">Bareboat charters</a><a href="../registration-fees/index.html">Registration fees</a><a href="../registry-alterations/index.html">Registry alterations</a><a class="m3" href="../change-of-ownership/index.html">Change of ownership</a><a class="m3" href="../change-of-vessels-name/index.html">Change of vessel's name</a><a class="m3" href="../change-of-owners-name/index.html">Change of owner's name or address</a><a class="m3" href="../deletion/index.html">Deletion</a></span><a href="../seafarers/index.html">Seafarers</a><span class="msub"><a href="../endorsement-discharge-book/index.html">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span><a href="../inspections/index.html">Inspections</a><span class="msub"><a href="../nautical-inspectors/index.html">Appointed Nautical Inspectors</a><a href="../inspection-templates/index.html">Inspection templates</a><a href="../notices-to-nautical-inspectors/index.html">Notices to Nautical Inspectors</a></span><a href="../investigations/index.html">Investigations</a><span class="msub"><a href="../casualty-investigations/index.html">Marine accident reporting</a><a href="../accident-incident-reports/index.html">Marine safety investigation reports</a><a href="../accident-incident-reports/index.html#ongoing">Ongoing investigations</a></span><a href="../documents/index.html">Documents</a><span class="msub"><a href="../forms/index.html">Forms</a><a href="../shipboard/index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../marine-circulars/index.html">Marine Circulars</a><a href="../guides/index.html">Guides</a><a class="m3" href="../yacht-masters-guide/index.html">Yacht Master's Guide</a><a href="../conventions/index.html">Conventions</a><a href="../barbados-legislation/index.html">Barbados Legislation</a><a class="m3" href="../acts/index.html">Acts</a><a class="m3" href="../regulations/index.html">Regulations</a><a href="../documents/index.html#directory">Barbados Publications</a></span><a href="../events/index.html">Events</a><a href="../contact/index.html">Contact us</a>
-  <a class="portal" href="https://portal.barbadosmaritime.org/">BMSR Portal <svg class="ar"><use href="#ext"/></svg></a>
+  <a href="../the-bmsr/index.html">The BMSR</a
+  ><span class="msub"
+    ><a href="../about/index.html">About us</a
+    ><a class="m3" href="../team/index.html">Our team</a
+    ><a href="../registrars/index.html"
+      >Regional Registrars</a
+    ><a href="../ros/index.html"
+      >Recognised Organisations</a
+    ><a href="../quality/index.html"
+      >Quality Assurance</a
+    ><a href="../links/index.html">Useful links</a
+    ><a
+      class="m3"
+      href="https://www.investbarbados.org/shipping/"
+      target="_blank"
+      rel="noopener"
+      >Shipping – Invest Barbados – A Welcoming Investment Climate<span
+        class="sr"
+      >
+        (opens in a new tab)</span
+      ></a
+    ><a href="../holidays/index.html">Public holidays</a
+    ><a href="../news/index.html">News</a></span
+  ><a href="index.html">Registration</a
+  ><span class="msub"
+    ><a href="../ship-registration/index.html"
+      >Ship registration</a
+    ><a href="../yacht-registration/index.html"
+      >Yacht registration</a
+    ><a href="../mortgages/index.html">Mortgages</a
+    ><a href="../bareboat-charter/index.html"
+      >Bareboat charters</a
+    ><a href="../registration-fees/index.html"
+      >Registration fees</a
+    ><a href="../registry-alterations/index.html"
+      >Registry alterations</a
+    ><a
+      class="m3"
+      href="../change-of-ownership/index.html"
+      >Change of ownership</a
+    ><a
+      class="m3"
+      href="../change-of-vessels-name/index.html"
+      >Change of vessel's name</a
+    ><a
+      class="m3"
+      href="../change-of-owners-name/index.html"
+      >Change of owner's name or address</a
+    ><a
+      class="m3"
+      href="../deletion/index.html"
+      >Deletion</a
+    ></span
+  ><a href="../seafarers/index.html">Seafarers</a
+  ><span class="msub"
+    ><a
+      href="../endorsement-discharge-book/index.html"
+      >Endorsement &amp; discharge book</a
+    ><a
+      href="../seafarers/index.html#check"
+      >Document validity check</a
+    ></span
+  ><a href="../inspections/index.html">Inspections</a
+  ><span class="msub"
+    ><a
+      href="../nautical-inspectors/index.html"
+      >Appointed Nautical Inspectors</a
+    ><a href="../inspection-templates/index.html"
+      >Inspection templates</a
+    ><a
+      href="../notices-to-nautical-inspectors/index.html"
+      >Notices to Nautical Inspectors</a
+    ></span
+  ><a href="../investigations/index.html">Investigations</a
+  ><span class="msub"
+    ><a
+      href="../casualty-investigations/index.html"
+      >Marine accident reporting</a
+    ><a
+      href="../accident-incident-reports/index.html"
+      >Marine safety investigation reports</a
+    ><a
+      href="../accident-incident-reports/index.html#ongoing"
+      >Ongoing investigations</a
+    ></span
+  ><a href="../documents/index.html">Documents</a
+  ><span class="msub"
+    ><a href="../forms/index.html">Forms</a
+    ><a href="../shipboard/index.html"
+      >Shipboard Documents</a
+    ><a href="../bulletins/index.html">Bulletins</a
+    ><a href="../marine-circulars/index.html"
+      >Marine Circulars</a
+    ><a href="../guides/index.html">Guides</a
+    ><a class="m3" href="../yacht-masters-guide/index.html"
+      >Yacht Master's Guide</a
+    ><a href="../conventions/index.html"
+      >Conventions</a
+    ><a href="../barbados-legislation/index.html"
+      >Barbados Legislation</a
+    ><a class="m3" href="../acts/index.html">Acts</a
+    ><a class="m3" href="../regulations/index.html"
+      >Regulations</a
+    ><a href="../documents/index.html#directory"
+      >Barbados Publications</a
+    ></span
+  ><a href="../events/index.html">Events</a
+  ><a href="../contact/index.html">Contact us</a>
+  <a class="portal" href="https://portal.barbadosmaritime.org/"
+    >BMSR Portal
+    <svg class="ar">
+      <use href="#ext" /></svg
+  ></a>
 </nav>
 
 <script>
-// header dropdowns: open on hover and keyboard focus (CSS); the arrow button toggles it for touch, and Escape or a click outside closes it
-document.querySelectorAll('.dd').forEach(dd => {
-  const t = dd.querySelector('.dd-t'), set = open => { dd.classList.toggle('open', open); dd.classList.toggle('shut', !open); t.setAttribute('aria-expanded', open); };
-  const unshut = () => dd.classList.remove('shut'); // 'shut' keeps it closed after Escape until focus or the mouse leaves
-  dd.addEventListener('focusout', e => { if (!dd.contains(e.relatedTarget)) unshut(); });
-  t.addEventListener('click', e => { e.stopPropagation(); set(!dd.classList.contains('open')); });
-  dd.addEventListener('keydown', e => { if (e.key === 'Escape' && (dd.classList.contains('open') || dd.querySelector('.dd-m').contains(document.activeElement))) { set(false); t.focus(); } });
-  dd.addEventListener('mouseleave', () => { set(false); if (!dd.contains(document.activeElement)) unshut(); }); // stays shut while focus is still inside
-  document.addEventListener('click', e => { if (!dd.contains(e.target)) set(false); });
-});
+  // header dropdowns: open on hover and keyboard focus (CSS); the arrow button toggles it for touch, and Escape or a click outside closes it
+  document.querySelectorAll(".dd").forEach((dd) => {
+    const t = dd.querySelector(".dd-t"),
+      set = (open) => {
+        dd.classList.toggle("open", open);
+        dd.classList.toggle("shut", !open);
+        t.setAttribute("aria-expanded", open);
+      };
+    const unshut = () => dd.classList.remove("shut"); // 'shut' keeps it closed after Escape until focus or the mouse leaves
+    dd.addEventListener("focusout", (e) => {
+      if (!dd.contains(e.relatedTarget)) unshut();
+    });
+    t.addEventListener("click", (e) => {
+      e.stopPropagation();
+      set(!dd.classList.contains("open"));
+    });
+    dd.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        (dd.classList.contains("open") ||
+          dd.querySelector(".dd-m").contains(document.activeElement))
+      ) {
+        set(false);
+        t.focus();
+      }
+    });
+    dd.addEventListener("mouseleave", () => {
+      set(false);
+      if (!dd.contains(document.activeElement)) unshut();
+    }); // stays shut while focus is still inside
+    document.addEventListener("click", (e) => {
+      if (!dd.contains(e.target)) set(false);
+    });
+  });
 </script>
-<div class="draught" aria-hidden="true"><ol><li>12M</li><li>11M</li><li>10M</li><li>9M</li><li>8M</li><li>7M</li><li>6M</li><li>5M</li></ol><span class="wl"></span></div>
+<div class="draught" aria-hidden="true">
+  <ol>
+    <li>12M</li>
+    <li>11M</li>
+    <li>10M</li>
+    <li>9M</li>
+    <li>8M</li>
+    <li>7M</li>
+    <li>6M</li>
+    <li>5M</li>
+  </ol>
+  <span class="wl"></span>
+</div>
 
 <main id="main">
 
@@ -736,7 +1223,7 @@ document.querySelectorAll('.dd').forEach(dd => {
       <div><p class="tag">Important links</p><ul><li><a href="../the-bmsr/index.html">The BMSR</a></li><li><a href="../about/index.html">About Us</a></li><li><a href="../contact/index.html">Contact us</a></li><li><a href="../links/index.html">Useful Links</a></li></ul></div>
       <div><p class="tag">Resources</p><ul><li><a href="../bulletins/index.html">Bulletins</a></li><li><a href="../news/index.html">News</a></li><li><a href="../holidays/index.html">Public Holidays</a></li><li><a href="../yacht-registration/index.html">Yacht Registration</a></li><li><a href="../registration-fees/index.html">Registration Fees</a></li></ul></div>
     </div>
-    <div class="bottom"><span>© 2026 Barbados Maritime Ship Registry. All rights reserved.</span><span class="legal"><a href="https://barbadosmaritime.com/privacy-policy/">Privacy policy</a><a class="totop" href="#main">Back to top <svg class="ar"><use href="#ar"/></svg></a></span></div>
+    <div class="bottom"><span>© 2026 Barbados Maritime Ship Registry. All rights reserved.</span><span class="legal"><a href="https://barbadosmaritime.com/privacy-policy/">Privacy policy</a><a class="totop" href="#main" aria-label="Back to top" title="Back to top"><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a></span></div>
   </div>
 </footer>
 

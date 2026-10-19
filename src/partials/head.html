@@ -27,6 +27,7 @@
   --abyss:#03141F; --deep:#051D2C; --hull:#072638; --card:#082B40;
   --mint:#FEC725; --teal:#FEC725; --gold:#FEC725; --mist:#EAF2F4;
   --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14); --glass:rgba(3,20,31,.94);
+  --ph:#FFFFFF; /* input placeholder text: white on dark, muted on light */
   color:var(--text);
 }
 [data-theme="light"]{
@@ -34,6 +35,7 @@
   --abyss:#F4F7F8; --deep:#E7EEF1; --hull:#D9E4E8; --card:#FFFFFF;
   --mint:#1B3A93; --teal:#1B3A93;
   --text:#0A2230; --muted:#475E6B; --line:rgba(5,29,44,.13); --glass:rgba(244,247,248,.94);
+  --ph:var(--muted);
 }
 :root{
   --ink:#03141F;
@@ -42,6 +44,7 @@
   --bar-h:38px; --hdr-h:96px; --logo-h:clamp(52px,1.6vw + 37px,64px);
 }
 *,*::before,*::after{box-sizing:border-box}
+::placeholder{color:var(--ph);opacity:1}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}} /* Back to top and in-page links glide; reduced-motion users jump */
 body{margin:0;background:var(--abyss);color:var(--text);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -129,7 +132,6 @@ button,input{font:inherit}
 .dd:hover .dd-m,.dd:focus-within .dd-m,.dd.open .dd-m{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s,visibility 0s}
 .dd:hover .dd-t svg,.dd:focus-within .dd-t svg,.dd.open .dd-t svg{transform:rotate(180deg)}
 .dd.shut:not(.open) .dd-m{opacity:0;visibility:hidden}.dd.shut:not(.open) .dd-t svg{transform:none}
-.dd-h{padding:6px 12px 8px;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .hdr .in>nav .dd-m a{display:block;padding:10px 12px;border-radius:2px;font-size:14.5px;color:var(--text)}
 .hdr .in>nav .dd-m a::after{display:none}
 .hdr .in>nav .dd-m a:hover,.hdr .in>nav .dd-m a:focus-visible{background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--teal)}
@@ -337,7 +339,9 @@ button,input{font:inherit}
 .ftr .bottom{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:24px;border-top:1px solid var(--line);font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
 .ftr .bottom .legal{display:flex;gap:28px}
 .ftr .bottom a{color:var(--muted)}.ftr .bottom a:hover{color:var(--gold)}
-.totop{display:inline-flex;align-items:center;gap:8px}
+.ftr .bottom .legal{align-items:center}
+.totop{display:inline-grid;place-items:center;width:36px;height:36px;margin-block:-8px;border:1px solid var(--line);border-radius:50%;transition:border-color .2s,color .2s} /* icon only; its name comes from aria-label */
+.ftr .bottom .totop:hover{border-color:var(--gold)}
 .totop .ar{width:14px;height:14px;transform:rotate(-90deg)}.totop:hover .ar{transform:rotate(-90deg) translateX(3px)}
 
 /* ================= draught marks: a fixed depth scale that tracks how far down the page you are ================= */

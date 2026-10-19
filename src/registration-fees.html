@@ -81,6 +81,8 @@
   .ft.three td .amt{text-align:right}
   .ft.three td::before{content:attr(data-l);font:600 11.5px/1.6 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
   .ft.two td{white-space:normal}}
+/* desktop: the header stays at its 80px scrolled height, so the pinned tools bar sits flush under it */
+@media (min-width:1241px){:root{--hdr-h:80px}}
 </style>
 <!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
 </head>

@@ -72,16 +72,17 @@ function fillRegistrars(html) {
   if (!html.includes('{{rr-')) return html;
   const rs = RR.registrars, byCountry = new Map();
   [...rs].sort((a, b) => a.country.replace(/^The /, '').localeCompare(b.country.replace(/^The /, ''), 'en')).forEach(r => { if (!byCountry.has(r.country)) byCountry.set(r.country, []); byCountry.get(r.country).push(r); });
+  const flag = (code, w, h) => `<img class="cc" src="https://flagcdn.com/${code.toLowerCase()}.svg" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`; // the country's flag (flagcdn.com, ISO code)
   const slug = s => 'rr-' + s.toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, '');
   const card = r => {
     const search = [r.country, r.name, r.company, r.address, ...r.email].join(' ').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
     const tels = r.tel.map(t => { const m = t.match(/^(.*?)\s*\((.+)\)$/); const num = m ? m[1] : t;
       return `<a class="ph" href="${telHref(num)}">${ICON_PH}${esc(num)}${m ? ` <small>${esc(m[2])}</small>` : ''}</a>`; }).join('');
     const mails = r.email.map(e => `<span class="em"><a href="mailto:${esc(e)}">${esc(e)}</a><button class="copy" type="button" data-copy="${esc(e)}" aria-label="Copy ${esc(e)}"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span>`).join('');
-    return `        <li class="rr-li" data-s="${esc(search)}"><article class="rr"><b class="nm">${esc(r.name)}</b><span class="co">${esc(r.company)}</span><address>${esc(r.address)}</address><div class="ct">${tels}${mails}</div></article></li>`;
+    return `        <li class="rr-li" data-s="${esc(search)}"><article class="rr"><p class="ctry" aria-hidden="true">${flag(r.code, 30, 20)}${esc(r.country)}</p><b class="nm">${esc(r.name)}</b><span class="co">${esc(r.company)}</span><address>${esc(r.address)}</address><div class="ct">${tels}${mails}</div></article></li>`;
   };
   const groups = [...byCountry].map(([c, list]) => `    <section class="rr-c" id="${slug(c)}" data-region="${list[0].region}" aria-labelledby="${slug(c)}-h">\n`
-    + `      <h2 class="rr-h hull" id="${slug(c)}-h" tabindex="-1"><span class="cc" aria-hidden="true">${list[0].code}</span>${esc(c)}${list.length > 1 ? ` <i>${list.length} registrars</i>` : ''}</h2>\n`
+    + `      <h2 class="rr-h hull" id="${slug(c)}-h" tabindex="-1">${flag(list[0].code, 42, 28)}${esc(c)}${list.length > 1 ? ` <i>${list.length} registrars</i>` : ''}</h2>\n`
     + `      <ul class="rr-grid">\n${list.map(card).join('\n')}\n      </ul>\n    </section>`).join('\n');
   const count = r => rs.filter(x => x.region === r).length;
   const chips = [`          <button type="button" data-region="all" aria-pressed="true">All <i>${rs.length}</i></button>`]

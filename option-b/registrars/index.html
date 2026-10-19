@@ -34,6 +34,7 @@
   --abyss:#03141F; --deep:#051D2C; --hull:#072638; --card:#082B40;
   --mint:#FEC725; --teal:#FEC725; --gold:#FEC725; --mist:#EAF2F4;
   --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14); --glass:rgba(3,20,31,.94);
+  --ph:#FFFFFF; /* input placeholder text: white on dark, muted on light */
   color:var(--text);
 }
 [data-theme="light"]{
@@ -41,6 +42,7 @@
   --abyss:#F4F7F8; --deep:#E7EEF1; --hull:#D9E4E8; --card:#FFFFFF;
   --mint:#1B3A93; --teal:#1B3A93;
   --text:#0A2230; --muted:#475E6B; --line:rgba(5,29,44,.13); --glass:rgba(244,247,248,.94);
+  --ph:var(--muted);
 }
 :root{
   --ink:#03141F;
@@ -49,6 +51,7 @@
   --bar-h:38px; --hdr-h:96px; --logo-h:clamp(52px,1.6vw + 37px,64px);
 }
 *,*::before,*::after{box-sizing:border-box}
+::placeholder{color:var(--ph);opacity:1}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}} /* Back to top and in-page links glide; reduced-motion users jump */
 body{margin:0;background:var(--abyss);color:var(--text);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -136,7 +139,6 @@ button,input{font:inherit}
 .dd:hover .dd-m,.dd:focus-within .dd-m,.dd.open .dd-m{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s,visibility 0s}
 .dd:hover .dd-t svg,.dd:focus-within .dd-t svg,.dd.open .dd-t svg{transform:rotate(180deg)}
 .dd.shut:not(.open) .dd-m{opacity:0;visibility:hidden}.dd.shut:not(.open) .dd-t svg{transform:none}
-.dd-h{padding:6px 12px 8px;font:500 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .hdr .in>nav .dd-m a{display:block;padding:10px 12px;border-radius:2px;font-size:14.5px;color:var(--text)}
 .hdr .in>nav .dd-m a::after{display:none}
 .hdr .in>nav .dd-m a:hover,.hdr .in>nav .dd-m a:focus-visible{background:color-mix(in srgb,var(--gold) 12%,transparent);color:var(--teal)}
@@ -344,7 +346,9 @@ button,input{font:inherit}
 .ftr .bottom{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:24px;border-top:1px solid var(--line);font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
 .ftr .bottom .legal{display:flex;gap:28px}
 .ftr .bottom a{color:var(--muted)}.ftr .bottom a:hover{color:var(--gold)}
-.totop{display:inline-flex;align-items:center;gap:8px}
+.ftr .bottom .legal{align-items:center}
+.totop{display:inline-grid;place-items:center;width:36px;height:36px;margin-block:-8px;border:1px solid var(--line);border-radius:50%;transition:border-color .2s,color .2s} /* icon only; its name comes from aria-label */
+.ftr .bottom .totop:hover{border-color:var(--gold)}
 .totop .ar{width:14px;height:14px;transform:rotate(-90deg)}.totop:hover .ar{transform:rotate(-90deg) translateX(3px)}
 
 /* ================= draught marks: a fixed depth scale that tracks how far down the page you are ================= */
@@ -493,7 +497,7 @@ button,input{font:inherit}
 /* results */
 .rr-c{padding-block:clamp(22px,2.5vw,32px);border-top:1px solid var(--line);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 150px)}
 .rr-h{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:clamp(26px,2.2vw,34px)}
-.cc{display:inline-grid;place-items:center;min-width:44px;height:30px;padding:0 6px;border:1px solid var(--gold);border-radius:2px;font:600 12.5px/1 var(--mono);letter-spacing:.08em;color:var(--teal)}
+.cc{display:block;flex:none;width:42px;height:28px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px var(--line)} /* the country flag */
 .rr-h i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
 .rr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .rr{display:flex;flex-direction:column;gap:12px;height:100%;padding:22px 22px 18px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
@@ -528,6 +532,20 @@ button,input{font:inherit}
   .chips::-webkit-scrollbar{display:none}
   .chips button{flex:none}
 }
+/* A–C: one grid of cards across all countries (no part-empty rows); each card shows its country, the country headings stay for screen readers.
+   The sections and lists step aside (display:contents), so search, regions and "jump to a country" work on the same markup. Option D keeps its ruled rows. */
+.rr .ctry{display:flex;align-items:center;gap:10px;margin:0 0 2px;font:600 12.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rr .ctry .cc{width:30px;height:20px}
+.rr-results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rr-results>*,.rr-li{min-width:0}
+.rr-c,.rr-grid{display:contents}
+.rr-h{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.rr-results .empty{grid-column:1 / -1}
+.rr-li.hit .rr{outline:2px solid var(--gold);outline-offset:3px;transition:outline-color .6s}
+@media (max-width:1100px){.rr-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.rr-results{grid-template-columns:1fr}}
+/* desktop: the header stays at its 80px scrolled height, so the pinned finder sits flush under it */
+@media (min-width:1241px){:root{--hdr-h:80px}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..1000&display=swap" rel="stylesheet">
 <style>
@@ -574,65 +592,548 @@ button,input{font:inherit}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
-  <symbol id="dl" viewBox="0 0 24 24"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></symbol>
-  <symbol id="left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
-  <symbol id="right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
-  <symbol id="pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
-  <symbol id="play" viewBox="0 0 24 24"><path d="m7 4 12 8-12 8z"/></symbol>
-  <symbol id="menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
-  <symbol id="close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
-  <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-  <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+  <symbol id="ar" viewBox="0 0 24 24">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </symbol>
+  <symbol id="ext" viewBox="0 0 24 24">
+    <path d="M7 17 17 7M8 7h9v9" />
+  </symbol>
+  <symbol id="dl" viewBox="0 0 24 24">
+    <path d="M12 4v12M6 11l6 6 6-6M5 20h14" />
+  </symbol>
+  <symbol id="left" viewBox="0 0 24 24">
+    <path d="m15 18-6-6 6-6" />
+  </symbol>
+  <symbol id="right" viewBox="0 0 24 24">
+    <path d="m9 18 6-6-6-6" />
+  </symbol>
+  <symbol id="pause" viewBox="0 0 24 24">
+    <path d="M9 5v14M15 5v14" />
+  </symbol>
+  <symbol id="play" viewBox="0 0 24 24">
+    <path d="m7 4 12 8-12 8z" />
+  </symbol>
+  <symbol id="menu" viewBox="0 0 24 24">
+    <path d="M4 8h16M4 16h16" />
+  </symbol>
+  <symbol id="close" viewBox="0 0 24 24">
+    <path d="M6 6l12 12M18 6 6 18" />
+  </symbol>
+  <symbol id="sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4" />
+    <path
+      d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+    />
+  </symbol>
+  <symbol id="moon" viewBox="0 0 24 24">
+    <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" />
+  </symbol>
   <!-- flag of Barbados (public domain geometry, official ultramarine and gold) -->
-  <symbol id="flag" viewBox="0 0 24000 16000"><path fill="#00267F" d="M0 0h24000v16000H0z"/><path fill="#FFC726" d="M8000 0h8000v16000H8000z"/><path id="trident" d="M12000 4124c-260 709-525 1447-1092 2012 176-58 484-110 682-105v2982l-842 125c-30-3-40-50-40-114-81-926-300-1704-552-2509-18-110-337-530-91-456 30 4 359 138 307 74-448-464-1103-798-1739-897-56-14-89 14-39 79 844 1299 1550 2832 1544 4651 328 0 1123-194 1452-194v2104h415l95-5876z"/><use href="#trident" transform="matrix(-1 0 0 1 24000 0)"/></symbol>
-  <symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="flag" viewBox="0 0 24000 16000">
+    <path fill="#00267F" d="M0 0h24000v16000H0z" />
+    <path fill="#FFC726" d="M8000 0h8000v16000H8000z" />
+    <path
+      id="trident"
+      d="M12000 4124c-260 709-525 1447-1092 2012 176-58 484-110 682-105v2982l-842 125c-30-3-40-50-40-114-81-926-300-1704-552-2509-18-110-337-530-91-456 30 4 359 138 307 74-448-464-1103-798-1739-897-56-14-89 14-39 79 844 1299 1550 2832 1544 4651 328 0 1123-194 1452-194v2104h415l95-5876z"
+    />
+    <use href="#trident" transform="matrix(-1 0 0 1 24000 0)" />
+  </symbol>
+  <symbol id="phone" viewBox="0 0 24 24">
+    <path
+      d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+    />
+  </symbol>
 </svg>
 
 <header class="hdr">
   <div class="abar" role="region" aria-label="Announcements">
     <div class="wrap">
-      <button class="stop" type="button" aria-label="Pause announcements"><svg class="ar pause"><use href="#pause"/></svg><svg class="ar play"><use href="#play"/></svg></button>
-      <div class="tick"><div class="belt">
-        <!-- TODO(client): announcement items. Edit them here only; the script repeats them to fill the bar and loop it. -->
-        <ul>
-          <li><b>Notice</b><a href="../holidays/index.html">The London office is closed on UK public holidays. The 24/7 emergency line stays open.</a></li>
-          <li><b>Guidance</b><a href="https://barbadosmaritime.com/wp-content/uploads/2026/03/BMSR-War-Guidance-Update-03.03.pdf">Navigational guidance for Barbadian-flagged vessels in the Strait of Hormuz</a></li>
-          <li><b>News</b><a href="../bmsr-posidonia-2026-thank-you-to-everyone-we-met/index.html">BMSR at Posidonia 2026: thank you to everyone we met</a></li>
-          <li><b>Portal</b><a href="https://portal.barbadosmaritime.org/">Manage your registrations online through the BMSR Portal</a></li>
-        </ul>
-      </div></div>
-      <a class="em" href="tel:+447494116754" aria-label="24/7 emergency line, +44 (0)7494 116754"><svg class="ar"><use href="#phone"/></svg>24/7 emergency <span>+44 (0)7494 116754</span></a>
+      <button class="stop" type="button" aria-label="Pause announcements">
+        <svg class="ar pause">
+          <use href="#pause" /></svg
+        ><svg class="ar play">
+          <use href="#play" />
+        </svg>
+      </button>
+      <div class="tick">
+        <div class="belt">
+          <!-- TODO(client): announcement items. Edit them here only; the script repeats them to fill the bar and loop it. -->
+          <ul>
+            <li>
+              <b>Notice</b
+              ><a href="../holidays/index.html"
+                >The London office is closed on UK public holidays. The 24/7
+                emergency line stays open.</a
+              >
+            </li>
+            <li>
+              <b>Guidance</b
+              ><a
+                href="https://barbadosmaritime.com/wp-content/uploads/2026/03/BMSR-War-Guidance-Update-03.03.pdf"
+                >Navigational guidance for Barbadian-flagged vessels in the
+                Strait of Hormuz</a
+              >
+            </li>
+            <li>
+              <b>News</b
+              ><a
+                href="../bmsr-posidonia-2026-thank-you-to-everyone-we-met/index.html"
+                >BMSR at Posidonia 2026: thank you to everyone we met</a
+              >
+            </li>
+            <li>
+              <b>Portal</b
+              ><a href="https://portal.barbadosmaritime.org/"
+                >Manage your registrations online through the BMSR Portal</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a
+        class="em"
+        href="tel:+447494116754"
+        aria-label="24/7 emergency line, +44 (0)7494 116754"
+        ><svg class="ar">
+          <use href="#phone" /></svg
+        >24/7 emergency <span>+44 (0)7494 116754</span></a
+      >
     </div>
   </div>
   <div class="wrap in">
-    <a class="brand" href="../index.html" aria-label="Barbados Maritime Ship Registry, home"><img class="lg lg-w" src="../../assets/img/bmsr-logo-white.png" alt="Barbados Maritime Ship Registry" width="757" height="289"><img class="lg lg-n" src="../../assets/img/bmsr-logo-navy.png" alt="" width="757" height="289"><svg class="flag" viewBox="0 0 24000 16000" aria-hidden="true"><use href="#flag"/></svg></a>
-    <nav aria-label="Main"><span class="dd"><a href="../the-bmsr/index.html">The BMSR</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-bmsr" aria-label="Show the The BMSR menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-bmsr"><span class="dd-h">The BMSR</span><span class="dd-n"><a class="dd-p" href="../about/index.html">About us<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../team/index.html">Our team</a></span></span><a href="index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><span class="dd-n"><a class="dd-p" href="../links/index.html">Useful links<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a></span></span><a href="../holidays/index.html">Public holidays</a><a href="../news/index.html">News</a></span></span><span class="dd"><a href="../registration/index.html">Registration</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-reg" aria-label="Show the Registration menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-reg"><span class="dd-h">Registration</span><a href="../ship-registration/index.html">Ship registration</a><a href="../yacht-registration/index.html">Yacht registration</a><a href="../mortgages/index.html">Mortgages</a><a href="../bareboat-charter/index.html">Bareboat charters</a><a href="../registration-fees/index.html">Registration fees</a><span class="dd-n"><a class="dd-p" href="../registry-alterations/index.html">Registry alterations<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../change-of-ownership/index.html">Change of ownership</a><a href="../change-of-vessels-name/index.html">Change of vessel's name</a><a href="../change-of-owners-name/index.html">Change of owner's name or address</a><a href="../deletion/index.html">Deletion</a></span></span></span></span><span class="dd"><a href="../seafarers/index.html">Seafarers</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-sea" aria-label="Show the Seafarers menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-sea"><span class="dd-h">Seafarers</span><a href="../endorsement-discharge-book/index.html">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span></span><span class="dd"><a href="../inspections/index.html">Inspections</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-insp" aria-label="Show the Inspections menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-insp"><span class="dd-h">Inspections</span><a href="../nautical-inspectors/index.html">Appointed Nautical Inspectors</a><a href="../inspection-templates/index.html">Inspection templates</a><a href="../notices-to-nautical-inspectors/index.html">Notices to Nautical Inspectors</a></span></span><span class="dd"><a href="../investigations/index.html">Investigations</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-inv" aria-label="Show the Investigations menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-inv"><span class="dd-h">Investigations</span><a href="../casualty-investigations/index.html">Marine accident reporting</a><a href="../accident-incident-reports/index.html">Marine safety investigation reports</a><a href="../accident-incident-reports/index.html#ongoing">Ongoing investigations</a></span></span><span class="dd"><a href="../documents/index.html">Documents</a><button class="dd-t" type="button" aria-expanded="false" aria-controls="dd-docs" aria-label="Show the Documents menu"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><span class="dd-m" id="dd-docs"><span class="dd-h">Documents</span><a href="../forms/index.html">Forms</a><a href="../shipboard/index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../marine-circulars/index.html">Marine Circulars</a><span class="dd-n"><a class="dd-p" href="../guides/index.html">Guides<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../yacht-masters-guide/index.html">Yacht Master's Guide</a></span></span><a href="../conventions/index.html">Conventions</a><span class="dd-n"><a class="dd-p" href="../barbados-legislation/index.html">Barbados Legislation<svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></a><span class="dd-s"><a href="../acts/index.html">Acts</a><a href="../regulations/index.html">Regulations</a></span></span><a href="../documents/index.html#directory">Barbados Publications</a></span></span><a href="../events/index.html">Events</a></nav>
-    <a class="portal" href="https://portal.barbadosmaritime.org/">Portal <svg class="ar"><use href="#ext"/></svg></a>
-    <button class="theme" type="button" aria-label="Switch to light mode"><svg class="ar sun"><use href="#sun"/></svg><svg class="ar moon"><use href="#moon"/></svg></button>
-    <button class="burger" type="button" aria-controls="mnav" aria-expanded="false" aria-label="Menu"><svg class="ar o"><use href="#menu"/></svg><svg class="ar x"><use href="#close"/></svg></button>
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Barbados Maritime Ship Registry, home"
+      ><img
+        class="lg lg-w"
+        src="../../assets/img/bmsr-logo-white.png"
+        alt="Barbados Maritime Ship Registry"
+        width="757"
+        height="289" /><img
+        class="lg lg-n"
+        src="../../assets/img/bmsr-logo-navy.png"
+        alt=""
+        width="757"
+        height="289" /><svg
+        class="flag"
+        viewBox="0 0 24000 16000"
+        aria-hidden="true"
+      >
+        <use href="#flag" /></svg
+    ></a>
+    <nav aria-label="Main">
+      <span class="dd"
+        ><a href="../the-bmsr/index.html">The BMSR</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-bmsr"
+          aria-label="Show the The BMSR menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-bmsr"
+          ><span class="dd-n"
+            ><a class="dd-p" href="../about/index.html"
+              >About us<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a href="../team/index.html"
+                >Our team</a
+              ></span
+            ></span
+          ><a href="index.html"
+            >Regional Registrars</a
+          ><a
+            href="../ros/index.html"
+            >Recognised Organisations</a
+          ><a href="../quality/index.html"
+            >Quality Assurance</a
+          ><span class="dd-n"
+            ><a class="dd-p" href="../links/index.html"
+              >Useful links<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a
+                href="https://www.investbarbados.org/shipping/"
+                target="_blank"
+                rel="noopener"
+                >Shipping – Invest Barbados – A Welcoming Investment
+                Climate<span class="sr"> (opens in a new tab)</span></a
+              ></span
+            ></span
+          ><a href="../holidays/index.html"
+            >Public holidays</a
+          ><a href="../news/index.html">News</a></span
+        ></span
+      ><span class="dd"
+        ><a href="../registration/index.html">Registration</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-reg"
+          aria-label="Show the Registration menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-reg"
+          ><a
+            href="../ship-registration/index.html"
+            >Ship registration</a
+          ><a
+            href="../yacht-registration/index.html"
+            >Yacht registration</a
+          ><a href="../mortgages/index.html"
+            >Mortgages</a
+          ><a href="../bareboat-charter/index.html"
+            >Bareboat charters</a
+          ><a
+            href="../registration-fees/index.html"
+            >Registration fees</a
+          ><span class="dd-n"
+            ><a
+              class="dd-p"
+              href="../registry-alterations/index.html"
+              >Registry alterations<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a
+                href="../change-of-ownership/index.html"
+                >Change of ownership</a
+              ><a
+                href="../change-of-vessels-name/index.html"
+                >Change of vessel's name</a
+              ><a
+                href="../change-of-owners-name/index.html"
+                >Change of owner's name or address</a
+              ><a
+                href="../deletion/index.html"
+                >Deletion</a
+              ></span
+            ></span
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../seafarers/index.html">Seafarers</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-sea"
+          aria-label="Show the Seafarers menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-sea"
+          ><a
+            href="../endorsement-discharge-book/index.html"
+            >Endorsement &amp; discharge book</a
+          ><a
+            href="../seafarers/index.html#check"
+            >Document validity check</a
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../inspections/index.html">Inspections</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-insp"
+          aria-label="Show the Inspections menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-insp"
+          ><a
+            href="../nautical-inspectors/index.html"
+            >Appointed Nautical Inspectors</a
+          ><a
+            href="../inspection-templates/index.html"
+            >Inspection templates</a
+          ><a
+            href="../notices-to-nautical-inspectors/index.html"
+            >Notices to Nautical Inspectors</a
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../investigations/index.html"
+          >Investigations</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-inv"
+          aria-label="Show the Investigations menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-inv"
+          ><a
+            href="../casualty-investigations/index.html"
+            >Marine accident reporting</a
+          ><a
+            href="../accident-incident-reports/index.html"
+            >Marine safety investigation reports</a
+          ><a
+            href="../accident-incident-reports/index.html#ongoing"
+            >Ongoing investigations</a
+          ></span
+        ></span
+      ><span class="dd"
+        ><a href="../documents/index.html">Documents</a
+        ><button
+          class="dd-t"
+          type="button"
+          aria-expanded="false"
+          aria-controls="dd-docs"
+          aria-label="Show the Documents menu"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6" />
+          </svg></button
+        ><span class="dd-m" id="dd-docs"
+          ><a href="../forms/index.html">Forms</a
+          ><a href="../shipboard/index.html"
+            >Shipboard Documents</a
+          ><a href="../bulletins/index.html"
+            >Bulletins</a
+          ><a
+            href="../marine-circulars/index.html"
+            >Marine Circulars</a
+          ><span class="dd-n"
+            ><a
+              class="dd-p"
+              href="../guides/index.html"
+              >Guides<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a href="../yacht-masters-guide/index.html"
+                >Yacht Master's Guide</a
+              ></span
+            ></span
+          ><a href="../conventions/index.html"
+            >Conventions</a
+          ><span class="dd-n"
+            ><a
+              class="dd-p"
+              href="../barbados-legislation/index.html"
+              >Barbados Legislation<svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" /></svg></a
+            ><span class="dd-s"
+              ><a href="../acts/index.html">Acts</a
+              ><a href="../regulations/index.html"
+                >Regulations</a
+              ></span
+            ></span
+          ><a
+            href="../documents/index.html#directory"
+            >Barbados Publications</a
+          ></span
+        ></span
+      ><a href="../events/index.html">Events</a>
+    </nav>
+    <a class="portal" href="https://portal.barbadosmaritime.org/"
+      >Portal
+      <svg class="ar">
+        <use href="#ext" /></svg
+    ></a>
+    <button class="theme" type="button" aria-label="Switch to light mode">
+      <svg class="ar sun">
+        <use href="#sun" /></svg
+      ><svg class="ar moon">
+        <use href="#moon" />
+      </svg>
+    </button>
+    <button
+      class="burger"
+      type="button"
+      aria-controls="mnav"
+      aria-expanded="false"
+      aria-label="Menu"
+    >
+      <svg class="ar o">
+        <use href="#menu" /></svg
+      ><svg class="ar x">
+        <use href="#close" />
+      </svg>
+    </button>
   </div>
 </header>
 <nav class="mnav hull" id="mnav" aria-label="Main">
-  <a href="../the-bmsr/index.html">The BMSR</a><span class="msub"><a href="../about/index.html">About us</a><a class="m3" href="../team/index.html">Our team</a><a href="index.html">Regional Registrars</a><a href="../ros/index.html">Recognised Organisations</a><a href="../quality/index.html">Quality Assurance</a><a href="../links/index.html">Useful links</a><a class="m3" href="https://www.investbarbados.org/shipping/" target="_blank" rel="noopener">Shipping – Invest Barbados – A Welcoming Investment Climate<span class="sr"> (opens in a new tab)</span></a><a href="../holidays/index.html">Public holidays</a><a href="../news/index.html">News</a></span><a href="../registration/index.html">Registration</a><span class="msub"><a href="../ship-registration/index.html">Ship registration</a><a href="../yacht-registration/index.html">Yacht registration</a><a href="../mortgages/index.html">Mortgages</a><a href="../bareboat-charter/index.html">Bareboat charters</a><a href="../registration-fees/index.html">Registration fees</a><a href="../registry-alterations/index.html">Registry alterations</a><a class="m3" href="../change-of-ownership/index.html">Change of ownership</a><a class="m3" href="../change-of-vessels-name/index.html">Change of vessel's name</a><a class="m3" href="../change-of-owners-name/index.html">Change of owner's name or address</a><a class="m3" href="../deletion/index.html">Deletion</a></span><a href="../seafarers/index.html">Seafarers</a><span class="msub"><a href="../endorsement-discharge-book/index.html">Endorsement &amp; discharge book</a><a href="../seafarers/index.html#check">Document validity check</a></span><a href="../inspections/index.html">Inspections</a><span class="msub"><a href="../nautical-inspectors/index.html">Appointed Nautical Inspectors</a><a href="../inspection-templates/index.html">Inspection templates</a><a href="../notices-to-nautical-inspectors/index.html">Notices to Nautical Inspectors</a></span><a href="../investigations/index.html">Investigations</a><span class="msub"><a href="../casualty-investigations/index.html">Marine accident reporting</a><a href="../accident-incident-reports/index.html">Marine safety investigation reports</a><a href="../accident-incident-reports/index.html#ongoing">Ongoing investigations</a></span><a href="../documents/index.html">Documents</a><span class="msub"><a href="../forms/index.html">Forms</a><a href="../shipboard/index.html">Shipboard Documents</a><a href="../bulletins/index.html">Bulletins</a><a href="../marine-circulars/index.html">Marine Circulars</a><a href="../guides/index.html">Guides</a><a class="m3" href="../yacht-masters-guide/index.html">Yacht Master's Guide</a><a href="../conventions/index.html">Conventions</a><a href="../barbados-legislation/index.html">Barbados Legislation</a><a class="m3" href="../acts/index.html">Acts</a><a class="m3" href="../regulations/index.html">Regulations</a><a href="../documents/index.html#directory">Barbados Publications</a></span><a href="../events/index.html">Events</a><a href="../contact/index.html">Contact us</a>
-  <a class="portal" href="https://portal.barbadosmaritime.org/">BMSR Portal <svg class="ar"><use href="#ext"/></svg></a>
+  <a href="../the-bmsr/index.html">The BMSR</a
+  ><span class="msub"
+    ><a href="../about/index.html">About us</a
+    ><a class="m3" href="../team/index.html">Our team</a
+    ><a href="index.html"
+      >Regional Registrars</a
+    ><a href="../ros/index.html"
+      >Recognised Organisations</a
+    ><a href="../quality/index.html"
+      >Quality Assurance</a
+    ><a href="../links/index.html">Useful links</a
+    ><a
+      class="m3"
+      href="https://www.investbarbados.org/shipping/"
+      target="_blank"
+      rel="noopener"
+      >Shipping – Invest Barbados – A Welcoming Investment Climate<span
+        class="sr"
+      >
+        (opens in a new tab)</span
+      ></a
+    ><a href="../holidays/index.html">Public holidays</a
+    ><a href="../news/index.html">News</a></span
+  ><a href="../registration/index.html">Registration</a
+  ><span class="msub"
+    ><a href="../ship-registration/index.html"
+      >Ship registration</a
+    ><a href="../yacht-registration/index.html"
+      >Yacht registration</a
+    ><a href="../mortgages/index.html">Mortgages</a
+    ><a href="../bareboat-charter/index.html"
+      >Bareboat charters</a
+    ><a href="../registration-fees/index.html"
+      >Registration fees</a
+    ><a href="../registry-alterations/index.html"
+      >Registry alterations</a
+    ><a
+      class="m3"
+      href="../change-of-ownership/index.html"
+      >Change of ownership</a
+    ><a
+      class="m3"
+      href="../change-of-vessels-name/index.html"
+      >Change of vessel's name</a
+    ><a
+      class="m3"
+      href="../change-of-owners-name/index.html"
+      >Change of owner's name or address</a
+    ><a
+      class="m3"
+      href="../deletion/index.html"
+      >Deletion</a
+    ></span
+  ><a href="../seafarers/index.html">Seafarers</a
+  ><span class="msub"
+    ><a
+      href="../endorsement-discharge-book/index.html"
+      >Endorsement &amp; discharge book</a
+    ><a
+      href="../seafarers/index.html#check"
+      >Document validity check</a
+    ></span
+  ><a href="../inspections/index.html">Inspections</a
+  ><span class="msub"
+    ><a
+      href="../nautical-inspectors/index.html"
+      >Appointed Nautical Inspectors</a
+    ><a href="../inspection-templates/index.html"
+      >Inspection templates</a
+    ><a
+      href="../notices-to-nautical-inspectors/index.html"
+      >Notices to Nautical Inspectors</a
+    ></span
+  ><a href="../investigations/index.html">Investigations</a
+  ><span class="msub"
+    ><a
+      href="../casualty-investigations/index.html"
+      >Marine accident reporting</a
+    ><a
+      href="../accident-incident-reports/index.html"
+      >Marine safety investigation reports</a
+    ><a
+      href="../accident-incident-reports/index.html#ongoing"
+      >Ongoing investigations</a
+    ></span
+  ><a href="../documents/index.html">Documents</a
+  ><span class="msub"
+    ><a href="../forms/index.html">Forms</a
+    ><a href="../shipboard/index.html"
+      >Shipboard Documents</a
+    ><a href="../bulletins/index.html">Bulletins</a
+    ><a href="../marine-circulars/index.html"
+      >Marine Circulars</a
+    ><a href="../guides/index.html">Guides</a
+    ><a class="m3" href="../yacht-masters-guide/index.html"
+      >Yacht Master's Guide</a
+    ><a href="../conventions/index.html"
+      >Conventions</a
+    ><a href="../barbados-legislation/index.html"
+      >Barbados Legislation</a
+    ><a class="m3" href="../acts/index.html">Acts</a
+    ><a class="m3" href="../regulations/index.html"
+      >Regulations</a
+    ><a href="../documents/index.html#directory"
+      >Barbados Publications</a
+    ></span
+  ><a href="../events/index.html">Events</a
+  ><a href="../contact/index.html">Contact us</a>
+  <a class="portal" href="https://portal.barbadosmaritime.org/"
+    >BMSR Portal
+    <svg class="ar">
+      <use href="#ext" /></svg
+  ></a>
 </nav>
 
 <script>
-// header dropdowns: open on hover and keyboard focus (CSS); the arrow button toggles it for touch, and Escape or a click outside closes it
-document.querySelectorAll('.dd').forEach(dd => {
-  const t = dd.querySelector('.dd-t'), set = open => { dd.classList.toggle('open', open); dd.classList.toggle('shut', !open); t.setAttribute('aria-expanded', open); };
-  const unshut = () => dd.classList.remove('shut'); // 'shut' keeps it closed after Escape until focus or the mouse leaves
-  dd.addEventListener('focusout', e => { if (!dd.contains(e.relatedTarget)) unshut(); });
-  t.addEventListener('click', e => { e.stopPropagation(); set(!dd.classList.contains('open')); });
-  dd.addEventListener('keydown', e => { if (e.key === 'Escape' && (dd.classList.contains('open') || dd.querySelector('.dd-m').contains(document.activeElement))) { set(false); t.focus(); } });
-  dd.addEventListener('mouseleave', () => { set(false); if (!dd.contains(document.activeElement)) unshut(); }); // stays shut while focus is still inside
-  document.addEventListener('click', e => { if (!dd.contains(e.target)) set(false); });
-});
+  // header dropdowns: open on hover and keyboard focus (CSS); the arrow button toggles it for touch, and Escape or a click outside closes it
+  document.querySelectorAll(".dd").forEach((dd) => {
+    const t = dd.querySelector(".dd-t"),
+      set = (open) => {
+        dd.classList.toggle("open", open);
+        dd.classList.toggle("shut", !open);
+        t.setAttribute("aria-expanded", open);
+      };
+    const unshut = () => dd.classList.remove("shut"); // 'shut' keeps it closed after Escape until focus or the mouse leaves
+    dd.addEventListener("focusout", (e) => {
+      if (!dd.contains(e.relatedTarget)) unshut();
+    });
+    t.addEventListener("click", (e) => {
+      e.stopPropagation();
+      set(!dd.classList.contains("open"));
+    });
+    dd.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        (dd.classList.contains("open") ||
+          dd.querySelector(".dd-m").contains(document.activeElement))
+      ) {
+        set(false);
+        t.focus();
+      }
+    });
+    dd.addEventListener("mouseleave", () => {
+      set(false);
+      if (!dd.contains(document.activeElement)) unshut();
+    }); // stays shut while focus is still inside
+    document.addEventListener("click", (e) => {
+      if (!dd.contains(e.target)) set(false);
+    });
+  });
 </script>
-<div class="draught" aria-hidden="true"><ol><li>12M</li><li>11M</li><li>10M</li><li>9M</li><li>8M</li><li>7M</li><li>6M</li><li>5M</li></ol><span class="wl"></span></div>
+<div class="draught" aria-hidden="true">
+  <ol>
+    <li>12M</li>
+    <li>11M</li>
+    <li>10M</li>
+    <li>9M</li>
+    <li>8M</li>
+    <li>7M</li>
+    <li>6M</li>
+    <li>5M</li>
+  </ol>
+  <span class="wl"></span>
+</div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
@@ -708,190 +1209,190 @@ document.querySelectorAll('.dd').forEach(dd => {
   </div>
   <div class="wrap rr-results">
     <section class="rr-c" id="rr-barbados" data-region="americas" aria-labelledby="rr-barbados-h">
-      <h2 class="rr-h hull" id="rr-barbados-h" tabindex="-1"><span class="cc" aria-hidden="true">BB</span>Barbados</h2>
+      <h2 class="rr-h hull" id="rr-barbados-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/bb.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Barbados</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="barbados capt. g. fergusson barbados maritime ship registry university row, bridgetown, barbados, w.i. gfergusson@caribsurf.com"><article class="rr"><b class="nm">Capt. G. Fergusson</b><span class="co">Barbados Maritime Ship Registry</span><address>University Row, Bridgetown, Barbados, W.I.</address><div class="ct"><a class="ph" href="tel:0012454346100"><svg aria-hidden="true"><use href="#phone"/></svg>001 245 434 6100</a><span class="em"><a href="mailto:gfergusson@caribsurf.com">gfergusson@caribsurf.com</a><button class="copy" type="button" data-copy="gfergusson@caribsurf.com" aria-label="Copy gfergusson@caribsurf.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="barbados capt. g. fergusson barbados maritime ship registry university row, bridgetown, barbados, w.i. gfergusson@caribsurf.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/bb.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Barbados</p><b class="nm">Capt. G. Fergusson</b><span class="co">Barbados Maritime Ship Registry</span><address>University Row, Bridgetown, Barbados, W.I.</address><div class="ct"><a class="ph" href="tel:0012454346100"><svg aria-hidden="true"><use href="#phone"/></svg>001 245 434 6100</a><span class="em"><a href="mailto:gfergusson@caribsurf.com">gfergusson@caribsurf.com</a><button class="copy" type="button" data-copy="gfergusson@caribsurf.com" aria-label="Copy gfergusson@caribsurf.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-brazil" data-region="americas" aria-labelledby="rr-brazil-h">
-      <h2 class="rr-h hull" id="rr-brazil-h" tabindex="-1"><span class="cc" aria-hidden="true">BR</span>Brazil</h2>
+      <h2 class="rr-h hull" id="rr-brazil-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/br.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Brazil</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="brazil capt. zaher markabi atlantica ship management s.a. avenida presidente antonio carlos, 51, centro, rio de janeiro-rj, cep 20020-010, brazil reg.imsnaval@gmail.com"><article class="rr"><b class="nm">Capt. Zaher Markabi</b><span class="co">Atlantica Ship Management S.A.</span><address>Avenida Presidente Antonio Carlos, 51, Centro, Rio de Janeiro-RJ, CEP 20020-010, Brazil</address><div class="ct"><a class="ph" href="tel:+5521951003054"><svg aria-hidden="true"><use href="#phone"/></svg>+55-21-951003054</a><a class="ph" href="tel:+905011030000"><svg aria-hidden="true"><use href="#phone"/></svg>+90-501-1030000</a><span class="em"><a href="mailto:reg.imsnaval@gmail.com">reg.imsnaval@gmail.com</a><button class="copy" type="button" data-copy="reg.imsnaval@gmail.com" aria-label="Copy reg.imsnaval@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="brazil capt. zaher markabi atlantica ship management s.a. avenida presidente antonio carlos, 51, centro, rio de janeiro-rj, cep 20020-010, brazil reg.imsnaval@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/br.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Brazil</p><b class="nm">Capt. Zaher Markabi</b><span class="co">Atlantica Ship Management S.A.</span><address>Avenida Presidente Antonio Carlos, 51, Centro, Rio de Janeiro-RJ, CEP 20020-010, Brazil</address><div class="ct"><a class="ph" href="tel:+5521951003054"><svg aria-hidden="true"><use href="#phone"/></svg>+55-21-951003054</a><a class="ph" href="tel:+905011030000"><svg aria-hidden="true"><use href="#phone"/></svg>+90-501-1030000</a><span class="em"><a href="mailto:reg.imsnaval@gmail.com">reg.imsnaval@gmail.com</a><button class="copy" type="button" data-copy="reg.imsnaval@gmail.com" aria-label="Copy reg.imsnaval@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-british-virgin-islands" data-region="americas" aria-labelledby="rr-british-virgin-islands-h">
-      <h2 class="rr-h hull" id="rr-british-virgin-islands-h" tabindex="-1"><span class="cc" aria-hidden="true">VG</span>British Virgin Islands</h2>
+      <h2 class="rr-h hull" id="rr-british-virgin-islands-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/vg.svg" alt="" width="42" height="28" loading="lazy" decoding="async">British Virgin Islands</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="british virgin islands eng. maria gabriela cedeno bierman pautt &amp; associates tortola pier park building 1, second floor, wickhams cay i, road town, tortola, british virgin islands office@rietmanpautt.com"><article class="rr"><b class="nm">Eng. Maria Gabriela Cedeño</b><span class="co">Bierman Pautt &amp; Associates</span><address>Tortola Pier Park Building 1, Second Floor, Wickhams Cay I, Road Town, Tortola, British Virgin Islands</address><div class="ct"><a class="ph" href="tel:507655030"><svg aria-hidden="true"><use href="#phone"/></svg>507655030</a><a class="ph" href="tel:+50766792241"><svg aria-hidden="true"><use href="#phone"/></svg>+507-6679-2241</a><a class="ph" href="tel:50766177976"><svg aria-hidden="true"><use href="#phone"/></svg>507-6617 7976</a><span class="em"><a href="mailto:OFFICE@Rietmanpautt.com">OFFICE@Rietmanpautt.com</a><button class="copy" type="button" data-copy="OFFICE@Rietmanpautt.com" aria-label="Copy OFFICE@Rietmanpautt.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="british virgin islands eng. maria gabriela cedeno bierman pautt &amp; associates tortola pier park building 1, second floor, wickhams cay i, road town, tortola, british virgin islands office@rietmanpautt.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/vg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">British Virgin Islands</p><b class="nm">Eng. Maria Gabriela Cedeño</b><span class="co">Bierman Pautt &amp; Associates</span><address>Tortola Pier Park Building 1, Second Floor, Wickhams Cay I, Road Town, Tortola, British Virgin Islands</address><div class="ct"><a class="ph" href="tel:507655030"><svg aria-hidden="true"><use href="#phone"/></svg>507655030</a><a class="ph" href="tel:+50766792241"><svg aria-hidden="true"><use href="#phone"/></svg>+507-6679-2241</a><a class="ph" href="tel:50766177976"><svg aria-hidden="true"><use href="#phone"/></svg>507-6617 7976</a><span class="em"><a href="mailto:OFFICE@Rietmanpautt.com">OFFICE@Rietmanpautt.com</a><button class="copy" type="button" data-copy="OFFICE@Rietmanpautt.com" aria-label="Copy OFFICE@Rietmanpautt.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-bulgaria" data-region="europe" aria-labelledby="rr-bulgaria-h">
-      <h2 class="rr-h hull" id="rr-bulgaria-h" tabindex="-1"><span class="cc" aria-hidden="true">BG</span>Bulgaria</h2>
+      <h2 class="rr-h hull" id="rr-bulgaria-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/bg.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Bulgaria</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="bulgaria mrs. staloia aristodemou nostra shipping services 1, a bulair str. fl. 2, 8000 burgas, bulgaria info@nostraship.com"><article class="rr"><b class="nm">Mrs. Staloia Aristodemou</b><span class="co">Nostra Shipping Services</span><address>1, A Bulair Str. fl. 2, 8000 Burgas, Bulgaria</address><div class="ct"><a class="ph" href="tel:+35799381897"><svg aria-hidden="true"><use href="#phone"/></svg>+357 99 381 897</a><span class="em"><a href="mailto:info@nostraship.com">info@nostraship.com</a><button class="copy" type="button" data-copy="info@nostraship.com" aria-label="Copy info@nostraship.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="bulgaria mrs. staloia aristodemou nostra shipping services 1, a bulair str. fl. 2, 8000 burgas, bulgaria info@nostraship.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/bg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Bulgaria</p><b class="nm">Mrs. Staloia Aristodemou</b><span class="co">Nostra Shipping Services</span><address>1, A Bulair Str. fl. 2, 8000 Burgas, Bulgaria</address><div class="ct"><a class="ph" href="tel:+35799381897"><svg aria-hidden="true"><use href="#phone"/></svg>+357 99 381 897</a><span class="em"><a href="mailto:info@nostraship.com">info@nostraship.com</a><button class="copy" type="button" data-copy="info@nostraship.com" aria-label="Copy info@nostraship.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-china" data-region="asia" aria-labelledby="rr-china-h">
-      <h2 class="rr-h hull" id="rr-china-h" tabindex="-1"><span class="cc" aria-hidden="true">CN</span>China <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-china-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/cn.svg" alt="" width="42" height="28" loading="lazy" decoding="async">China <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="china capt. guo jiankang fuzhou zhongyang shipping co., ltd fuyang building, no. 11, rongxin youth city, south of zhongping road, cangxia street, taijiang district, fuzhou, china reg@cnacos.com"><article class="rr"><b class="nm">Capt. Guo Jiankang</b><span class="co">Fuzhou Zhongyang Shipping Co., Ltd</span><address>Fuyang Building, No. 11, Rongxin Youth City, South of Zhongping Road, Cangxia Street, Taijiang District, Fuzhou, China</address><div class="ct"><a class="ph" href="tel:+8659188250099"><svg aria-hidden="true"><use href="#phone"/></svg>+86-591-88250099</a><a class="ph" href="tel:+8613799366225"><svg aria-hidden="true"><use href="#phone"/></svg>+86 13799366225</a><span class="em"><a href="mailto:reg@cnacos.com">reg@cnacos.com</a><button class="copy" type="button" data-copy="reg@cnacos.com" aria-label="Copy reg@cnacos.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="china kristina xuan maritimelink hongkong limited room #503, no. 315 emei road, shanghai 200080, china admin@maritimelinkhk.com"><article class="rr"><b class="nm">Kristina Xuan</b><span class="co">MaritimeLink Hongkong Limited</span><address>Room #503, No. 315 Emei Road, Shanghai 200080, China</address><div class="ct"><a class="ph" href="tel:+8613817531330"><svg aria-hidden="true"><use href="#phone"/></svg>+86-13817531330</a><span class="em"><a href="mailto:admin@maritimelinkhk.com">admin@maritimelinkhk.com</a><button class="copy" type="button" data-copy="admin@maritimelinkhk.com" aria-label="Copy admin@maritimelinkhk.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="china capt. guo jiankang fuzhou zhongyang shipping co., ltd fuyang building, no. 11, rongxin youth city, south of zhongping road, cangxia street, taijiang district, fuzhou, china reg@cnacos.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/cn.svg" alt="" width="30" height="20" loading="lazy" decoding="async">China</p><b class="nm">Capt. Guo Jiankang</b><span class="co">Fuzhou Zhongyang Shipping Co., Ltd</span><address>Fuyang Building, No. 11, Rongxin Youth City, South of Zhongping Road, Cangxia Street, Taijiang District, Fuzhou, China</address><div class="ct"><a class="ph" href="tel:+8659188250099"><svg aria-hidden="true"><use href="#phone"/></svg>+86-591-88250099</a><a class="ph" href="tel:+8613799366225"><svg aria-hidden="true"><use href="#phone"/></svg>+86 13799366225</a><span class="em"><a href="mailto:reg@cnacos.com">reg@cnacos.com</a><button class="copy" type="button" data-copy="reg@cnacos.com" aria-label="Copy reg@cnacos.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="china kristina xuan maritimelink hongkong limited room #503, no. 315 emei road, shanghai 200080, china admin@maritimelinkhk.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/cn.svg" alt="" width="30" height="20" loading="lazy" decoding="async">China</p><b class="nm">Kristina Xuan</b><span class="co">MaritimeLink Hongkong Limited</span><address>Room #503, No. 315 Emei Road, Shanghai 200080, China</address><div class="ct"><a class="ph" href="tel:+8613817531330"><svg aria-hidden="true"><use href="#phone"/></svg>+86-13817531330</a><span class="em"><a href="mailto:admin@maritimelinkhk.com">admin@maritimelinkhk.com</a><button class="copy" type="button" data-copy="admin@maritimelinkhk.com" aria-label="Copy admin@maritimelinkhk.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-egypt" data-region="mea" aria-labelledby="rr-egypt-h">
-      <h2 class="rr-h hull" id="rr-egypt-h" tabindex="-1"><span class="cc" aria-hidden="true">EG</span>Egypt <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-egypt-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/eg.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Egypt <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="egypt amr ahmed ramzy khatib blue sea company building no. 10, third floor, apartment no. 711, fawzy moaz st., smouha, alexandria, egypt blueseaformarine@gmail.com"><article class="rr"><b class="nm">Amr Ahmed Ramzy Khatib</b><span class="co">Blue Sea Company</span><address>Building No. 10, Third Floor, Apartment No. 711, Fawzy Moaz St., Smouha, Alexandria, Egypt</address><div class="ct"><a class="ph" href="tel:+2035935087"><svg aria-hidden="true"><use href="#phone"/></svg>+2035935087</a><a class="ph" href="tel:+201098737164"><svg aria-hidden="true"><use href="#phone"/></svg>+201098737164</a><span class="em"><a href="mailto:blueseaformarine@gmail.com">blueseaformarine@gmail.com</a><button class="copy" type="button" data-copy="blueseaformarine@gmail.com" aria-label="Copy blueseaformarine@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="egypt capt. umur ugurlu lam egypt for shipping and logistics 9, fawatom street, bab shark, alexandria, egypt umur.ugurlu@makzu.me umurugurlu@gmail.com"><article class="rr"><b class="nm">Capt. Umur Ugurlu</b><span class="co">LAM Egypt for Shipping and Logistics</span><address>9, Fawatom Street, Bab Shark, Alexandria, Egypt</address><div class="ct"><a class="ph" href="tel:+2034842033"><svg aria-hidden="true"><use href="#phone"/></svg>+2034842033</a><span class="em"><a href="mailto:umur.ugurlu@makzu.me">umur.ugurlu@makzu.me</a><button class="copy" type="button" data-copy="umur.ugurlu@makzu.me" aria-label="Copy umur.ugurlu@makzu.me"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:umurugurlu@gmail.com">umurugurlu@gmail.com</a><button class="copy" type="button" data-copy="umurugurlu@gmail.com" aria-label="Copy umurugurlu@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="egypt amr ahmed ramzy khatib blue sea company building no. 10, third floor, apartment no. 711, fawzy moaz st., smouha, alexandria, egypt blueseaformarine@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/eg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Egypt</p><b class="nm">Amr Ahmed Ramzy Khatib</b><span class="co">Blue Sea Company</span><address>Building No. 10, Third Floor, Apartment No. 711, Fawzy Moaz St., Smouha, Alexandria, Egypt</address><div class="ct"><a class="ph" href="tel:+2035935087"><svg aria-hidden="true"><use href="#phone"/></svg>+2035935087</a><a class="ph" href="tel:+201098737164"><svg aria-hidden="true"><use href="#phone"/></svg>+201098737164</a><span class="em"><a href="mailto:blueseaformarine@gmail.com">blueseaformarine@gmail.com</a><button class="copy" type="button" data-copy="blueseaformarine@gmail.com" aria-label="Copy blueseaformarine@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="egypt capt. umur ugurlu lam egypt for shipping and logistics 9, fawatom street, bab shark, alexandria, egypt umur.ugurlu@makzu.me umurugurlu@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/eg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Egypt</p><b class="nm">Capt. Umur Ugurlu</b><span class="co">LAM Egypt for Shipping and Logistics</span><address>9, Fawatom Street, Bab Shark, Alexandria, Egypt</address><div class="ct"><a class="ph" href="tel:+2034842033"><svg aria-hidden="true"><use href="#phone"/></svg>+2034842033</a><span class="em"><a href="mailto:umur.ugurlu@makzu.me">umur.ugurlu@makzu.me</a><button class="copy" type="button" data-copy="umur.ugurlu@makzu.me" aria-label="Copy umur.ugurlu@makzu.me"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:umurugurlu@gmail.com">umurugurlu@gmail.com</a><button class="copy" type="button" data-copy="umurugurlu@gmail.com" aria-label="Copy umurugurlu@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-france" data-region="europe" aria-labelledby="rr-france-h">
-      <h2 class="rr-h hull" id="rr-france-h" tabindex="-1"><span class="cc" aria-hidden="true">FR</span>France</h2>
+      <h2 class="rr-h hull" id="rr-france-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/fr.svg" alt="" width="42" height="28" loading="lazy" decoding="async">France</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="france capt. boubakeur saouli marine and ship's services 14 rue de l'ilon, lotissement coeur, saint louis 13230, port saint louis du rhone, france admin@marships.eu"><article class="rr"><b class="nm">Capt. Boubakeur Saouli</b><span class="co">Marine and Ship's Services</span><address>14 Rue de l'Ilon, Lotissement Coeur, Saint Louis 13230, Port Saint Louis du Rhône, France</address><div class="ct"><a class="ph" href="tel:+39622669322"><svg aria-hidden="true"><use href="#phone"/></svg>+39622669322</a><span class="em"><a href="mailto:admin@marships.eu">admin@marships.eu</a><button class="copy" type="button" data-copy="admin@marships.eu" aria-label="Copy admin@marships.eu"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="france capt. boubakeur saouli marine and ship's services 14 rue de l'ilon, lotissement coeur, saint louis 13230, port saint louis du rhone, france admin@marships.eu"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/fr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">France</p><b class="nm">Capt. Boubakeur Saouli</b><span class="co">Marine and Ship's Services</span><address>14 Rue de l'Ilon, Lotissement Coeur, Saint Louis 13230, Port Saint Louis du Rhône, France</address><div class="ct"><a class="ph" href="tel:+39622669322"><svg aria-hidden="true"><use href="#phone"/></svg>+39622669322</a><span class="em"><a href="mailto:admin@marships.eu">admin@marships.eu</a><button class="copy" type="button" data-copy="admin@marships.eu" aria-label="Copy admin@marships.eu"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-gibraltar" data-region="europe" aria-labelledby="rr-gibraltar-h">
-      <h2 class="rr-h hull" id="rr-gibraltar-h" tabindex="-1"><span class="cc" aria-hidden="true">GI</span>Gibraltar</h2>
+      <h2 class="rr-h hull" id="rr-gibraltar-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/gi.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Gibraltar</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="gibraltar vikram mohan viking marine services (gibraltar) limited world trade centre gibraltar, 6 bayside road, 1st floor – unit 1.2, gx11 1aa, gibraltar vslreg@vikingmarines.com"><article class="rr"><b class="nm">Vikram Mohan</b><span class="co">Viking Marine Services (Gibraltar) Limited</span><address>World Trade Centre Gibraltar, 6 Bayside Road, 1st Floor – Unit 1.2, GX11 1AA, Gibraltar</address><div class="ct"><a class="ph" href="tel:+971564553729"><svg aria-hidden="true"><use href="#phone"/></svg>+971-564553729</a><span class="em"><a href="mailto:vslreg@vikingmarines.com">vslreg@vikingmarines.com</a><button class="copy" type="button" data-copy="vslreg@vikingmarines.com" aria-label="Copy vslreg@vikingmarines.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="gibraltar vikram mohan viking marine services (gibraltar) limited world trade centre gibraltar, 6 bayside road, 1st floor – unit 1.2, gx11 1aa, gibraltar vslreg@vikingmarines.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/gi.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Gibraltar</p><b class="nm">Vikram Mohan</b><span class="co">Viking Marine Services (Gibraltar) Limited</span><address>World Trade Centre Gibraltar, 6 Bayside Road, 1st Floor – Unit 1.2, GX11 1AA, Gibraltar</address><div class="ct"><a class="ph" href="tel:+971564553729"><svg aria-hidden="true"><use href="#phone"/></svg>+971-564553729</a><span class="em"><a href="mailto:vslreg@vikingmarines.com">vslreg@vikingmarines.com</a><button class="copy" type="button" data-copy="vslreg@vikingmarines.com" aria-label="Copy vslreg@vikingmarines.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-greece" data-region="europe" aria-labelledby="rr-greece-h">
-      <h2 class="rr-h hull" id="rr-greece-h" tabindex="-1"><span class="cc" aria-hidden="true">GR</span>Greece <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-greece-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/gr.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Greece <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="greece efthimios liberopoulos libero services 2 efplias street, 18537, piraeus, greece efthimios.liberopoulos@liberoservices.org"><article class="rr"><b class="nm">Efthimios Liberopoulos</b><span class="co">Libero Services</span><address>2 Efplias Street, 18537, Piraeus, Greece</address><div class="ct"><a class="ph" href="tel:+302104100535"><svg aria-hidden="true"><use href="#phone"/></svg>+30 210 4100 535</a><span class="em"><a href="mailto:efthimios.liberopoulos@liberoservices.org">efthimios.liberopoulos@liberoservices.org</a><button class="copy" type="button" data-copy="efthimios.liberopoulos@liberoservices.org" aria-label="Copy efthimios.liberopoulos@liberoservices.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="greece ilias kossieris martec ltd 13, vouliagmenis ave., 16675, glyfada, athens, greece martec@otenet.gr"><article class="rr"><b class="nm">Ilias Kossieris</b><span class="co">Martec LTD</span><address>13, Vouliagmenis Ave., 16675, Glyfada, Athens, Greece</address><div class="ct"><a class="ph" href="tel:+302104180460"><svg aria-hidden="true"><use href="#phone"/></svg>+30 210 4180 460</a><a class="ph" href="tel:+306978779500"><svg aria-hidden="true"><use href="#phone"/></svg>+30 6978 779 500</a><span class="em"><a href="mailto:martec@otenet.gr">martec@otenet.gr</a><button class="copy" type="button" data-copy="martec@otenet.gr" aria-label="Copy martec@otenet.gr"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="greece efthimios liberopoulos libero services 2 efplias street, 18537, piraeus, greece efthimios.liberopoulos@liberoservices.org"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/gr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Greece</p><b class="nm">Efthimios Liberopoulos</b><span class="co">Libero Services</span><address>2 Efplias Street, 18537, Piraeus, Greece</address><div class="ct"><a class="ph" href="tel:+302104100535"><svg aria-hidden="true"><use href="#phone"/></svg>+30 210 4100 535</a><span class="em"><a href="mailto:efthimios.liberopoulos@liberoservices.org">efthimios.liberopoulos@liberoservices.org</a><button class="copy" type="button" data-copy="efthimios.liberopoulos@liberoservices.org" aria-label="Copy efthimios.liberopoulos@liberoservices.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="greece ilias kossieris martec ltd 13, vouliagmenis ave., 16675, glyfada, athens, greece martec@otenet.gr"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/gr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Greece</p><b class="nm">Ilias Kossieris</b><span class="co">Martec LTD</span><address>13, Vouliagmenis Ave., 16675, Glyfada, Athens, Greece</address><div class="ct"><a class="ph" href="tel:+302104180460"><svg aria-hidden="true"><use href="#phone"/></svg>+30 210 4180 460</a><a class="ph" href="tel:+306978779500"><svg aria-hidden="true"><use href="#phone"/></svg>+30 6978 779 500</a><span class="em"><a href="mailto:martec@otenet.gr">martec@otenet.gr</a><button class="copy" type="button" data-copy="martec@otenet.gr" aria-label="Copy martec@otenet.gr"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-hong-kong" data-region="asia" aria-labelledby="rr-hong-kong-h">
-      <h2 class="rr-h hull" id="rr-hong-kong-h" tabindex="-1"><span class="cc" aria-hidden="true">HK</span>Hong Kong</h2>
+      <h2 class="rr-h hull" id="rr-hong-kong-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/hk.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Hong Kong</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="hong kong yadav rajeev kumar vertex marine services limited unit 1603, 16th floor, the l plaza, 367-375 queen's road central, sheung wan, hong kong info@vertexmarine.in"><article class="rr"><b class="nm">Yadav Rajeev Kumar</b><span class="co">Vertex Marine Services Limited</span><address>Unit 1603, 16th Floor, The L Plaza, 367-375 Queen's Road Central, Sheung Wan, Hong Kong</address><div class="ct"><a class="ph" href="tel:+917977311870"><svg aria-hidden="true"><use href="#phone"/></svg>+917977311870</a><span class="em"><a href="mailto:info@vertexmarine.in">info@vertexmarine.in</a><button class="copy" type="button" data-copy="info@vertexmarine.in" aria-label="Copy info@vertexmarine.in"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="hong kong yadav rajeev kumar vertex marine services limited unit 1603, 16th floor, the l plaza, 367-375 queen's road central, sheung wan, hong kong info@vertexmarine.in"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/hk.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Hong Kong</p><b class="nm">Yadav Rajeev Kumar</b><span class="co">Vertex Marine Services Limited</span><address>Unit 1603, 16th Floor, The L Plaza, 367-375 Queen's Road Central, Sheung Wan, Hong Kong</address><div class="ct"><a class="ph" href="tel:+917977311870"><svg aria-hidden="true"><use href="#phone"/></svg>+917977311870</a><span class="em"><a href="mailto:info@vertexmarine.in">info@vertexmarine.in</a><button class="copy" type="button" data-copy="info@vertexmarine.in" aria-label="Copy info@vertexmarine.in"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-india" data-region="asia" aria-labelledby="rr-india-h">
-      <h2 class="rr-h hull" id="rr-india-h" tabindex="-1"><span class="cc" aria-hidden="true">IN</span>India <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-india-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/in.svg" alt="" width="42" height="28" loading="lazy" decoding="async">India <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="india capt nitin gera xfinity maritime services pte. ltd. office no. 1006, 10th floor kesar solitaire, plot os, plam beach road, sector 19, sanpada, navi mumbai - 400705 shipservice@xfinitymaritime.com"><article class="rr"><b class="nm">Capt Nitin Gera</b><span class="co">Xfinity Maritime Services Pte. Ltd.</span><address>Office No. 1006, 10th Floor Kesar Solitaire, Plot OS, Plam Beach Road, Sector 19, Sanpada, Navi Mumbai - 400705</address><div class="ct"><a class="ph" href="tel:+971588841239"><svg aria-hidden="true"><use href="#phone"/></svg>+971-588841239</a><span class="em"><a href="mailto:shipservice@xfinitymaritime.com">shipservice@xfinitymaritime.com</a><button class="copy" type="button" data-copy="shipservice@xfinitymaritime.com" aria-label="Copy shipservice@xfinitymaritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="india renju narayanan capital ship services pvt. ltd. 1st floor kurup towers, (5) thaikavu, cheranelloor p.o., cochin, kerala, india registration@capitalshipservices.co"><article class="rr"><b class="nm">Renju Narayanan</b><span class="co">Capital Ship Services Pvt. Ltd.</span><address>1st Floor Kurup Towers, (5) Thaikavu, Cheranelloor P.O., Cochin, Kerala, India</address><div class="ct"><a class="ph" href="tel:+914844862637"><svg aria-hidden="true"><use href="#phone"/></svg>+91 484 4862637</a><span class="em"><a href="mailto:registration@capitalshipservices.co">registration@capitalshipservices.co</a><button class="copy" type="button" data-copy="registration@capitalshipservices.co" aria-label="Copy registration@capitalshipservices.co"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="india capt nitin gera xfinity maritime services pte. ltd. office no. 1006, 10th floor kesar solitaire, plot os, plam beach road, sector 19, sanpada, navi mumbai - 400705 shipservice@xfinitymaritime.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/in.svg" alt="" width="30" height="20" loading="lazy" decoding="async">India</p><b class="nm">Capt Nitin Gera</b><span class="co">Xfinity Maritime Services Pte. Ltd.</span><address>Office No. 1006, 10th Floor Kesar Solitaire, Plot OS, Plam Beach Road, Sector 19, Sanpada, Navi Mumbai - 400705</address><div class="ct"><a class="ph" href="tel:+971588841239"><svg aria-hidden="true"><use href="#phone"/></svg>+971-588841239</a><span class="em"><a href="mailto:shipservice@xfinitymaritime.com">shipservice@xfinitymaritime.com</a><button class="copy" type="button" data-copy="shipservice@xfinitymaritime.com" aria-label="Copy shipservice@xfinitymaritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="india renju narayanan capital ship services pvt. ltd. 1st floor kurup towers, (5) thaikavu, cheranelloor p.o., cochin, kerala, india registration@capitalshipservices.co"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/in.svg" alt="" width="30" height="20" loading="lazy" decoding="async">India</p><b class="nm">Renju Narayanan</b><span class="co">Capital Ship Services Pvt. Ltd.</span><address>1st Floor Kurup Towers, (5) Thaikavu, Cheranelloor P.O., Cochin, Kerala, India</address><div class="ct"><a class="ph" href="tel:+914844862637"><svg aria-hidden="true"><use href="#phone"/></svg>+91 484 4862637</a><span class="em"><a href="mailto:registration@capitalshipservices.co">registration@capitalshipservices.co</a><button class="copy" type="button" data-copy="registration@capitalshipservices.co" aria-label="Copy registration@capitalshipservices.co"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-indonesia" data-region="asia" aria-labelledby="rr-indonesia-h">
-      <h2 class="rr-h hull" id="rr-indonesia-h" tabindex="-1"><span class="cc" aria-hidden="true">ID</span>Indonesia</h2>
+      <h2 class="rr-h hull" id="rr-indonesia-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/id.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Indonesia</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="indonesia capt. matt gormley nusantara ship inspection indonesia stock exchange building, tower 1, unit 304, jl. jend. sudirman kav. 52-53, senayan, south jakarta, 12190, indonesia info@nusantaraship.com"><article class="rr"><b class="nm">Capt. Matt Gormley</b><span class="co">Nusantara Ship Inspection</span><address>Indonesia Stock Exchange Building, Tower 1, Unit 304, Jl. Jend. Sudirman Kav. 52-53, Senayan, South Jakarta, 12190, Indonesia</address><div class="ct"><a class="ph" href="tel:+62818144938"><svg aria-hidden="true"><use href="#phone"/></svg>+62 818 144 938</a><span class="em"><a href="mailto:info@nusantaraship.com">info@nusantaraship.com</a><button class="copy" type="button" data-copy="info@nusantaraship.com" aria-label="Copy info@nusantaraship.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="indonesia capt. matt gormley nusantara ship inspection indonesia stock exchange building, tower 1, unit 304, jl. jend. sudirman kav. 52-53, senayan, south jakarta, 12190, indonesia info@nusantaraship.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/id.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Indonesia</p><b class="nm">Capt. Matt Gormley</b><span class="co">Nusantara Ship Inspection</span><address>Indonesia Stock Exchange Building, Tower 1, Unit 304, Jl. Jend. Sudirman Kav. 52-53, Senayan, South Jakarta, 12190, Indonesia</address><div class="ct"><a class="ph" href="tel:+62818144938"><svg aria-hidden="true"><use href="#phone"/></svg>+62 818 144 938</a><span class="em"><a href="mailto:info@nusantaraship.com">info@nusantaraship.com</a><button class="copy" type="button" data-copy="info@nusantaraship.com" aria-label="Copy info@nusantaraship.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-italy" data-region="europe" aria-labelledby="rr-italy-h">
-      <h2 class="rr-h hull" id="rr-italy-h" tabindex="-1"><span class="cc" aria-hidden="true">IT</span>Italy</h2>
+      <h2 class="rr-h hull" id="rr-italy-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/it.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Italy</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="italy enrico panettieri jo marine via tiburtina, 5 - 00185 roma, italy info@jo-marine.com"><article class="rr"><b class="nm">Enrico Panettieri</b><span class="co">Jo Marine</span><address>Via Tiburtina, 5 - 00185 Roma, Italy</address><div class="ct"><a class="ph" href="tel:+393493211885"><svg aria-hidden="true"><use href="#phone"/></svg>+39 3493211885</a><span class="em"><a href="mailto:info@jo-marine.com">info@jo-marine.com</a><button class="copy" type="button" data-copy="info@jo-marine.com" aria-label="Copy info@jo-marine.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="italy enrico panettieri jo marine via tiburtina, 5 - 00185 roma, italy info@jo-marine.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/it.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Italy</p><b class="nm">Enrico Panettieri</b><span class="co">Jo Marine</span><address>Via Tiburtina, 5 - 00185 Roma, Italy</address><div class="ct"><a class="ph" href="tel:+393493211885"><svg aria-hidden="true"><use href="#phone"/></svg>+39 3493211885</a><span class="em"><a href="mailto:info@jo-marine.com">info@jo-marine.com</a><button class="copy" type="button" data-copy="info@jo-marine.com" aria-label="Copy info@jo-marine.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-japan" data-region="asia" aria-labelledby="rr-japan-h">
-      <h2 class="rr-h hull" id="rr-japan-h" tabindex="-1"><span class="cc" aria-hidden="true">JP</span>Japan</h2>
+      <h2 class="rr-h hull" id="rr-japan-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/jp.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Japan</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="japan turgut guzel sente shipping co., ltd. – 先手海運株式会社 1-1-14-805 hachimandori ipsx south 805, chuo-ku, kobe 651-0085, hyogo, japan info@senteshipping.com"><article class="rr"><b class="nm">Turgut Guzel</b><span class="co">Sente Shipping Co., Ltd. – 先手海運株式会社</span><address>1-1-14-805 Hachimandori IPSX SOUTH 805, Chuo-ku, Kobe 651-0085, Hyogo, Japan</address><div class="ct"><a class="ph" href="tel:+81784148339"><svg aria-hidden="true"><use href="#phone"/></svg>+81-78-414-8339 <small>Office</small></a><a class="ph" href="tel:+819060931923"><svg aria-hidden="true"><use href="#phone"/></svg>+81-90-6093-1923 <small>Mobile</small></a><span class="em"><a href="mailto:info@senteshipping.com">info@senteshipping.com</a><button class="copy" type="button" data-copy="info@senteshipping.com" aria-label="Copy info@senteshipping.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="japan turgut guzel sente shipping co., ltd. – 先手海運株式会社 1-1-14-805 hachimandori ipsx south 805, chuo-ku, kobe 651-0085, hyogo, japan info@senteshipping.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/jp.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Japan</p><b class="nm">Turgut Guzel</b><span class="co">Sente Shipping Co., Ltd. – 先手海運株式会社</span><address>1-1-14-805 Hachimandori IPSX SOUTH 805, Chuo-ku, Kobe 651-0085, Hyogo, Japan</address><div class="ct"><a class="ph" href="tel:+81784148339"><svg aria-hidden="true"><use href="#phone"/></svg>+81-78-414-8339 <small>Office</small></a><a class="ph" href="tel:+819060931923"><svg aria-hidden="true"><use href="#phone"/></svg>+81-90-6093-1923 <small>Mobile</small></a><span class="em"><a href="mailto:info@senteshipping.com">info@senteshipping.com</a><button class="copy" type="button" data-copy="info@senteshipping.com" aria-label="Copy info@senteshipping.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-lebanon" data-region="mea" aria-labelledby="rr-lebanon-h">
-      <h2 class="rr-h hull" id="rr-lebanon-h" tabindex="-1"><span class="cc" aria-hidden="true">LB</span>Lebanon</h2>
+      <h2 class="rr-h hull" id="rr-lebanon-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/lb.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Lebanon</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="lebanon captain haytham chaaban levant shipping seafront road, 2nd fl., khaldeh, lebanon barbados.me@gmail.com"><article class="rr"><b class="nm">Captain Haytham Chaaban</b><span class="co">Levant Shipping</span><address>Seafront Road, 2nd Fl., Khaldeh, Lebanon</address><div class="ct"><a class="ph" href="tel:+9613894098"><svg aria-hidden="true"><use href="#phone"/></svg>+961 3 894 098</a><span class="em"><a href="mailto:barbados.me@gmail.com">barbados.me@gmail.com</a><button class="copy" type="button" data-copy="barbados.me@gmail.com" aria-label="Copy barbados.me@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="lebanon captain haytham chaaban levant shipping seafront road, 2nd fl., khaldeh, lebanon barbados.me@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/lb.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Lebanon</p><b class="nm">Captain Haytham Chaaban</b><span class="co">Levant Shipping</span><address>Seafront Road, 2nd Fl., Khaldeh, Lebanon</address><div class="ct"><a class="ph" href="tel:+9613894098"><svg aria-hidden="true"><use href="#phone"/></svg>+961 3 894 098</a><span class="em"><a href="mailto:barbados.me@gmail.com">barbados.me@gmail.com</a><button class="copy" type="button" data-copy="barbados.me@gmail.com" aria-label="Copy barbados.me@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-lithuania" data-region="europe" aria-labelledby="rr-lithuania-h">
-      <h2 class="rr-h hull" id="rr-lithuania-h" tabindex="-1"><span class="cc" aria-hidden="true">LT</span>Lithuania</h2>
+      <h2 class="rr-h hull" id="rr-lithuania-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/lt.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Lithuania</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="lithuania roman baradulin inmarine klaipeda kmtp building, v. berbomo street 10, klaipeda, lt-92231 mail@inmarine.co.uk"><article class="rr"><b class="nm">Roman Baradulin</b><span class="co">Inmarine Klaipeda</span><address>KMTP Building, V. Berbomo Street 10, Klaipeda, LT-92231</address><div class="ct"><a class="ph" href="tel:+37068880030"><svg aria-hidden="true"><use href="#phone"/></svg>+370 6888 0030</a><span class="em"><a href="mailto:mail@inmarine.co.uk">mail@inmarine.co.uk</a><button class="copy" type="button" data-copy="mail@inmarine.co.uk" aria-label="Copy mail@inmarine.co.uk"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="lithuania roman baradulin inmarine klaipeda kmtp building, v. berbomo street 10, klaipeda, lt-92231 mail@inmarine.co.uk"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/lt.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Lithuania</p><b class="nm">Roman Baradulin</b><span class="co">Inmarine Klaipeda</span><address>KMTP Building, V. Berbomo Street 10, Klaipeda, LT-92231</address><div class="ct"><a class="ph" href="tel:+37068880030"><svg aria-hidden="true"><use href="#phone"/></svg>+370 6888 0030</a><span class="em"><a href="mailto:mail@inmarine.co.uk">mail@inmarine.co.uk</a><button class="copy" type="button" data-copy="mail@inmarine.co.uk" aria-label="Copy mail@inmarine.co.uk"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-monaco" data-region="europe" aria-labelledby="rr-monaco-h">
-      <h2 class="rr-h hull" id="rr-monaco-h" tabindex="-1"><span class="cc" aria-hidden="true">MC</span>Monaco</h2>
+      <h2 class="rr-h hull" id="rr-monaco-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/mc.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Monaco</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="monaco grant hobart flagship yacht registry 1 rue du gabian, etage 7, le thales, monaco mc 98000 grant@flagshipyachtregistry.com"><article class="rr"><b class="nm">Grant Hobart</b><span class="co">Flagship Yacht Registry</span><address>1 Rue du Gabian, Étage 7, Le Thales, Monaco MC 98000</address><div class="ct"><a class="ph" href="tel:+447444640257"><svg aria-hidden="true"><use href="#phone"/></svg>+44 7444 640257</a><a class="ph" href="tel:+37737704887"><svg aria-hidden="true"><use href="#phone"/></svg>+377 377 04887</a><span class="em"><a href="mailto:grant@flagshipyachtregistry.com">grant@flagshipyachtregistry.com</a><button class="copy" type="button" data-copy="grant@flagshipyachtregistry.com" aria-label="Copy grant@flagshipyachtregistry.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="monaco grant hobart flagship yacht registry 1 rue du gabian, etage 7, le thales, monaco mc 98000 grant@flagshipyachtregistry.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/mc.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Monaco</p><b class="nm">Grant Hobart</b><span class="co">Flagship Yacht Registry</span><address>1 Rue du Gabian, Étage 7, Le Thales, Monaco MC 98000</address><div class="ct"><a class="ph" href="tel:+447444640257"><svg aria-hidden="true"><use href="#phone"/></svg>+44 7444 640257</a><a class="ph" href="tel:+37737704887"><svg aria-hidden="true"><use href="#phone"/></svg>+377 377 04887</a><span class="em"><a href="mailto:grant@flagshipyachtregistry.com">grant@flagshipyachtregistry.com</a><button class="copy" type="button" data-copy="grant@flagshipyachtregistry.com" aria-label="Copy grant@flagshipyachtregistry.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-the-netherlands" data-region="europe" aria-labelledby="rr-the-netherlands-h">
-      <h2 class="rr-h hull" id="rr-the-netherlands-h" tabindex="-1"><span class="cc" aria-hidden="true">NL</span>The Netherlands <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-the-netherlands-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/nl.svg" alt="" width="42" height="28" loading="lazy" decoding="async">The Netherlands <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="the netherlands huseyin hakki bacaksiz b&amp;c maritime b.v keizersgracht 241, 1016ea amsterdam info@bc-maritime.com"><article class="rr"><b class="nm">Huseyin Hakki Bacaksiz</b><span class="co">B&amp;C Maritime B.V</span><address>Keizersgracht 241, 1016EA Amsterdam</address><div class="ct"><a class="ph" href="tel:+31615636908"><svg aria-hidden="true"><use href="#phone"/></svg>+31 615 63 69 08</a><span class="em"><a href="mailto:info@bc-maritime.com">info@bc-maritime.com</a><button class="copy" type="button" data-copy="info@bc-maritime.com" aria-label="Copy info@bc-maritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="the netherlands captain deniz tosun atlas shipping b.v. charloisse hoofd, 3087ca, rotterdam info@atlasshipping.nl d.tosun@atlasshipping.nl"><article class="rr"><b class="nm">Captain Deniz Tosun</b><span class="co">Atlas Shipping B.V.</span><address>Charloisse Hoofd, 3087CA, Rotterdam</address><div class="ct"><a class="ph" href="tel:+31611088504"><svg aria-hidden="true"><use href="#phone"/></svg>+31 6 110 885 04</a><a class="ph" href="tel:+905334991963"><svg aria-hidden="true"><use href="#phone"/></svg>+90 533 499 19 63</a><span class="em"><a href="mailto:info@atlasshipping.nl">info@atlasshipping.nl</a><button class="copy" type="button" data-copy="info@atlasshipping.nl" aria-label="Copy info@atlasshipping.nl"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:d.tosun@atlasshipping.nl">d.tosun@atlasshipping.nl</a><button class="copy" type="button" data-copy="d.tosun@atlasshipping.nl" aria-label="Copy d.tosun@atlasshipping.nl"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="the netherlands huseyin hakki bacaksiz b&amp;c maritime b.v keizersgracht 241, 1016ea amsterdam info@bc-maritime.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/nl.svg" alt="" width="30" height="20" loading="lazy" decoding="async">The Netherlands</p><b class="nm">Huseyin Hakki Bacaksiz</b><span class="co">B&amp;C Maritime B.V</span><address>Keizersgracht 241, 1016EA Amsterdam</address><div class="ct"><a class="ph" href="tel:+31615636908"><svg aria-hidden="true"><use href="#phone"/></svg>+31 615 63 69 08</a><span class="em"><a href="mailto:info@bc-maritime.com">info@bc-maritime.com</a><button class="copy" type="button" data-copy="info@bc-maritime.com" aria-label="Copy info@bc-maritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="the netherlands captain deniz tosun atlas shipping b.v. charloisse hoofd, 3087ca, rotterdam info@atlasshipping.nl d.tosun@atlasshipping.nl"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/nl.svg" alt="" width="30" height="20" loading="lazy" decoding="async">The Netherlands</p><b class="nm">Captain Deniz Tosun</b><span class="co">Atlas Shipping B.V.</span><address>Charloisse Hoofd, 3087CA, Rotterdam</address><div class="ct"><a class="ph" href="tel:+31611088504"><svg aria-hidden="true"><use href="#phone"/></svg>+31 6 110 885 04</a><a class="ph" href="tel:+905334991963"><svg aria-hidden="true"><use href="#phone"/></svg>+90 533 499 19 63</a><span class="em"><a href="mailto:info@atlasshipping.nl">info@atlasshipping.nl</a><button class="copy" type="button" data-copy="info@atlasshipping.nl" aria-label="Copy info@atlasshipping.nl"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:d.tosun@atlasshipping.nl">d.tosun@atlasshipping.nl</a><button class="copy" type="button" data-copy="d.tosun@atlasshipping.nl" aria-label="Copy d.tosun@atlasshipping.nl"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-panama" data-region="americas" aria-labelledby="rr-panama-h">
-      <h2 class="rr-h hull" id="rr-panama-h" tabindex="-1"><span class="cc" aria-hidden="true">PA</span>Panama</h2>
+      <h2 class="rr-h hull" id="rr-panama-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/pa.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Panama</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="panama mr. rogelio barsallo f. inversiones rbf s.a apdo 0830-1438, panama city, panama rbarsallof@cableonda.net"><article class="rr"><b class="nm">Mr. Rogelio Barsallo F.</b><span class="co">Inversiones RBF S.A</span><address>Apdo 0830-1438, Panama City, Panama</address><div class="ct"><a class="ph" href="tel:+5073259"><svg aria-hidden="true"><use href="#phone"/></svg>+507 3259</a><a class="ph" href="tel:+50766176300"><svg aria-hidden="true"><use href="#phone"/></svg>+507 6617-6300</a><a class="ph" href="tel:005073030475"><svg aria-hidden="true"><use href="#phone"/></svg>00507 303-0475</a><span class="em"><a href="mailto:rbarsallof@cableonda.net">rbarsallof@cableonda.net</a><button class="copy" type="button" data-copy="rbarsallof@cableonda.net" aria-label="Copy rbarsallof@cableonda.net"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="panama mr. rogelio barsallo f. inversiones rbf s.a apdo 0830-1438, panama city, panama rbarsallof@cableonda.net"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/pa.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Panama</p><b class="nm">Mr. Rogelio Barsallo F.</b><span class="co">Inversiones RBF S.A</span><address>Apdo 0830-1438, Panama City, Panama</address><div class="ct"><a class="ph" href="tel:+5073259"><svg aria-hidden="true"><use href="#phone"/></svg>+507 3259</a><a class="ph" href="tel:+50766176300"><svg aria-hidden="true"><use href="#phone"/></svg>+507 6617-6300</a><a class="ph" href="tel:005073030475"><svg aria-hidden="true"><use href="#phone"/></svg>00507 303-0475</a><span class="em"><a href="mailto:rbarsallof@cableonda.net">rbarsallof@cableonda.net</a><button class="copy" type="button" data-copy="rbarsallof@cableonda.net" aria-label="Copy rbarsallof@cableonda.net"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-portugal" data-region="europe" aria-labelledby="rr-portugal-h">
-      <h2 class="rr-h hull" id="rr-portugal-h" tabindex="-1"><span class="cc" aria-hidden="true">PT</span>Portugal</h2>
+      <h2 class="rr-h hull" id="rr-portugal-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/pt.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Portugal</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="portugal azhar hayat mermaid quotidian lda rua diogo dias nr 96, 2870-272 montijo, lisbon, portugal info.mermaidqutidian@gmail.com"><article class="rr"><b class="nm">Azhar Hayat</b><span class="co">Mermaid Quotidian LDA</span><address>Rua Diogo Dias Nr 96, 2870-272 Montijo, Lisbon, Portugal</address><div class="ct"><a class="ph" href="tel:+971505843749"><svg aria-hidden="true"><use href="#phone"/></svg>+971 50 5843749</a><span class="em"><a href="mailto:info.mermaidqutidian@gmail.com">info.mermaidqutidian@gmail.com</a><button class="copy" type="button" data-copy="info.mermaidqutidian@gmail.com" aria-label="Copy info.mermaidqutidian@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="portugal azhar hayat mermaid quotidian lda rua diogo dias nr 96, 2870-272 montijo, lisbon, portugal info.mermaidqutidian@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/pt.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Portugal</p><b class="nm">Azhar Hayat</b><span class="co">Mermaid Quotidian LDA</span><address>Rua Diogo Dias Nr 96, 2870-272 Montijo, Lisbon, Portugal</address><div class="ct"><a class="ph" href="tel:+971505843749"><svg aria-hidden="true"><use href="#phone"/></svg>+971 50 5843749</a><span class="em"><a href="mailto:info.mermaidqutidian@gmail.com">info.mermaidqutidian@gmail.com</a><button class="copy" type="button" data-copy="info.mermaidqutidian@gmail.com" aria-label="Copy info.mermaidqutidian@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-romania" data-region="europe" aria-labelledby="rr-romania-h">
-      <h2 class="rr-h hull" id="rr-romania-h" tabindex="-1"><span class="cc" aria-hidden="true">RO</span>Romania</h2>
+      <h2 class="rr-h hull" id="rr-romania-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/ro.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Romania</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="romania moharram jawhar romarine group mamaia blvd no. 50, 1st floor, office no. 3, constanta, 900663, romania ops@romarine.group"><article class="rr"><b class="nm">Moharram Jawhar</b><span class="co">Romarine Group</span><address>Mamaia Blvd No. 50, 1st Floor, Office No. 3, Constanta, 900663, Romania</address><div class="ct"><a class="ph" href="tel:+40725686303"><svg aria-hidden="true"><use href="#phone"/></svg>+40 725 686 303</a><a class="ph" href="tel:+40341450884"><svg aria-hidden="true"><use href="#phone"/></svg>+40 341 450 884</a><span class="em"><a href="mailto:ops@romarine.group">ops@romarine.group</a><button class="copy" type="button" data-copy="ops@romarine.group" aria-label="Copy ops@romarine.group"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="romania moharram jawhar romarine group mamaia blvd no. 50, 1st floor, office no. 3, constanta, 900663, romania ops@romarine.group"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/ro.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Romania</p><b class="nm">Moharram Jawhar</b><span class="co">Romarine Group</span><address>Mamaia Blvd No. 50, 1st Floor, Office No. 3, Constanta, 900663, Romania</address><div class="ct"><a class="ph" href="tel:+40725686303"><svg aria-hidden="true"><use href="#phone"/></svg>+40 725 686 303</a><a class="ph" href="tel:+40341450884"><svg aria-hidden="true"><use href="#phone"/></svg>+40 341 450 884</a><span class="em"><a href="mailto:ops@romarine.group">ops@romarine.group</a><button class="copy" type="button" data-copy="ops@romarine.group" aria-label="Copy ops@romarine.group"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-saudi-arabia" data-region="mea" aria-labelledby="rr-saudi-arabia-h">
-      <h2 class="rr-h hull" id="rr-saudi-arabia-h" tabindex="-1"><span class="cc" aria-hidden="true">SA</span>Saudi Arabia</h2>
+      <h2 class="rr-h hull" id="rr-saudi-arabia-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/sa.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Saudi Arabia</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="saudi arabia hamada halouma national shipping adjuster inc (nasha) batang street, al zahra, jeddah 23522, saudi arabia nasha@nashashipping.com"><article class="rr"><b class="nm">Hamada Halouma</b><span class="co">National Shipping Adjuster Inc (NASHA)</span><address>Batang Street, Al Zahra, Jeddah 23522, Saudi Arabia</address><div class="ct"><a class="ph" href="tel:+971529712880"><svg aria-hidden="true"><use href="#phone"/></svg>+971 529712880</a><span class="em"><a href="mailto:nasha@nashashipping.com">nasha@nashashipping.com</a><button class="copy" type="button" data-copy="nasha@nashashipping.com" aria-label="Copy nasha@nashashipping.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="saudi arabia hamada halouma national shipping adjuster inc (nasha) batang street, al zahra, jeddah 23522, saudi arabia nasha@nashashipping.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/sa.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Saudi Arabia</p><b class="nm">Hamada Halouma</b><span class="co">National Shipping Adjuster Inc (NASHA)</span><address>Batang Street, Al Zahra, Jeddah 23522, Saudi Arabia</address><div class="ct"><a class="ph" href="tel:+971529712880"><svg aria-hidden="true"><use href="#phone"/></svg>+971 529712880</a><span class="em"><a href="mailto:nasha@nashashipping.com">nasha@nashashipping.com</a><button class="copy" type="button" data-copy="nasha@nashashipping.com" aria-label="Copy nasha@nashashipping.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-singapore" data-region="asia" aria-labelledby="rr-singapore-h">
-      <h2 class="rr-h hull" id="rr-singapore-h" tabindex="-1"><span class="cc" aria-hidden="true">SG</span>Singapore <i>3 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-singapore-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/sg.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Singapore <i>3 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="singapore capt. deepak mantoju navitera consultants pvt. ltd 50 raffles place, #19-00, singapore land tower, singapore 048623 deepak.mantoju@navitera.org enquiries@navitera.org"><article class="rr"><b class="nm">Capt. Deepak Mantoju</b><span class="co">Navitera Consultants Pvt. Ltd</span><address>50 Raffles Place, #19-00, Singapore Land Tower, Singapore 048623</address><div class="ct"><a class="ph" href="tel:+919947589786"><svg aria-hidden="true"><use href="#phone"/></svg>+91 99475 89786</a><a class="ph" href="tel:+912246197507"><svg aria-hidden="true"><use href="#phone"/></svg>+91 22 4619 7507</a><span class="em"><a href="mailto:Deepak.mantoju@navitera.org">Deepak.mantoju@navitera.org</a><button class="copy" type="button" data-copy="Deepak.mantoju@navitera.org" aria-label="Copy Deepak.mantoju@navitera.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:enquiries@navitera.org">enquiries@navitera.org</a><button class="copy" type="button" data-copy="enquiries@navitera.org" aria-label="Copy enquiries@navitera.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="singapore capt. inder jit singh simintec 21 telok blangah drive, harbour view towers, #05-04, singapore 109258 singh@simintec.com captijsingh@gmail.com"><article class="rr"><b class="nm">Capt. Inder Jit Singh</b><span class="co">SIMINTEC</span><address>21 Telok Blangah Drive, Harbour View Towers, #05-04, Singapore 109258</address><div class="ct"><a class="ph" href="tel:+6591766939"><svg aria-hidden="true"><use href="#phone"/></svg>+65 917 66 939</a><a class="ph" href="tel:+6587676787"><svg aria-hidden="true"><use href="#phone"/></svg>+65 87676787</a><span class="em"><a href="mailto:singh@simintec.com">singh@simintec.com</a><button class="copy" type="button" data-copy="singh@simintec.com" aria-label="Copy singh@simintec.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:captijsingh@gmail.com">captijsingh@gmail.com</a><button class="copy" type="button" data-copy="captijsingh@gmail.com" aria-label="Copy captijsingh@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="singapore mark wang new united marine services pte. ltd. #22-10 no. 160 robinson road, sbf center, singapore 068914 newunited@gmail.com"><article class="rr"><b class="nm">Mark Wang</b><span class="co">New United Marine Services Pte. Ltd.</span><address>#22-10 No. 160 Robinson Road, SBF Center, Singapore 068914</address><div class="ct"><a class="ph" href="tel:+6562214428"><svg aria-hidden="true"><use href="#phone"/></svg>+65-62214428</a><span class="em"><a href="mailto:newunited@gmail.com">newunited@gmail.com</a><button class="copy" type="button" data-copy="newunited@gmail.com" aria-label="Copy newunited@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="singapore capt. deepak mantoju navitera consultants pvt. ltd 50 raffles place, #19-00, singapore land tower, singapore 048623 deepak.mantoju@navitera.org enquiries@navitera.org"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/sg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Singapore</p><b class="nm">Capt. Deepak Mantoju</b><span class="co">Navitera Consultants Pvt. Ltd</span><address>50 Raffles Place, #19-00, Singapore Land Tower, Singapore 048623</address><div class="ct"><a class="ph" href="tel:+919947589786"><svg aria-hidden="true"><use href="#phone"/></svg>+91 99475 89786</a><a class="ph" href="tel:+912246197507"><svg aria-hidden="true"><use href="#phone"/></svg>+91 22 4619 7507</a><span class="em"><a href="mailto:Deepak.mantoju@navitera.org">Deepak.mantoju@navitera.org</a><button class="copy" type="button" data-copy="Deepak.mantoju@navitera.org" aria-label="Copy Deepak.mantoju@navitera.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:enquiries@navitera.org">enquiries@navitera.org</a><button class="copy" type="button" data-copy="enquiries@navitera.org" aria-label="Copy enquiries@navitera.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="singapore capt. inder jit singh simintec 21 telok blangah drive, harbour view towers, #05-04, singapore 109258 singh@simintec.com captijsingh@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/sg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Singapore</p><b class="nm">Capt. Inder Jit Singh</b><span class="co">SIMINTEC</span><address>21 Telok Blangah Drive, Harbour View Towers, #05-04, Singapore 109258</address><div class="ct"><a class="ph" href="tel:+6591766939"><svg aria-hidden="true"><use href="#phone"/></svg>+65 917 66 939</a><a class="ph" href="tel:+6587676787"><svg aria-hidden="true"><use href="#phone"/></svg>+65 87676787</a><span class="em"><a href="mailto:singh@simintec.com">singh@simintec.com</a><button class="copy" type="button" data-copy="singh@simintec.com" aria-label="Copy singh@simintec.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:captijsingh@gmail.com">captijsingh@gmail.com</a><button class="copy" type="button" data-copy="captijsingh@gmail.com" aria-label="Copy captijsingh@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="singapore mark wang new united marine services pte. ltd. #22-10 no. 160 robinson road, sbf center, singapore 068914 newunited@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/sg.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Singapore</p><b class="nm">Mark Wang</b><span class="co">New United Marine Services Pte. Ltd.</span><address>#22-10 No. 160 Robinson Road, SBF Center, Singapore 068914</address><div class="ct"><a class="ph" href="tel:+6562214428"><svg aria-hidden="true"><use href="#phone"/></svg>+65-62214428</a><span class="em"><a href="mailto:newunited@gmail.com">newunited@gmail.com</a><button class="copy" type="button" data-copy="newunited@gmail.com" aria-label="Copy newunited@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-spain" data-region="europe" aria-labelledby="rr-spain-h">
-      <h2 class="rr-h hull" id="rr-spain-h" tabindex="-1"><span class="cc" aria-hidden="true">ES</span>Spain <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-spain-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/es.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Spain <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="spain gary miller miller marine sl cuesta santa creu 20, palma, spain office@miller-marine.org"><article class="rr"><b class="nm">Gary Miller</b><span class="co">Miller Marine SL</span><address>Cuesta Santa Creu 20, Palma, Spain</address><div class="ct"><a class="ph" href="tel:+34672043882"><svg aria-hidden="true"><use href="#phone"/></svg>+34 672043882</a><span class="em"><a href="mailto:office@miller-marine.org">office@miller-marine.org</a><button class="copy" type="button" data-copy="office@miller-marine.org" aria-label="Copy office@miller-marine.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="spain hristiyana bihlyumova legal maritime consult ltd. 11 leopardi str., 35005, las palmas, canary islands, spain legalmarconsult@gmail.com"><article class="rr"><b class="nm">Hristiyana Bihlyumova</b><span class="co">Legal Maritime Consult Ltd.</span><address>11 Leopardi Str., 35005, Las Palmas, Canary Islands, Spain</address><div class="ct"><a class="ph" href="tel:+34928240059"><svg aria-hidden="true"><use href="#phone"/></svg>+34 928 24 00 59</a><a class="ph" href="tel:+34638654364"><svg aria-hidden="true"><use href="#phone"/></svg>+34 638 654 364</a><span class="em"><a href="mailto:legalmarconsult@gmail.com">legalmarconsult@gmail.com</a><button class="copy" type="button" data-copy="legalmarconsult@gmail.com" aria-label="Copy legalmarconsult@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="spain gary miller miller marine sl cuesta santa creu 20, palma, spain office@miller-marine.org"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/es.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Spain</p><b class="nm">Gary Miller</b><span class="co">Miller Marine SL</span><address>Cuesta Santa Creu 20, Palma, Spain</address><div class="ct"><a class="ph" href="tel:+34672043882"><svg aria-hidden="true"><use href="#phone"/></svg>+34 672043882</a><span class="em"><a href="mailto:office@miller-marine.org">office@miller-marine.org</a><button class="copy" type="button" data-copy="office@miller-marine.org" aria-label="Copy office@miller-marine.org"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="spain hristiyana bihlyumova legal maritime consult ltd. 11 leopardi str., 35005, las palmas, canary islands, spain legalmarconsult@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/es.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Spain</p><b class="nm">Hristiyana Bihlyumova</b><span class="co">Legal Maritime Consult Ltd.</span><address>11 Leopardi Str., 35005, Las Palmas, Canary Islands, Spain</address><div class="ct"><a class="ph" href="tel:+34928240059"><svg aria-hidden="true"><use href="#phone"/></svg>+34 928 24 00 59</a><a class="ph" href="tel:+34638654364"><svg aria-hidden="true"><use href="#phone"/></svg>+34 638 654 364</a><span class="em"><a href="mailto:legalmarconsult@gmail.com">legalmarconsult@gmail.com</a><button class="copy" type="button" data-copy="legalmarconsult@gmail.com" aria-label="Copy legalmarconsult@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-sweden" data-region="europe" aria-labelledby="rr-sweden-h">
-      <h2 class="rr-h hull" id="rr-sweden-h" tabindex="-1"><span class="cc" aria-hidden="true">SE</span>Sweden</h2>
+      <h2 class="rr-h hull" id="rr-sweden-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/se.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Sweden</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="sweden radwan yahya rayah maritime services group lindgatan 8, 214 48 malmo, sweden management@rayahgroup.com malmo@rayahgroup.com"><article class="rr"><b class="nm">Radwan Yahya</b><span class="co">Rayah Maritime Services Group</span><address>Lindgatan 8, 214 48 Malmo, Sweden</address><div class="ct"><a class="ph" href="tel:+46764272989"><svg aria-hidden="true"><use href="#phone"/></svg>+46 764272989</a><a class="ph" href="tel:+905372407007"><svg aria-hidden="true"><use href="#phone"/></svg>+90 5372407007</a><span class="em"><a href="mailto:management@rayahgroup.com">management@rayahgroup.com</a><button class="copy" type="button" data-copy="management@rayahgroup.com" aria-label="Copy management@rayahgroup.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:malmo@rayahgroup.com">malmo@rayahgroup.com</a><button class="copy" type="button" data-copy="malmo@rayahgroup.com" aria-label="Copy malmo@rayahgroup.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="sweden radwan yahya rayah maritime services group lindgatan 8, 214 48 malmo, sweden management@rayahgroup.com malmo@rayahgroup.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/se.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Sweden</p><b class="nm">Radwan Yahya</b><span class="co">Rayah Maritime Services Group</span><address>Lindgatan 8, 214 48 Malmo, Sweden</address><div class="ct"><a class="ph" href="tel:+46764272989"><svg aria-hidden="true"><use href="#phone"/></svg>+46 764272989</a><a class="ph" href="tel:+905372407007"><svg aria-hidden="true"><use href="#phone"/></svg>+90 5372407007</a><span class="em"><a href="mailto:management@rayahgroup.com">management@rayahgroup.com</a><button class="copy" type="button" data-copy="management@rayahgroup.com" aria-label="Copy management@rayahgroup.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:malmo@rayahgroup.com">malmo@rayahgroup.com</a><button class="copy" type="button" data-copy="malmo@rayahgroup.com" aria-label="Copy malmo@rayahgroup.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-turkey" data-region="europe" aria-labelledby="rr-turkey-h">
-      <h2 class="rr-h hull" id="rr-turkey-h" tabindex="-1"><span class="cc" aria-hidden="true">TR</span>Turkey <i>5 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-turkey-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/tr.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Turkey <i>5 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="turkey aslihan kaplama nomadis marine consultancy sadi konuralp cad. nejat eczacibasi binasi no: 5 kat: 2 beyoglu, istanbul, turkiye operations@nomadismarine.com"><article class="rr"><b class="nm">Aslihan Kaplama</b><span class="co">Nomadis Marine Consultancy</span><address>Sadi Konuralp Cad. Nejat Eczacibasi Binasi No: 5 Kat: 2 Beyoglu, Istanbul, Türkiye</address><div class="ct"><a class="ph" href="tel:+905353435753"><svg aria-hidden="true"><use href="#phone"/></svg>+90 535 343 57 53</a><span class="em"><a href="mailto:operations@nomadismarine.com">operations@nomadismarine.com</a><button class="copy" type="button" data-copy="operations@nomadismarine.com" aria-label="Copy operations@nomadismarine.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="turkey bulent haznedar b&amp;b maritime ltd. cevizli mah. mustafa kemal cad., seyitgazi sok. hukukcular towers, no:66, b blok, d:66, kartal, istanbul, 34865, turkiye bnb@bnbmaritime.com"><article class="rr"><b class="nm">Bulent Haznedar</b><span class="co">B&amp;B Maritime Ltd.</span><address>Cevizli Mah. Mustafa Kemal Cad., Seyitgazi Sok. Hukukcular Towers, No:66, B blok, D:66, Kartal, Istanbul, 34865, Türkiye</address><div class="ct"><a class="ph" href="tel:+905409310988"><svg aria-hidden="true"><use href="#phone"/></svg>+90 540 931 09 88</a><span class="em"><a href="mailto:bnb@bnbmaritime.com">bnb@bnbmaritime.com</a><button class="copy" type="button" data-copy="bnb@bnbmaritime.com" aria-label="Copy bnb@bnbmaritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="turkey cem ertem klas denizcilik tunel yolu cad. yali yolu sok. ismail ergin is mrk. no: 54 b blok kat 3 d:6, uskudar, istanbul, turkey barbados@klassurvey.com"><article class="rr"><b class="nm">Cem Ertem</b><span class="co">Klas Denizcilik</span><address>Tunel Yolu Cad. Yali Yolu Sok. Ismail Ergin Is Mrk. No: 54 B Blok Kat 3 D:6, Uskudar, Istanbul, Turkey</address><div class="ct"><a class="ph" href="tel:+902164106174"><svg aria-hidden="true"><use href="#phone"/></svg>+90 216 410 61 74 <small>Pbx</small></a><span class="em"><a href="mailto:barbados@klassurvey.com">barbados@klassurvey.com</a><button class="copy" type="button" data-copy="barbados@klassurvey.com" aria-label="Copy barbados@klassurvey.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="turkey serdar kandemir world maritime shipping co. kaynarca mahallesi, aydınlıyolu caddesi, mavi kule rezidans no.137 kat.4 daire.19, pendik, istanbul, turkiye 34890 info@worldmaritime.com.tr serdar.kandemir@worldmaritime.com.tr"><article class="rr"><b class="nm">Serdar Kandemir</b><span class="co">World Maritime Shipping Co.</span><address>Kaynarca Mahallesi, Aydınlıyolu Caddesi, Mavi Kule Rezidans No.137 Kat.4 Daire.19, Pendik, Istanbul, Türkiye 34890</address><div class="ct"><a class="ph" href="tel:+902165154876"><svg aria-hidden="true"><use href="#phone"/></svg>+90 216 515 4876</a><a class="ph" href="tel:+905324664377"><svg aria-hidden="true"><use href="#phone"/></svg>+90 532 466 4377</a><span class="em"><a href="mailto:info@worldmaritime.com.tr">info@worldmaritime.com.tr</a><button class="copy" type="button" data-copy="info@worldmaritime.com.tr" aria-label="Copy info@worldmaritime.com.tr"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:serdar.kandemir@worldmaritime.com.tr">serdar.kandemir@worldmaritime.com.tr</a><button class="copy" type="button" data-copy="serdar.kandemir@worldmaritime.com.tr" aria-label="Copy serdar.kandemir@worldmaritime.com.tr"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="turkey volkan altinbas klas denizcilik tunel yolu cad. yali yolu sok. ismail ergin is mrk. no: 54 b blok kat 3 d:6, uskudar, istanbul, turkey barbados@klassurvey.com"><article class="rr"><b class="nm">Volkan Altinbas</b><span class="co">Klas Denizcilik</span><address>Tunel Yolu Cad. Yali Yolu Sok. Ismail Ergin Is Mrk. No: 54 B Blok Kat 3 D:6, Uskudar, Istanbul, Turkey</address><div class="ct"><a class="ph" href="tel:+902164106174"><svg aria-hidden="true"><use href="#phone"/></svg>+90 216 410 61 74 <small>Pbx</small></a><span class="em"><a href="mailto:barbados@klassurvey.com">barbados@klassurvey.com</a><button class="copy" type="button" data-copy="barbados@klassurvey.com" aria-label="Copy barbados@klassurvey.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="turkey aslihan kaplama nomadis marine consultancy sadi konuralp cad. nejat eczacibasi binasi no: 5 kat: 2 beyoglu, istanbul, turkiye operations@nomadismarine.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/tr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Turkey</p><b class="nm">Aslihan Kaplama</b><span class="co">Nomadis Marine Consultancy</span><address>Sadi Konuralp Cad. Nejat Eczacibasi Binasi No: 5 Kat: 2 Beyoglu, Istanbul, Türkiye</address><div class="ct"><a class="ph" href="tel:+905353435753"><svg aria-hidden="true"><use href="#phone"/></svg>+90 535 343 57 53</a><span class="em"><a href="mailto:operations@nomadismarine.com">operations@nomadismarine.com</a><button class="copy" type="button" data-copy="operations@nomadismarine.com" aria-label="Copy operations@nomadismarine.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="turkey bulent haznedar b&amp;b maritime ltd. cevizli mah. mustafa kemal cad., seyitgazi sok. hukukcular towers, no:66, b blok, d:66, kartal, istanbul, 34865, turkiye bnb@bnbmaritime.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/tr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Turkey</p><b class="nm">Bulent Haznedar</b><span class="co">B&amp;B Maritime Ltd.</span><address>Cevizli Mah. Mustafa Kemal Cad., Seyitgazi Sok. Hukukcular Towers, No:66, B blok, D:66, Kartal, Istanbul, 34865, Türkiye</address><div class="ct"><a class="ph" href="tel:+905409310988"><svg aria-hidden="true"><use href="#phone"/></svg>+90 540 931 09 88</a><span class="em"><a href="mailto:bnb@bnbmaritime.com">bnb@bnbmaritime.com</a><button class="copy" type="button" data-copy="bnb@bnbmaritime.com" aria-label="Copy bnb@bnbmaritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="turkey cem ertem klas denizcilik tunel yolu cad. yali yolu sok. ismail ergin is mrk. no: 54 b blok kat 3 d:6, uskudar, istanbul, turkey barbados@klassurvey.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/tr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Turkey</p><b class="nm">Cem Ertem</b><span class="co">Klas Denizcilik</span><address>Tunel Yolu Cad. Yali Yolu Sok. Ismail Ergin Is Mrk. No: 54 B Blok Kat 3 D:6, Uskudar, Istanbul, Turkey</address><div class="ct"><a class="ph" href="tel:+902164106174"><svg aria-hidden="true"><use href="#phone"/></svg>+90 216 410 61 74 <small>Pbx</small></a><span class="em"><a href="mailto:barbados@klassurvey.com">barbados@klassurvey.com</a><button class="copy" type="button" data-copy="barbados@klassurvey.com" aria-label="Copy barbados@klassurvey.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="turkey serdar kandemir world maritime shipping co. kaynarca mahallesi, aydınlıyolu caddesi, mavi kule rezidans no.137 kat.4 daire.19, pendik, istanbul, turkiye 34890 info@worldmaritime.com.tr serdar.kandemir@worldmaritime.com.tr"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/tr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Turkey</p><b class="nm">Serdar Kandemir</b><span class="co">World Maritime Shipping Co.</span><address>Kaynarca Mahallesi, Aydınlıyolu Caddesi, Mavi Kule Rezidans No.137 Kat.4 Daire.19, Pendik, Istanbul, Türkiye 34890</address><div class="ct"><a class="ph" href="tel:+902165154876"><svg aria-hidden="true"><use href="#phone"/></svg>+90 216 515 4876</a><a class="ph" href="tel:+905324664377"><svg aria-hidden="true"><use href="#phone"/></svg>+90 532 466 4377</a><span class="em"><a href="mailto:info@worldmaritime.com.tr">info@worldmaritime.com.tr</a><button class="copy" type="button" data-copy="info@worldmaritime.com.tr" aria-label="Copy info@worldmaritime.com.tr"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span><span class="em"><a href="mailto:serdar.kandemir@worldmaritime.com.tr">serdar.kandemir@worldmaritime.com.tr</a><button class="copy" type="button" data-copy="serdar.kandemir@worldmaritime.com.tr" aria-label="Copy serdar.kandemir@worldmaritime.com.tr"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="turkey volkan altinbas klas denizcilik tunel yolu cad. yali yolu sok. ismail ergin is mrk. no: 54 b blok kat 3 d:6, uskudar, istanbul, turkey barbados@klassurvey.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/tr.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Turkey</p><b class="nm">Volkan Altinbas</b><span class="co">Klas Denizcilik</span><address>Tunel Yolu Cad. Yali Yolu Sok. Ismail Ergin Is Mrk. No: 54 B Blok Kat 3 D:6, Uskudar, Istanbul, Turkey</address><div class="ct"><a class="ph" href="tel:+902164106174"><svg aria-hidden="true"><use href="#phone"/></svg>+90 216 410 61 74 <small>Pbx</small></a><span class="em"><a href="mailto:barbados@klassurvey.com">barbados@klassurvey.com</a><button class="copy" type="button" data-copy="barbados@klassurvey.com" aria-label="Copy barbados@klassurvey.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-uae" data-region="mea" aria-labelledby="rr-uae-h">
-      <h2 class="rr-h hull" id="rr-uae-h" tabindex="-1"><span class="cc" aria-hidden="true">AE</span>UAE</h2>
+      <h2 class="rr-h hull" id="rr-uae-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/ae.svg" alt="" width="42" height="28" loading="lazy" decoding="async">UAE</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="uae capt. suhail alkhayer levant shipping alilthid street, alferdous building, office m02, bur dubai, uae barbados.me@gmail.com"><article class="rr"><b class="nm">Capt. Suhail AlKhayer</b><span class="co">Levant Shipping</span><address>Alilthid Street, Alferdous Building, Office M02, Bur Dubai, UAE</address><div class="ct"><a class="ph" href="tel:+97143576132"><svg aria-hidden="true"><use href="#phone"/></svg>+971 4357 6132</a><span class="em"><a href="mailto:barbados.me@gmail.com">barbados.me@gmail.com</a><button class="copy" type="button" data-copy="barbados.me@gmail.com" aria-label="Copy barbados.me@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="uae capt. suhail alkhayer levant shipping alilthid street, alferdous building, office m02, bur dubai, uae barbados.me@gmail.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/ae.svg" alt="" width="30" height="20" loading="lazy" decoding="async">UAE</p><b class="nm">Capt. Suhail AlKhayer</b><span class="co">Levant Shipping</span><address>Alilthid Street, Alferdous Building, Office M02, Bur Dubai, UAE</address><div class="ct"><a class="ph" href="tel:+97143576132"><svg aria-hidden="true"><use href="#phone"/></svg>+971 4357 6132</a><span class="em"><a href="mailto:barbados.me@gmail.com">barbados.me@gmail.com</a><button class="copy" type="button" data-copy="barbados.me@gmail.com" aria-label="Copy barbados.me@gmail.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-ukraine" data-region="europe" aria-labelledby="rr-ukraine-h">
-      <h2 class="rr-h hull" id="rr-ukraine-h" tabindex="-1"><span class="cc" aria-hidden="true">UA</span>Ukraine</h2>
+      <h2 class="rr-h hull" id="rr-ukraine-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/ua.svg" alt="" width="42" height="28" loading="lazy" decoding="async">Ukraine</h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="ukraine capt. sergiy gudko flagadmin int ltd yalı mahallesi, kadir sk. no:14, floor 20, app 190, &quot;helis more residence &amp; offices&quot;, zip 34862, kartal, istanbul, turkey registration@flagadmin.com"><article class="rr"><b class="nm">Capt. Sergiy Gudko</b><span class="co">Flagadmin Int Ltd</span><address>Yalı Mahallesi, Kadir Sk. No:14, floor 20, App 190, &quot;Helis More residence &amp; offices&quot;, Zip 34862, Kartal, Istanbul, Turkey</address><div class="ct"><a class="ph" href="tel:+905411132676"><svg aria-hidden="true"><use href="#phone"/></svg>+90 541 113 26 76</a><a class="ph" href="tel:+380503185304"><svg aria-hidden="true"><use href="#phone"/></svg>+38 050 318 53 04</a><span class="em"><a href="mailto:registration@flagadmin.com">registration@flagadmin.com</a><button class="copy" type="button" data-copy="registration@flagadmin.com" aria-label="Copy registration@flagadmin.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="ukraine capt. sergiy gudko flagadmin int ltd yalı mahallesi, kadir sk. no:14, floor 20, app 190, &quot;helis more residence &amp; offices&quot;, zip 34862, kartal, istanbul, turkey registration@flagadmin.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/ua.svg" alt="" width="30" height="20" loading="lazy" decoding="async">Ukraine</p><b class="nm">Capt. Sergiy Gudko</b><span class="co">Flagadmin Int Ltd</span><address>Yalı Mahallesi, Kadir Sk. No:14, floor 20, App 190, &quot;Helis More residence &amp; offices&quot;, Zip 34862, Kartal, Istanbul, Turkey</address><div class="ct"><a class="ph" href="tel:+905411132676"><svg aria-hidden="true"><use href="#phone"/></svg>+90 541 113 26 76</a><a class="ph" href="tel:+380503185304"><svg aria-hidden="true"><use href="#phone"/></svg>+38 050 318 53 04</a><span class="em"><a href="mailto:registration@flagadmin.com">registration@flagadmin.com</a><button class="copy" type="button" data-copy="registration@flagadmin.com" aria-label="Copy registration@flagadmin.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <section class="rr-c" id="rr-usa" data-region="americas" aria-labelledby="rr-usa-h">
-      <h2 class="rr-h hull" id="rr-usa-h" tabindex="-1"><span class="cc" aria-hidden="true">US</span>USA <i>2 registrars</i></h2>
+      <h2 class="rr-h hull" id="rr-usa-h" tabindex="-1"><img class="cc" src="https://flagcdn.com/us.svg" alt="" width="42" height="28" loading="lazy" decoding="async">USA <i>2 registrars</i></h2>
       <ul class="rr-grid">
-        <li class="rr-li" data-s="usa george yilmaz aba marine consulting inc. 201 west passaic st., suite 403, rochelle park, new jersey 07662 director@aba-maritime.com"><article class="rr"><b class="nm">George Yilmaz</b><span class="co">ABA Marine Consulting Inc.</span><address>201 West Passaic St., Suite 403, Rochelle Park, New Jersey 07662</address><div class="ct"><a class="ph" href="tel:+19089350026"><svg aria-hidden="true"><use href="#phone"/></svg>+1-908-935-0026</a><a class="ph" href="tel:+19174365588"><svg aria-hidden="true"><use href="#phone"/></svg>+1 917 436 5588</a><span class="em"><a href="mailto:director@aba-maritime.com">director@aba-maritime.com</a><button class="copy" type="button" data-copy="director@aba-maritime.com" aria-label="Copy director@aba-maritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
-        <li class="rr-li" data-s="usa joel da costa condorina group 6505 blue lagoon drive, suite 455, miami, fl 33126 joel@conarinagroup.com"><article class="rr"><b class="nm">Joel Da Costa</b><span class="co">Condorina Group</span><address>6505 Blue Lagoon Drive, Suite 455, Miami, FL 33126</address><div class="ct"><a class="ph" href="tel:+17863250200"><svg aria-hidden="true"><use href="#phone"/></svg>+1-786-325-0200 <small>24h</small></a><a class="ph" href="tel:+17865065208"><svg aria-hidden="true"><use href="#phone"/></svg>+1 786 506 5208</a><span class="em"><a href="mailto:joel@conarinagroup.com">joel@conarinagroup.com</a><button class="copy" type="button" data-copy="joel@conarinagroup.com" aria-label="Copy joel@conarinagroup.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="usa george yilmaz aba marine consulting inc. 201 west passaic st., suite 403, rochelle park, new jersey 07662 director@aba-maritime.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/us.svg" alt="" width="30" height="20" loading="lazy" decoding="async">USA</p><b class="nm">George Yilmaz</b><span class="co">ABA Marine Consulting Inc.</span><address>201 West Passaic St., Suite 403, Rochelle Park, New Jersey 07662</address><div class="ct"><a class="ph" href="tel:+19089350026"><svg aria-hidden="true"><use href="#phone"/></svg>+1-908-935-0026</a><a class="ph" href="tel:+19174365588"><svg aria-hidden="true"><use href="#phone"/></svg>+1 917 436 5588</a><span class="em"><a href="mailto:director@aba-maritime.com">director@aba-maritime.com</a><button class="copy" type="button" data-copy="director@aba-maritime.com" aria-label="Copy director@aba-maritime.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
+        <li class="rr-li" data-s="usa joel da costa condorina group 6505 blue lagoon drive, suite 455, miami, fl 33126 joel@conarinagroup.com"><article class="rr"><p class="ctry" aria-hidden="true"><img class="cc" src="https://flagcdn.com/us.svg" alt="" width="30" height="20" loading="lazy" decoding="async">USA</p><b class="nm">Joel Da Costa</b><span class="co">Condorina Group</span><address>6505 Blue Lagoon Drive, Suite 455, Miami, FL 33126</address><div class="ct"><a class="ph" href="tel:+17863250200"><svg aria-hidden="true"><use href="#phone"/></svg>+1-786-325-0200 <small>24h</small></a><a class="ph" href="tel:+17865065208"><svg aria-hidden="true"><use href="#phone"/></svg>+1 786 506 5208</a><span class="em"><a href="mailto:joel@conarinagroup.com">joel@conarinagroup.com</a><button class="copy" type="button" data-copy="joel@conarinagroup.com" aria-label="Copy joel@conarinagroup.com"><svg aria-hidden="true"><use href="#i-copy"/></svg></button></span></div></article></li>
       </ul>
     </section>
     <p class="empty" id="rr-empty">No registrars match your search. Try another country or city, or <a href="../contact/index.html">contact the London office</a> and we'll help.</p>
@@ -930,7 +1431,7 @@ document.querySelectorAll('.dd').forEach(dd => {
       <div><p class="tag">Important links</p><ul><li><a href="../the-bmsr/index.html">The BMSR</a></li><li><a href="../about/index.html">About Us</a></li><li><a href="../contact/index.html">Contact us</a></li><li><a href="../links/index.html">Useful Links</a></li></ul></div>
       <div><p class="tag">Resources</p><ul><li><a href="../bulletins/index.html">Bulletins</a></li><li><a href="../news/index.html">News</a></li><li><a href="../holidays/index.html">Public Holidays</a></li><li><a href="../yacht-registration/index.html">Yacht Registration</a></li><li><a href="../registration-fees/index.html">Registration Fees</a></li></ul></div>
     </div>
-    <div class="bottom"><span>© 2026 Barbados Maritime Ship Registry. All rights reserved.</span><span class="legal"><a href="https://barbadosmaritime.com/privacy-policy/">Privacy policy</a><a class="totop" href="#main">Back to top <svg class="ar"><use href="#ar"/></svg></a></span></div>
+    <div class="bottom"><span>© 2026 Barbados Maritime Ship Registry. All rights reserved.</span><span class="legal"><a href="https://barbadosmaritime.com/privacy-policy/">Privacy policy</a><a class="totop" href="#main" aria-label="Back to top" title="Back to top"><svg class="ar" aria-hidden="true"><use href="#ar"/></svg></a></span></div>
   </div>
 </footer>
 
@@ -1013,10 +1514,12 @@ jump.addEventListener('change', () => {
   if (!jump.value) return;
   q.value = ''; region = 'all'; chips.forEach(x => x.setAttribute('aria-pressed', x.dataset.region === 'all')); apply();
   // land the country just below whatever is pinned over it: the header, plus the finder when it sits above the list (not beside it, as in Option D's side column)
-  const g = document.getElementById(jump.value), f = document.querySelector('.finder'), fr = f.getBoundingClientRect(), gr = g.getBoundingClientRect();
+  const g = document.getElementById(jump.value), f = document.querySelector('.finder'), fr = f.getBoundingClientRect();
+  const gr = (g.getClientRects().length ? g : g.querySelector('.rr-li')).getBoundingClientRect(); // A–C grid: the section has no box, so use its first card
   const over = getComputedStyle(f).position === 'sticky' && fr.left < gr.right && fr.right > gr.left;
   const top = (parseFloat(getComputedStyle(f).top) || 0) + (over ? fr.height : 0) + 12;
   scrollTo({ top: gr.top + scrollY - top, behavior: reduce ? 'auto' : 'smooth' }); g.querySelector('h2').focus({ preventScroll: true });
+  g.querySelectorAll('.rr-li').forEach(li => { li.classList.add('hit'); clearTimeout(li._h); li._h = setTimeout(() => li.classList.remove('hit'), 1800); });
   jump.value = '';
 });
 // copy buttons
