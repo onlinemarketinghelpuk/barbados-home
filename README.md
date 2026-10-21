@@ -24,6 +24,14 @@ node tools/build-options.mjs    # one-off rebuild of option-a … option-d after
 node tools/build-options.mjs --only mortgages   # rebuild just one page (or several: --only a,b; the home page is "home")
 ```
 
+**Cloning on Windows:** clone with long paths on. The longest page path in the repo is 192 characters (a news post, under each of the four option folders), so unless the clone sits close to the drive root the full path passes the old 260-character limit and the checkout stops part-way:
+
+```bash
+git clone -c core.longpaths=true <repo-url>
+```
+
+In a clone made without it, run `git config core.longpaths true` and `git checkout -f HEAD -- .` to finish the checkout. Line endings are pinned to LF by `.gitattributes`, because the build matches on LF: a CRLF checkout fails on the first page.
+
 **Adding a page:** a page owns `src/<dir>.html`, `src/data/<dir>.json` and `src/option-d/<dir>.css` (Option D's layout, picked up by name). If it needs its own renderer for `{{…}}` placeholders, put it in `tools/fill/<dir>.mjs` (default export `(html, { read, esc, fileType, revOf }) => html`); the build loads every file there. List the page in `LIVE` and `pages` in the build. A page whose source doesn't exist yet is skipped, so pages can be built side by side.
 
 **Live content:** the live site's WordPress feed is public (`https://barbadosmaritime.com/wp-json/wp/v2/pages?slug=<slug>`, also `/posts` and `/media`). New pages take their wording, links and files from it, read-only, rather than from screenshots.
