@@ -549,8 +549,8 @@ button,input{font:inherit}
    The sections and lists step aside (display:contents), so search, regions and "jump to a country" work on the same markup. Option D keeps its ruled rows. */
 /* Option D: registrars stay as ruled rows under country headings (no grid) */
 .rr .ctry{display:none}
-/* desktop: the header stays at its 80px scrolled height, so the pinned finder sits flush under it */
-@media (min-width:1241px){:root{--hdr-h:80px}}
+/* desktop: the header stays at its scrolled height and logo size, so the pinned finder sits flush under it */
+@media (min-width:1241px){:root{--hdr-h:92px;--logo-h:52px}}
 </style>
 <style>
 /* Option A · Refined Hull
