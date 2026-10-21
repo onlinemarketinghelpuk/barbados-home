@@ -5,24 +5,24 @@
 .ro-bar .grp{margin:0}
 .ro-filter{display:none;gap:6px;flex-wrap:wrap}
 .js .ro-filter{display:flex}
-.ro-filter button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid #C3D4DA;border-radius:99px;background:#fff;font:600 14px/1 var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
-.ro-filter button i{font:500 12px/1 var(--mono);font-style:normal;color:#475E6B}
-.ro-filter button:hover{border-color:#1B3A93}
-.ro-filter button[aria-pressed="true"]{background:#1B3A93;border-color:#1B3A93;color:#fff}
-.ro-filter button[aria-pressed="true"] i{color:#CFDAF5}
+.ro-filter button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid #D7DEEE;border-radius:99px;background:#fff;font:600 14px/1 var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.ro-filter button i{font:500 12px/1 var(--mono);font-style:normal;color:#4F515A}
+.ro-filter button:hover{border-color:var(--flag-blue)}
+.ro-filter button[aria-pressed="true"]{background:var(--flag-blue);border-color:var(--flag-blue);color:#fff}
+.ro-filter button[aria-pressed="true"] i{color:#C9D6F2}
 .ro-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
-.ro{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;padding:24px 14px 18px;border:1px solid #D2E1E5;border-radius:2px;background:#fff;text-align:center;transition:border-color .25s,transform .25s,box-shadow .25s}
-.ro:hover,.ro:focus-visible{border-color:#1B3A93;transform:translateY(-3px);box-shadow:0 12px 28px rgba(3,20,31,.08)}
+.ro{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;padding:24px 14px 18px;border:1px solid #D7DEEE;border-radius:2px;background:#fff;text-align:center;transition:border-color .25s,transform .25s,box-shadow .25s}
+.ro:hover,.ro:focus-visible{border-color:var(--flag-blue);transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,12,34,.08)}
 .ro .lg{display:grid;place-items:center;width:100%;height:84px;margin-bottom:4px}
 /* equal visual weight: every logo gets roughly the same area, so wide wordmarks and round seals balance (--r = width ÷ height) */
 .ro img{width:min(100%,calc(66px * sqrt(var(--r))));height:auto;max-height:84px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
 .ro:hover img,.ro:focus-visible img,.ros.colour .ro img{filter:none;opacity:1}
 .ro .nm{font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
-.ro .ia{margin-top:auto;padding:4px 8px;border-radius:99px;background:#E8EEFA;font:500 10.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#1B3A93}
+.ro .ia{margin-top:auto;padding:4px 8px;border-radius:99px;background:#E6ECFA;font:500 10.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--flag-blue)}
 .ro-more{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px}
-.ro-more .btn{display:none;border-color:#AFC4CC;background:none;color:var(--ink);cursor:pointer}
+.ro-more .btn{display:none;border-color:#C2CADC;background:none;color:var(--ink);cursor:pointer}
 .js .ro-more .btn{display:inline-flex}.js .ro-more .btn[hidden]{display:none}
-.ro-more .btn:hover{border-color:#1B3A93;background:#fff}
+.ro-more .btn:hover{border-color:var(--flag-blue);background:#fff}
 .ro-more .go{margin-left:auto}
 @media (max-width:1100px){.ro-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:640px){
@@ -44,12 +44,12 @@
 .reg .h2{margin:18px 0 22px;max-width:14em}
 .reg .lead{margin:0;max-width:40em}
 .paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(40px,5vw,64px)}
-.paths a{position:relative;display:flex;flex-direction:column;gap:12px;height:100%;padding:28px 28px 32px;border:1px solid rgba(233,241,243,.18);border-top:3px solid var(--gold);border-radius:2px;background:rgba(3,20,31,.35);transition:background .25s,border-color .25s}
-.paths b{font-size:clamp(30px,2.6vw,40px);transition:color .25s}
-.paths .txt{color:#C9D7DC;font-size:16px;line-height:1.55}
-.paths .tag{color:#C9D7DC}
+.paths a{position:relative;display:flex;flex-direction:column;gap:12px;height:100%;padding:28px 28px 32px;border:1px solid rgba(255,255,255,.18);border-top:3px solid var(--gold);border-radius:2px;background:rgba(0,12,34,.35);transition:background .25s,border-color .25s}
+.paths b{font-size:clamp(28px,2.6vw,40px);transition:color .25s}
+.paths .txt{color:var(--soft);font-size:16px;line-height:1.55}
+.paths .tag{color:var(--soft)}
 .paths .ar{position:absolute;top:28px;right:24px;color:var(--gold)}
-.paths a:hover{background:rgba(3,20,31,.6);border-color:rgba(233,241,243,.35);border-top-color:var(--gold)}
+.paths a:hover{background:rgba(0,12,34,.6);border-color:rgba(255,255,255,.35);border-top-color:var(--gold)}
 .paths a:hover b{color:var(--gold)}.paths a:hover .ar{transform:translateX(4px)}
 @media (max-width:900px){.paths{grid-template-columns:1fr}}
 
@@ -58,7 +58,7 @@
 @media (min-width:1241px) and (max-width:1400px){.hdr .in>nav{gap:13px}.hdr .in>nav a{font-size:14px}.hdr .in{gap:16px}}
 
 /* ---------- floating Back to top (bottom right; on phones it rides above the quick-contact bar when that's showing) ---------- */
-.fab{position:fixed;right:clamp(16px,2vw,28px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:46;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--glass);box-shadow:0 8px 24px rgba(3,20,31,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);
+.fab{position:fixed;right:clamp(16px,2vw,28px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:46;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--glass);box-shadow:0 8px 24px rgba(0,12,34,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);
   opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s,transform .3s var(--ease),visibility 0s .3s,bottom .45s var(--ease)}
 .fab.show{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s var(--ease),visibility 0s,bottom .45s var(--ease)}
 .fab .ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
@@ -87,7 +87,7 @@
 .ro-filter button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .ro-filter button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
 .ro{border-color:var(--line);background:var(--card);padding:14px 14px 18px}
-.ro:hover,.ro:focus-visible{border-color:var(--teal);box-shadow:0 12px 28px rgba(3,20,31,.18)}
+.ro:hover,.ro:focus-visible{border-color:var(--teal);box-shadow:0 12px 28px rgba(0,12,34,.18)}
 .ro .lg{height:100px;padding:12px;border-radius:2px;background:#fff}
 .ro img{max-height:76px}
 .ro .nm{color:var(--text)}
@@ -98,8 +98,11 @@
 
 /* ---------- IACS as a corner badge on the tile; "Show all" centred (no directory link) ---------- */
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ro .ia{position:absolute;top:6px;right:6px;z-index:1;display:inline-flex;align-items:center;gap:4px;margin:0;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(3,20,31,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.ro .ia{position:absolute;top:6px;right:6px;z-index:1;display:inline-flex;align-items:center;gap:4px;margin:0;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(0,12,34,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
 .ro .ia svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .ro-more{justify-content:center}
 /* names stay on one line; longer ones end in "…" (full name in the tile's tooltip, and read in full by screen readers) */
 .ro .nm{display:block;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* D fills the figures band with words, not short numbers, so the 80% letters of Option A need a smaller size here */
+.isle b{font-size:clamp(52px,5.9vw,90px)}

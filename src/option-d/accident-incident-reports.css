@@ -12,7 +12,7 @@
 .air-list{border-top:2px solid var(--gold)}
 .air-r{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto;padding:22px 0}
 .air-r:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
-.air-v h3{font-size:clamp(22px,2vw,28px)}
+.air-v h3{font-size:clamp(22px,1.9vw,28px)}
 .air-when time{font:600 15px/1.3 var(--mono);letter-spacing:.02em}
 .air-none{border-style:solid;border-width:0 0 1px;border-radius:0;padding-inline:0}
 .air-rel a{border:0;border-top:2px solid var(--gold);border-radius:0;background:none;padding-inline:0}

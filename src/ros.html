@@ -8,14 +8,14 @@
 <!-- @include page-css (shared by the inner pages; see src/partials/) -->
 <style>
 /* ================= recognised organisations: intro + authority box, a searchable directory of named logo tiles, bulletins ================= */
-.ro-intro{padding-block:clamp(56px,7vw,96px) clamp(32px,4vw,56px)}
+.ro-intro{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px) clamp(32px,4vw,56px)}
 .ro-intro .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:start}
 .ro-intro .body p{max-width:62ch;color:var(--muted)}
 .ro-intro .body p+p{margin-top:14px}
-.ro-intro .statement{margin:18px 0 22px;font-size:clamp(24px,2.3vw,34px);line-height:1.3}
+.ro-intro .statement{margin:18px 0 22px;font-size:clamp(26px,2.4vw,36px);line-height:1.3}
 .ro-intro .statement span{color:var(--mint)}
 .ask{display:flex;flex-direction:column;gap:14px;padding:clamp(22px,2.5vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
-.ask h2{font-size:clamp(24px,2vw,30px)}
+.ask h2{font-size:clamp(22px,1.9vw,28px)}
 .ask p{color:var(--muted);font-size:15.5px}
 .ask .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-top:14px;border-top:1px solid var(--line)}
 .ask .row a{font-weight:700;color:var(--text)}
@@ -46,7 +46,7 @@ a.ro:hover,a.ro:focus-visible{border-color:var(--teal);border-top-color:var(--go
 .ro .lg{display:grid;place-items:center;height:110px;padding:14px;border-radius:2px;background:#fff}
 .ro img{width:min(100%,calc(70px * sqrt(var(--r))));height:auto;max-height:82px;object-fit:contain}
 .ro .nm{font-size:14.5px;font-weight:600;line-height:1.35;color:var(--text)}
-.ro .ia{position:absolute;top:6px;right:6px;display:inline-flex;align-items:center;gap:4px;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(3,20,31,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.ro .ia{position:absolute;top:6px;right:6px;display:inline-flex;align-items:center;gap:4px;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(0,12,34,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
 .ro .ia svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .js .ro-grid li.off{display:none}
 .ro-empty{display:none;padding:28px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
@@ -54,7 +54,7 @@ a.ro:hover,a.ro:focus-visible{border-color:var(--teal);border-top-color:var(--go
 .ro-empty a{color:var(--teal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 /* bulletins: the home page's news cards; a circular has no picture, so its card shows the reference instead */
 .bul .post figure.ref{display:grid;place-items:center;background:linear-gradient(140deg,var(--hull),var(--deep))}
-.bul .post figure.ref b{font-size:clamp(30px,2.6vw,42px);color:var(--teal)}
+.bul .post figure.ref b{font-size:clamp(28px,2.6vw,40px);color:var(--teal)}
 @media (max-width:1240px){.ro-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:900px){.ro-intro .grid{grid-template-columns:1fr}}
 @media (max-width:640px){.ro-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ro .lg{height:84px;padding:10px}.ro img{max-height:62px;width:min(100%,calc(54px * sqrt(var(--r))))}}

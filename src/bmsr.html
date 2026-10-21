@@ -10,8 +10,8 @@
 /* ================= The BMSR: a hub. Hero with the coat of arms, the hours band, then three groups of three link cards ================= */
 .hub-h .wrap{position:relative}
 .arms{position:absolute;right:var(--gut);bottom:calc(100% - 100%);top:auto;display:none}
-@media (min-width:1101px){.hub-h .arms{display:block;position:absolute;right:0;top:50%;width:clamp(180px,16vw,260px);transform:translateY(-55%);right:var(--gut);padding:18px;border-radius:2px;background:#fff;box-shadow:0 24px 60px rgba(3,20,31,.35)}.hub-h .arms img{width:100%;height:auto}.hub-h h1{max-width:9em}}
-.hubdir{padding-block:clamp(56px,7vw,104px)}
+@media (min-width:1101px){.hub-h .arms{display:block;position:absolute;right:0;top:50%;width:clamp(180px,16vw,260px);transform:translateY(-55%);right:var(--gut);padding:18px;border-radius:2px;background:#fff;box-shadow:0 24px 60px rgba(0,12,34,.35)}.hub-h .arms img{width:100%;height:auto}.hub-h h1{max-width:9em}}
+.hubdir{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .hgroup+.hgroup{margin-top:clamp(40px,5vw,64px)}
 .hfeat{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px 32px;margin-bottom:clamp(40px,5vw,64px);padding:clamp(26px,3vw,40px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-radius:2px;background:linear-gradient(115deg,color-mix(in srgb,var(--gold) 16%,var(--deep)),var(--deep) 70%);transition:border-color .25s}
 .hfeat:hover{border-color:var(--gold)}
@@ -30,7 +30,7 @@
 .hc{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
 .hc:hover,.hc:focus-visible{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
 .hc .tag{color:var(--teal)}
-.hc b{font-size:clamp(24px,2vw,30px)}
+.hc b{font-size:clamp(22px,1.9vw,28px)}
 .hc span.d{color:var(--muted);font-size:15.5px;line-height:1.55}
 .hc .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
 .hc:hover .ar{transform:translateX(4px)}

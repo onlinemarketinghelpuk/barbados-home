@@ -75,7 +75,8 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 
 ## Design rules
 - Define every colour as a variable on `:root`. Support both themes with `[data-theme="light"|"dark"]`, defaulting to dark (the client-approved look; see the decisions log in `docs/spec.md`). Store the user's choice in `localStorage` (wrapped in try/catch) and apply it from a script in `<head>` so there's no flash of the wrong theme.
-- Brand accent is `#FEC725`. On light backgrounds use a darker accent for text so it passes WCAG AA contrast.
+- **The palette is the Barbados flag and nothing else** (client request, 21 Oct 2026): ultramarine `#00267F`, gold `#FFC726`, black `#0A0E1A`, white. They are the tokens `--flag-blue`, `--flag-gold`, `--flag-black`, `--flag-white` on `:root`; every other colour is one of the four, lightened or darkened. No teal, cyan or green anywhere, and no green/red status colours: the "open now" dot is gold, and form errors use a gold mark with the wording carrying the meaning.
+- Dark theme runs on a deep ultramarine scale (`--abyss` `#000C22` → `--card` `#001F52`, `--night` `#00081C` for the announcement bar and footer); light theme is white and near-white with `--flag-blue` as the accent.
 - Full-width layout: fluid container with gutters of `clamp(20px,5vw,96px)`. Keep body text to about 65ch.
 - Logo and flag are the same height. The flag is a transparent inline SVG with no white ring. Swap the logo per theme (`bmsr-logo-white.png` / `bmsr-logo-navy.png`; the navy one is a transparent version made from `bmsr-logo.png`, which has a white box).
 - Motion: the announcement bar and logo strips pause on hover and focus, and become static under `prefers-reduced-motion`.

@@ -11,7 +11,7 @@
 .tp-list{display:block;margin-top:24px;border-top:2px solid var(--gold)}
 .tp{grid-template-columns:110px minmax(0,1fr);gap:8px 26px;padding:26px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none}
 .tp:hover{background:color-mix(in srgb,var(--gold) 6%,transparent)}
-.tp-n{font-size:clamp(40px,4vw,56px);color:var(--text)}
+.tp-n{font-size:clamp(38px,4vw,56px);color:var(--text)}
 .tp .btn{margin-top:8px}
 @media (max-width:1100px){.tpz .grid{grid-template-columns:1fr}.tpz .grid>aside{order:0}.tp-side{grid-template-columns:1fr 1fr;gap:0 32px}.tp-box+.tp-box{margin-top:0}}
 @media (max-width:760px){.tp-side{grid-template-columns:1fr}.tp-box+.tp-box{margin-top:24px}.tp{grid-template-columns:64px minmax(0,1fr)}.tp-n{font-size:34px}}

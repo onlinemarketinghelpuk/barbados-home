@@ -51,14 +51,14 @@
 .panel .thanks{padding:0;border:0;background:none}
 .panel .actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
 .panel .fb-group .gh{border-bottom-width:1px;border-bottom-color:var(--line)}
-.panel .fb-group h3{font-size:clamp(20px,1.6vw,24px)}
+.panel .fb-group h3{font-size:clamp(19px,1.5vw,22px)}
 
 /* visit: the map runs edge to edge; the address card floats over its left side (the map stays usable on the right) */
-.c-visit{position:relative;isolation:isolate;display:flex;align-items:center;min-height:640px;padding-block:clamp(56px,7vw,96px);overflow:hidden;background:var(--hull);border-block:1px solid var(--line)}
+.c-visit{position:relative;isolation:isolate;display:flex;align-items:center;min-height:640px;padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px);overflow:hidden;background:var(--hull);border-block:1px solid var(--line)}
 .c-visit .map{position:absolute;inset:0;z-index:-2;min-height:0;border:0;border-radius:0}
 .c-visit::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,var(--abyss) 0%,color-mix(in srgb,var(--abyss) 78%,transparent) 30%,transparent 60%)}
 .c-visit .wrap{width:100%;pointer-events:none}
-.c-visit .vcard{width:min(480px,100%);gap:22px;border-top:3px solid var(--gold);border-radius:2px;box-shadow:0 24px 60px rgba(3,20,31,.35);pointer-events:auto}
+.c-visit .vcard{width:min(480px,100%);gap:22px;border-top:3px solid var(--gold);border-radius:2px;box-shadow:0 24px 60px rgba(0,12,34,.35);pointer-events:auto}
 .c-visit .vcard .ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
 .c-visit .bigger{border-radius:2px;z-index:1}
 

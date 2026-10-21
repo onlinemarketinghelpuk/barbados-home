@@ -465,6 +465,7 @@ Live-site addresses are rewritten at build time so the review stays inside the r
 - Office hours under the banner, with a live "Open now / Closed" badge in UK time.
 - Emergency contacts in the hours band, announcement bar, mobile contact bar and footer.
 - Accreditations (ISO 9001, Paris MoU, QUALSHIP 21, IMO) above the Recognised Organisations.
+- One palette, taken from the flag: ultramarine, gold, black and white, with no teal, cyan or green. The four are `--flag-blue`, `--flag-gold`, `--flag-black` and `--flag-white` in `src/partials/head.html`; everything else derives from them.
 - Smooth scrolling for in-page links, except for visitors who prefer reduced motion.
 
 ## Accessibility
@@ -478,7 +479,7 @@ The pages use modern CSS (`color-mix()`, `sqrt()`, `:is()`), so they need a curr
 
 ## Deployment
 
-The site is plain static files, deployed to the Vercel project `barbados-v6`. Anything not listed in `.vercelignore` is **public**. `src/`, `tools/`, `.claude/` and this README are excluded.
+The site is plain static files, deployed to the Vercel project `barbados-v6`. `vercel.json` sets `trailingSlash: true`, so `/option-b` redirects to `/option-b/`: without the slash a browser resolves the page’s relative links one level too high and every inner page 404s. The two local servers in `.claude/` send the same redirect. Anything not listed in `.vercelignore` is **public**. `src/`, `tools/`, `.claude/` and this README are excluded.
 
 ## Before go-live
 

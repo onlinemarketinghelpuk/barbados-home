@@ -3,4 +3,11 @@
    with weight contrast: a light lead-in (300) and a heavy key phrase (900) on its own line. */
 .hero h1{font-stretch:80%;font-weight:300;letter-spacing:.005em;line-height:.92;font-size:clamp(54px,7vw,118px);max-width:12em}
 .hero h1 span{display:block;font-weight:900}
-@media (max-width:640px){.hero h1{font-size:clamp(42px,12.5vw,64px)}}
+/* the content below follows the banner: the same 80% width, so headings and hero read as one typeface setting */
+.hull{font-stretch:80%}
+/* 80% letters run about a third wider than the 62% they replace, so the headings come down to keep their line lengths */
+.h2{font-size:clamp(38px,4.8vw,70px)}
+.part .h2{font-size:clamp(32px,3.6vw,54px)} /* narrow side column, long words */
+@media (max-width:640px){.hero h1{font-size:clamp(42px,12.5vw,64px)}
+  .ph h1{font-size:clamp(36px,10.5vw,56px)} /* inner-page titles: long words at 80% width need the room on phones */
+}

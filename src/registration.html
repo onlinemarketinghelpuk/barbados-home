@@ -8,15 +8,15 @@
 <!-- @include page-css (shared by the inner pages; see src/partials/) -->
 <style>
 /* ================= registration: how it works (4 steps), choose a registration type, mortgages, bareboat, quick actions ================= */
-.steps-s{padding-block:clamp(56px,7vw,104px)}
+.steps-s{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .steps{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--gold);counter-reset:s}
 .step{position:relative;padding:26px 24px 28px 0}
 .step+.step{padding-left:24px;border-left:1px solid var(--line)}
 .step .n{display:inline-grid;place-items:center;width:44px;height:44px;margin-bottom:16px;border-radius:50%;background:var(--gold);font:800 20px/1 var(--sans);color:var(--ink)}
-.step h3{margin-bottom:10px;font-size:clamp(22px,1.8vw,28px)}
+.step h3{margin-bottom:10px;font-size:clamp(22px,1.9vw,28px)}
 .step p{color:var(--muted);font-size:15.5px}
 .step .when{display:block;margin-top:12px;font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
-.types{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.types{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px);background:var(--deep);border-block:1px solid var(--line)}
 .tgrid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .rt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);overflow:hidden;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
 .rt figure{margin:0;min-height:100%;background:var(--hull)}
@@ -25,10 +25,10 @@
 .rt figure.mark b{font-size:clamp(46px,4.4vw,72px);color:var(--teal);line-height:1}
 .rt .body{display:flex;flex-direction:column;gap:12px;padding:clamp(22px,2.5vw,32px)}
 .rt .tag{color:var(--teal)}
-.rt h3{font-size:clamp(26px,2.2vw,34px)}
+.rt h3{font-size:clamp(26px,2.4vw,36px)}
 .rt p{color:var(--muted);font-size:15.5px}
 .rt .go{margin-top:auto;padding-top:8px}
-.mort{padding-block:clamp(56px,7vw,104px)}
+.mort{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .mort .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
 .mort .grid>*{min-width:0}
 .mort .lead{margin-top:18px}
@@ -43,11 +43,11 @@
 .facts li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
 .facts b.k{font-size:28px;line-height:1;color:var(--teal)}
 .facts p{color:var(--text);font-size:15.5px}
-.bare{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.bare{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px);background:var(--deep);border-block:1px solid var(--line)}
 .flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:clamp(24px,3vw,36px)}
 .fl{padding:clamp(22px,2.5vw,32px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
 .fl .tag{color:var(--teal)}
-.fl h3{margin:8px 0 18px;font-size:clamp(24px,2vw,30px)}
+.fl h3{margin:8px 0 18px;font-size:clamp(22px,1.9vw,28px)}
 .route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px}
 .route .flag{padding:14px;border:1px solid var(--line);border-radius:2px;text-align:center}
 .route .flag b{display:block;font-size:17px}
@@ -55,12 +55,12 @@
 .route .flag.bb{border-color:var(--gold)}
 .route .arrow{font:800 22px/1 var(--sans);color:var(--teal)}
 .fl p{margin-top:16px;color:var(--muted);font-size:15px}
-.acts3{padding-block:clamp(56px,7vw,104px)}
+.acts3{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .acts3 ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .acts3 a{position:relative;display:flex;flex-direction:column;gap:10px;height:100%;padding:26px 56px 26px 26px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
 .acts3 a:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
 .acts3 .tag{color:var(--teal)}
-.acts3 b{font-size:clamp(24px,2vw,30px)}
+.acts3 b{font-size:clamp(22px,1.9vw,28px)}
 .acts3 span.d{color:var(--muted);font-size:15.5px}
 .acts3 .ar{position:absolute;top:26px;right:22px;color:var(--teal)}
 @media (max-width:1100px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(3){padding-left:0;border-left:0}.step:nth-child(n+3){border-top:1px solid var(--line)}.tgrid2,.mort .grid,.flow{grid-template-columns:1fr}.acts3 ul{grid-template-columns:1fr 1fr}}

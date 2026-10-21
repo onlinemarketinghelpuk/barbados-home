@@ -8,7 +8,7 @@
 <!-- @include page-css (shared by the inner pages; see src/partials/) -->
 <style>
 /* team page */
-.t-intro{padding-block:clamp(56px,7vw,96px) clamp(24px,3vw,40px)}
+.t-intro{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px) clamp(24px,3vw,40px)}
 .t-intro .lead{max-width:46em}
 /* team chips: filter the sections (gold when chosen, like the Recognised Organisations filter) */
 .tchips{position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;margin-top:clamp(28px,3vw,40px);padding-block:12px;background:var(--abyss);border-block:1px solid var(--line)}
@@ -18,7 +18,7 @@
 .tchips button:hover{border-color:var(--teal)}
 .tchips button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .tchips button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
-.tsec{padding-block:clamp(48px,6vw,80px);border-top:1px solid var(--line)}
+.tsec{padding-block:clamp(48px,6vw,88px);border-top:1px solid var(--line)}
 .tsec:nth-of-type(even){background:var(--deep)}
 .tsec .head{margin-bottom:clamp(28px,3vw,40px)}
 .tsec .head .lead{max-width:46em;margin-top:16px}
@@ -28,7 +28,7 @@
 .crew figure img{width:100%;height:auto}
 .crew .txt p+p{margin-top:14px}
 .crew .txt p{color:var(--muted)}
-.crew .txt p:first-of-type{font-size:clamp(20px,1.7vw,24px);color:var(--text)}
+.crew .txt p:first-of-type{font-size:clamp(19px,1.5vw,22px);color:var(--text)}
 .crew .ctas{margin-top:28px}
 .js .tsec.off{display:none}
 @media (min-width:1241px){.tchips{top:calc(var(--bar-h) + 80px)} /* the header shrinks to 80px once scrolled on desktop */}

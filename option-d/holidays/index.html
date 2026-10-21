@@ -31,30 +31,36 @@
 [data-theme="light"] :is(.abar,.hero,.isle,.cta,.ftr),
 [data-theme="light"] .hdr:not(.solid):not(.open){
   color-scheme:dark;
-  --abyss:#03141F; --deep:#051D2C; --hull:#072638; --card:#082B40;
-  --mint:#FEC725; --teal:#FEC725; --gold:#FEC725; --mist:#EAF2F4;
-  --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14); --glass:rgba(3,20,31,.94);
+  --abyss:#000C22; --deep:#001538; --hull:#001B45; --card:#001F52; --night:#00081C;
+  --mint:var(--flag-gold); --teal:var(--flag-gold); --gold:var(--flag-gold); --mist:#F2F5FC;
+  --text:var(--flag-white); --soft:#D9DBDE; --muted:#B3B6BD; --err:var(--flag-gold); /* white, dimmed over the page colour: no hue of their own */
+  --line:rgba(255,255,255,.14); --glass:rgba(0,12,34,.94);
   --ph:#FFFFFF; /* input placeholder text: white on dark, muted on light */
   --brand-bg:rgba(255,255,255,.1); --brand-ring:rgba(255,255,255,.84); /* the box behind the logo and flag */
   color:var(--text);
 }
 [data-theme="light"]{
   color-scheme:light;
-  --abyss:#F4F7F8; --deep:#E7EEF1; --hull:#D9E4E8; --card:#FFFFFF;
-  --mint:#1B3A93; --teal:#1B3A93;
-  --text:#0A2230; --muted:#475E6B; --line:rgba(5,29,44,.13); --glass:rgba(244,247,248,.94);
+  --abyss:#F5F7FC; --deep:#E9EDF8; --hull:#DCE3F3; --card:var(--flag-white);
+  --mint:var(--flag-blue); --teal:var(--flag-blue);
+  --text:var(--flag-black); --soft:#4F515A; --muted:#4F515A; --err:var(--flag-black); /* black, lightened on white */
+  --line:rgba(0,18,51,.14); --glass:rgba(245,247,252,.94);
   --ph:var(--muted);
-  --brand-bg:rgba(5,29,44,.05); --brand-ring:rgba(5,29,44,.28);
+  --brand-bg:rgba(0,18,51,.05); --brand-ring:rgba(0,18,51,.28);
 }
 :root{
-  --ink:#03141F;
+  /* Barbados flag palette: ultramarine, gold, black and white are the only brand colours.
+     Every other value below is one of these four, lightened or darkened. */
+  --flag-blue:#00267F; --flag-gold:#FFC726; --flag-black:#0A0E1A; --flag-white:#FFFFFF;
+  --ink:var(--flag-black); --gold-hi:#FFD766; /* gold, pressed or hovered */
+  --err-line:var(--flag-gold); --ok:var(--flag-gold); /* form states: a gold mark, the words carry the meaning */
   --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   --wrap:1760px; --gut:clamp(20px,5vw,96px); --sec:clamp(88px,10vw,140px); --ease:cubic-bezier(.2,.7,.2,1);
-  --bar-h:38px; --hdr-h:96px; --logo-h:clamp(52px,1.6vw + 37px,64px);
+  --bar-h:38px; --hdr-h:108px; --logo-h:clamp(52px,1.6vw + 37px,64px); /* the header clears the logo box above and below */
 }
 *,*::before,*::after{box-sizing:border-box}
 ::placeholder{color:var(--ph);opacity:1}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:150px}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:162px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}} /* Back to top and in-page links glide; reduced-motion users jump */
 body{margin:0;background:var(--abyss);color:var(--text);font:400 17px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
 body.lock{overflow:hidden}
@@ -85,14 +91,14 @@ button,input{font:inherit}
 /* buttons: squared, condensed caps */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 24px;border:1px solid transparent;border-radius:2px;font:700 15px/1 var(--sans);font-stretch:75%;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
 .btn:hover .ar{transform:translateX(4px)}
-.btn-teal{background:var(--gold);color:var(--ink)}.btn-teal:hover{background:#F3D57F}
-.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#F3D57F}
+.btn-teal{background:var(--gold);color:var(--ink)}.btn-teal:hover{background:var(--gold-hi)}
+.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:var(--gold-hi)}
 .btn-line{border-color:color-mix(in srgb,var(--text) 35%,transparent);color:var(--text)}.btn-line:hover{border-color:var(--text);background:color-mix(in srgb,var(--text) 6%,transparent)}
 .go{display:inline-flex;align-items:center;gap:10px;font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
 .go:hover .ar{transform:translateX(4px)}
 
 /* ================= announcement bar: top strip of the fixed header ================= */
-.abar{height:var(--bar-h);background:#021019;border-bottom:1px solid var(--line);font:500 12.5px/1 var(--mono);letter-spacing:.03em}
+.abar{height:var(--bar-h);background:var(--night);border-bottom:1px solid var(--line);font:500 12.5px/1 var(--mono);letter-spacing:.03em}
 .abar .wrap{display:flex;align-items:center;gap:14px;height:100%}
 .tick{flex:1;min-width:0;height:100%;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask:linear-gradient(90deg,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
 .belt{display:flex;width:max-content;height:100%;animation:belt var(--dur,60s) linear infinite}
@@ -118,7 +124,8 @@ button,input{font:inherit}
 .hdr.solid,.hdr.open{background:var(--glass);border-color:var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .hdr .in{display:flex;align-items:center;gap:clamp(16px,2vw,32px);height:var(--hdr-h);transition:height .3s var(--ease)}
 /* logo and flag share one height; the flag is an inline SVG (transparent, sharp at any size) */
-.brand{display:flex;align-items:center;gap:clamp(12px,1vw,18px);margin-right:auto;padding:12px 15px;border-radius:10px;box-shadow:0 0 2px var(--brand-ring);background:var(--brand-bg)}
+.brand{display:flex;align-items:center;gap:clamp(12px,1vw,18px);margin-right:auto}
+.hdr .brand{padding:12px 15px;border-radius:10px;box-shadow:0 0 2px var(--brand-ring);background:var(--brand-bg)} /* the box is the header’s own; the footer logo sits plain */
 .brand .lg{height:var(--logo-h);width:auto;transition:height .3s var(--ease)}
 .brand .flag{height:var(--logo-h);width:auto;aspect-ratio:3/2;border-radius:2px;transition:height .3s var(--ease)}
 .brand .lg-n{display:none}
@@ -136,7 +143,7 @@ button,input{font:inherit}
 .dd-t{display:grid;place-items:center;width:22px;height:28px;margin-right:-6px;padding:0;border:0;background:none;color:color-mix(in srgb,var(--text) 70%,transparent);cursor:pointer}
 .dd-t svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
 .dd-t:hover{color:var(--text)}
-.dd-m{position:absolute;left:-18px;top:100%;z-index:60;display:grid;min-width:250px;margin-top:14px;padding:10px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--abyss);box-shadow:0 22px 50px rgba(3,20,31,.35);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+.dd-m{position:absolute;left:-18px;top:100%;z-index:60;display:grid;min-width:250px;margin-top:14px;padding:10px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--abyss);box-shadow:0 22px 50px rgba(0,12,34,.35);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
 .dd-m::before{content:"";position:absolute;left:0;right:0;top:-17px;height:17px} /* bridges the gap so the menu stays open on the way down */
 .dd:hover .dd-m,.dd:focus-within .dd-m,.dd.open .dd-m{opacity:1;visibility:visible;transform:none;transition:opacity .18s,transform .18s,visibility 0s}
 .dd:hover .dd-t svg,.dd:focus-within .dd-t svg,.dd.open .dd-t svg{transform:rotate(180deg)}
@@ -148,7 +155,7 @@ button,input{font:inherit}
 .dd-n{position:relative;display:block}
 .hdr .in>nav .dd-m a.dd-p{display:flex;align-items:center;justify-content:space-between;gap:14px}
 .dd-p svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
-.dd-s{position:absolute;left:100%;top:-13px;display:grid;min-width:190px;width:max-content;max-width:300px;margin-left:10px;padding:10px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--abyss);box-shadow:0 22px 50px rgba(3,20,31,.35);opacity:0;visibility:hidden;transform:translateX(-6px);transition:opacity .15s,transform .15s,visibility 0s .15s}
+.dd-s{position:absolute;left:100%;top:-13px;display:grid;min-width:190px;width:max-content;max-width:300px;margin-left:10px;padding:10px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--abyss);box-shadow:0 22px 50px rgba(0,12,34,.35);opacity:0;visibility:hidden;transform:translateX(-6px);transition:opacity .15s,transform .15s,visibility 0s .15s}
 .hdr .sr,.mnav .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .hdr .in>nav .dd-s a{white-space:normal;line-height:1.35}
 .dd-s::before{content:"";position:absolute;top:0;bottom:0;left:-12px;width:12px} /* bridges the gap to the flyout */
@@ -183,25 +190,25 @@ button,input{font:inherit}
 .bg>img{transform:scale(1.03);transition:transform 12s cubic-bezier(.25,.1,.25,1)}
 .bg.on>img{transform:scale(1.12)}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(90deg,rgba(3,20,31,.9) 0%,rgba(3,20,31,.62) 42%,rgba(3,20,31,.12) 78%),
-  linear-gradient(0deg,rgba(3,20,31,.96) 0%,rgba(3,20,31,0) 46%),
-  linear-gradient(180deg,rgba(3,20,31,.6) 0%,rgba(3,20,31,0) 22%)}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(8,60,78,.32);mix-blend-mode:color;pointer-events:none}
+  linear-gradient(90deg,rgba(0,12,34,.9) 0%,rgba(0,12,34,.62) 42%,rgba(0,12,34,.12) 78%),
+  linear-gradient(0deg,rgba(0,12,34,.96) 0%,rgba(0,12,34,0) 46%),
+  linear-gradient(180deg,rgba(0,12,34,.6) 0%,rgba(0,12,34,0) 22%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(0,38,127,.32);mix-blend-mode:color;pointer-events:none}
 .hero>.wrap{width:100%}
 .hero .port{margin-bottom:28px;color:var(--mint)}
-.hero h1{font-size:clamp(56px,7.6vw,124px);max-width:11em;text-shadow:0 2px 28px rgba(3,20,31,.55),0 1px 3px rgba(3,20,31,.35)} /* keeps the headline clear over bright slides (the gold band of the flag video) */
+.hero h1{font-size:clamp(56px,7.6vw,124px);max-width:11em;text-shadow:0 2px 28px rgba(0,12,34,.55),0 1px 3px rgba(0,12,34,.35)} /* keeps the headline clear over bright slides (the gold band of the flag video) */
 .hero .foot{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:end;gap:28px 48px;margin-top:40px;padding:28px 0 40px;border-top:1px solid var(--line)}
-.hero .lead{max-width:34em;color:#C9D7DC}
+.hero .lead{max-width:34em;color:var(--soft)}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .deck{display:flex;align-items:center;gap:14px}
 .count{font:500 13px var(--mono);letter-spacing:.06em;color:var(--text);white-space:nowrap}
 .count i{font-style:normal;color:var(--muted)}
-.pbar{width:120px;height:2px;background:rgba(233,241,243,.2);overflow:hidden}
+.pbar{width:120px;height:2px;background:rgba(255,255,255,.2);overflow:hidden}
 .pbar i{display:block;width:0;height:100%;background:var(--teal)}
 .pbar i.run{animation:fill 6.5s linear forwards}
 .hero.paused .pbar i{animation-play-state:paused}
 @keyframes fill{to{width:100%}}
-.ctrl{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid rgba(233,241,243,.3);border-radius:2px;background:rgba(3,20,31,.3);color:var(--text);cursor:pointer;transition:background .2s,color .2s}
+.ctrl{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid rgba(255,255,255,.3);border-radius:2px;background:rgba(0,12,34,.3);color:var(--text);cursor:pointer;transition:background .2s,color .2s}
 .ctrl:hover{background:var(--text);color:var(--abyss)}
 .ctrl .play,.hero.paused .ctrl .pause{display:none}.hero.paused .ctrl .play{display:block}
 .hero.single .deck{display:none}
@@ -217,12 +224,12 @@ button,input{font:inherit}
 .cell p a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
 .cell p a:hover{color:var(--mint)}
 .cell .go{margin-top:auto}
-.cell.em{background:linear-gradient(135deg,rgba(254,199,37,.16),rgba(254,199,37,0) 70%)}
+.cell.em{background:linear-gradient(135deg,rgba(255,199,38,.16),rgba(255,199,38,0) 70%)}
 .cell.em .tag,.cell.em .big{color:var(--teal)}
 .status{display:none;align-items:center;gap:9px;padding:7px 12px;border:1px solid var(--line);border-radius:99px;font:500 12px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;max-width:100%;line-height:1.35;color:var(--text)}
 .js .status{display:inline-flex}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.status.open i{background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+.status.open i{background:var(--gold);box-shadow:0 0 0 4px rgba(255,199,38,.22)}
 .ql{width:100%}
 .ql a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15.5px;font-weight:600;transition:color .2s}
 .ql li:first-child a{padding-top:2px}
@@ -285,30 +292,30 @@ button,input{font:inherit}
 /* ================= Barbados (beach video) ================= */
 .isle{position:relative;padding-block:clamp(100px,11vw,160px);overflow:hidden;isolation:isolate}
 .isle video{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
-.isle::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,20,31,.9) 0%,rgba(4,32,46,.62) 55%,rgba(8,60,78,.38) 100%)}
-.isle ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(233,241,243,.25)}
-.isle li{padding:30px 24px 0;border-left:1px solid rgba(233,241,243,.25)}
+.isle::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,12,34,.9) 0%,rgba(0,21,56,.62) 55%,rgba(0,38,127,.38) 100%)}
+.isle ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.25)}
+.isle li{padding:30px 24px 0;border-left:1px solid rgba(255,255,255,.25)}
 .isle li:first-child{padding-left:0;border-left:0}
 .isle b{display:flex;align-items:baseline;gap:6px;font-size:clamp(64px,7.4vw,112px)}
 .isle b i{font-style:normal;font-size:.4em;color:var(--gold)}
-.isle small{display:block;margin-top:14px;color:#D5E3E7}
+.isle small{display:block;margin-top:14px;color:var(--soft)}
 
 /* ================= accreditations & recognised organisations (light in both themes, so every logo sits on white) ================= */
 .ros{background:var(--mist);color:var(--ink)}
-.ros .tag{color:#475E6B}
-.ros .h2 span,.ros .go{color:#1B3A93}
-.ros :focus-visible{outline-color:#1B3A93}
+.ros .tag{color:#4F515A}
+.ros .h2 span,.ros .go{color:var(--flag-blue)}
+.ros :focus-visible{outline-color:var(--flag-blue)}
 .grp{display:flex;align-items:baseline;gap:10px;margin:0 0 16px;font-weight:500}
-.grp span{color:#1B3A93}
+.grp span{color:var(--flag-blue)}
 .accr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:clamp(44px,5vw,72px)}
-.accr li{display:flex;flex-direction:column;gap:10px;padding:26px 24px 28px;border:1px solid #D2E1E5;border-top:3px solid var(--gold);border-radius:2px;background:#fff}
+.accr li{display:flex;flex-direction:column;gap:10px;padding:26px 24px 28px;border:1px solid #D7DEEE;border-top:3px solid var(--gold);border-radius:2px;background:#fff}
 .accr b{font-size:clamp(30px,2.6vw,40px);color:var(--ink)}
-.accr span{font-size:15px;line-height:1.45;color:#475E6B}
+.accr span{font-size:15px;line-height:1.45;color:#4F515A}
 .logos{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
-.logos>a,.logos>span{display:grid;place-items:center;aspect-ratio:3/2;padding:14px;border:1px solid #D2E1E5;border-radius:2px;background:#fff;transition:border-color .25s,transform .25s}
-.logos a:hover{border-color:#1B3A93;transform:translateY(-3px)}
+.logos>a,.logos>span{display:grid;place-items:center;aspect-ratio:3/2;padding:14px;border:1px solid #D7DEEE;border-radius:2px;background:#fff;transition:border-color .25s,transform .25s}
+.logos a:hover{border-color:var(--flag-blue);transform:translateY(-3px)}
 .logos img{max-height:54px;width:auto;object-fit:contain}
-.logos .mark,.ro .mark{font:800 26px/1 var(--sans);font-stretch:75%;letter-spacing:.04em;color:#1B3A93} /* text mark until an official logo is supplied */
+.logos .mark,.ro .mark{font:800 26px/1 var(--sans);font-stretch:75%;letter-spacing:.04em;color:var(--flag-blue)} /* text mark until an official logo is supplied */
 
 /* ================= news ================= */
 .news .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
@@ -321,46 +328,50 @@ button,input{font:inherit}
 .post:hover h3{color:var(--mint)}
 
 /* ================= 24/7 ================= */
-.cta{padding-block:clamp(100px,11vw,150px);text-align:center;background:radial-gradient(ellipse at 50% 0%,#0F5A63 0%,#073745 45%,#04202E 100%)}
+.cta{padding-block:clamp(100px,11vw,150px);text-align:center;background:radial-gradient(ellipse at 50% 0%,#00338F 0%,#001A52 45%,#000C22 100%)}
 .cta .h2{max-width:13em;margin:18px auto 22px}
-.cta .lead{max-width:34em;margin-inline:auto;color:#C9D7DC}
+.cta .lead{max-width:34em;margin-inline:auto;color:var(--soft)}
 .cta .line{display:inline-block;margin:40px 0 34px;font-size:clamp(46px,7vw,104px);color:var(--gold);transition:color .2s}
-.cta .line:hover{color:#F3D57F}
+.cta .line:hover{color:var(--gold-hi)}
 .cta .ctas{justify-content:center}
 
 /* ================= footer ================= */
-.ftr{background:#021019;font-size:15px}
+.ftr{background:var(--night);font-size:15px}
 .ftr .news-l{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 64px;align-items:end;padding-block:64px;border-bottom:1px solid var(--line)}
 .ftr .news-l h2{font-size:clamp(38px,4vw,56px)}
 .ftr .news-l p{margin-top:12px;color:var(--muted)}
 .ftr form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px}
 .ftr label{font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.ftr input{display:block;width:100%;height:52px;margin-top:8px;padding:0 16px;border:1px solid rgba(160,210,220,.25);border-radius:2px;background:transparent;font:500 16px var(--sans);color:var(--text)}
+.ftr input{display:block;width:100%;height:52px;margin-top:8px;padding:0 16px;border:1px solid rgba(255,255,255,.25);border-radius:2px;background:transparent;font:500 16px var(--sans);color:var(--text)}
 .ftr input:focus{outline:none;border-color:var(--teal)}
 .ftr form .btn{align-self:end}
 .ftr .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:48px;padding-block:64px}
-.ftr .brand{margin:0 0 22px;width:fit-content}
+.ftr .brand{margin:0 0 22px}
 .ftr address{font-style:normal;line-height:1.8;color:var(--muted)}
 .ftr .tag{margin-bottom:18px}
 .ftr li{margin-bottom:10px}
-.ftr a{color:rgba(233,241,243,.85);transition:color .2s}
+.ftr a{color:rgba(255,255,255,.85);transition:color .2s}
 .ftr a:hover{color:var(--teal)}
 .ftr .bottom{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:24px;border-top:1px solid var(--line);font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}
 .ftr .bottom .legal{display:flex;gap:28px}
 .ftr .bottom a{color:var(--muted)}.ftr .bottom a:hover{color:var(--gold)}
 .ftr .bottom .legal{align-items:center}
-.totop{display:inline-grid;place-items:center;width:36px;height:36px;margin-block:-8px;border:1px solid var(--line);border-radius:50%;transition:border-color .2s,color .2s} /* icon only; its name comes from aria-label */
-.ftr .bottom .totop:hover{border-color:var(--gold)}
-.totop .ar{width:14px;height:14px;transform:rotate(-90deg)}.totop:hover .ar{transform:rotate(-90deg) translateX(3px)}
+/* Back to top: a plain round button at the right edge, shown once the page has scrolled; its name comes from aria-label */
+.totop{position:fixed;right:clamp(16px,2vw,24px);bottom:clamp(20px,2.4vw,20px);z-index:46;display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--line);border-radius:2px;background:var(--glass);box-shadow:0 8px 24px rgba(0,12,34,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text)} /* same 2px corners as the buttons */
+.js .totop{opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s,border-color .2s,color .2s}
+.js .totop.show{opacity:1;visibility:visible;transition:opacity .3s,visibility 0s,border-color .2s,color .2s}
+.ftr .bottom .totop:hover{border-color:var(--gold);color:var(--gold)}
+.totop .ar{width:20px;height:20px;transform:rotate(-90deg)}.totop:hover .ar{transform:rotate(-90deg) translateX(3px)}
+@media (max-width:640px){body:has(.mbar.show) .totop{bottom:calc(84px + env(safe-area-inset-bottom))}}
 
 /* ================= draught marks: a fixed depth scale that tracks how far down the page you are ================= */
 .draught{position:fixed;right:18px;top:50%;z-index:40;height:56vh;transform:translateY(-50%);display:none;pointer-events:none;font:500 10px/1 var(--mono);color:color-mix(in srgb,var(--text) 45%,transparent)}
 .draught ol{display:flex;flex-direction:column;justify-content:space-between;height:100%;margin:0;padding:0 0 0 10px;list-style:none;border-left:1px solid color-mix(in srgb,var(--text) 18%,transparent)}
 .draught li{position:relative}
 .draught li::before{content:"";position:absolute;left:-10px;top:50%;width:6px;height:1px;background:currentColor}
-.draught .wl{position:absolute;left:-14px;top:calc(var(--p,0) * 100%);width:30px;height:2px;background:var(--mint);box-shadow:0 0 10px rgba(232,195,90,.6);transition:top .15s linear}
+.draught .wl{position:absolute;left:-14px;top:calc(var(--p,0) * 100%);width:30px;height:2px;background:var(--mint);box-shadow:0 0 10px rgba(255,199,38,.6);transition:top .15s linear}
 @media (min-width:1360px){.draught{display:block}}
-@media (min-width:1241px){.hdr.solid:not(.open){--hdr-h:80px;--logo-h:52px}}
+@media (min-width:1241px){.hdr.solid:not(.open){--hdr-h:92px;--logo-h:52px}}
 
 /* mobile quick-contact bar */
 .mbar{display:none}
@@ -406,7 +417,7 @@ button,input{font:inherit}
 /* ================= phone ================= */
 @media (max-width:640px){
   body{font-size:16.5px}
-  :root{--bar-h:34px;--hdr-h:76px;--logo-h:44px}
+  :root{--bar-h:34px;--hdr-h:84px;--logo-h:44px}
   .abar{font-size:12px}
   .hero{padding-top:calc(var(--bar-h) + var(--hdr-h) + 28px)}
   .hero h1{font-size:clamp(50px,15vw,72px)}
@@ -467,7 +478,7 @@ button,input{font:inherit}
 .tgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .tm{display:flex;flex-direction:column;height:100%;margin:0;border:1px solid var(--line);border-radius:2px;background:var(--card);overflow:hidden;transition:border-color .25s,transform .25s}
 .tm:hover{border-color:color-mix(in srgb,var(--teal) 55%,transparent);transform:translateY(-3px)}
-.tm .pic{aspect-ratio:1/1;background:#F4F5F7;overflow:hidden}
+.tm .pic{aspect-ratio:1/1;background:#F2F4FA;overflow:hidden}
 .tm .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .tm:hover .pic img{transform:scale(1.04)}
 .tm figcaption{display:flex;flex-direction:column;gap:8px;padding:18px 18px 20px;border-top:3px solid var(--gold)}
@@ -479,12 +490,12 @@ button,input{font:inherit}
 </style>
 <style>
 /* ================= public holidays: next closure, the year's list (past dimmed), add to calendar, emergency reassurance ================= */
-.hol{padding-block:clamp(56px,7vw,104px)}
+.hol{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .hol .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
 .hol .grid>*{min-width:0}
 .next{display:flex;flex-direction:column;gap:14px;padding:clamp(24px,3vw,34px);border:1px solid color-mix(in srgb,var(--gold) 50%,transparent);border-top:3px solid var(--gold);border-radius:2px;background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 14%,var(--card)),var(--card) 65%)}
 .next .tag{color:var(--teal)}
-.next .when{font-size:clamp(34px,3.4vw,52px);line-height:1}
+.next .when{font-size:clamp(36px,3.4vw,52px);line-height:1}
 .next .what{font-size:18px;font-weight:700}
 .next .in{font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
 .next .sos{padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
@@ -518,7 +529,14 @@ button,input{font:inherit}
    with weight contrast: a light lead-in (300) and a heavy key phrase (900) on its own line. */
 .hero h1{font-stretch:80%;font-weight:300;letter-spacing:.005em;line-height:.92;font-size:clamp(54px,7vw,118px);max-width:12em}
 .hero h1 span{display:block;font-weight:900}
-@media (max-width:640px){.hero h1{font-size:clamp(42px,12.5vw,64px)}}
+/* the content below follows the banner: the same 80% width, so headings and hero read as one typeface setting */
+.hull{font-stretch:80%}
+/* 80% letters run about a third wider than the 62% they replace, so the headings come down to keep their line lengths */
+.h2{font-size:clamp(38px,4.8vw,70px)}
+.part .h2{font-size:clamp(32px,3.6vw,54px)} /* narrow side column, long words */
+@media (max-width:640px){.hero h1{font-size:clamp(42px,12.5vw,64px)}
+  .ph h1{font-size:clamp(36px,10.5vw,56px)} /* inner-page titles: long words at 80% width need the room on phones */
+}
 /* Option D · section improvements (on top of Option A typography) */
 
 /* ---------- Recognised Organisations: named tiles, equal visual weight, filters, first two rows then "Show all" ---------- */
@@ -526,24 +544,24 @@ button,input{font:inherit}
 .ro-bar .grp{margin:0}
 .ro-filter{display:none;gap:6px;flex-wrap:wrap}
 .js .ro-filter{display:flex}
-.ro-filter button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid #C3D4DA;border-radius:99px;background:#fff;font:600 14px/1 var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
-.ro-filter button i{font:500 12px/1 var(--mono);font-style:normal;color:#475E6B}
-.ro-filter button:hover{border-color:#1B3A93}
-.ro-filter button[aria-pressed="true"]{background:#1B3A93;border-color:#1B3A93;color:#fff}
-.ro-filter button[aria-pressed="true"] i{color:#CFDAF5}
+.ro-filter button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:1px solid #D7DEEE;border-radius:99px;background:#fff;font:600 14px/1 var(--sans);color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.ro-filter button i{font:500 12px/1 var(--mono);font-style:normal;color:#4F515A}
+.ro-filter button:hover{border-color:var(--flag-blue)}
+.ro-filter button[aria-pressed="true"]{background:var(--flag-blue);border-color:var(--flag-blue);color:#fff}
+.ro-filter button[aria-pressed="true"] i{color:#C9D6F2}
 .ro-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
-.ro{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;padding:24px 14px 18px;border:1px solid #D2E1E5;border-radius:2px;background:#fff;text-align:center;transition:border-color .25s,transform .25s,box-shadow .25s}
-.ro:hover,.ro:focus-visible{border-color:#1B3A93;transform:translateY(-3px);box-shadow:0 12px 28px rgba(3,20,31,.08)}
+.ro{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;padding:24px 14px 18px;border:1px solid #D7DEEE;border-radius:2px;background:#fff;text-align:center;transition:border-color .25s,transform .25s,box-shadow .25s}
+.ro:hover,.ro:focus-visible{border-color:var(--flag-blue);transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,12,34,.08)}
 .ro .lg{display:grid;place-items:center;width:100%;height:84px;margin-bottom:4px}
 /* equal visual weight: every logo gets roughly the same area, so wide wordmarks and round seals balance (--r = width ÷ height) */
 .ro img{width:min(100%,calc(66px * sqrt(var(--r))));height:auto;max-height:84px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .3s,opacity .3s}
 .ro:hover img,.ro:focus-visible img,.ros.colour .ro img{filter:none;opacity:1}
 .ro .nm{font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
-.ro .ia{margin-top:auto;padding:4px 8px;border-radius:99px;background:#E8EEFA;font:500 10.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#1B3A93}
+.ro .ia{margin-top:auto;padding:4px 8px;border-radius:99px;background:#E6ECFA;font:500 10.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--flag-blue)}
 .ro-more{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:24px}
-.ro-more .btn{display:none;border-color:#AFC4CC;background:none;color:var(--ink);cursor:pointer}
+.ro-more .btn{display:none;border-color:#C2CADC;background:none;color:var(--ink);cursor:pointer}
 .js .ro-more .btn{display:inline-flex}.js .ro-more .btn[hidden]{display:none}
-.ro-more .btn:hover{border-color:#1B3A93;background:#fff}
+.ro-more .btn:hover{border-color:var(--flag-blue);background:#fff}
 .ro-more .go{margin-left:auto}
 @media (max-width:1100px){.ro-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:640px){
@@ -565,12 +583,12 @@ button,input{font:inherit}
 .reg .h2{margin:18px 0 22px;max-width:14em}
 .reg .lead{margin:0;max-width:40em}
 .paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(40px,5vw,64px)}
-.paths a{position:relative;display:flex;flex-direction:column;gap:12px;height:100%;padding:28px 28px 32px;border:1px solid rgba(233,241,243,.18);border-top:3px solid var(--gold);border-radius:2px;background:rgba(3,20,31,.35);transition:background .25s,border-color .25s}
-.paths b{font-size:clamp(30px,2.6vw,40px);transition:color .25s}
-.paths .txt{color:#C9D7DC;font-size:16px;line-height:1.55}
-.paths .tag{color:#C9D7DC}
+.paths a{position:relative;display:flex;flex-direction:column;gap:12px;height:100%;padding:28px 28px 32px;border:1px solid rgba(255,255,255,.18);border-top:3px solid var(--gold);border-radius:2px;background:rgba(0,12,34,.35);transition:background .25s,border-color .25s}
+.paths b{font-size:clamp(28px,2.6vw,40px);transition:color .25s}
+.paths .txt{color:var(--soft);font-size:16px;line-height:1.55}
+.paths .tag{color:var(--soft)}
 .paths .ar{position:absolute;top:28px;right:24px;color:var(--gold)}
-.paths a:hover{background:rgba(3,20,31,.6);border-color:rgba(233,241,243,.35);border-top-color:var(--gold)}
+.paths a:hover{background:rgba(0,12,34,.6);border-color:rgba(255,255,255,.35);border-top-color:var(--gold)}
 .paths a:hover b{color:var(--gold)}.paths a:hover .ar{transform:translateX(4px)}
 @media (max-width:900px){.paths{grid-template-columns:1fr}}
 
@@ -579,7 +597,7 @@ button,input{font:inherit}
 @media (min-width:1241px) and (max-width:1400px){.hdr .in>nav{gap:13px}.hdr .in>nav a{font-size:14px}.hdr .in{gap:16px}}
 
 /* ---------- floating Back to top (bottom right; on phones it rides above the quick-contact bar when that's showing) ---------- */
-.fab{position:fixed;right:clamp(16px,2vw,28px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:46;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--glass);box-shadow:0 8px 24px rgba(3,20,31,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);
+.fab{position:fixed;right:clamp(16px,2vw,28px);bottom:calc(20px + env(safe-area-inset-bottom));z-index:46;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--glass);box-shadow:0 8px 24px rgba(0,12,34,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--text);
   opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s,transform .3s var(--ease),visibility 0s .3s,bottom .45s var(--ease)}
 .fab.show{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s var(--ease),visibility 0s,bottom .45s var(--ease)}
 .fab .ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
@@ -608,7 +626,7 @@ button,input{font:inherit}
 .ro-filter button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .ro-filter button[aria-pressed="true"] i{color:var(--ink);opacity:.7}
 .ro{border-color:var(--line);background:var(--card);padding:14px 14px 18px}
-.ro:hover,.ro:focus-visible{border-color:var(--teal);box-shadow:0 12px 28px rgba(3,20,31,.18)}
+.ro:hover,.ro:focus-visible{border-color:var(--teal);box-shadow:0 12px 28px rgba(0,12,34,.18)}
 .ro .lg{height:100px;padding:12px;border-radius:2px;background:#fff}
 .ro img{max-height:76px}
 .ro .nm{color:var(--text)}
@@ -619,11 +637,14 @@ button,input{font:inherit}
 
 /* ---------- IACS as a corner badge on the tile; "Show all" centred (no directory link) ---------- */
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.ro .ia{position:absolute;top:6px;right:6px;z-index:1;display:inline-flex;align-items:center;gap:4px;margin:0;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(3,20,31,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
+.ro .ia{position:absolute;top:6px;right:6px;z-index:1;display:inline-flex;align-items:center;gap:4px;margin:0;padding:5px 9px 5px 7px;border-radius:99px;background:var(--gold);box-shadow:0 2px 8px rgba(0,12,34,.25);font:600 11px/1 var(--mono);letter-spacing:.06em;color:var(--ink)}
 .ro .ia svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .ro-more{justify-content:center}
 /* names stay on one line; longer ones end in "…" (full name in the tile's tooltip, and read in full by screen readers) */
 .ro .nm{display:block;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* D fills the figures band with words, not short numbers, so the 80% letters of Option A need a smaller size here */
+.isle b{font-size:clamp(52px,5.9vw,90px)}
 
 /* ================= Option D · Public Holidays, in the home page's style: the next-closure card becomes a sticky side column ================= */
 .hol .next{position:sticky;top:calc(var(--bar-h) + 80px + 24px);padding:22px 0 0;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
@@ -1108,7 +1129,7 @@ themeBtn.addEventListener('click', () => {
 });
 syncTheme();
 
-const wl = document.querySelector('.draught'), mbar = document.querySelector('.mbar');
+const wl = document.querySelector('.draught'), mbar = document.querySelector('.mbar'), totop = document.querySelector('.totop');
 let lastY = scrollY;
 const onScroll = () => {
   hdr.classList.toggle('solid', scrollY > 40);
@@ -1116,6 +1137,7 @@ const onScroll = () => {
   wl.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
   const up = scrollY < lastY, nearEnd = scrollY + innerHeight > document.documentElement.scrollHeight - 200;
   mbar.classList.toggle('show', scrollY > innerHeight * .7 && (up || nearEnd));
+  if (totop) totop.classList.toggle('show', scrollY > 240);
   lastY = scrollY;
 };
 addEventListener('scroll', onScroll, { passive: true }); onScroll();

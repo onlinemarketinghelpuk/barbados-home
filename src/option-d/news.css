@@ -24,7 +24,7 @@
 .nw.lead a{grid-template-columns:120px minmax(0,1fr)}
 .nw.lead figure{grid-column:1 / -1;grid-row:1;min-height:0;aspect-ratio:16/8}
 .nw.lead .meta{grid-row:2 / span 3}
-.nw.lead h3{grid-row:2;font-size:clamp(24px,2.3vw,34px)}
+.nw.lead h3{grid-row:2;font-size:clamp(26px,2.4vw,36px)}
 .nw.lead .x{grid-row:3}
 .nw.lead .go{grid-row:4}
 .nw.lead .meta::before{border-radius:0}

@@ -13,8 +13,10 @@
 /* review page: the three home page options side by side. Dark, in the site's own palette. */
 :root{
   color-scheme:dark;
-  --abyss:#03141F; --deep:#051D2C; --hull:#072638; --gold:#FEC725; --ink:#03141F;
-  --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14);
+  /* the flag palette, same as the option pages: see src/partials/head.html */
+  --flag-blue:#00267F; --flag-gold:#FFC726; --flag-black:#0A0E1A;
+  --abyss:#000C22; --deep:#001538; --hull:#001B45; --gold:var(--flag-gold); --ink:var(--flag-black);
+  --text:#FFFFFF; --muted:#A8B6D9; --soft:#C9D2E8; --line:rgba(255,255,255,.14);
   --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   --gut:clamp(16px,5vw,96px); --ease:cubic-bezier(.2,.7,.2,1);
 }
@@ -41,7 +43,7 @@ ul{margin:0;padding:0;list-style:none}
 .intro{padding-block:clamp(56px,7vw,104px) clamp(40px,5vw,64px)}
 .intro h1{margin:18px 0 22px;font-size:clamp(46px,6.4vw,104px)}
 .intro h1 span{color:var(--gold)}
-.intro .lead{max-width:44em;font-size:clamp(18px,1.5vw,20px);color:#C9D7DC}
+.intro .lead{max-width:44em;font-size:clamp(18px,1.5vw,20px);color:var(--soft)}
 
 /* options */
 .opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.6vw,28px);padding-bottom:clamp(64px,7vw,104px)}
@@ -66,9 +68,9 @@ dd{margin:0}
 .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
 /* Option D: full-width card under the three typography options */
 .opt.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
-.opt.wide .shots{display:flex;align-items:center;aspect-ratio:auto;background:#051D2C} /* same colour as the screenshot, so spare space blends in */
+.opt.wide .shots{display:flex;align-items:center;aspect-ratio:auto;background:#001538} /* same colour as the screenshot, so spare space blends in */
 .opt.wide .shots .d{height:auto;object-fit:contain}
-.adds{display:grid;gap:10px;font-size:15.5px;color:#C9D7DC}
+.adds{display:grid;gap:10px;font-size:15.5px;color:var(--soft)}
 .adds li{position:relative;padding-left:18px}
 .adds li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;background:var(--gold)}
 .adds b{color:var(--text);font-weight:600}
@@ -80,8 +82,8 @@ dd{margin:0}
 .pages a{color:var(--gold);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--gold) 40%,transparent);text-underline-offset:4px}
 .pages a:hover{text-decoration-color:var(--gold)}
 .pages-all{margin-top:-6px;color:var(--muted);font-size:14px}
-.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#F3D57F}
-.btn-line{border-color:rgba(233,241,243,.35)}.btn-line:hover{border-color:var(--text);background:rgba(233,241,243,.06)}
+.btn-gold{background:var(--gold);color:var(--ink)}.btn-gold:hover{background:#FFD766}
+.btn-line{border-color:rgba(255,255,255,.35)}.btn-line:hover{border-color:var(--text);background:rgba(255,255,255,.06)}
 
 /* shared changes */
 .shared{padding-block:clamp(64px,7vw,104px);background:var(--deep);border-top:1px solid var(--line)}
@@ -96,7 +98,7 @@ dd{margin:0}
 .asks{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px 64px;margin-top:clamp(56px,6vw,88px)}
 .asks h3{font-size:clamp(30px,3vw,44px)}
 .asks h3 span{color:var(--gold)}
-.asks ol{margin:0;padding-left:1.4em;color:#C9D7DC}
+.asks ol{margin:0;padding-left:1.4em;color:var(--soft)}
 .asks li{padding:6px 0 6px 6px}
 .asks li::marker{font:500 13px var(--mono);color:var(--gold)}
 footer{padding-block:28px;border-top:1px solid var(--line);font:500 12px/1.5 var(--mono);letter-spacing:.04em;color:var(--muted)}

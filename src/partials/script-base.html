@@ -17,7 +17,7 @@ themeBtn.addEventListener('click', () => {
 });
 syncTheme();
 
-const wl = document.querySelector('.draught'), mbar = document.querySelector('.mbar');
+const wl = document.querySelector('.draught'), mbar = document.querySelector('.mbar'), totop = document.querySelector('.totop');
 let lastY = scrollY;
 const onScroll = () => {
   hdr.classList.toggle('solid', scrollY > 40);
@@ -25,6 +25,7 @@ const onScroll = () => {
   wl.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
   const up = scrollY < lastY, nearEnd = scrollY + innerHeight > document.documentElement.scrollHeight - 200;
   mbar.classList.toggle('show', scrollY > innerHeight * .7 && (up || nearEnd));
+  if (totop) totop.classList.toggle('show', scrollY > 240);
   lastY = scrollY;
 };
 addEventListener('scroll', onScroll, { passive: true }); onScroll();

@@ -8,7 +8,7 @@
 <!-- @include page-css (shared by the inner pages; see src/partials/) -->
 <style>
 /* ================= seafarers: the two main tasks, why crew under Barbados, the STCW team, related links ================= */
-.tasks{padding-block:clamp(56px,7vw,104px)}
+.tasks{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .tasks .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .task{position:relative;display:flex;flex-direction:column;gap:14px;height:100%;padding:clamp(26px,3vw,40px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
 .task:hover{border-color:var(--teal);border-top-color:var(--gold);transform:translateY(-3px)}
@@ -21,13 +21,13 @@
 .task li{position:relative;padding-left:26px;font-size:15.5px}
 .task li::before{content:"";position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2303141F' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4L18 8'/%3E%3C/svg%3E") center/10px no-repeat}
 .task .btn{align-self:flex-start;margin-top:auto}
-.why{padding-block:clamp(56px,7vw,104px);background:var(--deep);border-block:1px solid var(--line)}
+.why{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px);background:var(--deep);border-block:1px solid var(--line)}
 .why .grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,80px);align-items:start}
 .why .grid>*{min-width:0}
 .why .side .lead{margin-top:18px}
 .why .sheet dl{grid-template-columns:1fr}
 .why .sheet dl div{grid-template-columns:170px minmax(0,1fr)}
-.crew-t{padding-block:clamp(56px,7vw,104px)}
+.crew-t{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .crew-t .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:center}
 .crew-t .grid>*{min-width:0}
 .crew-t .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}

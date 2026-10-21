@@ -8,14 +8,14 @@
 <!-- @include page-css (shared by the inner pages; see src/partials/) -->
 <style>
 /* ================= quality assurance: certificate + facts, advantages, the quality policy split into readable parts ================= */
-.qa-cert{padding-block:clamp(56px,7vw,104px)}
+.qa-cert{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .qa-cert .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:start}
-.certimg{position:relative;margin:0;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:#fff;box-shadow:0 24px 60px rgba(3,20,31,.22)}
+.certimg{position:relative;margin:0;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:#fff;box-shadow:0 24px 60px rgba(0,12,34,.22)}
 .certimg img{width:100%;height:auto}
 .certimg a{display:block}
-.certimg figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #E1E8EB;font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#475E6B;background:#F6F8F9}
-.certimg figcaption a{color:#1B3A93;font-weight:600}
-.qa-cert .statement{margin:16px 0 22px;font-size:clamp(24px,2.3vw,34px);line-height:1.3}
+.certimg figcaption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid #DDE3F0;font:500 12.5px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#4F515A;background:#F7F8FC}
+.certimg figcaption a{color:var(--flag-blue);font-weight:600}
+.qa-cert .statement{margin:16px 0 22px;font-size:clamp(26px,2.4vw,36px);line-height:1.3}
 .qa-cert .statement span{color:var(--mint)}
 .qa-cert .body p{max-width:62ch;color:var(--muted)}
 .qa-cert .body p+p{margin-top:14px}
@@ -27,10 +27,10 @@
 .adv{padding-block:clamp(48px,6vw,88px);background:var(--deep);border-block:1px solid var(--line)}
 .adv ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .adv li{padding:28px;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card)}
-.adv b{display:block;font-size:clamp(46px,4.6vw,72px);color:var(--teal)}
+.adv b{display:block;font-size:clamp(46px,4.4vw,72px);color:var(--teal)}
 .adv span{display:block;margin-top:12px;color:var(--muted)}
 /* policy: an "On this page" row (a sticky side column in Option D), then the parts */
-.pol{padding-block:clamp(56px,7vw,104px)}
+.pol{padding-block:clamp(48px,6vw,88px) clamp(64px,8vw,112px)}
 .pol .layout{display:grid;gap:clamp(28px,3vw,44px)}
 .toc{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .toc p{margin-right:6px}
@@ -48,7 +48,7 @@
 .ticks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--line)}
 .ticks li{position:relative;padding:14px 0 14px 34px;border-bottom:1px solid var(--line);font-size:15.5px}
 .ticks li::before{content:"";position:absolute;left:2px;top:17px;width:18px;height:18px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2303141F' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4L18 8'/%3E%3C/svg%3E") center/12px no-repeat}
-.quote{margin:0;padding:clamp(24px,3vw,36px);border-left:3px solid var(--gold);background:var(--card);font-size:clamp(19px,1.6vw,23px);line-height:1.55}
+.quote{margin:0;padding:clamp(24px,3vw,36px);border-left:3px solid var(--gold);background:var(--card);font-size:clamp(19px,1.5vw,22px);line-height:1.55}
 @media (max-width:1100px){.qa-cert .grid{grid-template-columns:1fr}.certimg{max-width:520px}}
 @media (max-width:420px){.ph .ctas .btn{white-space:normal;text-align:center;line-height:1.25;padding-block:10px}}
 @media (max-width:760px){.adv ul,.cards4,.ticks{grid-template-columns:1fr}.qa-cert .sheet dl div{grid-template-columns:1fr;gap:4px}}

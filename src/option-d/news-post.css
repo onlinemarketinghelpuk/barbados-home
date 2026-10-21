@@ -7,7 +7,7 @@
 .np-side{gap:0}
 .np-box{padding:22px 0 26px;border:0;border-top:2px solid var(--gold);border-radius:0;background:none}
 .np-box+.np-box{margin-top:24px}
-.np-box dl>div:first-child dd{font:600 clamp(30px,2.6vw,40px)/1.05 var(--mono);letter-spacing:-.02em}
+.np-box dl>div:first-child dd{font:600 clamp(28px,2.6vw,40px)/1.05 var(--mono);letter-spacing:-.02em}
 .np-share a,.np-share button,.np-files,.np-files a,.np-fig img,.np-pager a{border-radius:0}
 .np-files{padding-inline:0;border:0;border-top:2px solid var(--gold);background:none}
 .np-pager a{border:0;border-top:2px solid var(--gold);background:none;padding-inline:0}

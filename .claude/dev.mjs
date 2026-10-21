@@ -105,7 +105,12 @@ createServer(async (req, res) => {
   let p = normalize(join(root, path));
   if (!p.startsWith(root)) return res.writeHead(403).end();
   try {
-    if ((await stat(p)).isDirectory()) p = join(p, 'index.html');
+    if ((await stat(p)).isDirectory()) {
+      // /option-b has to become /option-b/, or the browser resolves the page's relative links one level too high
+      const u = new URL(req.url, 'http://x');
+      if (!u.pathname.endsWith('/')) return res.writeHead(301, { Location: u.pathname + '/' + u.search }).end();
+      p = join(p, 'index.html');
+    }
     const ext = extname(p).toLowerCase();
     let body = await readFile(p);
     if (ext === '.html') { const s = body.toString('utf8'); const i = s.lastIndexOf('</body>'); body = i < 0 ? s + CLIENT : s.slice(0, i) + CLIENT + s.slice(i); }
