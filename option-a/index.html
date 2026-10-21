@@ -116,7 +116,19 @@ button,input{font:inherit}
 .hdr.solid,.hdr.open{background:var(--glass);border-color:var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .hdr .in{display:flex;align-items:center;gap:clamp(16px,2vw,32px);height:var(--hdr-h);transition:height .3s var(--ease)}
 /* logo and flag share one height; the flag is an inline SVG (transparent, sharp at any size) */
-.brand{display:flex;align-items:center;gap:clamp(12px,1vw,18px);margin-right:auto}
+  
+/* .brand{display:flex;align-items:center;gap:clamp(12px,1vw,18px);margin-right:auto} */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px,1vw,18px);
+    margin-right: auto;
+    padding: 12px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0px 2px rgba(255, 255, 255, 0.84);
+    background: rgba(255, 255, 255, 0.1);
+}
+  
 .brand .lg{height:var(--logo-h);width:auto;transition:height .3s var(--ease)}
 .brand .flag{height:var(--logo-h);width:auto;aspect-ratio:3/2;border-radius:2px;transition:height .3s var(--ease)}
 .brand .lg-n{display:none}
