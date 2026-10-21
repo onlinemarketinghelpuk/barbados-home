@@ -35,6 +35,7 @@
   --mint:#FEC725; --teal:#FEC725; --gold:#FEC725; --mist:#EAF2F4;
   --text:#E9F1F3; --muted:#9DB3BC; --line:rgba(160,210,220,.14); --glass:rgba(3,20,31,.94);
   --ph:#FFFFFF; /* input placeholder text: white on dark, muted on light */
+  --brand-bg:rgba(255,255,255,.1); --brand-ring:rgba(255,255,255,.84); /* the box behind the logo and flag */
   color:var(--text);
 }
 [data-theme="light"]{
@@ -43,6 +44,7 @@
   --mint:#1B3A93; --teal:#1B3A93;
   --text:#0A2230; --muted:#475E6B; --line:rgba(5,29,44,.13); --glass:rgba(244,247,248,.94);
   --ph:var(--muted);
+  --brand-bg:rgba(5,29,44,.05); --brand-ring:rgba(5,29,44,.28);
 }
 :root{
   --ink:#03141F;
@@ -116,7 +118,7 @@ button,input{font:inherit}
 .hdr.solid,.hdr.open{background:var(--glass);border-color:var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .hdr .in{display:flex;align-items:center;gap:clamp(16px,2vw,32px);height:var(--hdr-h);transition:height .3s var(--ease)}
 /* logo and flag share one height; the flag is an inline SVG (transparent, sharp at any size) */
-.brand{display:flex;align-items:center;gap:clamp(12px,1vw,18px);margin-right:auto}
+.brand{display:flex;align-items:center;gap:clamp(12px,1vw,18px);margin-right:auto;padding:12px 15px;border-radius:10px;box-shadow:0 0 2px var(--brand-ring);background:var(--brand-bg)}
 .brand .lg{height:var(--logo-h);width:auto;transition:height .3s var(--ease)}
 .brand .flag{height:var(--logo-h);width:auto;aspect-ratio:3/2;border-radius:2px;transition:height .3s var(--ease)}
 .brand .lg-n{display:none}
@@ -337,7 +339,7 @@ button,input{font:inherit}
 .ftr input:focus{outline:none;border-color:var(--teal)}
 .ftr form .btn{align-self:end}
 .ftr .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:48px;padding-block:64px}
-.ftr .brand{margin:0 0 22px}
+.ftr .brand{margin:0 0 22px;width:fit-content}
 .ftr address{font-style:normal;line-height:1.8;color:var(--muted)}
 .ftr .tag{margin-bottom:18px}
 .ftr li{margin-bottom:10px}
