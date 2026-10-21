@@ -57,6 +57,7 @@
   --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   --wrap:1760px; --gut:clamp(20px,5vw,96px); --sec:clamp(88px,10vw,140px); --ease:cubic-bezier(.2,.7,.2,1);
   --bar-h:38px; --hdr-h:108px; --logo-h:clamp(52px,1.6vw + 37px,64px); /* the header clears the logo box above and below */
+  --hdr-pin:var(--hdr-h); /* what a sticky bar sits under: the header’s scrolled height, so it never jumps */
 }
 *,*::before,*::after{box-sizing:border-box}
 ::placeholder{color:var(--ph);opacity:1}
@@ -371,7 +372,7 @@ button,input{font:inherit}
 .draught li::before{content:"";position:absolute;left:-10px;top:50%;width:6px;height:1px;background:currentColor}
 .draught .wl{position:absolute;left:-14px;top:calc(var(--p,0) * 100%);width:30px;height:2px;background:var(--mint);box-shadow:0 0 10px rgba(255,199,38,.6);transition:top .15s linear}
 @media (min-width:1360px){.draught{display:block}}
-@media (min-width:1241px){.hdr.solid:not(.open){--hdr-h:92px;--logo-h:52px}}
+@media (min-width:1241px){.hdr.solid:not(.open){--hdr-h:92px;--logo-h:52px}:root{--hdr-pin:92px}}
 
 /* mobile quick-contact bar */
 .mbar{display:none}
@@ -492,7 +493,7 @@ button,input{font:inherit}
 /* ================= regional registrars: a finder (search, regions, jump to country) over country groups of registrar cards ================= */
 .rr-layout{padding-bottom:clamp(64px,8vw,112px)}
 /* finder: sticks under the header while the visitor scrolls the results */
-.finder{overflow-x:clip;position:sticky;top:calc(var(--bar-h) + var(--hdr-h));z-index:5;margin-bottom:clamp(28px,3vw,40px);padding-block:14px;background:var(--abyss);border-bottom:1px solid var(--line)}
+.finder{overflow-x:clip;position:sticky;top:calc(var(--bar-h) + var(--hdr-pin));z-index:5;margin-bottom:clamp(28px,3vw,40px);padding-block:14px;background:var(--abyss);border-bottom:1px solid var(--line)}
 .finder .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
 .finder .search{position:relative;flex:1 1 320px;max-width:520px}
 .finder .search svg{position:absolute;left:14px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.8}
@@ -508,7 +509,7 @@ button,input{font:inherit}
 .finder .count{margin-top:10px;font:500 12.5px/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
 .finder .count b{color:var(--text);font-weight:600}
 /* results */
-.rr-c{padding-block:clamp(22px,2.5vw,32px);border-top:1px solid var(--line);scroll-margin-top:calc(var(--bar-h) + var(--hdr-h) + 150px)}
+.rr-c{padding-block:clamp(22px,2.5vw,32px);border-top:1px solid var(--line);scroll-margin-top:calc(var(--bar-h) + var(--hdr-pin) + 150px)}
 .rr-h{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:clamp(26px,2.4vw,36px)}
 .cc{display:block;flex:none;width:42px;height:28px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px var(--line)} /* the country flag */
 .rr-h i{font:500 12.5px/1 var(--mono);font-style:normal;letter-spacing:.05em;color:var(--muted)}
@@ -557,8 +558,6 @@ button,input{font:inherit}
 .rr-li.hit .rr{outline:2px solid var(--gold);outline-offset:3px;transition:outline-color .6s}
 @media (max-width:1100px){.rr-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.rr-results{grid-template-columns:1fr}}
-/* desktop: the header stays at its scrolled height and logo size, so the pinned finder sits flush under it */
-@media (min-width:1241px){:root{--hdr-h:92px;--logo-h:52px}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..1000&display=swap" rel="stylesheet">
 <style>

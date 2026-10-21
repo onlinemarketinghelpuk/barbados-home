@@ -57,6 +57,7 @@
   --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   --wrap:1760px; --gut:clamp(20px,5vw,96px); --sec:clamp(88px,10vw,140px); --ease:cubic-bezier(.2,.7,.2,1);
   --bar-h:38px; --hdr-h:108px; --logo-h:clamp(52px,1.6vw + 37px,64px); /* the header clears the logo box above and below */
+  --hdr-pin:var(--hdr-h); /* what a sticky bar sits under: the header’s scrolled height, so it never jumps */
 }
 *,*::before,*::after{box-sizing:border-box}
 ::placeholder{color:var(--ph);opacity:1}
@@ -371,7 +372,7 @@ button,input{font:inherit}
 .draught li::before{content:"";position:absolute;left:-10px;top:50%;width:6px;height:1px;background:currentColor}
 .draught .wl{position:absolute;left:-14px;top:calc(var(--p,0) * 100%);width:30px;height:2px;background:var(--mint);box-shadow:0 0 10px rgba(255,199,38,.6);transition:top .15s linear}
 @media (min-width:1360px){.draught{display:block}}
-@media (min-width:1241px){.hdr.solid:not(.open){--hdr-h:92px;--logo-h:52px}}
+@media (min-width:1241px){.hdr.solid:not(.open){--hdr-h:92px;--logo-h:52px}:root{--hdr-pin:92px}}
 
 /* mobile quick-contact bar */
 .mbar{display:none}
