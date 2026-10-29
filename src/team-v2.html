@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our team &amp; departments - Barbados Maritime Ship Registry</title>
+<!-- @include head (shared with every page; see src/partials/) -->
+<!-- @include page-css (shared by the inner pages; see src/partials/) -->
+<style>
+/* team page, departments layout (the client's Lovable mock-up, set in this site's styles): the hero, an intro,
+   department tabs, a department card beside its people, and a contact section. Built for Option C only. */
+.hero.tph h1{font-size:clamp(42px,5vw,84px);max-width:14em}
+.tph h1 span{display:block}
+.tph .bg>img{object-position:62% 50%}
+.tph .ctas{align-items:center}
+.ar.dn{transform:rotate(90deg)}
+.btn:hover .ar.dn{transform:rotate(90deg) translateX(3px)}
+.status.here{min-height:52px;padding-inline:16px}
+
+.t-lede{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px clamp(40px,6vw,96px);align-items:end;padding-block:var(--sec) clamp(36px,4vw,56px)}
+.t-lede .tag{margin-bottom:16px}
+.t-lede .txt p{font-size:clamp(17px,1.3vw,19px);color:var(--muted)}
+.t-lede .txt p+p{margin-top:14px}
+.t-lede strong{font-weight:600;color:var(--text)}
+
+/* department tabs: the team page's chips, pinned right under the header (and its 1px rule); the selected tab is gold */
+.tchips{position:sticky;top:calc(var(--bar-h) + var(--hdr-pin) + 1px);z-index:5;padding-block:12px;background:var(--abyss);border-block:1px solid var(--line)}
+.tchips .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px}
+.tchips .tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tchips button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border:1px solid var(--line);border-radius:2px;background:var(--card);font:600 14px/1 var(--sans);color:var(--text);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.tchips button i{font:500 12px/1 var(--mono);font-style:normal;color:var(--muted)}
+.tchips button:hover{border-color:var(--teal)}
+.tchips button[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.tchips button[aria-selected="true"] i{color:var(--ink);opacity:.7}
+.tchips .meta{white-space:nowrap}
+
+.tpanel{padding-block:clamp(40px,5vw,72px) clamp(64px,7vw,104px)}
+.tp-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,3vw,40px);align-items:start}
+
+/* department card: the site's card (2px corners, gold top rule) with the mock-up's contents */
+.dcard{display:flex;flex-direction:column;padding:clamp(24px,2.4vw,36px);border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:2px;background:var(--card);transition:border-color .25s,transform .25s}
+.dcard:hover{border-color:color-mix(in srgb,var(--teal) 55%,transparent);border-top-color:var(--gold);transform:translateY(-3px)}
+.dcard .dicon{width:34px;height:34px;margin-bottom:22px;fill:none;stroke:var(--teal);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.dcard h3{margin:12px 0 18px;font-size:clamp(28px,2.4vw,38px)}
+.dcard .desc{font-size:16px;color:var(--muted)}
+.dcard .fx{margin:26px 0 10px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted)}
+.fns li{display:flex;align-items:flex-start;gap:12px;padding:6px 0;font-size:15.5px;line-height:1.5}
+.fns .ar{width:18px;height:18px;margin-top:2px;color:var(--teal);stroke-width:2.4}
+.dfoot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.dfoot .num{font-size:clamp(34px,3vw,46px);font-weight:300;line-height:1;letter-spacing:-.03em;color:color-mix(in srgb,var(--text) 32%,transparent)}
+
+.people .lead{margin-bottom:24px;font-size:clamp(17px,1.3vw,19px)}
+.people .tgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* departments without named staff: how to reach them */
+.reach{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:clamp(24px,2.4vw,36px);border:1px dashed var(--line);border-radius:2px}
+.reach .big{font-size:clamp(20px,1.7vw,24px);line-height:1.35;color:var(--text)}
+.reach .line{font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.02em;color:var(--teal)}
+.reach .mail{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.reach a:hover{color:var(--teal)}
+
+/* contact: the home page's centred 24/7 section (.cta), so it reads apart from the newsletter below; the heading is longer, so it gets a little more width */
+.tcta .h2{max-width:16em}
+
+/* side by side, the card stays under the tab bar while the people scroll past (the script fits its top to the screen height) */
+@media (min-width:1101px){.dcard{position:sticky;top:calc(var(--bar-h) + var(--hdr-pin) + 93px)}}
+@media (max-width:1100px){.tp-grid{grid-template-columns:1fr}}
+@media (max-width:900px){.t-lede,.tph .foot{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .tchips .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tchips .tabs::-webkit-scrollbar{display:none}
+  .tchips .tabs button{flex:none}
+  .tchips .meta{display:none}
+  .people .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .status.here{min-height:44px;justify-content:center}
+}
+</style>
+<!-- @option-head: the build inserts this option's fonts and typography here (after the main styles, so it wins) -->
+</head>
+<body>
+<!-- @include top (shared with every page; see src/partials/) -->
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+  <!-- this page's icons: one per department, plus the tick and the envelope -->
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-office" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><path d="M8 7h8M8 11h8M8 15h5"/></symbol>
+  <symbol id="i-cert" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<!-- DRAFT copy from the client's mock-up (hero, intro, department cards, contact section): the registry to confirm -->
+<section class="hero ph tph" aria-labelledby="t-h1">
+  <div class="bgs"><div class="bg on"><img alt="" src="assets/img/Barbados-Maritime-Home-Page-.jpg" fetchpriority="high"></div></div>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="https://barbadosmaritime.com/">Home</a></li><li><a href="https://barbadosmaritime.com/the-bmsr/">The BMSR</a></li><li aria-current="page">Our team</li></ol></nav>
+    <p class="tag port">Our people. Your partners.</p>
+    <h1 class="hull" id="t-h1">Dedicated expertise. <span>One maritime team.</span></h1>
+    <div class="foot">
+      <p class="lead">Specialist departments. A shared commitment to quality. Meet the people leading our services and find the right support for your vessel, your crew and your business.</p>
+      <div class="ctas"><a class="btn btn-gold" href="#departments">Explore our departments <svg class="ar dn"><use href="#ar"/></svg></a><span class="status open here"><i></i><span>Here for you, 24/7</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEPARTMENTS: intro, tabs, one panel per department (without JavaScript every panel shows) ================= -->
+<div class="tdept">
+  <section class="wrap t-lede rv" id="departments" aria-labelledby="dept-h">
+    <div><p class="tag t">A quality-driven service</p><h2 class="hull h2" id="dept-h">The right expertise. <span>When you need it.</span></h2></div>
+    <div class="txt">
+      <p>From registration to ongoing operations, our departments work together to deliver a seamless maritime service.</p>
+      <p><strong>Each department has a clear purpose and a dedicated lead.</strong> Find the expertise you need below and connect directly with the team that can help.</p>
+    </div>
+  </section>
+
+  <nav class="tchips" aria-label="Departments">
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="Departments">
+        <button type="button" role="tab" id="tab-leadership" aria-controls="leadership" aria-selected="true" data-dept="leadership" data-people="{{team-size-of:leadership}}">Leadership <i>{{team-size-of:leadership}}</i></button>
+        <button type="button" role="tab" id="tab-registry" aria-controls="registry" aria-selected="false" data-dept="registry" data-people="{{team-size-of:registry}}">Registry <i>{{team-size-of:registry}}</i></button>
+        <button type="button" role="tab" id="tab-operations" aria-controls="operations" aria-selected="false" data-dept="operations" data-people="{{team-size-of:operations}}">Operations <i>{{team-size-of:operations}}</i></button>
+        <button type="button" role="tab" id="tab-office" aria-controls="office" aria-selected="false" data-dept="office" data-people="{{team-size-of:office}}">Office <i>{{team-size-of:office}}</i></button>
+        <button type="button" role="tab" id="tab-invoice" aria-controls="invoice" aria-selected="false" data-dept="invoice" data-people="0">Invoice</button>
+        <button type="button" role="tab" id="tab-stcw" aria-controls="stcw" aria-selected="false" data-dept="stcw" data-people="{{team-size-of:stcw}}">STCW <i>{{team-size-of:stcw}}</i></button>
+        <button type="button" role="tab" id="tab-investigation" aria-controls="investigation" aria-selected="false" data-dept="investigation" data-people="0">Investigation</button>
+      </div>
+      <span class="meta count" aria-live="polite">One shared standard</span>
+    </div>
+  </nav>
+
+  <div class="tpanels" id="dept-panels">
+
+    <section class="tpanel" id="leadership" role="tabpanel" aria-labelledby="tab-leadership">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-users"/></svg>
+          <p class="tag t">Board &amp; management</p>
+          <h3 class="hull">Leadership</h3>
+          <p class="desc">{{team-intro-of:leadership}}</p>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact the office <svg class="ar"><use href="#ar"/></svg></a></div>
+        </article>
+        <div class="people">
+          <ul class="tgrid">
+{{team-of:leadership}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tpanel" id="registry" role="tabpanel" aria-labelledby="tab-registry">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-doc"/></svg>
+          <p class="tag t">Registration &amp; documentation</p>
+          <h3 class="hull">Ship registration</h3>
+          <p class="desc">A coordinated registration service for shipowners and managers, with careful handling of vessel documentation from initial enquiry to ongoing changes.</p>
+          <p class="tag fx">Department functions</p>
+          <ul class="fns">
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Ship and yacht registration</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Ownership changes, mortgages and bareboat charters</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Registry documentation and vessel records</li>
+          </ul>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact Registry <svg class="ar"><use href="#ar"/></svg></a><span class="num" aria-hidden="true">01</span></div>
+        </article>
+        <div class="people">
+          <p class="lead">{{team-intro-of:registry}}</p>
+          <ul class="tgrid">
+{{team-of:registry}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tpanel" id="operations" role="tabpanel" aria-labelledby="tab-operations">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-shield"/></svg>
+          <p class="tag t">Safety &amp; compliance</p>
+          <h3 class="hull">Technical &amp; operations</h3>
+          <p class="desc">Practical technical guidance to keep your vessels safe, compliant and operating efficiently throughout their time under the Barbados flag.</p>
+          <p class="tag fx">Department functions</p>
+          <ul class="fns">
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Flag State compliance and technical guidance</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Vessel inspections and statutory certification support</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Marine safety and operational assistance</li>
+          </ul>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact Operations <svg class="ar"><use href="#ar"/></svg></a><span class="num" aria-hidden="true">02</span></div>
+        </article>
+        <div class="people">
+          <p class="lead">{{team-intro-of:operations}}</p>
+          <ul class="tgrid">
+{{team-of:operations}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tpanel" id="office" role="tabpanel" aria-labelledby="tab-office">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-office"/></svg>
+          <p class="tag t">Coordination &amp; support</p>
+          <h3 class="hull">Office &amp; communications</h3>
+          <p class="desc">A central point of contact connecting you with the right expertise, supported by coordinated administration and clear registry communications.</p>
+          <p class="tag fx">Department functions</p>
+          <ul class="fns">
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>General enquiries and departmental coordination</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Office administration and client support</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Marketing, communications and registry updates</li>
+          </ul>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact Office <svg class="ar"><use href="#ar"/></svg></a><span class="num" aria-hidden="true">03</span></div>
+        </article>
+        <div class="people">
+          <p class="lead">{{team-intro-of:office}}</p>
+          <ul class="tgrid">
+{{team-of:office}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tpanel" id="invoice" role="tabpanel" aria-labelledby="tab-invoice">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-receipt"/></svg>
+          <p class="tag t">Billing &amp; payments</p>
+          <h3 class="hull">Invoicing &amp; accounts</h3>
+          <p class="desc">A clear and efficient invoicing service for registry fees and related charges, with prompt handling of billing queries and payment documentation for shipowners and managers.</p>
+          <p class="tag fx">Department functions</p>
+          <ul class="fns">
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Fee schedules and invoice requests</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Payment processing and receipts</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Billing queries and account support</li>
+          </ul>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact Invoice <svg class="ar"><use href="#ar"/></svg></a><span class="num" aria-hidden="true">04</span></div>
+        </article>
+        <aside class="reach rv">
+          <p class="tag">How to reach this department</p>
+          <p class="big">Contact the London office and we'll put you through to the right person.</p>
+          <a class="line" href="tel:+442076365739">+44 (0)207 636 5739</a>
+          <a class="mail" href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="tpanel" id="stcw" role="tabpanel" aria-labelledby="tab-stcw">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-cert"/></svg>
+          <p class="tag t">People &amp; certification</p>
+          <h3 class="hull">Seafarers &amp; STCW</h3>
+          <p class="desc">Supporting qualified seafarers and compliant crewing through efficient certification services aligned with international STCW requirements.</p>
+          <p class="tag fx">Department functions</p>
+          <ul class="fns">
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Seafarer endorsements and certification</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Discharge books and crew documentation</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>STCW requirements and application guidance</li>
+          </ul>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact STCW <svg class="ar"><use href="#ar"/></svg></a><span class="num" aria-hidden="true">05</span></div>
+        </article>
+        <div class="people">
+          <p class="lead">{{team-intro-of:stcw}}</p>
+          <ul class="tgrid">
+{{team-of:stcw}}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tpanel" id="investigation" role="tabpanel" aria-labelledby="tab-investigation">
+      <div class="wrap tp-grid">
+        <article class="dcard rv">
+          <svg class="dicon" aria-hidden="true"><use href="#i-search"/></svg>
+          <p class="tag t">Casualties &amp; compliance</p>
+          <h3 class="hull">Investigations</h3>
+          <p class="desc">Objective investigation of marine casualties and reported incidents, ensuring findings are handled with due process, confidentiality and a focus on lessons learned.</p>
+          <p class="tag fx">Department functions</p>
+          <ul class="fns">
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Marine casualty and incident investigations</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Evidence collection and reporting</li>
+            <li><svg class="ar" aria-hidden="true"><use href="#check"/></svg>Recommendations and follow-up actions</li>
+          </ul>
+          <div class="dfoot"><a class="go" href="https://barbadosmaritime.com/contact-us/">Contact Investigation <svg class="ar"><use href="#ar"/></svg></a><span class="num" aria-hidden="true">06</span></div>
+        </article>
+        <aside class="reach rv">
+          <p class="tag">How to reach this department</p>
+          <p class="big">Contact the London office and we'll put you through to the right person.</p>
+          <a class="line" href="tel:+442076365739">+44 (0)207 636 5739</a>
+          <a class="mail" href="mailto:office@barbadosmaritime.com">office@barbadosmaritime.com</a>
+        </aside>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<section class="cta tcta" aria-labelledby="band-h">
+  <div class="wrap rv">
+    <p class="tag t">Always within reach</p>
+    <h2 class="hull h2" id="band-h">Not sure who to speak to? <span>We'll point you in the right direction.</span></h2>
+    <p class="lead">Contact our London office and we'll connect you with the right department.</p>
+    <a class="line hull" href="tel:+442076365739">+44 (0)207 636 5739</a>
+    <div class="ctas"><a class="btn btn-gold" href="https://barbadosmaritime.com/contact-us/">Get in touch <svg class="ar"><use href="#ar"/></svg></a><a class="btn btn-line" href="mailto:office@barbadosmaritime.com"><svg class="ar" aria-hidden="true"><use href="#mail"/></svg>Email the office</a></div>
+  </div>
+</section>
+
+</main>
+
+<!-- @include bottom (shared with every page; see src/partials/) -->
+
+<script>
+<!-- @include script-base (shared page behaviour; see src/partials/) -->
+// department tabs: one department at a time; the choice is kept in the address (#registry etc.) so it can be shared
+const tabs = [...document.querySelectorAll('.tchips [role="tab"]')];
+const panels = tabs.map(t => document.getElementById(t.getAttribute('aria-controls')));
+const meta = document.querySelector('.tchips .meta');
+const pad2 = n => String(n).padStart(2, '0');
+// the department card sticks under the tab bar; one taller than the space left sticks by its bottom edge instead,
+// so its contact link never sits out of reach
+const tabBar = document.querySelector('.tchips');
+const fitCards = () => {
+  const under = parseFloat(getComputedStyle(tabBar).top) + tabBar.offsetHeight + 24;
+  panels.forEach(p => { const c = p.querySelector('.dcard'); if (c && !p.hidden) c.style.top = Math.min(under, innerHeight - c.offsetHeight - 24) + 'px'; });
+};
+addEventListener('resize', fitCards);
+document.fonts.ready.then(fitCards);
+const showDept = (id, focus) => {
+  const k = Math.max(0, tabs.findIndex(t => t.dataset.dept === id));
+  tabs.forEach((t, i) => { const on = i === k; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; panels[i].hidden = !on; });
+  panels[k].querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+  fitCards();
+  const n = +tabs[k].dataset.people;
+  meta.textContent = (n ? pad2(n) + (n === 1 ? ' team member' : ' team members') : 'Via the London office') + ' · One shared standard';
+  if (focus) tabs[k].focus();
+  return tabs[k].dataset.dept;
+};
+const pick = (t, focus) => {
+  history.replaceState(null, '', '#' + showDept(t.dataset.dept, focus));
+  const box = document.getElementById('dept-panels');
+  if (box.getBoundingClientRect().top < 0) box.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+};
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => pick(t));
+  t.addEventListener('keydown', e => {
+    const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+    if (to === undefined) return;
+    e.preventDefault();
+    pick(tabs[(to + tabs.length) % tabs.length], true);
+  });
+});
+showDept(location.hash.slice(1));
+</script>
+</body>
+</html>

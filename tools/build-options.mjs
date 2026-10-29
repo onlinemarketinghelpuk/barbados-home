@@ -299,6 +299,8 @@ const pages = [
   { src: 'src/contact.html', out: 'contact/index.html', up: '../../', links: linksFor('contact') },
   { src: 'src/about.html', out: 'about/index.html', up: '../../', links: linksFor('about') },
   { src: 'src/team.html', out: 'team/index.html', up: '../../', links: linksFor('team') },
+  // the team page in the departments layout from the client's mock-up, for review beside team/ (Option C only)
+  { src: 'src/team-v2.html', out: 'team-v2/index.html', up: '../../', links: linksFor('team-v2'), options: ['c'] },
   { src: 'src/registrars.html', out: 'registrars/index.html', up: '../../', links: linksFor('registrars') },
   { src: 'src/ros.html', out: 'ros/index.html', up: '../../', links: linksFor('ros') },
   { src: 'src/quality.html', out: 'quality/index.html', up: '../../', links: linksFor('quality') },
@@ -328,6 +330,7 @@ const pages = [
 const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1].split(',') : null;
 const todo = pages.filter(pg => (!only || only.includes(pg.out === 'index.html' ? 'home' : pg.out.split('/')[0])) && (existsSync(new URL(pg.src, root)) || console.log(`skipped ${pg.src} (not written yet)`)));
 for (const o of options) for (const pg of todo) {
+  if (pg.options && !pg.options.includes(o.id)) continue; // a page made for some options only
   const type = o.type || o.id;
   const css = read(`src/type-${type}.css`) + (o.parts ? read(o.parts + 'd.css') : '') + (o.pageCss?.[pg.src] ? read(o.pageCss[pg.src]) : o.parts && existsSync(new URL(`${o.parts}${pg.out.split('/')[0]}.css`, root)) ? read(`${o.parts}${pg.out.split('/')[0]}.css`) : '');
   const head = (o.fonts ? `<link href="https://fonts.googleapis.com/css2?${o.fonts}&display=swap" rel="stylesheet">\n` : '') + `<style>\n${css}</style>`;
