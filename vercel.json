@@ -1,6 +1,7 @@
 {
   "trailingSlash": true,
   "redirects": [
+    { "source": "/option-c/team-v2/", "destination": "/option-c/team/", "permanent": false },
     { "source": "/option-c/team-v2/:path*", "destination": "/option-c/team/", "permanent": false }
   ]
 }
