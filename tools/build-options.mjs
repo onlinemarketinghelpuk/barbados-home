@@ -298,9 +298,10 @@ const pages = [
   { src: 'src/home.html', out: 'index.html', up: '../', strictText: true, links: linksFor('') },
   { src: 'src/contact.html', out: 'contact/index.html', up: '../../', links: linksFor('contact') },
   { src: 'src/about.html', out: 'about/index.html', up: '../../', links: linksFor('about') },
-  { src: 'src/team.html', out: 'team/index.html', up: '../../', links: linksFor('team') },
-  // the team page in the departments layout from the client's mock-up, for review beside team/ (Option C only)
-  { src: 'src/team-v2.html', out: 'team-v2/index.html', up: '../../', links: linksFor('team-v2'), options: ['c'] },
+  { src: 'src/team.html', out: 'team/index.html', up: '../../', links: linksFor('team'), options: ['a', 'b', 'd'] },
+  // Option C's team page is the departments layout from the client's mock-up; its earlier layout stays at team-old/
+  { src: 'src/team-v2.html', out: 'team/index.html', up: '../../', links: linksFor('team'), options: ['c'] },
+  { src: 'src/team.html', out: 'team-old/index.html', up: '../../', links: linksFor('team-old'), options: ['c'] },
   { src: 'src/registrars.html', out: 'registrars/index.html', up: '../../', links: linksFor('registrars') },
   { src: 'src/ros.html', out: 'ros/index.html', up: '../../', links: linksFor('ros') },
   { src: 'src/quality.html', out: 'quality/index.html', up: '../../', links: linksFor('quality') },

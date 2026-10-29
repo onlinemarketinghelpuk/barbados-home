@@ -19,7 +19,7 @@ v6 is the **client's favourite** design (live preview: https://barbados-v6.verce
 /src/home.html          the home page source. Edit here, never in option-*/
 /src/contact.html       the contact page source (built as option-*/contact/index.html)
 /src/about.html, /src/team.html   About and Team page sources (built as option-*/about/, option-*/team/)
-/src/team-v2.html       Team page in the departments layout from the client's mock-up: Option C only (option-c/team-v2/), beside team/; plug-in tools/fill/team-v2.mjs
+/src/team-v2.html       Option C's Team page (option-c/team/): the departments layout from the client's mock-up; plug-in tools/fill/team-v2.mjs. C's earlier team page (src/team.html) is built at option-c/team-old/; A, B, D keep src/team.html at team/
 /src/data/team.json     the 14 team members and team intros; team cards are generated from it
 /src/registrars.html, /src/data/registrars.json   Regional Registrars page (built as option-*/registrars/) and its 42 entries (transcribed: client to verify)
 /src/ros.html           Recognised Organisations page (option-*/ros/); the RO list is src/option-d/ros.json (23, names as on the live RO page)
